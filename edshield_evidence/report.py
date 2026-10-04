@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from . import EDSHIELD_COMMIT, FORBIDDEN_REPORT_WORDS, JUDGE_TAG
+from .bundles import load_bundle
 
 PROVISIONAL_LINE = "criteria PROVISIONAL, not ratified"
 
@@ -113,7 +114,7 @@ def step_section(key: str, bundle: dict, verdict: dict, policy: dict, diag: dict
                 out.append(f"- `{o['doc_id']}` `{o['token']}` as {', '.join(o['labels']) or '?'}: …{ctx}…")
             out.append("")
         elif not run.get("text_included", True):
-            out += ["Over-redaction sample and residual text withheld: sealed set.", ""]
+            out += ["Over-redaction sample and residual text withheld: this set's text is not reproduced in reports.", ""]
         if run.get("partial_examples"):
             out += ["Partial residuals (first 25):", ""]
             for p in run["partial_examples"][:25]:
@@ -123,14 +124,14 @@ def step_section(key: str, bundle: dict, verdict: dict, policy: dict, diag: dict
 
 
 def summarize(report_dir: Path, out_name: str = "summary.md") -> Path:
-    report_dir = Path(report_dir)
+    report_dir = Path(report_dir).resolve()
     keys = sorted(p.name[: -len(".verdict.json")] for p in report_dir.glob("*.verdict.json"))
     skipped = sorted(report_dir.glob("*.skipped.txt"))
     lines: List[str] = []
     policies, bundles = [], []
     sections: List[str] = []
     for key in keys:
-        bundle = json.loads((report_dir / f"{key}.bundle.json").read_text(encoding="utf-8"))
+        bundle = load_bundle(report_dir / f"{key}.bundle.json")
         verdict = json.loads((report_dir / f"{key}.verdict.json").read_text(encoding="utf-8"))
         pol_path = report_dir / f"{key}.policy.json"
         policy = json.loads(pol_path.read_text(encoding="utf-8")) if pol_path.exists() else {}

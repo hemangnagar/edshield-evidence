@@ -1,0 +1,7 @@
+# LF everywhere, so a Windows checkout hashes the same bytes as the pinned sha256 files
+# (evidence/sets/*.sha256, the ledger's data_sha256). No core.autocrlf setting is needed.
+* text=auto eol=lf
+*.enc binary
+*.onnx binary
+*.safetensors binary
+*.part[0-9][0-9] -text

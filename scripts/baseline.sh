@@ -104,5 +104,7 @@ done
 
 echo
 python -m edshield_evidence.report "$REPORT_DIR"
+# GitHub refuses files over 100 MB; the PIILO step 1 bundle is ~140 MB. Parts join back byte for byte.
+python -m edshield_evidence.bundles split "$REPORT_DIR"
 echo "summary: $REPORT_DIR/summary.md"
 head -1 "$REPORT_DIR/summary.md"

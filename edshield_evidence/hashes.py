@@ -41,9 +41,22 @@ def sha256_file(path: Union[str, Path]) -> str:
     return h.hexdigest()
 
 
+def _js_numbers(obj):
+    """JSON.stringify writes 1.0 as 1; match it so Python-side digests equal the judge's."""
+    if isinstance(obj, float) and obj.is_integer():
+        return int(obj)
+    if isinstance(obj, dict):
+        return {k: _js_numbers(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_js_numbers(v) for v in obj]
+    return obj
+
+
 def canonical_json(obj) -> str:
-    """Sorted keys at every depth, no whitespace: the judge's `canonical()`."""
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    """Sorted keys at every depth, no whitespace, JavaScript number formatting:
+    the judge's `canonical()`, so `sha256_json(bundle)` equals the verdict's
+    `input_sha256` and `sha256_json(policy)` its `policy_sha256`."""
+    return json.dumps(_js_numbers(obj), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def sha256_json(obj) -> str:

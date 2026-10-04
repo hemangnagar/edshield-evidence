@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from . import EDSHIELD_COMMIT, EVIDENCE_DIR, REPO_ROOT
+from .bundles import load_bundle
 from .policy import REGRESSION
 
 LEDGER = EVIDENCE_DIR / "ledger.md"
@@ -58,7 +59,7 @@ def _interval(m: dict) -> str:
 
 
 def entry_from_report(report_dir: Path, key: str, note: str = "") -> Dict[str, str]:
-    bundle = json.loads((report_dir / f"{key}.bundle.json").read_text(encoding="utf-8"))
+    bundle = load_bundle(report_dir / f"{key}.bundle.json")
     verdict = json.loads((report_dir / f"{key}.verdict.json").read_text(encoding="utf-8"))
     diag_path = report_dir / f"{key}.diagnostics.json"
     diag = json.loads(diag_path.read_text(encoding="utf-8")) if diag_path.exists() else {}
@@ -145,7 +146,7 @@ def pin(policy_path: Path = REGRESSION, ledger: Path = LEDGER, reports_dir: Path
         verdicts = list(report_dir.glob("*.verdict.json"))
         verdict = None
         for vp in verdicts:
-            b = json.loads(vp.with_name(vp.name.replace(".verdict.json", ".bundle.json")).read_text(encoding="utf-8"))
+            b = load_bundle(vp.with_name(vp.name.replace(".verdict.json", ".bundle.json")))
             md = b["metadata"]
             if md["dataset"] == row["dataset"] and md["runtime"] == row["runtime"] and md["detector"] == row["detector"]:
                 verdict = json.loads(vp.read_text(encoding="utf-8"))

@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 from . import POLICIES_DIR, REPO_ROOT
+from .bundles import load_bundle
 
 REGRESSION = POLICIES_DIR / "regression.json"
 ACCEPTANCE = POLICIES_DIR / "acceptance.json"
@@ -41,7 +42,7 @@ def select(path: Path, key: str, bundle_path: Optional[Path] = None) -> Tuple[di
         raise SystemExit(f"{path} has no policy {key!r}; available: {sorted(keyed.get('policies', {}))}")
     dropped: List[str] = []
     if bundle_path is not None:
-        views = set(json.loads(Path(bundle_path).read_text(encoding="utf-8")).get("views", {}))
+        views = set(load_bundle(Path(bundle_path)).get("views", {}))
         for name in list(pol["views"]):
             if name.startswith("type:") and name not in views:
                 dropped.append(name)

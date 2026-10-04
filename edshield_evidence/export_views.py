@@ -17,7 +17,9 @@ a parity bundle: runs `python` and `onnx` without a seed field.
 
 A diagnostics file (<out>.diagnostics.json) carries what the judge does not
 read: partial residuals, label confusion, the over-redaction sample. For a
-sealed set it holds counts only, never text, unless --include-text is given.
+sealed set or the PIILO holdout it holds counts only, never text, unless
+--include-text is given. Bundles over GitHub's size limit are split after
+judging by `python -m edshield_evidence.bundles split <dir>`.
 """
 
 from __future__ import annotations
@@ -309,7 +311,9 @@ def main(argv: Optional[List[str]] = None) -> int:
         results.append(r)
 
     model_ref = specs[0].runtime.model_ref if specs else a.model
-    include_text = a.include_text or not dataset.sealed
+    # Text samples (partial residuals, over-redaction contexts) go into the diagnostics only for
+    # synthetic, dev-visible sets. Sealed sets and the PIILO holdout (real essays) get counts only.
+    include_text = a.include_text or not (dataset.sealed or dataset.name == "piilo_holdout")
     bundle, diagnostics = build_bundle(
         dataset, results, policy=a.policy, detector=a.detector, runtime_names=runtimes,
         o_threshold=a.o_threshold, model_ref=model_ref, include_text=include_text, limit=a.limit,

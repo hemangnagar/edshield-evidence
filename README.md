@@ -142,6 +142,28 @@ then `summary.md` (first line `criteria PROVISIONAL, not ratified` until a
 fails loudly if the model cannot load (a silent fall-back to rules is an
 error in this repo).
 
+Report folders obey three conventions, all handled by the code:
+
+- **Large bundles are split.** A PIILO bundle is about 140 MB and GitHub
+  refuses files over 100 MB, so after judging `baseline.sh` runs
+  `python -m edshield_evidence.bundles split <dir>`, which stores such a bundle
+  as `<name>.part00`, `.part01`, … plus a `.sha256` of the whole. The report,
+  ledger and policy modules read parts transparently;
+  `python -m edshield_evidence.bundles join <dir>` rebuilds the whole file (for
+  the judge CLI, which reads one file).
+- **No real text in diagnostics.** For sealed sets and the PIILO holdout the
+  diagnostics carry counts only (no partial-residual examples, no
+  over-redaction contexts); k12_hard and other synthetic sets keep them.
+  `--include-text` overrides, locally.
+- **LF line endings everywhere** (`.gitattributes`), so a Windows checkout of
+  `evidence/sets/k12_hard_seed1.jsonl` hashes to the pinned sha256 without any
+  `core.autocrlf` setting. Hashes a report records are of the bytes on disk.
+
+The first full baseline is `evidence/reports/2026-10-04-6c0f163/` (run on a
+local machine with the PIILO holdout and the model; its README notes that its
+step 1 bundle was split and its PIILO diagnostics stripped of text by hand,
+before the code did either).
+
 One step by hand:
 
 ```bash
