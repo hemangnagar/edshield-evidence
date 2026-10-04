@@ -1,0 +1,113 @@
+name: acceptance
+
+# One decision per sealed set. Unseals into the runner's temp directory,
+# runs exporter + judge with policies/acceptance.json, commits the report
+# under evidence/reports/ and marks the set used. The unsealed data never
+# enters the repository; the diagnostics of a sealed set hold counts only.
+
+on:
+  workflow_dispatch:
+    inputs:
+      set:
+        description: "Sealed set name (A1, A2, ...)"
+        required: true
+        default: "A1"
+      detector:
+        description: "rules+model | rules"
+        required: true
+        default: "rules+model"
+      seeds:
+        description: "Seeds, space separated (5 for a model change, 3 for rules only)"
+        required: true
+        default: "0 1 2 3 4"
+      model_dir_pattern:
+        description: "Optional per-seed checkpoint directory pattern, e.g. models/ckpt-seed{seed}"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: acceptance-${{ inputs.set }}
+  cancel-in-progress: false
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    env:
+      EDSHIELD_EVIDENCE_SEAL_KEY: ${{ secrets.EDSHIELD_EVIDENCE_SEAL_KEY }}
+      EDSHIELD_ALLOW_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-piilo-deberta-v3-small
+      - name: Install
+        run: python -m pip install -e ".[dev,hf]"
+      - name: Require the seal key and an unused set
+        run: |
+          test -n "$EDSHIELD_EVIDENCE_SEAL_KEY" || { echo "secret EDSHIELD_EVIDENCE_SEAL_KEY is not set" >&2; exit 2; }
+          test -f "evidence/sets/${{ inputs.set }}.jsonl.enc" || { echo "no sealed set ${{ inputs.set }}" >&2; exit 2; }
+          python - <<'PY'
+          import json, sys
+          m = json.load(open("evidence/sets/${{ inputs.set }}.manifest.json"))
+          if m.get("used_for_decision"):
+              sys.exit(f"${{ inputs.set }} already decided report {m['used_for_decision']}; draft the next set")
+          PY
+      - name: Unseal into the runner temp directory (verifies key and sha256)
+        run: |
+          python -m edshield_evidence.seal unseal "${{ inputs.set }}" --out "$RUNNER_TEMP/unsealed"
+          ls -la "$RUNNER_TEMP/unsealed"
+      - name: Export + judge
+        id: judge
+        run: |
+          REPORT_ID="$(date -u +%Y-%m-%d)-${GITHUB_SHA::7}-${{ inputs.set }}"
+          REPORT="evidence/reports/$REPORT_ID"
+          KEY="acceptance_${{ inputs.set }}_${{ inputs.detector }}_python"
+          mkdir -p "$REPORT"
+          EXTRA=""
+          if [ -n "${{ inputs.model_dir_pattern }}" ]; then EXTRA="--model-dir-pattern ${{ inputs.model_dir_pattern }}"; fi
+          # The exporter decrypts the set in memory (same key); nothing unsealed is written inside the repo.
+          python -W ignore -m edshield_evidence.export_views --dataset "sealed:${{ inputs.set }}" --policy coppa \
+            --detector "${{ inputs.detector }}" --runtime python --seeds ${{ inputs.seeds }} --repeat-seed 0 $EXTRA \
+            --out "$REPORT/$KEY.bundle.json"
+          python -m edshield_evidence.policy select policies/acceptance.json "${{ inputs.detector }}" \
+            --bundle "$REPORT/$KEY.bundle.json" --out "$REPORT/$KEY.policy.json"
+          set +e
+          node judge/dist/run-evidence.mjs "$REPORT/$KEY.bundle.json" "$REPORT/$KEY.policy.json" --out "$REPORT/$KEY.verdict.json"
+          RC=$?
+          set -e
+          test $RC -ne 3 || exit 3
+          python -m edshield_evidence.ledger append --report "$REPORT" --key "$KEY" --note "acceptance decision on ${{ inputs.set }}"
+          python -m edshield_evidence.report "$REPORT"
+          python -m edshield_evidence.seal mark-used "${{ inputs.set }}" "$REPORT_ID"
+          echo "report=$REPORT" >> "$GITHUB_OUTPUT"
+          echo "rc=$RC" >> "$GITHUB_OUTPUT"
+      - name: Remove unsealed data
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/unsealed"
+      - name: Commit the report, ledger row and manifest
+        run: |
+          git config user.name "acceptance workflow"
+          git config user.email "actions@users.noreply.github.com"
+          git add "${{ steps.judge.outputs.report }}" evidence/ledger.md "evidence/sets/${{ inputs.set }}.manifest.json"
+          git status --short
+          # never commit anything unsealed
+          ! git diff --cached --name-only | grep -E '\.jsonl$' || { echo "refusing: plaintext jsonl staged" >&2; exit 2; }
+          git commit -m "acceptance: ${{ inputs.set }} ${{ inputs.detector }} → judge exit ${{ steps.judge.outputs.rc }}"
+          git push origin HEAD:${{ github.ref_name }}
+      - name: Result
+        run: |
+          head -1 "${{ steps.judge.outputs.report }}/summary.md"
+          echo "judge exit code ${{ steps.judge.outputs.rc }} (0 pass, 1 fail, 2 insufficient)"

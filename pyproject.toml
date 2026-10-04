@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edshield-evidence"
+version = "0.1.0"
+description = "Protected bench for edshield: residual scoring on the final redacted text, reduced to binary views and judged by model-evidence."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+  "edshield==0.2.0",
+  "pyyaml>=6",
+  "cryptography>=42",
+  "faker>=20",
+]
+
+[project.optional-dependencies]
+# The python runtime with the model. sentencepiece and protobuf: the DeBERTa-v3 tokenizer needs both.
+hf = ["torch>=2.1", "transformers>=4.40", "sentencepiece>=0.2", "protobuf", "huggingface_hub>=0.23", "safetensors"]
+# The onnx runtime (INT8 export under ONNX Runtime).
+onnx = ["onnxruntime>=1.17", "numpy", "transformers>=4.40", "sentencepiece>=0.2", "protobuf", "huggingface_hub>=0.23"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["edshield_evidence*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

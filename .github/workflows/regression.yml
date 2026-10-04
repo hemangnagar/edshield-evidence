@@ -1,0 +1,109 @@
+name: regression
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  k12_hard_rules:
+    name: tests + k12_hard (rules only) + judge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0   # the ratify: commit check reads git history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned edshield and this package
+        run: python -m pip install -e ".[dev]"
+      - name: Judge self-check
+        run: |
+          node judge/dist/run-evidence.mjs judge/dist/examples/bundle-v2.json judge/dist/examples/policy-v2.json --quiet
+          (cd judge && npm test --silent)
+      - name: Unit tests
+        env:
+          CI: "1"
+        run: pytest -q
+      - name: Export views (k12_hard × coppa × rules × python), judge
+        id: judge
+        run: |
+          set -u
+          REPORT="ci-report/${GITHUB_SHA::7}"
+          KEY=04_k12_hard_rules_python
+          mkdir -p "$REPORT"
+          python -W ignore -m edshield_evidence.export_views --dataset k12_hard --policy coppa --detector rules \
+            --runtime python --seeds 0 1 2 --repeat-seed 0 --out "$REPORT/$KEY.bundle.json"
+          python -m edshield_evidence.policy select policies/regression.json k12_hard/rules \
+            --bundle "$REPORT/$KEY.bundle.json" --out "$REPORT/$KEY.policy.json"
+          set +e
+          node judge/dist/run-evidence.mjs "$REPORT/$KEY.bundle.json" "$REPORT/$KEY.policy.json" --out "$REPORT/$KEY.verdict.json"
+          RC=$?
+          set -e
+          python -m edshield_evidence.report "$REPORT" || true
+          echo "report=$REPORT" >> "$GITHUB_OUTPUT"
+          echo "rc=$RC" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-report-${{ github.sha }}
+          path: ci-report/
+          if-no-files-found: warn
+      - name: Gate on the judge
+        run: |
+          echo "judge exit code: ${{ steps.judge.outputs.rc }} (0 pass, 1 fail, 2 insufficient, 3 input error)"
+          head -1 "${{ steps.judge.outputs.report }}/summary.md" || true
+          test "${{ steps.judge.outputs.rc }}" = "0"
+
+  k12_hard_model:
+    # Opt in with a repository variable EDSHIELD_EVIDENCE_CI_MODEL=1: downloads the model from the Hub.
+    name: k12_hard (rules+model) + judge
+    if: vars.EDSHIELD_EVIDENCE_CI_MODEL == '1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-piilo-deberta-v3-small
+      - run: python -m pip install -e ".[dev,hf]"
+      - name: Export views (k12_hard × coppa × rules+model × python), judge
+        env:
+          EDSHIELD_ALLOW_DOWNLOAD: "1"
+        run: |
+          REPORT="ci-report/${GITHUB_SHA::7}"
+          KEY=03_k12_hard_model_python
+          mkdir -p "$REPORT"
+          python -W ignore -m edshield_evidence.export_views --dataset k12_hard --policy coppa --detector rules+model \
+            --runtime python --seeds 0 1 2 --repeat-seed 0 --out "$REPORT/$KEY.bundle.json"
+          python -m edshield_evidence.policy select policies/regression.json k12_hard/rules+model \
+            --bundle "$REPORT/$KEY.bundle.json" --out "$REPORT/$KEY.policy.json"
+          set +e
+          node judge/dist/run-evidence.mjs "$REPORT/$KEY.bundle.json" "$REPORT/$KEY.policy.json" --out "$REPORT/$KEY.verdict.json"
+          RC=$?
+          set -e
+          python -m edshield_evidence.report "$REPORT" || true
+          exit $RC
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regression-report-model-${{ github.sha }}
+          path: ci-report/

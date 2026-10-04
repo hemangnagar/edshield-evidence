@@ -1,0 +1,8 @@
+# The human owns the criteria, the sealed sets, the scoring definitions and the judge pin.
+# Branch protection (require CODEOWNERS review on main) is set in GitHub by the human.
+/policies/                           @hemangnagar
+/evidence/sets/                      @hemangnagar
+/edshield_evidence/residual.py       @hemangnagar
+/judge                               @hemangnagar
+/.gitmodules                         @hemangnagar
+/evidence/ledger.md                  @hemangnagar

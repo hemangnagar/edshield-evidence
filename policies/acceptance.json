@@ -1,0 +1,241 @@
+{
+  "_about": "Judge (model-evidence 2.0) policy bundles for the sealed acceptance sets, keyed by detector (rules+model, rules) or `parity`. confidence true: every gate must clear its 95% interval (cluster bootstrap over documents). type:* views keep required: true so a label with n < 50 shows as insufficient rather than disappearing. minRuns 5 for model changes, 3 for rules-only (one run per seed; a model change supplies one checkpoint per seed via --model-dir-pattern). A human ratifies by editing and committing with message `ratify: <set>`; until then every summary says PROVISIONAL.",
+  "_status": "PROVISIONAL, not ratified",
+  "_parity_agreement_target": 0.995,
+  "policies": {
+    "rules+model": {
+      "contract": "2.0",
+      "confidence": true,
+      "minRuns": 5,
+      "views": {
+        "identifier": {
+          "recall": 0.995,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "document": {
+          "recall": 0.99,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "word": {
+          "fpr": 0.02,
+          "precision": 0.6,
+          "stabilityMetric": "fpr",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:NAME_STUDENT": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:NAME_RELATED": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:SCHOOL": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:LOCATION": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:AGE": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:DATE": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:PHONE_NUM": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:EMAIL": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:USERNAME": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:ID_NUM": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:STREET_ADDRESS": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        }
+      }
+    },
+    "rules": {
+      "contract": "2.0",
+      "confidence": true,
+      "minRuns": 3,
+      "views": {
+        "identifier": {
+          "recall": 0.995,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "document": {
+          "recall": 0.99,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "word": {
+          "fpr": 0.02,
+          "precision": 0.6,
+          "stabilityMetric": "fpr",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:NAME_STUDENT": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:NAME_RELATED": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:SCHOOL": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:LOCATION": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:AGE": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:DATE": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:PHONE_NUM": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:EMAIL": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:USERNAME": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:ID_NUM": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        },
+        "type:STREET_ADDRESS": {
+          "recall": 0.98,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.02,
+          "selectedRun": "seed-0",
+          "required": true
+        }
+      }
+    },
+    "parity": {
+      "contract": "2.0",
+      "confidence": true,
+      "minRuns": 2,
+      "_note": "python vs onnx on the same set; identifier recall on the onnx run >= 0.99 and pairwise agreement >= 0.995 (agreement is reported by the judge, not gated by it)",
+      "views": {
+        "identifier": {
+          "recall": 0.99,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.01,
+          "selectedRun": "onnx",
+          "required": true
+        },
+        "document": {
+          "recall": 0.99,
+          "stabilityMetric": "recall",
+          "maxSpread": 0.01,
+          "selectedRun": "onnx",
+          "required": true
+        }
+      }
+    }
+  }
+}

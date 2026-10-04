@@ -1,0 +1,11 @@
+{
+  "set": "k12_hard_seed1",
+  "role": "regression",
+  "visibility": "dev-visible",
+  "generator": "edshield eval/k12_bench.py --style hard --n 400 --seed 1",
+  "generator_commit": "a568e73a6c34d40335802235db81950e84004ab1",
+  "generator_output_sha256": "d6babcc73d7154524cbee1ccf597a35209ca1b85d20575cba0c93fd99e7d6363",
+  "file": "k12_hard_seed1.jsonl",
+  "sha256": "3da490d78315057c13668263b779ffd408f06471c8a567ff939a24b28aa1149c",
+  "note": "Generated once from the pinned edshield commit. Used to choose nothing; regression only. Not an acceptance set."
+}
