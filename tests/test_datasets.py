@@ -2,7 +2,9 @@ import json
 
 import pytest
 
-from edshield_evidence.datasets import DatasetError, Document, load_jsonl, piilo_documents, rebuild_spans, write_jsonl
+from edshield_evidence.datasets import (
+    DatasetError, Document, load_jsonl, piilo_documents, rebuild_spans, rebuild_text, write_jsonl,
+)
 
 
 def test_rebuild_spans_single_spaces():
@@ -42,3 +44,21 @@ def test_piilo_documents_and_jsonl_round_trip(tmp_path):
     back = load_jsonl(p)
     assert back[0] == docs[0]
     assert json.loads(p.read_text().splitlines()[0])["gold_spans"] == [[5, 7, "NAME_STUDENT"]]
+
+
+def test_piilo_documents_without_full_text_rebuilds_it_from_tokens():
+    # The shape edshield's prepare_piilo.py writes to validation.json: no full_text.
+    rec = {"document": 9, "tokens": ["Hi", ",", "I", "am", "Maya", "Chen", ".", "\n\n", "Bye"],
+           "trailing_whitespace": [False, True, True, True, True, False, False, False, False],
+           "labels": ["O", "O", "O", "O", "B-NAME_STUDENT", "I-NAME_STUDENT", "O", "O", "O"]}
+    docs = piilo_documents([rec], prefix="piilo-")
+    assert docs[0].text == "Hi, I am Maya Chen.\n\nBye"
+    assert docs[0].gold_spans == [(9, 18, "NAME_STUDENT")]
+    assert docs[0].text[9:18] == "Maya Chen"
+    with_text = piilo_documents([dict(rec, full_text=docs[0].text)], prefix="piilo-")
+    assert with_text[0] == docs[0]
+
+
+def test_rebuild_text_rejects_mismatched_flags():
+    with pytest.raises(DatasetError):
+        rebuild_text(["a", "b"], [True])

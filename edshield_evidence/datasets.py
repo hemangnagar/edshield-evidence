@@ -102,10 +102,24 @@ def rebuild_spans(full_text: str, tokens: Sequence[str], labels: Sequence[str]) 
     return [(s, e, l) for s, e, l in spans]
 
 
+def rebuild_text(tokens: Sequence[str], trailing_whitespace: Sequence[bool]) -> str:
+    """Rebuild the document text from tokens and their trailing-whitespace flags.
+
+    edshield's validation.json (training/prepare_piilo.py) carries no
+    `full_text`; a token followed by whitespace gets one space, as in
+    edshield's evaluator, so both score the same text.
+    """
+    if len(tokens) != len(trailing_whitespace):
+        raise DatasetError(f"{len(tokens)} tokens but {len(trailing_whitespace)} trailing_whitespace flags")
+    return "".join(tok + (" " if ws else "") for tok, ws in zip(tokens, trailing_whitespace))
+
+
 def piilo_documents(records: Iterable[dict], prefix: str = "") -> List[Document]:
     docs = []
     for rec in records:
-        text = rec["full_text"]
+        text = rec.get("full_text")
+        if text is None:
+            text = rebuild_text(rec["tokens"], rec["trailing_whitespace"])
         spans = rebuild_spans(text, rec["tokens"], rec["labels"])
         meta = {k: rec[k] for k in ("genre", "style") if k in rec}
         docs.append(Document(doc_id=f"{prefix}{rec['document']}", text=text, gold_spans=spans, meta=meta))
