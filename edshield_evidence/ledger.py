@@ -198,8 +198,7 @@ def main(argv=None) -> int:
     else:
         for c in pin(Path(a.policy), Path(a.ledger)):
             print(c)
-        print(f"re-pinned {Path(a.policy).relative_to(REPO_ROOT) if Path(a.policy).is_absolute() else a.policy}; "
-              "review the diff and commit it (a `ratify:` commit if these are the ratified criteria)")
+        print(f"re-pinned {a.policy}; review the diff and commit it (a `ratify:` commit if these are the ratified criteria)")
     return 0
 
 

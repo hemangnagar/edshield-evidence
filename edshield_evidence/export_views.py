@@ -316,7 +316,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(bundle, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    # Compact: the word view alone is ~90k rows over four runs. The judge hashes canonical JSON, not bytes.
+    out.write_text(json.dumps(bundle, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
     diag_path = Path(a.diagnostics) if a.diagnostics else default_diagnostics_path(out)
     diag_path.write_text(json.dumps(diagnostics, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     say(f"wrote {out} ({len(bundle['views'])} views) and {diag_path}")
