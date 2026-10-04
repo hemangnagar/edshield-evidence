@@ -262,7 +262,8 @@ class OnnxRuntime(BaseRuntime):
         return False
 
     def deidentify(self, text: str, policy: str, seed: Optional[int] = None, o_threshold: Optional[float] = None):
-        if ner._predict is not self._predict:
+        # `==`, not `is`: every `self._predict` access builds a new bound-method object.
+        if ner._predict != self._predict:
             raise RuntimeUnavailable("use the onnx runtime inside a `with` block")
         r = edshield.deidentify(
             text, policy=policy, model_name=str(self.model_dir), seed=seed, verify=False, o_threshold=o_threshold,
