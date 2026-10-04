@@ -1,0 +1,179 @@
+{
+ "bundle": "edshield 0.2.0 · piilo_holdout · coppa · rules+model · python,onnx",
+ "dataset": "piilo_holdout",
+ "data_sha256": "bc5d0958b72eee52a7fd38b84ac4c775128eefae6f9e8acee5dbc710cea1ecf8",
+ "policy": "coppa",
+ "policy_fingerprint": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "detector": "rules+model",
+ "runtime": "python,onnx",
+ "text_included": true,
+ "runs": [
+  {
+   "id": "python",
+   "seed": null,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 393.29,
+   "n_documents": 680,
+   "n_documents_with_gold": 99,
+   "n_gold": 165,
+   "full_residuals": 0,
+   "partial_residuals": 1,
+   "identifier_recall": 1.0,
+   "by_label": {
+    "EMAIL": {
+     "n": 4,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 7,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 143,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 1,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "URL_PERSONAL": {
+     "n": 8,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 2,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "EMAIL": {
+     "EMAIL": 4
+    },
+    "ID_NUM": {
+     "ID_NUM": 7
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 143
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 1
+    },
+    "URL_PERSONAL": {
+     "URL_PERSONAL": 8
+    },
+    "USERNAME": {
+     "USERNAME": 2
+    }
+   },
+   "word": {
+    "n": 427681,
+    "tp": 293,
+    "fp": 281,
+    "fn": 1,
+    "tn": 427106,
+    "fpr": 0.000657483732542169
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 5,
+   "text_included": true
+  },
+  {
+   "id": "onnx",
+   "seed": null,
+   "runtime": "onnx",
+   "model": "C:\\edshield\\demo\\models\\piilo-deberta-v3-small-onnx\\onnx\\model_quantized.onnx",
+   "model_sha256": "7f4dd8e5a58c45c941ac2b627fe1213a5d893d42defa6dd9854ebe1e4dd4b1fc",
+   "seconds": 328.64,
+   "n_documents": 680,
+   "n_documents_with_gold": 99,
+   "n_gold": 165,
+   "full_residuals": 0,
+   "partial_residuals": 1,
+   "identifier_recall": 1.0,
+   "by_label": {
+    "EMAIL": {
+     "n": 4,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 7,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 143,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 1,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "URL_PERSONAL": {
+     "n": 8,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 2,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "EMAIL": {
+     "EMAIL": 4
+    },
+    "ID_NUM": {
+     "ID_NUM": 7
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 143
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 1
+    },
+    "URL_PERSONAL": {
+     "URL_PERSONAL": 8
+    },
+    "USERNAME": {
+     "USERNAME": 2
+    }
+   },
+   "word": {
+    "n": 427681,
+    "tp": 293,
+    "fp": 285,
+    "fn": 1,
+    "tn": 427102,
+    "fpr": 0.0006668429315819152
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 5,
+   "text_included": true
+  }
+ ],
+ "text_removed_before_commit": "Example text from the PIILO essays (residual_examples, partial_examples, over_redaction_sample) was removed from this file before it was committed. All counts are unchanged."
+}

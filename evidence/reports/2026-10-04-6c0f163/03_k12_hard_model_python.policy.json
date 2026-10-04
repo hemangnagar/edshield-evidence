@@ -1,0 +1,109 @@
+{
+  "contract": "2.0",
+  "confidence": false,
+  "minRuns": 3,
+  "_placeholder": "every target below is a placeholder until `ledger pin` after the first local model run",
+  "views": {
+    "identifier": {
+      "recall": 0.7,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "document": {
+      "recall": 0.4,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "word": {
+      "fpr": 0.05,
+      "stabilityMetric": "fpr",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:NAME_STUDENT": {
+      "recall": 0.7,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:NAME_RELATED": {
+      "recall": 0.1,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:AGE": {
+      "recall": 0.5,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:LOCATION": {
+      "recall": 0.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:SCHOOL": {
+      "recall": 0.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:EMAIL": {
+      "recall": 0.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:PHONE_NUM": {
+      "recall": 1.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:USERNAME": {
+      "recall": 0.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:DATE": {
+      "recall": 0.4,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:ID_NUM": {
+      "recall": 1.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": true
+    },
+    "type:STREET_ADDRESS": {
+      "recall": 0.0,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.005,
+      "selectedRun": "seed-0",
+      "required": false
+    }
+  },
+  "_source": "policies\\regression.json#k12_hard/rules+model",
+  "_ratified": false,
+  "_dropped_views": []
+}

@@ -1,0 +1,7424 @@
+{
+ "bundle": "edshield 0.2.0 · k12_hard · coppa · rules+model · python",
+ "dataset": "k12_hard",
+ "data_sha256": "3da490d78315057c13668263b779ffd408f06471c8a567ff939a24b28aa1149c",
+ "policy": "coppa",
+ "policy_fingerprint": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "detector": "rules+model",
+ "runtime": "python",
+ "text_included": true,
+ "runs": [
+  {
+   "id": "seed-0",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 43.52,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 334,
+   "partial_residuals": 24,
+   "identifier_recall": 0.7669225401256106,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 96,
+     "partial_residual": 0,
+     "recall": 0.5317073170731708
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 38,
+     "partial_residual": 0,
+     "recall": 0.4647887323943662
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 83,
+     "partial_residual": 18,
+     "recall": 0.319672131147541
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 9,
+     "partial_residual": 0,
+     "recall": 0.9743589743589743
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 74,
+     "partial_residual": 0,
+     "recall": 0.3620689655172414
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 34,
+     "partial_residual": 0,
+     "recall": 0.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 121,
+     "EMAIL": 1,
+     "ID_NUM": 1,
+     "none": 82
+    },
+    "DATE": {
+     "DATE": 31,
+     "NAME_STUDENT": 2,
+     "none": 38
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "ID_NUM": 1,
+     "NAME_STUDENT": 25,
+     "STREET_ADDRESS": 3,
+     "USERNAME": 11,
+     "none": 83
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 40,
+     "NAME_STUDENT": 200
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 343,
+     "none": 8
+    },
+    "PHONE_NUM": {
+     "ID_NUM": 72,
+     "PHONE_NUM": 3
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 42,
+     "none": 74
+    },
+    "STREET_ADDRESS": {
+     "none": 34
+    },
+    "USERNAME": {
+     "ID_NUM": 2,
+     "NAME_STUDENT": 10,
+     "USERNAME": 68
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 1545,
+    "fp": 27,
+    "fn": 548,
+    "tn": 20812,
+    "fpr": 0.001295647583857191
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 2,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-0",
+     "label": "DATE",
+     "text": "16th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-0",
+     "label": "STREET_ADDRESS",
+     "text": "Mayer Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-1",
+     "label": "LOCATION",
+     "text": "woodtown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-2",
+     "label": "LOCATION",
+     "text": "West Kelly",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-6",
+     "label": "LOCATION",
+     "text": "East Kerry",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "LOCATION",
+     "text": "kennethport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-11",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-13",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "SCHOOL",
+     "text": "wyatt elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "jack",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "JACK",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "DATE",
+     "text": "14th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-21",
+     "label": "SCHOOL",
+     "text": "Richards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-22",
+     "label": "AGE",
+     "text": "16m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-26",
+     "label": "LOCATION",
+     "text": "Jeffreytown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-28",
+     "label": "LOCATION",
+     "text": "North Victoria",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-32",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "STREET_ADDRESS",
+     "text": "Burke Street",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "SCHOOL",
+     "text": "Hernandez",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "SCHOOL",
+     "text": "Brown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "LOCATION",
+     "text": "New Michaelshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-42",
+     "label": "STREET_ADDRESS",
+     "text": "Robinson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "STREET_ADDRESS",
+     "text": "Roberson Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "LOCATION",
+     "text": "West Randy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-45",
+     "label": "DATE",
+     "text": "11th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "SCHOOL",
+     "text": "Abbott",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "DATE",
+     "text": "13th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-49",
+     "label": "SCHOOL",
+     "text": "curtis elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-50",
+     "label": "SCHOOL",
+     "text": "riley elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "SCHOOL",
+     "text": "olson elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-54",
+     "label": "STREET_ADDRESS",
+     "text": "Morgan Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-58",
+     "label": "LOCATION",
+     "text": "Julieborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "DATE",
+     "text": "17th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "LOCATION",
+     "text": "North Lindafort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "STREET_ADDRESS",
+     "text": "Murphy Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-63",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "SCHOOL",
+     "text": "moore academy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-67",
+     "label": "SCHOOL",
+     "text": "hardy elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "DATE",
+     "text": "5th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "STREET_ADDRESS",
+     "text": "Walter Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-70",
+     "label": "LOCATION",
+     "text": "teresastad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "LOCATION",
+     "text": "Andersonberg",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "DATE",
+     "text": "15th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-73",
+     "label": "LOCATION",
+     "text": "Davidstad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-74",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-75",
+     "label": "SCHOOL",
+     "text": "Chapman",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "DATE",
+     "text": "13th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "LOCATION",
+     "text": "Sandraside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "STREET_ADDRESS",
+     "text": "Bishop Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "STREET_ADDRESS",
+     "text": "Frey Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "LOCATION",
+     "text": "Johnchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "DATE",
+     "text": "10th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "SCHOOL",
+     "text": "Barron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-86",
+     "label": "SCHOOL",
+     "text": "White",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "DATE",
+     "text": "9th of October",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "LOCATION",
+     "text": "Marieside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-89",
+     "label": "DATE",
+     "text": "13th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-92",
+     "label": "SCHOOL",
+     "text": "Parks",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-94",
+     "label": "LOCATION",
+     "text": "Joshuaport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-99",
+     "label": "LOCATION",
+     "text": "east reginaldmouth",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-101",
+     "label": "LOCATION",
+     "text": "Patrickfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-104",
+     "label": "SCHOOL",
+     "text": "walton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-107",
+     "label": "DATE",
+     "text": "15th of March",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-108",
+     "label": "AGE",
+     "text": "9m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "STREET_ADDRESS",
+     "text": "Lee Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-114",
+     "label": "DATE",
+     "text": "10th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "LOCATION",
+     "text": "Port Aaron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-119",
+     "label": "LOCATION",
+     "text": "Smithport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-120",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-122",
+     "label": "LOCATION",
+     "text": "smithview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-125",
+     "label": "LOCATION",
+     "text": "West Scottshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-128",
+     "label": "LOCATION",
+     "text": "Gardnerburgh",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "SCHOOL",
+     "text": "Richardson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "STREET_ADDRESS",
+     "text": "Anderson Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "NAME_STUDENT",
+     "text": "MEADOWS",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-150",
+     "label": "DATE",
+     "text": "3th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "DATE",
+     "text": "18th of July",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "SCHOOL",
+     "text": "Henson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-154",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-157",
+     "label": "LOCATION",
+     "text": "New Kaylafurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "SCHOOL",
+     "text": "Holt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "DATE",
+     "text": "18th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "SCHOOL",
+     "text": "Wilcox",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "LOCATION",
+     "text": "South Jesse",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "DATE",
+     "text": "8th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-162",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "SCHOOL",
+     "text": "Hurst",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "AGE",
+     "text": "15",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "SCHOOL",
+     "text": "Nelson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "LOCATION",
+     "text": "West Mary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-171",
+     "label": "LOCATION",
+     "text": "tannerchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-173",
+     "label": "SCHOOL",
+     "text": "shelton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "LOCATION",
+     "text": "Amberfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "DATE",
+     "text": "11th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-184",
+     "label": "LOCATION",
+     "text": "Salasview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-185",
+     "label": "SCHOOL",
+     "text": "Flores",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "STREET_ADDRESS",
+     "text": "Ray Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "LOCATION",
+     "text": "Lake Nicole",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-190",
+     "label": "SCHOOL",
+     "text": "taylor elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-194",
+     "label": "LOCATION",
+     "text": "Gracetown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-195",
+     "label": "LOCATION",
+     "text": "Sloanfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "LOCATION",
+     "text": "Myerstown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "DATE",
+     "text": "20th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-199",
+     "label": "AGE",
+     "text": "12m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-200",
+     "label": "AGE",
+     "text": "17",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "SCHOOL",
+     "text": "Edwards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "DATE",
+     "text": "19th of November",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-211",
+     "label": "NAME_STUDENT",
+     "text": "wayne",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "LOCATION",
+     "text": "Marshallside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "AGE",
+     "text": "13m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "LOCATION",
+     "text": "thomaston",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "SCHOOL",
+     "text": "Mason",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "LOCATION",
+     "text": "Williebury",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "DATE",
+     "text": "22th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-225",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "STREET_ADDRESS",
+     "text": "Osborn Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "LOCATION",
+     "text": "New Rachel",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-9",
+     "label": "LOCATION",
+     "text": "west alicia",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "LOCATION",
+     "text": "west amyside",
+     "surviving_token": "west",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "label": "LOCATION",
+     "text": "new jamesbury",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "LOCATION",
+     "text": "north stephen",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-96",
+     "label": "LOCATION",
+     "text": "West Leslie",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-121",
+     "label": "LOCATION",
+     "text": "East Gabrieltown",
+     "surviving_token": "east",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-137",
+     "label": "LOCATION",
+     "text": "Lake Natalie",
+     "surviving_token": "lake",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "LOCATION",
+     "text": "port george",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-172",
+     "label": "LOCATION",
+     "text": "port samantha",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-206",
+     "label": "LOCATION",
+     "text": "South Tylerport",
+     "surviving_token": "south",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "label": "LOCATION",
+     "text": "east lisa",
+     "surviving_token": "east",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "label": "LOCATION",
+     "text": "new lukeberg",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "label": "LOCATION",
+     "text": "new daniel",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "label": "EMAIL",
+     "text": "kristenoconnor at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-396",
+     "label": "LOCATION",
+     "text": "Port Michael",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-4",
+     "token": "tmrw",
+     "start": 160,
+     "end": 164,
+     "context": " is\ncan u help me with my essay its due tmrw\ntext me 5710901610\nCHARLES CLINE period",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-15",
+     "token": "tmrw",
+     "start": 145,
+     "end": 149,
+     "context": "lol\ncan u help me with my essay its due tmrw\nVICTORIA CAMPBELL period 3\n11 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-25",
+     "token": "its",
+     "start": 254,
+     "end": 257,
+     "context": " you explain how you got that?\nStudent: its reneeward at gmail dot com\nTutor: Nice ",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-27",
+     "token": "tmrw",
+     "start": 291,
+     "end": 295,
+     "context": "btw\ncan u help me with my essay its due tmrw\ntext me 5715549031",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-108",
+     "token": "tmrw",
+     "start": 134,
+     "end": 138,
+     "context": "ces\ncan u help me with my essay its due tmrw\ntext me 5714008023",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-129",
+     "token": "tmrw",
+     "start": 273,
+     "end": 277,
+     "context": "ing\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "token": "rn",
+     "start": 117,
+     "end": 119,
+     "context": "3\nadd me shelley.xd99\nim in port george rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-192",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n15 yr old and i still dont get it\nadd m",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "d 3\ncan u help me with my essay its due tmrw\n14m here\nok thx that helps\nim cassandra",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "tmrw",
+     "start": 58,
+     "end": 62,
+     "context": " rn\ncan u help me with my essay its due tmrw\nTIFFANY COLEMAN period 3\nis it ok if my",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in amandafort rn\nkristenoconnor at gmail dot com\nim kris",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-351",
+     "token": "r",
+     "start": 67,
+     "end": 68,
+     "context": "it how do i cite a website\nme and jason r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-375",
+     "token": "tmrw",
+     "start": 70,
+     "end": 74,
+     "context": "ing\ncan u help me with my essay its due tmrw\nok thx that helps\nadd me kristin_plays2",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-393",
+     "token": "tmrw",
+     "start": 165,
+     "end": 169,
+     "context": " it\ncan u help me with my essay its due tmrw\nwhats a good hook for a story about spa",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-1",
+   "seed": 1,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 34.62,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 334,
+   "partial_residuals": 24,
+   "identifier_recall": 0.7669225401256106,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 96,
+     "partial_residual": 0,
+     "recall": 0.5317073170731708
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 38,
+     "partial_residual": 0,
+     "recall": 0.4647887323943662
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 83,
+     "partial_residual": 18,
+     "recall": 0.319672131147541
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 9,
+     "partial_residual": 0,
+     "recall": 0.9743589743589743
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 74,
+     "partial_residual": 0,
+     "recall": 0.3620689655172414
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 34,
+     "partial_residual": 0,
+     "recall": 0.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 121,
+     "EMAIL": 1,
+     "ID_NUM": 1,
+     "none": 82
+    },
+    "DATE": {
+     "DATE": 31,
+     "NAME_STUDENT": 2,
+     "none": 38
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "ID_NUM": 1,
+     "NAME_STUDENT": 25,
+     "STREET_ADDRESS": 3,
+     "USERNAME": 11,
+     "none": 83
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 40,
+     "NAME_STUDENT": 200
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 343,
+     "none": 8
+    },
+    "PHONE_NUM": {
+     "ID_NUM": 72,
+     "PHONE_NUM": 3
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 42,
+     "none": 74
+    },
+    "STREET_ADDRESS": {
+     "none": 34
+    },
+    "USERNAME": {
+     "ID_NUM": 2,
+     "NAME_STUDENT": 10,
+     "USERNAME": 68
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 1545,
+    "fp": 27,
+    "fn": 548,
+    "tn": 20812,
+    "fpr": 0.001295647583857191
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 2,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-0",
+     "label": "DATE",
+     "text": "16th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-0",
+     "label": "STREET_ADDRESS",
+     "text": "Mayer Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-1",
+     "label": "LOCATION",
+     "text": "woodtown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-2",
+     "label": "LOCATION",
+     "text": "West Kelly",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-6",
+     "label": "LOCATION",
+     "text": "East Kerry",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "LOCATION",
+     "text": "kennethport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-11",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-13",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "SCHOOL",
+     "text": "wyatt elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "jack",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "JACK",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "DATE",
+     "text": "14th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-21",
+     "label": "SCHOOL",
+     "text": "Richards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-22",
+     "label": "AGE",
+     "text": "16m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-26",
+     "label": "LOCATION",
+     "text": "Jeffreytown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-28",
+     "label": "LOCATION",
+     "text": "North Victoria",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-32",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "STREET_ADDRESS",
+     "text": "Burke Street",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "SCHOOL",
+     "text": "Hernandez",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "SCHOOL",
+     "text": "Brown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "LOCATION",
+     "text": "New Michaelshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-42",
+     "label": "STREET_ADDRESS",
+     "text": "Robinson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "STREET_ADDRESS",
+     "text": "Roberson Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "LOCATION",
+     "text": "West Randy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-45",
+     "label": "DATE",
+     "text": "11th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "SCHOOL",
+     "text": "Abbott",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "DATE",
+     "text": "13th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-49",
+     "label": "SCHOOL",
+     "text": "curtis elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-50",
+     "label": "SCHOOL",
+     "text": "riley elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "SCHOOL",
+     "text": "olson elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-54",
+     "label": "STREET_ADDRESS",
+     "text": "Morgan Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-58",
+     "label": "LOCATION",
+     "text": "Julieborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "DATE",
+     "text": "17th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "LOCATION",
+     "text": "North Lindafort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "STREET_ADDRESS",
+     "text": "Murphy Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-63",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "SCHOOL",
+     "text": "moore academy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-67",
+     "label": "SCHOOL",
+     "text": "hardy elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "DATE",
+     "text": "5th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "STREET_ADDRESS",
+     "text": "Walter Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-70",
+     "label": "LOCATION",
+     "text": "teresastad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "LOCATION",
+     "text": "Andersonberg",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "DATE",
+     "text": "15th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-73",
+     "label": "LOCATION",
+     "text": "Davidstad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-74",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-75",
+     "label": "SCHOOL",
+     "text": "Chapman",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "DATE",
+     "text": "13th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "LOCATION",
+     "text": "Sandraside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "STREET_ADDRESS",
+     "text": "Bishop Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "STREET_ADDRESS",
+     "text": "Frey Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "LOCATION",
+     "text": "Johnchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "DATE",
+     "text": "10th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "SCHOOL",
+     "text": "Barron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-86",
+     "label": "SCHOOL",
+     "text": "White",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "DATE",
+     "text": "9th of October",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "LOCATION",
+     "text": "Marieside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-89",
+     "label": "DATE",
+     "text": "13th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-92",
+     "label": "SCHOOL",
+     "text": "Parks",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-94",
+     "label": "LOCATION",
+     "text": "Joshuaport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-99",
+     "label": "LOCATION",
+     "text": "east reginaldmouth",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-101",
+     "label": "LOCATION",
+     "text": "Patrickfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-104",
+     "label": "SCHOOL",
+     "text": "walton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-107",
+     "label": "DATE",
+     "text": "15th of March",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-108",
+     "label": "AGE",
+     "text": "9m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "STREET_ADDRESS",
+     "text": "Lee Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-114",
+     "label": "DATE",
+     "text": "10th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "LOCATION",
+     "text": "Port Aaron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-119",
+     "label": "LOCATION",
+     "text": "Smithport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-120",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-122",
+     "label": "LOCATION",
+     "text": "smithview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-125",
+     "label": "LOCATION",
+     "text": "West Scottshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-128",
+     "label": "LOCATION",
+     "text": "Gardnerburgh",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "SCHOOL",
+     "text": "Richardson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "STREET_ADDRESS",
+     "text": "Anderson Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "NAME_STUDENT",
+     "text": "MEADOWS",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-150",
+     "label": "DATE",
+     "text": "3th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "DATE",
+     "text": "18th of July",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "SCHOOL",
+     "text": "Henson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-154",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-157",
+     "label": "LOCATION",
+     "text": "New Kaylafurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "SCHOOL",
+     "text": "Holt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "DATE",
+     "text": "18th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "SCHOOL",
+     "text": "Wilcox",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "LOCATION",
+     "text": "South Jesse",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "DATE",
+     "text": "8th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-162",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "SCHOOL",
+     "text": "Hurst",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "AGE",
+     "text": "15",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "SCHOOL",
+     "text": "Nelson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "LOCATION",
+     "text": "West Mary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-171",
+     "label": "LOCATION",
+     "text": "tannerchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-173",
+     "label": "SCHOOL",
+     "text": "shelton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "LOCATION",
+     "text": "Amberfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "DATE",
+     "text": "11th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-184",
+     "label": "LOCATION",
+     "text": "Salasview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-185",
+     "label": "SCHOOL",
+     "text": "Flores",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "STREET_ADDRESS",
+     "text": "Ray Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "LOCATION",
+     "text": "Lake Nicole",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-190",
+     "label": "SCHOOL",
+     "text": "taylor elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-194",
+     "label": "LOCATION",
+     "text": "Gracetown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-195",
+     "label": "LOCATION",
+     "text": "Sloanfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "LOCATION",
+     "text": "Myerstown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "DATE",
+     "text": "20th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-199",
+     "label": "AGE",
+     "text": "12m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-200",
+     "label": "AGE",
+     "text": "17",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "SCHOOL",
+     "text": "Edwards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "DATE",
+     "text": "19th of November",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-211",
+     "label": "NAME_STUDENT",
+     "text": "wayne",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "LOCATION",
+     "text": "Marshallside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "AGE",
+     "text": "13m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "LOCATION",
+     "text": "thomaston",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "SCHOOL",
+     "text": "Mason",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "LOCATION",
+     "text": "Williebury",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "DATE",
+     "text": "22th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-225",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "STREET_ADDRESS",
+     "text": "Osborn Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "LOCATION",
+     "text": "New Rachel",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-9",
+     "label": "LOCATION",
+     "text": "west alicia",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "LOCATION",
+     "text": "west amyside",
+     "surviving_token": "west",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "label": "LOCATION",
+     "text": "new jamesbury",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "LOCATION",
+     "text": "north stephen",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-96",
+     "label": "LOCATION",
+     "text": "West Leslie",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-121",
+     "label": "LOCATION",
+     "text": "East Gabrieltown",
+     "surviving_token": "east",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-137",
+     "label": "LOCATION",
+     "text": "Lake Natalie",
+     "surviving_token": "lake",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "LOCATION",
+     "text": "port george",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-172",
+     "label": "LOCATION",
+     "text": "port samantha",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-206",
+     "label": "LOCATION",
+     "text": "South Tylerport",
+     "surviving_token": "south",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "label": "LOCATION",
+     "text": "east lisa",
+     "surviving_token": "east",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "label": "LOCATION",
+     "text": "new lukeberg",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "label": "LOCATION",
+     "text": "new daniel",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "label": "EMAIL",
+     "text": "kristenoconnor at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-396",
+     "label": "LOCATION",
+     "text": "Port Michael",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-4",
+     "token": "tmrw",
+     "start": 160,
+     "end": 164,
+     "context": " is\ncan u help me with my essay its due tmrw\ntext me 5710901610\nCHARLES CLINE period",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-15",
+     "token": "tmrw",
+     "start": 145,
+     "end": 149,
+     "context": "lol\ncan u help me with my essay its due tmrw\nVICTORIA CAMPBELL period 3\n11 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-25",
+     "token": "its",
+     "start": 254,
+     "end": 257,
+     "context": " you explain how you got that?\nStudent: its reneeward at gmail dot com\nTutor: Nice ",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-27",
+     "token": "tmrw",
+     "start": 291,
+     "end": 295,
+     "context": "btw\ncan u help me with my essay its due tmrw\ntext me 5715549031",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-108",
+     "token": "tmrw",
+     "start": 134,
+     "end": 138,
+     "context": "ces\ncan u help me with my essay its due tmrw\ntext me 5714008023",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-129",
+     "token": "tmrw",
+     "start": 273,
+     "end": 277,
+     "context": "ing\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "token": "rn",
+     "start": 117,
+     "end": 119,
+     "context": "3\nadd me shelley.xd99\nim in port george rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-192",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n15 yr old and i still dont get it\nadd m",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "d 3\ncan u help me with my essay its due tmrw\n14m here\nok thx that helps\nim cassandra",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "tmrw",
+     "start": 58,
+     "end": 62,
+     "context": " rn\ncan u help me with my essay its due tmrw\nTIFFANY COLEMAN period 3\nis it ok if my",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in amandafort rn\nkristenoconnor at gmail dot com\nim kris",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-351",
+     "token": "r",
+     "start": 67,
+     "end": 68,
+     "context": "it how do i cite a website\nme and jason r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-375",
+     "token": "tmrw",
+     "start": 70,
+     "end": 74,
+     "context": "ing\ncan u help me with my essay its due tmrw\nok thx that helps\nadd me kristin_plays2",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-393",
+     "token": "tmrw",
+     "start": 165,
+     "end": 169,
+     "context": " it\ncan u help me with my essay its due tmrw\nwhats a good hook for a story about spa",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-2",
+   "seed": 2,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 34.61,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 334,
+   "partial_residuals": 24,
+   "identifier_recall": 0.7669225401256106,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 96,
+     "partial_residual": 0,
+     "recall": 0.5317073170731708
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 38,
+     "partial_residual": 0,
+     "recall": 0.4647887323943662
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 83,
+     "partial_residual": 18,
+     "recall": 0.319672131147541
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 9,
+     "partial_residual": 0,
+     "recall": 0.9743589743589743
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 74,
+     "partial_residual": 0,
+     "recall": 0.3620689655172414
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 34,
+     "partial_residual": 0,
+     "recall": 0.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 121,
+     "EMAIL": 1,
+     "ID_NUM": 1,
+     "none": 82
+    },
+    "DATE": {
+     "DATE": 31,
+     "NAME_STUDENT": 2,
+     "none": 38
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "ID_NUM": 1,
+     "NAME_STUDENT": 25,
+     "STREET_ADDRESS": 3,
+     "USERNAME": 11,
+     "none": 83
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 40,
+     "NAME_STUDENT": 200
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 343,
+     "none": 8
+    },
+    "PHONE_NUM": {
+     "ID_NUM": 72,
+     "PHONE_NUM": 3
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 42,
+     "none": 74
+    },
+    "STREET_ADDRESS": {
+     "none": 34
+    },
+    "USERNAME": {
+     "ID_NUM": 2,
+     "NAME_STUDENT": 10,
+     "USERNAME": 68
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 1545,
+    "fp": 27,
+    "fn": 548,
+    "tn": 20812,
+    "fpr": 0.001295647583857191
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 2,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-0",
+     "label": "DATE",
+     "text": "16th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-0",
+     "label": "STREET_ADDRESS",
+     "text": "Mayer Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-1",
+     "label": "LOCATION",
+     "text": "woodtown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-2",
+     "label": "LOCATION",
+     "text": "West Kelly",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-6",
+     "label": "LOCATION",
+     "text": "East Kerry",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "LOCATION",
+     "text": "kennethport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-11",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-13",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "SCHOOL",
+     "text": "wyatt elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "jack",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "JACK",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "DATE",
+     "text": "14th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-21",
+     "label": "SCHOOL",
+     "text": "Richards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-22",
+     "label": "AGE",
+     "text": "16m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-26",
+     "label": "LOCATION",
+     "text": "Jeffreytown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-28",
+     "label": "LOCATION",
+     "text": "North Victoria",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-32",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "STREET_ADDRESS",
+     "text": "Burke Street",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "SCHOOL",
+     "text": "Hernandez",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "SCHOOL",
+     "text": "Brown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "LOCATION",
+     "text": "New Michaelshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-42",
+     "label": "STREET_ADDRESS",
+     "text": "Robinson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "STREET_ADDRESS",
+     "text": "Roberson Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "LOCATION",
+     "text": "West Randy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-45",
+     "label": "DATE",
+     "text": "11th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "SCHOOL",
+     "text": "Abbott",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "DATE",
+     "text": "13th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-49",
+     "label": "SCHOOL",
+     "text": "curtis elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-50",
+     "label": "SCHOOL",
+     "text": "riley elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "SCHOOL",
+     "text": "olson elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-54",
+     "label": "STREET_ADDRESS",
+     "text": "Morgan Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-58",
+     "label": "LOCATION",
+     "text": "Julieborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "DATE",
+     "text": "17th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "LOCATION",
+     "text": "North Lindafort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "STREET_ADDRESS",
+     "text": "Murphy Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-63",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "SCHOOL",
+     "text": "moore academy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-67",
+     "label": "SCHOOL",
+     "text": "hardy elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "DATE",
+     "text": "5th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "STREET_ADDRESS",
+     "text": "Walter Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-70",
+     "label": "LOCATION",
+     "text": "teresastad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "LOCATION",
+     "text": "Andersonberg",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "DATE",
+     "text": "15th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-73",
+     "label": "LOCATION",
+     "text": "Davidstad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-74",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-75",
+     "label": "SCHOOL",
+     "text": "Chapman",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "DATE",
+     "text": "13th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "LOCATION",
+     "text": "Sandraside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "STREET_ADDRESS",
+     "text": "Bishop Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "STREET_ADDRESS",
+     "text": "Frey Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "LOCATION",
+     "text": "Johnchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "DATE",
+     "text": "10th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "SCHOOL",
+     "text": "Barron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-86",
+     "label": "SCHOOL",
+     "text": "White",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "DATE",
+     "text": "9th of October",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "LOCATION",
+     "text": "Marieside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-89",
+     "label": "DATE",
+     "text": "13th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-92",
+     "label": "SCHOOL",
+     "text": "Parks",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-94",
+     "label": "LOCATION",
+     "text": "Joshuaport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-99",
+     "label": "LOCATION",
+     "text": "east reginaldmouth",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-101",
+     "label": "LOCATION",
+     "text": "Patrickfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-104",
+     "label": "SCHOOL",
+     "text": "walton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-107",
+     "label": "DATE",
+     "text": "15th of March",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-108",
+     "label": "AGE",
+     "text": "9m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "STREET_ADDRESS",
+     "text": "Lee Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-114",
+     "label": "DATE",
+     "text": "10th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "LOCATION",
+     "text": "Port Aaron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-119",
+     "label": "LOCATION",
+     "text": "Smithport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-120",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-122",
+     "label": "LOCATION",
+     "text": "smithview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-125",
+     "label": "LOCATION",
+     "text": "West Scottshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-128",
+     "label": "LOCATION",
+     "text": "Gardnerburgh",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "SCHOOL",
+     "text": "Richardson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "STREET_ADDRESS",
+     "text": "Anderson Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "NAME_STUDENT",
+     "text": "MEADOWS",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-150",
+     "label": "DATE",
+     "text": "3th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "DATE",
+     "text": "18th of July",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "SCHOOL",
+     "text": "Henson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-154",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-157",
+     "label": "LOCATION",
+     "text": "New Kaylafurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "SCHOOL",
+     "text": "Holt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "DATE",
+     "text": "18th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "SCHOOL",
+     "text": "Wilcox",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "LOCATION",
+     "text": "South Jesse",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "DATE",
+     "text": "8th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-162",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "SCHOOL",
+     "text": "Hurst",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "AGE",
+     "text": "15",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "SCHOOL",
+     "text": "Nelson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "LOCATION",
+     "text": "West Mary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-171",
+     "label": "LOCATION",
+     "text": "tannerchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-173",
+     "label": "SCHOOL",
+     "text": "shelton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "LOCATION",
+     "text": "Amberfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "DATE",
+     "text": "11th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-184",
+     "label": "LOCATION",
+     "text": "Salasview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-185",
+     "label": "SCHOOL",
+     "text": "Flores",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "STREET_ADDRESS",
+     "text": "Ray Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "LOCATION",
+     "text": "Lake Nicole",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-190",
+     "label": "SCHOOL",
+     "text": "taylor elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-194",
+     "label": "LOCATION",
+     "text": "Gracetown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-195",
+     "label": "LOCATION",
+     "text": "Sloanfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "LOCATION",
+     "text": "Myerstown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "DATE",
+     "text": "20th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-199",
+     "label": "AGE",
+     "text": "12m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-200",
+     "label": "AGE",
+     "text": "17",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "SCHOOL",
+     "text": "Edwards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "DATE",
+     "text": "19th of November",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-211",
+     "label": "NAME_STUDENT",
+     "text": "wayne",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "LOCATION",
+     "text": "Marshallside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "AGE",
+     "text": "13m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "LOCATION",
+     "text": "thomaston",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "SCHOOL",
+     "text": "Mason",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "LOCATION",
+     "text": "Williebury",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "DATE",
+     "text": "22th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-225",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "STREET_ADDRESS",
+     "text": "Osborn Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "LOCATION",
+     "text": "New Rachel",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-9",
+     "label": "LOCATION",
+     "text": "west alicia",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "LOCATION",
+     "text": "west amyside",
+     "surviving_token": "west",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "label": "LOCATION",
+     "text": "new jamesbury",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "LOCATION",
+     "text": "north stephen",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-96",
+     "label": "LOCATION",
+     "text": "West Leslie",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-121",
+     "label": "LOCATION",
+     "text": "East Gabrieltown",
+     "surviving_token": "east",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-137",
+     "label": "LOCATION",
+     "text": "Lake Natalie",
+     "surviving_token": "lake",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "LOCATION",
+     "text": "port george",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-172",
+     "label": "LOCATION",
+     "text": "port samantha",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-206",
+     "label": "LOCATION",
+     "text": "South Tylerport",
+     "surviving_token": "south",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "label": "LOCATION",
+     "text": "east lisa",
+     "surviving_token": "east",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "label": "LOCATION",
+     "text": "new lukeberg",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "label": "LOCATION",
+     "text": "new daniel",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "label": "EMAIL",
+     "text": "kristenoconnor at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-396",
+     "label": "LOCATION",
+     "text": "Port Michael",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-4",
+     "token": "tmrw",
+     "start": 160,
+     "end": 164,
+     "context": " is\ncan u help me with my essay its due tmrw\ntext me 5710901610\nCHARLES CLINE period",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-15",
+     "token": "tmrw",
+     "start": 145,
+     "end": 149,
+     "context": "lol\ncan u help me with my essay its due tmrw\nVICTORIA CAMPBELL period 3\n11 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-25",
+     "token": "its",
+     "start": 254,
+     "end": 257,
+     "context": " you explain how you got that?\nStudent: its reneeward at gmail dot com\nTutor: Nice ",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-27",
+     "token": "tmrw",
+     "start": 291,
+     "end": 295,
+     "context": "btw\ncan u help me with my essay its due tmrw\ntext me 5715549031",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-108",
+     "token": "tmrw",
+     "start": 134,
+     "end": 138,
+     "context": "ces\ncan u help me with my essay its due tmrw\ntext me 5714008023",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-129",
+     "token": "tmrw",
+     "start": 273,
+     "end": 277,
+     "context": "ing\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "token": "rn",
+     "start": 117,
+     "end": 119,
+     "context": "3\nadd me shelley.xd99\nim in port george rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-192",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n15 yr old and i still dont get it\nadd m",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "d 3\ncan u help me with my essay its due tmrw\n14m here\nok thx that helps\nim cassandra",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "tmrw",
+     "start": 58,
+     "end": 62,
+     "context": " rn\ncan u help me with my essay its due tmrw\nTIFFANY COLEMAN period 3\nis it ok if my",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in amandafort rn\nkristenoconnor at gmail dot com\nim kris",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-351",
+     "token": "r",
+     "start": 67,
+     "end": 68,
+     "context": "it how do i cite a website\nme and jason r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-375",
+     "token": "tmrw",
+     "start": 70,
+     "end": 74,
+     "context": "ing\ncan u help me with my essay its due tmrw\nok thx that helps\nadd me kristin_plays2",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-393",
+     "token": "tmrw",
+     "start": 165,
+     "end": 169,
+     "context": " it\ncan u help me with my essay its due tmrw\nwhats a good hook for a story about spa",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-0-repeat",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 34.94,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 334,
+   "partial_residuals": 24,
+   "identifier_recall": 0.7669225401256106,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 96,
+     "partial_residual": 0,
+     "recall": 0.5317073170731708
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 38,
+     "partial_residual": 0,
+     "recall": 0.4647887323943662
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 83,
+     "partial_residual": 18,
+     "recall": 0.319672131147541
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 9,
+     "partial_residual": 0,
+     "recall": 0.9743589743589743
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 74,
+     "partial_residual": 0,
+     "recall": 0.3620689655172414
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 34,
+     "partial_residual": 0,
+     "recall": 0.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 121,
+     "EMAIL": 1,
+     "ID_NUM": 1,
+     "none": 82
+    },
+    "DATE": {
+     "DATE": 31,
+     "NAME_STUDENT": 2,
+     "none": 38
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "ID_NUM": 1,
+     "NAME_STUDENT": 25,
+     "STREET_ADDRESS": 3,
+     "USERNAME": 11,
+     "none": 83
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 40,
+     "NAME_STUDENT": 200
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 343,
+     "none": 8
+    },
+    "PHONE_NUM": {
+     "ID_NUM": 72,
+     "PHONE_NUM": 3
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 42,
+     "none": 74
+    },
+    "STREET_ADDRESS": {
+     "none": 34
+    },
+    "USERNAME": {
+     "ID_NUM": 2,
+     "NAME_STUDENT": 10,
+     "USERNAME": 68
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 1545,
+    "fp": 27,
+    "fn": 548,
+    "tn": 20812,
+    "fpr": 0.001295647583857191
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 2,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-0",
+     "label": "DATE",
+     "text": "16th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-0",
+     "label": "STREET_ADDRESS",
+     "text": "Mayer Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-1",
+     "label": "LOCATION",
+     "text": "woodtown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-2",
+     "label": "LOCATION",
+     "text": "West Kelly",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-6",
+     "label": "LOCATION",
+     "text": "East Kerry",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "LOCATION",
+     "text": "kennethport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "AGE",
+     "text": "11",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-9",
+     "label": "AGE",
+     "text": "7m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-11",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-13",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "SCHOOL",
+     "text": "wyatt elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "jack",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-14",
+     "label": "NAME_STUDENT",
+     "text": "JACK",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "DATE",
+     "text": "14th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-16",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-21",
+     "label": "SCHOOL",
+     "text": "Richards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-22",
+     "label": "AGE",
+     "text": "16m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-26",
+     "label": "LOCATION",
+     "text": "Jeffreytown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-28",
+     "label": "LOCATION",
+     "text": "North Victoria",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-32",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "STREET_ADDRESS",
+     "text": "Burke Street",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-35",
+     "label": "SCHOOL",
+     "text": "Hernandez",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-39",
+     "label": "SCHOOL",
+     "text": "Castro",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "SCHOOL",
+     "text": "Brown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-40",
+     "label": "LOCATION",
+     "text": "New Michaelshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-42",
+     "label": "STREET_ADDRESS",
+     "text": "Robinson Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "STREET_ADDRESS",
+     "text": "Roberson Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-44",
+     "label": "LOCATION",
+     "text": "West Randy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-45",
+     "label": "DATE",
+     "text": "11th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "SCHOOL",
+     "text": "Abbott",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-46",
+     "label": "DATE",
+     "text": "13th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "LOCATION",
+     "text": "bergside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-49",
+     "label": "SCHOOL",
+     "text": "curtis elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-50",
+     "label": "SCHOOL",
+     "text": "riley elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "SCHOOL",
+     "text": "olson elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-51",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-53",
+     "label": "AGE",
+     "text": "9",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-54",
+     "label": "STREET_ADDRESS",
+     "text": "Morgan Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-57",
+     "label": "LOCATION",
+     "text": "Port Vernonborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-58",
+     "label": "LOCATION",
+     "text": "Julieborough",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "LOCATION",
+     "text": "Christopherhaven",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-59",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "DATE",
+     "text": "17th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-60",
+     "label": "LOCATION",
+     "text": "North Lindafort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "STREET_ADDRESS",
+     "text": "Murphy Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-63",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "SCHOOL",
+     "text": "moore academy",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-67",
+     "label": "SCHOOL",
+     "text": "hardy elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "DATE",
+     "text": "5th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-68",
+     "label": "STREET_ADDRESS",
+     "text": "Walter Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-70",
+     "label": "LOCATION",
+     "text": "teresastad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "LOCATION",
+     "text": "Andersonberg",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-72",
+     "label": "DATE",
+     "text": "15th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-73",
+     "label": "LOCATION",
+     "text": "Davidstad",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-74",
+     "label": "AGE",
+     "text": "11",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-75",
+     "label": "SCHOOL",
+     "text": "Chapman",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "DATE",
+     "text": "13th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-78",
+     "label": "LOCATION",
+     "text": "Sandraside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "DATE",
+     "text": "22th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "STREET_ADDRESS",
+     "text": "Bishop Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-79",
+     "label": "SCHOOL",
+     "text": "Reed",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "STREET_ADDRESS",
+     "text": "Frey Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-82",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "LOCATION",
+     "text": "Johnchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "DATE",
+     "text": "10th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "STREET_ADDRESS",
+     "text": "Waller Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-84",
+     "label": "SCHOOL",
+     "text": "Barron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-86",
+     "label": "SCHOOL",
+     "text": "White",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "DATE",
+     "text": "9th of October",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-88",
+     "label": "LOCATION",
+     "text": "Marieside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-89",
+     "label": "DATE",
+     "text": "13th of December",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-92",
+     "label": "SCHOOL",
+     "text": "Parks",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-94",
+     "label": "LOCATION",
+     "text": "Joshuaport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-99",
+     "label": "LOCATION",
+     "text": "east reginaldmouth",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-100",
+     "label": "SCHOOL",
+     "text": "Ross",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-101",
+     "label": "LOCATION",
+     "text": "Patrickfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-104",
+     "label": "SCHOOL",
+     "text": "walton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-107",
+     "label": "DATE",
+     "text": "15th of March",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-108",
+     "label": "AGE",
+     "text": "9m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-111",
+     "label": "STREET_ADDRESS",
+     "text": "Lee Court",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-114",
+     "label": "DATE",
+     "text": "10th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "LOCATION",
+     "text": "Port Aaron",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-117",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-119",
+     "label": "LOCATION",
+     "text": "Smithport",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-120",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-122",
+     "label": "LOCATION",
+     "text": "smithview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-125",
+     "label": "LOCATION",
+     "text": "West Scottshire",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-128",
+     "label": "LOCATION",
+     "text": "Gardnerburgh",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "SCHOOL",
+     "text": "Richardson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-134",
+     "label": "STREET_ADDRESS",
+     "text": "Anderson Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "AGE",
+     "text": "10m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "NAME_STUDENT",
+     "text": "MEADOWS",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-147",
+     "label": "LOCATION",
+     "text": "Markfort",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-150",
+     "label": "DATE",
+     "text": "3th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "DATE",
+     "text": "18th of July",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "SCHOOL",
+     "text": "Henson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-151",
+     "label": "AGE",
+     "text": "12",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-153",
+     "label": "AGE",
+     "text": "17m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-154",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-155",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-157",
+     "label": "LOCATION",
+     "text": "New Kaylafurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "SCHOOL",
+     "text": "Holt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-158",
+     "label": "DATE",
+     "text": "18th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "SCHOOL",
+     "text": "Wilcox",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-159",
+     "label": "AGE",
+     "text": "10",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-160",
+     "label": "AGE",
+     "text": "14",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "AGE",
+     "text": "14",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "LOCATION",
+     "text": "South Jesse",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-161",
+     "label": "DATE",
+     "text": "8th of August",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-162",
+     "label": "AGE",
+     "text": "11m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "SCHOOL",
+     "text": "Hurst",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-165",
+     "label": "AGE",
+     "text": "15",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "SCHOOL",
+     "text": "Nelson",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-166",
+     "label": "LOCATION",
+     "text": "West Mary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-171",
+     "label": "LOCATION",
+     "text": "tannerchester",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-173",
+     "label": "SCHOOL",
+     "text": "shelton elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-175",
+     "label": "LOCATION",
+     "text": "Amberfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "DATE",
+     "text": "11th of May",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-176",
+     "label": "STREET_ADDRESS",
+     "text": "Johnson Lane",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-177",
+     "label": "AGE",
+     "text": "8",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-184",
+     "label": "LOCATION",
+     "text": "Salasview",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-185",
+     "label": "SCHOOL",
+     "text": "Flores",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "STREET_ADDRESS",
+     "text": "Ray Drive",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-188",
+     "label": "LOCATION",
+     "text": "Lake Nicole",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-189",
+     "label": "LOCATION",
+     "text": "Port Michele",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-190",
+     "label": "SCHOOL",
+     "text": "taylor elementary",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-194",
+     "label": "LOCATION",
+     "text": "Gracetown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-195",
+     "label": "LOCATION",
+     "text": "Sloanfurt",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "LOCATION",
+     "text": "Myerstown",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-198",
+     "label": "DATE",
+     "text": "20th of April",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-199",
+     "label": "AGE",
+     "text": "12m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-200",
+     "label": "AGE",
+     "text": "17",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "SCHOOL",
+     "text": "Edwards",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-207",
+     "label": "DATE",
+     "text": "19th of November",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-211",
+     "label": "NAME_STUDENT",
+     "text": "wayne",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-214",
+     "label": "AGE",
+     "text": "13",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "LOCATION",
+     "text": "Marshallside",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-215",
+     "label": "DATE",
+     "text": "6th of September",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "AGE",
+     "text": "13m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-218",
+     "label": "LOCATION",
+     "text": "thomaston",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "SCHOOL",
+     "text": "Mason",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-220",
+     "label": "DATE",
+     "text": "12th of February",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-221",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "LOCATION",
+     "text": "Williebury",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-224",
+     "label": "DATE",
+     "text": "22th of January",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-225",
+     "label": "AGE",
+     "text": "16",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "STREET_ADDRESS",
+     "text": "Osborn Avenue",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-226",
+     "label": "LOCATION",
+     "text": "New Rachel",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "AGE",
+     "text": "14m",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-9",
+     "label": "LOCATION",
+     "text": "west alicia",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "LOCATION",
+     "text": "west amyside",
+     "surviving_token": "west",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "label": "LOCATION",
+     "text": "new jamesbury",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "label": "LOCATION",
+     "text": "north stephen",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-96",
+     "label": "LOCATION",
+     "text": "West Leslie",
+     "surviving_token": "west",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-121",
+     "label": "LOCATION",
+     "text": "East Gabrieltown",
+     "surviving_token": "east",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-137",
+     "label": "LOCATION",
+     "text": "Lake Natalie",
+     "surviving_token": "lake",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "label": "LOCATION",
+     "text": "port george",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-172",
+     "label": "LOCATION",
+     "text": "port samantha",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "label": "LOCATION",
+     "text": "new samantha",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-206",
+     "label": "LOCATION",
+     "text": "South Tylerport",
+     "surviving_token": "south",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "label": "LOCATION",
+     "text": "east lisa",
+     "surviving_token": "east",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-248",
+     "label": "LOCATION",
+     "text": "North Emily",
+     "surviving_token": "north",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "label": "LOCATION",
+     "text": "new lukeberg",
+     "surviving_token": "new",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "label": "LOCATION",
+     "text": "new daniel",
+     "surviving_token": "new",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "ID_NUM",
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "label": "EMAIL",
+     "text": "kristenoconnor at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-396",
+     "label": "LOCATION",
+     "text": "Port Michael",
+     "surviving_token": "port",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-4",
+     "token": "tmrw",
+     "start": 160,
+     "end": 164,
+     "context": " is\ncan u help me with my essay its due tmrw\ntext me 5710901610\nCHARLES CLINE period",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-15",
+     "token": "tmrw",
+     "start": 145,
+     "end": 149,
+     "context": "lol\ncan u help me with my essay its due tmrw\nVICTORIA CAMPBELL period 3\n11 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-25",
+     "token": "its",
+     "start": 254,
+     "end": 257,
+     "context": " you explain how you got that?\nStudent: its reneeward at gmail dot com\nTutor: Nice ",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-27",
+     "token": "tmrw",
+     "start": 291,
+     "end": 295,
+     "context": "btw\ncan u help me with my essay its due tmrw\ntext me 5715549031",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-108",
+     "token": "tmrw",
+     "start": 134,
+     "end": 138,
+     "context": "ces\ncan u help me with my essay its due tmrw\ntext me 5714008023",
+     "labels": [
+      "ID_NUM"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-129",
+     "token": "tmrw",
+     "start": 273,
+     "end": 277,
+     "context": "ing\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "token": "rn",
+     "start": 117,
+     "end": 119,
+     "context": "3\nadd me shelley.xd99\nim in port george rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-192",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n15 yr old and i still dont get it\nadd m",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "d 3\ncan u help me with my essay its due tmrw\n14m here\nok thx that helps\nim cassandra",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "tmrw",
+     "start": 58,
+     "end": 62,
+     "context": " rn\ncan u help me with my essay its due tmrw\nTIFFANY COLEMAN period 3\nis it ok if my",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in amandafort rn\nkristenoconnor at gmail dot com\nim kris",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-351",
+     "token": "r",
+     "start": 67,
+     "end": 68,
+     "context": "it how do i cite a website\nme and jason r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-375",
+     "token": "tmrw",
+     "start": 70,
+     "end": 74,
+     "context": "ing\ncan u help me with my essay its due tmrw\nok thx that helps\nadd me kristin_plays2",
+     "labels": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-393",
+     "token": "tmrw",
+     "start": 165,
+     "end": 169,
+     "context": " it\ncan u help me with my essay its due tmrw\nwhats a good hook for a story about spa",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    }
+   ]
+  }
+ ]
+}
