@@ -141,6 +141,8 @@ edshield gave it.
 | Candidate rules `c7be261`, k12_hard, rules + model | 1,268 of 1,433 (88.5%) | report `2026-10-05-f368ecb-cand-c7be261` |
 | Model experiment 1 (learns town, school and street names), PIILO holdout | 165 of 165, word false-alarm rate 0.08% | report `2026-10-05-754e392-cand-928f50a` |
 | Model experiment 1, k12_hard, rules + model | 1,425 of 1,433 (99.4%) | report `2026-10-05-754e392-cand-928f50a` |
+| Model experiment 2 (adds names before 's), PIILO holdout | 165 of 165, word false-alarm rate 0.08% | report `2026-10-05-b145ba2-cand-3dc1431` |
+| Model experiment 2, k12_hard, rules + model | 1,432 of 1,433 (99.9%), word false-alarm rate 0.23% | report `2026-10-05-b145ba2-cand-3dc1431` |
 | Sealed set A1 | sealed 2026-10-05, not yet used | `evidence/sets/A1.manifest.json` |
 
 The acceptance policy asks for 99.5% of identifiers removed overall and 98%

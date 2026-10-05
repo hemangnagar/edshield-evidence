@@ -199,7 +199,7 @@
 <rect x="88" y="932" width="1824" height="76" rx="14" fill="#0b1535" fill-opacity="0.78" stroke="#2f5fb8" stroke-width="1.5"/>
 <text x="110" y="978" font-size="15" font-weight="800" fill="#7dd3fc" text-anchor="start" letter-spacing="2.5">RESULTS SO FAR</text>
 <text x="300" y="964" font-size="15.5" font-weight="400" fill="#a9bfea" text-anchor="start" >child-style practice set, identifiers removed</text>
-<text x="300" y="994" font-size="24" font-weight="800" fill="#f8fafc">76.7%  →  88.5%  →  <tspan fill="#67e8f9">99.4%</tspan></text>
+<text x="300" y="994" font-size="24" font-weight="800" fill="#f8fafc">76.7%  →  88.5%  →  <tspan fill="#67e8f9">99.9%</tspan></text>
 <text x="630" y="994" font-size="15.5" font-weight="400" fill="#a9bfea" text-anchor="start" >release · new rules · retrained model</text>
 <text x="1010" y="964" font-size="15.5" font-weight="400" fill="#a9bfea" text-anchor="start" >real essays, identifiers getting through</text>
 <text x="1010" y="994" font-size="24" font-weight="800" fill="#f8fafc" text-anchor="start" >0 of 165, every run</text>
