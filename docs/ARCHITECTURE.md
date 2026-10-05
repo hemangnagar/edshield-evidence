@@ -4,17 +4,17 @@ State on 2026-10-05. This page shows who does what in the edshield improvement
 loop, what moves between them, and which steps still need a person. The rules
 each role works under are in [LOOP.md](LOOP.md).
 
-![The edshield agent loop: two agents measure, diagnose and change edshield; a judge, a regression check, a sealed set and a person gate every candidate](agent-loop.svg)
+![How edshield gets better: two AI agents in the workshop, a fixed judge on the scales, a sealed test and a human review at the gate, and a record of every run](how-edshield-gets-better.png)
 
 Two Claude Code agents do the work. Neither decides whether edshield is good
 enough: a pinned, task-blind judge does that from rows and a policy file, and
-Hemang owns the pass marks, the sealed sets and every merge.
+a human reviewer owns the pass marks, the sealed sets and every merge.
 
 ## 1. Who does what
 
 ```mermaid
 flowchart TB
-    H["Hemang<br/>sets the pass marks, approves merges,<br/>holds the seal key, triggers acceptance"]
+    H["Human review<br/>sets the pass marks, approves merges,<br/>holds the seal key, triggers acceptance"]
 
     subgraph CLOUD["Cloud agent: Claude Code in a cloud session"]
         C1["Builds and maintains the bench"]
@@ -65,7 +65,7 @@ flowchart TB
 ```mermaid
 sequenceDiagram
     autonumber
-    participant H as Hemang
+    participant H as Human review
     participant PC as PC agent
     participant J as Judge
     participant GH as GitHub
@@ -124,11 +124,11 @@ edshield gave it.
 | Rules changes, training text, model training | An agent, on a candidate branch |
 | Measuring a candidate against the release | The PC agent, without asking |
 | Uploading candidate branches and candidate reports | The PC agent, without asking, since 2026-10-05 |
-| Handing work from the cloud agent to the PC | A one-way message. The PC agent answers through GitHub; there is no direct reply channel, so Hemang has carried replies by hand |
-| Merging into edshield `main`, releasing | Hemang |
-| Reviewing a draft set, storing the seal key | Hemang |
-| Ratifying the pass marks (they are still PROVISIONAL) | Hemang |
-| Running acceptance on a sealed set | Hemang triggers it; each set can be used once |
+| Handing work from the cloud agent to the PC | A one-way message. The PC agent answers through GitHub; there is no direct reply channel, so a person has carried replies by hand |
+| Merging into edshield `main`, releasing | Human review |
+| Reviewing a draft set, storing the seal key | Human review |
+| Ratifying the pass marks (they are still PROVISIONAL) | Human review |
+| Running acceptance on a sealed set | A human triggers it; each set can be used once |
 | Starting cycles on a schedule with no session open | Not built. A cycle runs while an agent session is working |
 
 ## 5. Where the loop stands
