@@ -13,8 +13,9 @@ identifier recall [interval] | document recall | word fpr | verdict | note
 latest ledger entry of each dataset/detector: recall targets become the
 measured value rounded down to three decimals, the word fpr target becomes
 the measured value + 0.005 rounded up. A sub-policy with `"_pin": false`
-(the parity policy, whose targets are fixed by the brief) is left alone.
-It changes nothing else.
+(the parity policy, whose targets are fixed by the brief) is left alone, and
+so are ledger rows of a candidate edshield (marked "candidate" in the commit
+column): only the pinned release moves the floor. It changes nothing else.
 """
 
 from __future__ import annotations
@@ -139,6 +140,8 @@ def pin(policy_path: Path = REGRESSION, ledger: Path = LEDGER, reports_dir: Path
     changes: List[str] = []
     latest: Dict[str, Dict[str, str]] = {}
     for row in parse(ledger):
+        if "candidate" in row["edshield commit"]:
+            continue  # a candidate edshield is measured, never pinned; only the installed release sets the floor
         key = f"{row['dataset']}/{'parity' if ',' in row['runtime'] else row['detector']}"
         latest[key] = row  # later rows win
     for key, row in latest.items():

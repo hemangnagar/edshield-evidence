@@ -142,9 +142,12 @@ def summarize(report_dir: Path, out_name: str = "summary.md") -> Path:
         sections += step_section(key, bundle, verdict, policy, diag)
     ratified = bool(policies) and all(p.get("_ratified") for p in policies)
     lines.append(("criteria ratified" if ratified else PROVISIONAL_LINE))
+    md0 = bundles[0]["metadata"] if bundles else {}
+    commit = md0.get("edshield_commit", EDSHIELD_COMMIT)
+    sut = (f"edshield {md0.get('edshield_version', '?')} at commit {commit[:7]} (CANDIDATE, not the pinned release)"
+           if md0.get("edshield_candidate") else f"edshield {md0.get('edshield_version', '?')} (source commit {commit[:7]})")
     lines += ["", f"# Report {report_dir.name}", "",
-              f"System under test: edshield {bundles[0]['metadata']['edshield_version'] if bundles else '?'} "
-              f"(source commit {EDSHIELD_COMMIT[:7]}). Judge: model-evidence {JUDGE_TAG}. "
+              f"System under test: {sut}. Judge: model-evidence {JUDGE_TAG}. "
               f"Steps: {len(keys)} run, {len(skipped)} skipped.", ""]
     for s in skipped:
         lines.append(f"- skipped `{s.name[:-len('.skipped.txt')]}`: {s.read_text(encoding='utf-8').strip()}")

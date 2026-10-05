@@ -65,3 +65,22 @@ def test_pin_respects_fixed_policies_and_drops_placeholders(tmp_path):
     assert "_placeholder" not in out["policies"]["k12_hard/rules"]["views"]["identifier"]
     assert out["policies"]["piilo_holdout/parity"]["views"]["identifier"]["recall"] == 0.99
     assert any("skipped" in c and "parity" in c for c in changes)
+
+
+def test_pin_ignores_candidate_rows(tmp_path):
+    import json
+
+    from edshield_evidence import REPORTS_DIR
+
+    path = tmp_path / "ledger.md"
+    for row in ledger.parse():
+        ledger.append(row, path)
+    fake = dict(next(r for r in ledger.parse() if r["dataset"] == "k12_hard" and r["detector"] == "rules"))
+    fake["edshield commit"] = "0.2.0 (deadbee candidate)"
+    fake["report id"] = "does-not-exist"
+    ledger.append(fake, path)  # a later candidate row must not become the target
+    policy = tmp_path / "regression.json"
+    policy.write_text(json.dumps({"policies": {"k12_hard/rules": {"contract": "2.0", "confidence": False, "minRuns": 3,
+        "views": {"identifier": {"recall": 0.0, "stabilityMetric": "recall", "maxSpread": 0.01}}}}}))
+    ledger.pin(policy, path, REPORTS_DIR)
+    assert json.loads(policy.read_text())["policies"]["k12_hard/rules"]["views"]["identifier"]["recall"] == 0.221
