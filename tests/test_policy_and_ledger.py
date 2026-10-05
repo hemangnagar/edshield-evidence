@@ -39,3 +39,29 @@ def test_ledger_append_and_parse(tmp_path):
     rows = ledger.parse(path)
     assert len(rows) == 2 and rows[0]["dataset"] == "v2" and rows[1]["note"] == "second / with pipe"
     assert path.read_text().startswith("# Experiment ledger")
+
+
+def test_pin_respects_fixed_policies_and_drops_placeholders(tmp_path):
+    import json
+    from pathlib import Path
+
+    from edshield_evidence import REPORTS_DIR
+
+    rows = ledger.parse()
+    report_dirs = {r["report id"] for r in rows}
+    assert report_dirs, "the committed ledger should have rows"
+    policy = tmp_path / "regression.json"
+    keyed = {"policies": {
+        "k12_hard/rules": {"contract": "2.0", "confidence": False, "minRuns": 3, "_placeholder": "x",
+                           "views": {"identifier": {"recall": 0.0, "stabilityMetric": "recall", "maxSpread": 0.01, "_placeholder": "y"}}},
+        "piilo_holdout/parity": {"contract": "2.0", "confidence": False, "minRuns": 2, "_pin": False,
+                                 "views": {"identifier": {"recall": 0.99, "stabilityMetric": "recall", "maxSpread": 0.01}}},
+    }}
+    policy.write_text(json.dumps(keyed))
+    changes = ledger.pin(policy, ledger.LEDGER, REPORTS_DIR)
+    out = json.loads(policy.read_text())
+    assert out["policies"]["k12_hard/rules"]["views"]["identifier"]["recall"] == 0.221
+    assert "_placeholder" not in out["policies"]["k12_hard/rules"]
+    assert "_placeholder" not in out["policies"]["k12_hard/rules"]["views"]["identifier"]
+    assert out["policies"]["piilo_holdout/parity"]["views"]["identifier"]["recall"] == 0.99
+    assert any("skipped" in c and "parity" in c for c in changes)

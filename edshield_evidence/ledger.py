@@ -12,7 +12,9 @@ identifier recall [interval] | document recall | word fpr | verdict | note
 `pin` re-pins the regression targets in policies/regression.json from the
 latest ledger entry of each dataset/detector: recall targets become the
 measured value rounded down to three decimals, the word fpr target becomes
-the measured value + 0.005 rounded up. It changes nothing else.
+the measured value + 0.005 rounded up. A sub-policy with `"_pin": false`
+(the parity policy, whose targets are fixed by the brief) is left alone.
+It changes nothing else.
 """
 
 from __future__ import annotations
@@ -142,6 +144,9 @@ def pin(policy_path: Path = REGRESSION, ledger: Path = LEDGER, reports_dir: Path
     for key, row in latest.items():
         if key not in keyed["policies"]:
             continue
+        if keyed["policies"][key].get("_pin") is False:
+            changes.append(f"{key}: _pin is false (fixed targets); skipped")
+            continue
         report_dir = reports_dir / row["report id"]
         verdicts = list(report_dir.glob("*.verdict.json"))
         verdict = None
@@ -171,7 +176,10 @@ def pin(policy_path: Path = REGRESSION, ledger: Path = LEDGER, reports_dir: Path
                     changes.append(f"{key} {vname}.fpr: {vp['fpr']} -> {new}")
                     vp["fpr"] = new
         pol["_pinned_from"] = row["report id"]
-    policy_path.write_text(json.dumps(keyed, indent=2) + "\n", encoding="utf-8")
+        pol.pop("_placeholder", None)
+        for vp in pol["views"].values():
+            vp.pop("_placeholder", None)
+    policy_path.write_text(json.dumps(keyed, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return changes
 
 
