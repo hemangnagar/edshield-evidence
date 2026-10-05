@@ -10,6 +10,10 @@ acceptance criteria, the sealed acceptance sets, and the experiment ledger.
 
 System under test: `edshield==0.2.0` from PyPI (source commit `a568e73`).
 
+<p align="center">
+  <a href="docs/ARCHITECTURE.md"><img src="docs/agent-loop.svg" alt="The edshield agent loop: two agents measure, diagnose and change edshield; a judge, a regression check, a sealed set and a person gate every candidate" width="640"></a>
+</p>
+
 ## What this repo is, and is not
 
 **It is** the honest number. edshield's own evaluator scores the detector

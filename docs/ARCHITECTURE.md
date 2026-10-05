@@ -4,6 +4,8 @@ State on 2026-10-05. This page shows who does what in the edshield improvement
 loop, what moves between them, and which steps still need a person. The rules
 each role works under are in [LOOP.md](LOOP.md).
 
+![The edshield agent loop: two agents measure, diagnose and change edshield; a judge, a regression check, a sealed set and a person gate every candidate](agent-loop.svg)
+
 Two Claude Code agents do the work. Neither decides whether edshield is good
 enough: a pinned, task-blind judge does that from rows and a policy file, and
 Hemang owns the pass marks, the sealed sets and every merge.
