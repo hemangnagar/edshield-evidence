@@ -1,0 +1,2208 @@
+{
+ "bundle": "edshield 0.2.0 · k12_hard · coppa · rules+model · python",
+ "dataset": "k12_hard",
+ "data_sha256": "3da490d78315057c13668263b779ffd408f06471c8a567ff939a24b28aa1149c",
+ "policy": "coppa",
+ "policy_fingerprint": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "detector": "rules+model",
+ "runtime": "python",
+ "text_included": true,
+ "runs": [
+  {
+   "id": "seed-0",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/piilo-child-v3",
+   "model_sha256": "3af296ac9c5687b01e44c6fc4cbe801543713f4e26b4072b1bb0fe711fdbc7ae",
+   "seconds": 43.68,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 8,
+   "partial_residuals": 23,
+   "identifier_recall": 0.994417306350314,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 7,
+     "partial_residual": 0,
+     "recall": 0.98005698005698
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 203,
+     "NAME_STUDENT": 1,
+     "PHONE_NUM": 1
+    },
+    "DATE": {
+     "DATE": 60,
+     "LOCATION": 6,
+     "NAME_STUDENT": 5
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 8,
+     "NAME_STUDENT": 211,
+     "SCHOOL": 21
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 344,
+     "none": 7
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 1,
+     "SCHOOL": 115
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2036,
+    "fp": 15,
+    "fn": 57,
+    "tn": 20824,
+    "fpr": 0.0007198042132539949
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-35",
+     "label": "NAME_STUDENT",
+     "text": "Paul",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "NAME_STUDENT",
+     "text": "Joshua",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-231",
+     "label": "NAME_STUDENT",
+     "text": "Robert",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-249",
+     "label": "NAME_STUDENT",
+     "text": "Christina",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-283",
+     "label": "NAME_STUDENT",
+     "text": "Rebecca",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-323",
+     "label": "NAME_STUDENT",
+     "text": "Darrell",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-367",
+     "label": "NAME_STUDENT",
+     "text": "Cory",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-166",
+     "token": "7",
+     "start": 77,
+     "end": 78,
+     "context": " gym. Richard Nguyen\nMr. Lindsey\nPeriod 7 Olivia and I built the volcano together",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-171",
+     "token": "rn",
+     "start": 156,
+     "end": 158,
+     "context": "but idk where it is\nim in tannerchester rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "r",
+     "start": 229,
+     "end": 230,
+     "context": "it is\nadd me monica.plays72\nme and anna r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-359",
+     "token": "Dr.",
+     "start": 202,
+     "end": 205,
+     "context": "st time so we tried again. Kayla Howard\nDr. Myers\nPeriod 5 Our class voted and most",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-395",
+     "token": "Period",
+     "start": 88,
+     "end": 94,
+     "context": " tried again. Kristin Gordon\nDr. Golden\nPeriod 7 When you are 12 like me you can not d",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-1",
+   "seed": 1,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/piilo-child-v3",
+   "model_sha256": "3af296ac9c5687b01e44c6fc4cbe801543713f4e26b4072b1bb0fe711fdbc7ae",
+   "seconds": 36.54,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 8,
+   "partial_residuals": 23,
+   "identifier_recall": 0.994417306350314,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 7,
+     "partial_residual": 0,
+     "recall": 0.98005698005698
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 203,
+     "NAME_STUDENT": 1,
+     "PHONE_NUM": 1
+    },
+    "DATE": {
+     "DATE": 60,
+     "LOCATION": 6,
+     "NAME_STUDENT": 5
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 8,
+     "NAME_STUDENT": 211,
+     "SCHOOL": 21
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 344,
+     "none": 7
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 1,
+     "SCHOOL": 115
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2036,
+    "fp": 15,
+    "fn": 57,
+    "tn": 20824,
+    "fpr": 0.0007198042132539949
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-35",
+     "label": "NAME_STUDENT",
+     "text": "Paul",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "NAME_STUDENT",
+     "text": "Joshua",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-231",
+     "label": "NAME_STUDENT",
+     "text": "Robert",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-249",
+     "label": "NAME_STUDENT",
+     "text": "Christina",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-283",
+     "label": "NAME_STUDENT",
+     "text": "Rebecca",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-323",
+     "label": "NAME_STUDENT",
+     "text": "Darrell",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-367",
+     "label": "NAME_STUDENT",
+     "text": "Cory",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-166",
+     "token": "7",
+     "start": 77,
+     "end": 78,
+     "context": " gym. Richard Nguyen\nMr. Lindsey\nPeriod 7 Olivia and I built the volcano together",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-171",
+     "token": "rn",
+     "start": 156,
+     "end": 158,
+     "context": "but idk where it is\nim in tannerchester rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "r",
+     "start": 229,
+     "end": 230,
+     "context": "it is\nadd me monica.plays72\nme and anna r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-359",
+     "token": "Dr.",
+     "start": 202,
+     "end": 205,
+     "context": "st time so we tried again. Kayla Howard\nDr. Myers\nPeriod 5 Our class voted and most",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-395",
+     "token": "Period",
+     "start": 88,
+     "end": 94,
+     "context": " tried again. Kristin Gordon\nDr. Golden\nPeriod 7 When you are 12 like me you can not d",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-2",
+   "seed": 2,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/piilo-child-v3",
+   "model_sha256": "3af296ac9c5687b01e44c6fc4cbe801543713f4e26b4072b1bb0fe711fdbc7ae",
+   "seconds": 37.02,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 8,
+   "partial_residuals": 23,
+   "identifier_recall": 0.994417306350314,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 7,
+     "partial_residual": 0,
+     "recall": 0.98005698005698
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 203,
+     "NAME_STUDENT": 1,
+     "PHONE_NUM": 1
+    },
+    "DATE": {
+     "DATE": 60,
+     "LOCATION": 6,
+     "NAME_STUDENT": 5
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 8,
+     "NAME_STUDENT": 211,
+     "SCHOOL": 21
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 344,
+     "none": 7
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 1,
+     "SCHOOL": 115
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2036,
+    "fp": 15,
+    "fn": 57,
+    "tn": 20824,
+    "fpr": 0.0007198042132539949
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-35",
+     "label": "NAME_STUDENT",
+     "text": "Paul",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "NAME_STUDENT",
+     "text": "Joshua",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-231",
+     "label": "NAME_STUDENT",
+     "text": "Robert",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-249",
+     "label": "NAME_STUDENT",
+     "text": "Christina",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-283",
+     "label": "NAME_STUDENT",
+     "text": "Rebecca",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-323",
+     "label": "NAME_STUDENT",
+     "text": "Darrell",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-367",
+     "label": "NAME_STUDENT",
+     "text": "Cory",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-166",
+     "token": "7",
+     "start": 77,
+     "end": 78,
+     "context": " gym. Richard Nguyen\nMr. Lindsey\nPeriod 7 Olivia and I built the volcano together",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-171",
+     "token": "rn",
+     "start": 156,
+     "end": 158,
+     "context": "but idk where it is\nim in tannerchester rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "r",
+     "start": 229,
+     "end": 230,
+     "context": "it is\nadd me monica.plays72\nme and anna r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-359",
+     "token": "Dr.",
+     "start": 202,
+     "end": 205,
+     "context": "st time so we tried again. Kayla Howard\nDr. Myers\nPeriod 5 Our class voted and most",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-395",
+     "token": "Period",
+     "start": 88,
+     "end": 94,
+     "context": " tried again. Kristin Gordon\nDr. Golden\nPeriod 7 When you are 12 like me you can not d",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-0-repeat",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/piilo-child-v3",
+   "model_sha256": "3af296ac9c5687b01e44c6fc4cbe801543713f4e26b4072b1bb0fe711fdbc7ae",
+   "seconds": 36.76,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 8,
+   "partial_residuals": 23,
+   "identifier_recall": 0.994417306350314,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 7,
+     "partial_residual": 0,
+     "recall": 0.98005698005698
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 203,
+     "NAME_STUDENT": 1,
+     "PHONE_NUM": 1
+    },
+    "DATE": {
+     "DATE": 60,
+     "LOCATION": 6,
+     "NAME_STUDENT": 5
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 8,
+     "NAME_STUDENT": 211,
+     "SCHOOL": 21
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 344,
+     "none": 7
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 1,
+     "SCHOOL": 115
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2036,
+    "fp": 15,
+    "fn": 57,
+    "tn": 20824,
+    "fpr": 0.0007198042132539949
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-35",
+     "label": "NAME_STUDENT",
+     "text": "Paul",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-61",
+     "label": "NAME_STUDENT",
+     "text": "Joshua",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-231",
+     "label": "NAME_STUDENT",
+     "text": "Robert",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-249",
+     "label": "NAME_STUDENT",
+     "text": "Christina",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-283",
+     "label": "NAME_STUDENT",
+     "text": "Rebecca",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-323",
+     "label": "NAME_STUDENT",
+     "text": "Darrell",
+     "touched": []
+    },
+    {
+     "doc_id": "k12h-367",
+     "label": "NAME_STUDENT",
+     "text": "Cory",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-166",
+     "token": "7",
+     "start": 77,
+     "end": 78,
+     "context": " gym. Richard Nguyen\nMr. Lindsey\nPeriod 7 Olivia and I built the volcano together",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "r",
+     "start": 70,
+     "end": 71,
+     "context": "12521746\nmy bday is feb 25\nme and brian r doing a project\nis it ok if my paragrap",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-171",
+     "token": "rn",
+     "start": 156,
+     "end": 158,
+     "context": "but idk where it is\nim in tannerchester rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "r",
+     "start": 229,
+     "end": 230,
+     "context": "it is\nadd me monica.plays72\nme and anna r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-359",
+     "token": "Dr.",
+     "start": 202,
+     "end": 205,
+     "context": "st time so we tried again. Kayla Howard\nDr. Myers\nPeriod 5 Our class voted and most",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-395",
+     "token": "Period",
+     "start": 88,
+     "end": 94,
+     "context": " tried again. Kristin Gordon\nDr. Golden\nPeriod 7 When you are 12 like me you can not d",
+     "labels": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  }
+ ]
+}
