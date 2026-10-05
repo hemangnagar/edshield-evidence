@@ -199,13 +199,17 @@ def load_k12_hard(path: Optional[str] = None) -> Dataset:
     return Dataset("k12_hard", docs, file, sha256_file(file), split="validation", role="regression")
 
 
-def load_sealed(name: str, key: Optional[bytes] = None) -> Dataset:
+def load_sealed(name: str, key: Optional[bytes] = None, sets_dir: Optional[Path] = None) -> Dataset:
     from . import seal  # local import: cryptography is only needed for sealed sets
 
-    text, manifest = seal.unseal_text(name, key=key)
+    sets_dir = sets_dir or SETS_DIR
+    text, manifest = seal.unseal_text(name, key=key, sets_dir=sets_dir)
     docs = read_jsonl(text)
+    # Positional ids: a generator's own ids may carry its private seed, and sample_ids are
+    # published in every bundle and report. Only the encrypted file keeps the original ids.
+    docs = [Document(doc_id=f"{name}-{i:04d}", text=d.text, gold_spans=d.gold_spans) for i, d in enumerate(docs)]
     role = manifest.get("role", "acceptance")
-    enc = SETS_DIR / f"{name}.jsonl.enc"
+    enc = sets_dir / f"{name}.jsonl.enc"
     return Dataset(
         f"sealed:{name}", docs, enc, manifest["sha256"],
         split="test" if role == "acceptance" else "validation", role=role, sealed=True,

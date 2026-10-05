@@ -21,5 +21,9 @@
   "sealed_at": "2026-10-05T04:06:53+00:00",
   "cipher": "AES-256-GCM",
   "role": "acceptance",
-  "used_for_decision": null
+  "used_for_decision": null,
+  "notes": [
+    "Generator a-draft-3: 14 AGE spans do not denote the child's age (7 after 'grade', 7 after 'u have to be'); sealed as is by the reviewer. A correct non-redaction of those counts as a residual (conservative).",
+    "Generator a-draft-3 doc ids carry the private seed; the loader replaces them with positional ids A1-0000..A1-0399 so no bundle or report reveals the seed."
+  ]
 }

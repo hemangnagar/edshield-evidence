@@ -35,7 +35,7 @@ from typing import Callable, Dict, List, Tuple
 
 from faker import Faker
 
-GENERATOR_VERSION = "a-draft-3"
+GENERATOR_VERSION = "a-draft-4"
 
 HERE = Path(__file__).resolve().parent.parent
 SETS_DIR = HERE / "evidence" / "sets"
@@ -161,7 +161,7 @@ TUTOR_LINES: Dict[str, List[str]] = {
     "name": ["Student: it's {name} again, same as yesterday", "Tutor: nice work {name}, that one was tricky",
              "Student: {name} here. stuck on number 4", "Tutor: {name}, read the question once more for me",
              "Student: can you put {fullname} on the certificate thing", "Tutor: ok {name}, last one and then you're done"],
-    "fullname": ["Student: {fullname}, grade {age} class", "Tutor: logging this session for {fullname}",
+    "fullname": ["Student: {fullname}, period 3 class", "Tutor: logging this session for {fullname}",
                  "Student: the worksheet says {fullname} at the top"],
     "relative": ["Student: {relative} said the answer is 12 but idk", "Student: hold on {relative} is calling me for dinner",
                  "Student: {relative_full} is picking me up so i have 5 min", "Student: {teacher} gave us this and nobody gets it",
@@ -194,7 +194,7 @@ CHAT_LINES: Dict[str, List[str]] = {
                  "{friend} is being so annoying rn", "{relative} took my phone so i'm on the tablet"],
     "school": ["{school} lost again lol", "is {school} closed tmrw too", "the new kid came from {school}"],
     "town": ["we're in {town} till sunday", "{town} is sooo boring", "the tournament is in {town} this year"],
-    "age": ["{age} not 5 stop treating me like a baby", "ur {age}?? i thought u were older", "cant, u have to be {age} for that server",
+    "age": ["{age} not 5 stop treating me like a baby", "ur {age}?? i thought u were older", "cant, my mom says {age} is too young for that server",
             "{age_words} is old enough to stay home alone imo"],
     "date": ["party is {date} dont forget", "sleepover {date}?", "tryouts got moved to {date}"],
     "phone": ["new number {phone}", "txt me {phone}", "{phone} thats my moms if u need a ride"],
@@ -260,7 +260,7 @@ def render(template: str, person: Person) -> Tuple[str, List[Tuple[int, int, str
     return "".join(out), spans
 
 
-def generate(n: int, seed: int, pii_rate: float = 0.5) -> List[dict]:
+def generate(n: int, seed: int, pii_rate: float = 0.5, name: str = "a") -> List[dict]:
     fake = Faker("en_US")
     fake.seed_instance(seed)
     rng = random.Random(seed)
@@ -300,7 +300,7 @@ def generate(n: int, seed: int, pii_rate: float = 0.5) -> List[dict]:
         text = sep.join(text_parts)
         for s, e, l in spans:
             assert text[s:e], (i, s, e, l)
-        docs.append({"doc_id": f"a-{seed}-{i}", "text": text, "gold_spans": [list(s) for s in spans],
+        docs.append({"doc_id": f"{name}-{i:04d}", "text": text, "gold_spans": [list(s) for s in spans],
                      "meta": {"genre": genre, "generator": GENERATOR_VERSION}})
     return docs
 
@@ -360,7 +360,7 @@ def main(argv=None) -> int:
         a.seed = secrets.randbits(31)
         print(f"private seed {a.seed}: keep it with the seal key if you ever need to regenerate; do not commit it",
               file=sys.stderr)
-    docs = generate(a.n, a.seed)
+    docs = generate(a.n, a.seed, name=a.name)
     draft = out_dir / f"{a.name}.draft.jsonl"
     with open(draft, "w", encoding="utf-8", newline="\n") as fh:
         for d in docs:

@@ -69,3 +69,17 @@ def test_generator_templates_do_not_overlap_k12_bench():
     for lit in string_literals(GENERATOR.read_text(encoding="utf-8")):
         if len(lit.split()) >= 4 and "{" in lit:
             assert lit not in theirs_src, lit
+
+
+def test_generator_ids_do_not_carry_the_seed():
+    import gen_acceptance_draft as g  # scripts/ is on sys.path via conftest
+
+    docs = g.generate(5, 987654321, name="A9")
+    assert [d["doc_id"] for d in docs] == [f"A9-{i:04d}" for i in range(5)]
+    assert "987654321" not in json_dumps(docs)
+
+
+def json_dumps(o):
+    import json
+
+    return json.dumps(o)

@@ -66,3 +66,18 @@ def test_key_from_environment_and_mark_used(tmp_path, monkeypatch):
     monkeypatch.setenv(seal.KEY_ENV, "nothex")
     with pytest.raises(seal.SealError):
         seal.load_key()
+
+
+def test_load_sealed_uses_positional_ids(tmp_path):
+    from edshield_evidence.datasets import load_sealed
+
+    sets = tmp_path / "sets"
+    sets.mkdir()
+    draft = sets / "S1.draft.jsonl"
+    draft.write_text(json.dumps({"doc_id": "a-123456789-0", "text": "hi Bo", "gold_spans": [[3, 5, "NAME_STUDENT"]]}) + "\n"
+                     + json.dumps({"doc_id": "a-123456789-1", "text": "bye", "gold_spans": []}) + "\n")
+    seal.seal("S1", draft, key=KEY, sets_dir=sets)
+    ds = load_sealed("S1", key=KEY, sets_dir=sets)
+    assert [d.doc_id for d in ds.docs] == ["S1-0000", "S1-0001"]
+    assert ds.sealed and ds.split == "test" and ds.docs[0].gold_spans == [(3, 5, "NAME_STUDENT")]
+    assert "123456789" not in json.dumps([d.to_record() for d in ds.docs])
