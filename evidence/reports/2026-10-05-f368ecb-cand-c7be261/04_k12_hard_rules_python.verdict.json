@@ -1,0 +1,4790 @@
+{
+  "contract": "2.0",
+  "engine_version": "2.0.0",
+  "name": "edshield 0.2.0 · k12_hard · coppa · rules · python",
+  "split": "validation",
+  "overall": "pass",
+  "views": {
+    "document": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "One row per document with at least one gold span. y_true = 1; y_pred = 1 when no gold span survives whole in that document's output.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.033,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.06870229007633588,
+          "interval": [
+            0.04764269828256637,
+            0.09811187835008528
+          ],
+          "n": 393,
+          "k": 27,
+          "interval_method": "wilson",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            0.8754449702581328,
+            0.9999999999999998
+          ],
+          "n": 27,
+          "k": 27,
+          "interval_method": "wilson",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.06870229007633588,
+          "interval": [
+            0.04764269828256637,
+            0.09811187835008528
+          ],
+          "n": 393,
+          "k": 27,
+          "interval_method": "wilson",
+          "target": 0.033,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "wilson",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                0.8754449702581328,
+                0.9999999999999998
+              ],
+              "n": 27,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "recall": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "wilson"
+            },
+            "tp": 27,
+            "tn": 0,
+            "fp": 0,
+            "fn": 366,
+            "n": 393,
+            "clusters": null
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                0.8754449702581328,
+                0.9999999999999998
+              ],
+              "n": 27,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "recall": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "wilson"
+            },
+            "tp": 27,
+            "tn": 0,
+            "fp": 0,
+            "fn": 366,
+            "n": 393,
+            "clusters": null
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                0.8754449702581328,
+                0.9999999999999998
+              ],
+              "n": 27,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "recall": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "wilson"
+            },
+            "tp": 27,
+            "tn": 0,
+            "fp": 0,
+            "fn": 366,
+            "n": 393,
+            "clusters": null
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                0.8754449702581328,
+                0.9999999999999998
+              ],
+              "n": 27,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "recall": {
+              "value": 0.06870229007633588,
+              "interval": [
+                0.04764269828256637,
+                0.09811187835008528
+              ],
+              "n": 393,
+              "k": 27,
+              "interval_method": "wilson"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "wilson"
+            },
+            "tp": 27,
+            "tn": 0,
+            "fp": 0,
+            "fn": 366,
+            "n": 393,
+            "clusters": null
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.06870229007633588,
+          "interval": [
+            0.04764269828256637,
+            0.09811187835008528
+          ],
+          "n": 393,
+          "k": 27,
+          "interval_method": "wilson"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            0.8754449702581328,
+            0.9999999999999998
+          ],
+          "n": 27,
+          "k": 27,
+          "interval_method": "wilson"
+        },
+        "recall": {
+          "value": 0.06870229007633588,
+          "interval": [
+            0.04764269828256637,
+            0.09811187835008528
+          ],
+          "n": 393,
+          "k": 27,
+          "interval_method": "wilson"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "wilson"
+        },
+        "tp": 27,
+        "tn": 0,
+        "fp": 0,
+        "fn": 366,
+        "n": 393,
+        "clusters": null
+      },
+      "mean": 0.06870229007633588,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% two-sided Wilson intervals assume independent representative observations; intervals are per metric, not simultaneous.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "identifier": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "One row per gold identifier span (cluster = document). y_true = 1; y_pred = 1 when the normalized gold string no longer occurs as a whole word in the final de-identified text.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.221,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.34124214933705516,
+          "interval": [
+            0.31716768756583824,
+            0.3647977288857346
+          ],
+          "n": 1433,
+          "k": 489,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 489,
+          "k": 489,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.34124214933705516,
+          "interval": [
+            0.31716768756583824,
+            0.3647977288857346
+          ],
+          "n": 1433,
+          "k": 489,
+          "interval_method": "cluster_bootstrap",
+          "target": 0.221,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.31716768756583824,
+                0.3647977288857346
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 489,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.31716768756583824,
+                0.3647977288857346
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 489,
+            "tn": 0,
+            "fp": 0,
+            "fn": 944,
+            "n": 1433,
+            "clusters": 393
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.31707276286809694,
+                0.36402420899333676
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 489,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.31707276286809694,
+                0.36402420899333676
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 489,
+            "tn": 0,
+            "fp": 0,
+            "fn": 944,
+            "n": 1433,
+            "clusters": 393
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.3177730312345978,
+                0.36406476384322894
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 489,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.3177730312345978,
+                0.36406476384322894
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 489,
+            "tn": 0,
+            "fp": 0,
+            "fn": 944,
+            "n": 1433,
+            "clusters": 393
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.317325490871464,
+                0.36444006707625165
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 489,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.34124214933705516,
+              "interval": [
+                0.317325490871464,
+                0.36444006707625165
+              ],
+              "n": 1433,
+              "k": 489,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 489,
+            "tn": 0,
+            "fp": 0,
+            "fn": 944,
+            "n": 1433,
+            "clusters": 393
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.34124214933705516,
+          "interval": [
+            0.31716768756583824,
+            0.3647977288857346
+          ],
+          "n": 1433,
+          "k": 489,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 489,
+          "k": 489,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0.34124214933705516,
+          "interval": [
+            0.31716768756583824,
+            0.3647977288857346
+          ],
+          "n": 1433,
+          "k": 489,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 489,
+        "tn": 0,
+        "fp": 0,
+        "fn": 944,
+        "n": 1433,
+        "clusters": 393
+      },
+      "mean": 0.34124214933705516,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "word": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "One row per whitespace token of the original (cluster = document). y_true = 1 if the token overlaps a gold span; y_pred = 1 if the token was replaced or removed in the output. fpr is over-redaction.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": null,
+        "fpr": 0.005,
+        "maxSpread": 0.005,
+        "stabilityMetric": "fpr",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.9373800802372231,
+          "interval": [
+            0.9318258334587788,
+            0.9430378539423508
+          ],
+          "n": 22932,
+          "k": 21496,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 657,
+          "k": 657,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.31390348781653127,
+          "interval": [
+            0.2881389019254114,
+            0.34319187646623883
+          ],
+          "n": 2093,
+          "k": 657,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "fpr",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 20839,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": 0.005,
+          "direction": "max",
+          "status": "pass"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "fpr",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9373800802372231,
+              "interval": [
+                0.9318258334587788,
+                0.9430378539423508
+              ],
+              "n": 22932,
+              "k": 21496,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 657,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.31390348781653127,
+              "interval": [
+                0.2881389019254114,
+                0.34319187646623883
+              ],
+              "n": 2093,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 20839,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 657,
+            "tn": 20839,
+            "fp": 0,
+            "fn": 1436,
+            "n": 22932,
+            "clusters": 400
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9373800802372231,
+              "interval": [
+                0.9321315591851895,
+                0.9427652121245561
+              ],
+              "n": 22932,
+              "k": 21496,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 657,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.31390348781653127,
+              "interval": [
+                0.2880444816748911,
+                0.3399453219727787
+              ],
+              "n": 2093,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 20839,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 657,
+            "tn": 20839,
+            "fp": 0,
+            "fn": 1436,
+            "n": 22932,
+            "clusters": 400
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9373800802372231,
+              "interval": [
+                0.9318028087032814,
+                0.9428147449462809
+              ],
+              "n": 22932,
+              "k": 21496,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 657,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.31390348781653127,
+              "interval": [
+                0.28728263631176254,
+                0.3413581266869717
+              ],
+              "n": 2093,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 20839,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 657,
+            "tn": 20839,
+            "fp": 0,
+            "fn": 1436,
+            "n": 22932,
+            "clusters": 400
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9373800802372231,
+              "interval": [
+                0.9317402166949682,
+                0.9422697049057852
+              ],
+              "n": 22932,
+              "k": 21496,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 657,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.31390348781653127,
+              "interval": [
+                0.2881480614339432,
+                0.33832510407365746
+              ],
+              "n": 2093,
+              "k": 657,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 20839,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 657,
+            "tn": 20839,
+            "fp": 0,
+            "fn": 1436,
+            "n": 22932,
+            "clusters": 400
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.9373800802372231,
+          "interval": [
+            0.9318258334587788,
+            0.9430378539423508
+          ],
+          "n": 22932,
+          "k": 21496,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 657,
+          "k": 657,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0.31390348781653127,
+          "interval": [
+            0.2881389019254114,
+            0.34319187646623883
+          ],
+          "n": 2093,
+          "k": 657,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 20839,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 657,
+        "tn": 20839,
+        "fp": 0,
+        "fn": 1436,
+        "n": 22932,
+        "clusters": 400
+      },
+      "mean": 0,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:AGE": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label AGE.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.521,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.9951219512195122,
+          "interval": [
+            0.9848465620673743,
+            1
+          ],
+          "n": 205,
+          "k": 204,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 204,
+          "k": 204,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.9951219512195122,
+          "interval": [
+            0.9848465620673743,
+            1
+          ],
+          "n": 205,
+          "k": 204,
+          "interval_method": "cluster_bootstrap",
+          "target": 0.521,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9848465620673743,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 204,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9848465620673743,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 204,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1,
+            "n": 205,
+            "clusters": 160
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9846919152276296,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 204,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9846919152276296,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 204,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1,
+            "n": 205,
+            "clusters": 160
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9848484848484849,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 204,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9848484848484849,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 204,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1,
+            "n": 205,
+            "clusters": 160
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9849246231155779,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 204,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.9951219512195122,
+              "interval": [
+                0.9849246231155779,
+                1
+              ],
+              "n": 205,
+              "k": 204,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 204,
+            "tn": 0,
+            "fp": 0,
+            "fn": 1,
+            "n": 205,
+            "clusters": 160
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.9951219512195122,
+          "interval": [
+            0.9848465620673743,
+            1
+          ],
+          "n": 205,
+          "k": 204,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 204,
+          "k": 204,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0.9951219512195122,
+          "interval": [
+            0.9848465620673743,
+            1
+          ],
+          "n": 205,
+          "k": 204,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 204,
+        "tn": 0,
+        "fp": 0,
+        "fn": 1,
+        "n": 205,
+        "clusters": 160
+      },
+      "mean": 0.9951219512195122,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:DATE": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label DATE.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.464,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 71,
+          "k": 71,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 71,
+          "k": 71,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 71,
+          "k": 71,
+          "interval_method": "cluster_bootstrap",
+          "target": 0.464,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 71,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 71,
+            "clusters": 68
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 71,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 71,
+            "clusters": 68
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 71,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 71,
+            "clusters": 68
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 71,
+              "k": 71,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 71,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 71,
+            "clusters": 68
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 71,
+          "k": 71,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 71,
+          "k": 71,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 71,
+          "k": 71,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 71,
+        "tn": 0,
+        "fp": 0,
+        "fn": 0,
+        "n": 71,
+        "clusters": 68
+      },
+      "mean": 1,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:EMAIL": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label EMAIL.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 90,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 90,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": 0,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 90,
+            "n": 90,
+            "clusters": 72
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 90,
+            "n": 90,
+            "clusters": 72
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 90,
+            "n": 90,
+            "clusters": 72
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 90,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 90,
+            "n": 90,
+            "clusters": 72
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 90,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 90,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 0,
+        "tn": 0,
+        "fp": 0,
+        "fn": 90,
+        "n": 90,
+        "clusters": 72
+      },
+      "mean": 0,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:ID_NUM": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label ID_NUM.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 1,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 57,
+          "k": 57,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 57,
+          "k": 57,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 57,
+          "k": 57,
+          "interval_method": "cluster_bootstrap",
+          "target": 1,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 57,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 57,
+            "clusters": 51
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 57,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 57,
+            "clusters": 51
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 57,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 57,
+            "clusters": 51
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 57,
+              "k": 57,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 57,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 57,
+            "clusters": 51
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 57,
+          "k": 57,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 57,
+          "k": 57,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 57,
+          "k": 57,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 57,
+        "tn": 0,
+        "fp": 0,
+        "fn": 0,
+        "n": 57,
+        "clusters": 51
+      },
+      "mean": 1,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:LOCATION": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label LOCATION.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 122,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 122,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": 0,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 122,
+            "n": 122,
+            "clusters": 107
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 122,
+            "n": 122,
+            "clusters": 107
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 122,
+            "n": 122,
+            "clusters": 107
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 122,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 122,
+            "n": 122,
+            "clusters": 107
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 122,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 122,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 0,
+        "tn": 0,
+        "fp": 0,
+        "fn": 122,
+        "n": 122,
+        "clusters": 107
+      },
+      "mean": 0,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:NAME_RELATED": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label NAME_RELATED.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.187,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.1875,
+          "interval": [
+            0.13911856046766533,
+            0.24096385542168675
+          ],
+          "n": 240,
+          "k": 45,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 45,
+          "k": 45,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.1875,
+          "interval": [
+            0.13911856046766533,
+            0.24096385542168675
+          ],
+          "n": 240,
+          "k": 45,
+          "interval_method": "cluster_bootstrap",
+          "target": 0.187,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.1875,
+              "interval": [
+                0.13911856046766533,
+                0.24096385542168675
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 45,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.1875,
+              "interval": [
+                0.13911856046766533,
+                0.24096385542168675
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 45,
+            "tn": 0,
+            "fp": 0,
+            "fn": 195,
+            "n": 240,
+            "clusters": 188
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.1875,
+              "interval": [
+                0.13922588022550791,
+                0.24066582142308285
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 45,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.1875,
+              "interval": [
+                0.13922588022550791,
+                0.24066582142308285
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 45,
+            "tn": 0,
+            "fp": 0,
+            "fn": 195,
+            "n": 240,
+            "clusters": 188
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.1875,
+              "interval": [
+                0.135240281524521,
+                0.23922702965483714
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 45,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.1875,
+              "interval": [
+                0.135240281524521,
+                0.23922702965483714
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 45,
+            "tn": 0,
+            "fp": 0,
+            "fn": 195,
+            "n": 240,
+            "clusters": 188
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.1875,
+              "interval": [
+                0.1355845373714921,
+                0.2379080261136713
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 45,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.1875,
+              "interval": [
+                0.1355845373714921,
+                0.2379080261136713
+              ],
+              "n": 240,
+              "k": 45,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 45,
+            "tn": 0,
+            "fp": 0,
+            "fn": 195,
+            "n": 240,
+            "clusters": 188
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.1875,
+          "interval": [
+            0.13911856046766533,
+            0.24096385542168675
+          ],
+          "n": 240,
+          "k": 45,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 45,
+          "k": 45,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0.1875,
+          "interval": [
+            0.13911856046766533,
+            0.24096385542168675
+          ],
+          "n": 240,
+          "k": 45,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 45,
+        "tn": 0,
+        "fp": 0,
+        "fn": 195,
+        "n": 240,
+        "clusters": 188
+      },
+      "mean": 0.1875,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:NAME_STUDENT": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label NAME_STUDENT.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.002,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.002849002849002849,
+          "interval": [
+            0,
+            0.008746355685131196
+          ],
+          "n": 351,
+          "k": 1,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 1,
+          "k": 1,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.002849002849002849,
+          "interval": [
+            0,
+            0.008746355685131196
+          ],
+          "n": 351,
+          "k": 1,
+          "interval_method": "cluster_bootstrap",
+          "target": 0.002,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.008746355685131196
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 1,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.008746355685131196
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 1,
+            "tn": 0,
+            "fp": 0,
+            "fn": 350,
+            "n": 351,
+            "clusters": 213
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.008929237739872068
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 1,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.008929237739872068
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 1,
+            "tn": 0,
+            "fp": 0,
+            "fn": 350,
+            "n": 351,
+            "clusters": 213
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.009176435609921848
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 1,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.009176435609921848
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 1,
+            "tn": 0,
+            "fp": 0,
+            "fn": 350,
+            "n": 351,
+            "clusters": 213
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.008902077151335312
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 1,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.002849002849002849,
+              "interval": [
+                0,
+                0.008902077151335312
+              ],
+              "n": 351,
+              "k": 1,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 1,
+            "tn": 0,
+            "fp": 0,
+            "fn": 350,
+            "n": 351,
+            "clusters": 213
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.002849002849002849,
+          "interval": [
+            0,
+            0.008746355685131196
+          ],
+          "n": 351,
+          "k": 1,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 1,
+          "k": 1,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0.002849002849002849,
+          "interval": [
+            0,
+            0.008746355685131196
+          ],
+          "n": 351,
+          "k": 1,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 1,
+        "tn": 0,
+        "fp": 0,
+        "fn": 350,
+        "n": 351,
+        "clusters": 213
+      },
+      "mean": 0.002849002849002849,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:PHONE_NUM": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label PHONE_NUM.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 1,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 75,
+          "k": 75,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 75,
+          "k": 75,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 75,
+          "k": 75,
+          "interval_method": "cluster_bootstrap",
+          "target": 1,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 75,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 75,
+            "clusters": 68
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 75,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 75,
+            "clusters": 68
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 75,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 75,
+            "clusters": 68
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 75,
+              "k": 75,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 75,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0,
+            "n": 75,
+            "clusters": 68
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 75,
+          "k": 75,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 75,
+          "k": 75,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 75,
+          "k": 75,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 75,
+        "tn": 0,
+        "fp": 0,
+        "fn": 0,
+        "n": 75,
+        "clusters": 68
+      },
+      "mean": 1,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:SCHOOL": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label SCHOOL.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0.3103448275862069,
+          "interval": [
+            0.22123893805309736,
+            0.39477833096254145
+          ],
+          "n": 116,
+          "k": 36,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 36,
+          "k": 36,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0.3103448275862069,
+          "interval": [
+            0.22123893805309736,
+            0.39477833096254145
+          ],
+          "n": 116,
+          "k": 36,
+          "interval_method": "cluster_bootstrap",
+          "target": 0,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.22123893805309736,
+                0.39477833096254145
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 36,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.22123893805309736,
+                0.39477833096254145
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 36,
+            "tn": 0,
+            "fp": 0,
+            "fn": 80,
+            "n": 116,
+            "clusters": 105
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.21736192714453584,
+                0.40336134453781514
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 36,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.21736192714453584,
+                0.40336134453781514
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 36,
+            "tn": 0,
+            "fp": 0,
+            "fn": 80,
+            "n": 116,
+            "clusters": 105
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.22027405686167303,
+                0.4090909090909091
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 36,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.22027405686167303,
+                0.4090909090909091
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 36,
+            "tn": 0,
+            "fp": 0,
+            "fn": 80,
+            "n": 116,
+            "clusters": 105
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.21927797434763377,
+                0.4
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": 1,
+              "interval": [
+                1,
+                1
+              ],
+              "n": 36,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0.3103448275862069,
+              "interval": [
+                0.21927797434763377,
+                0.4
+              ],
+              "n": 116,
+              "k": 36,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 36,
+            "tn": 0,
+            "fp": 0,
+            "fn": 80,
+            "n": 116,
+            "clusters": 105
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0.3103448275862069,
+          "interval": [
+            0.22123893805309736,
+            0.39477833096254145
+          ],
+          "n": 116,
+          "k": 36,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": 1,
+          "interval": [
+            1,
+            1
+          ],
+          "n": 36,
+          "k": 36,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0.3103448275862069,
+          "interval": [
+            0.22123893805309736,
+            0.39477833096254145
+          ],
+          "n": 116,
+          "k": 36,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 36,
+        "tn": 0,
+        "fp": 0,
+        "fn": 80,
+        "n": 116,
+        "clusters": 105
+      },
+      "mean": 0.3103448275862069,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:STREET_ADDRESS": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label STREET_ADDRESS.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": false,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 34,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 34,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": 0,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 34,
+            "n": 34,
+            "clusters": 31
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 34,
+            "n": 34,
+            "clusters": 31
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 34,
+            "n": 34,
+            "clusters": 31
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 34,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 34,
+            "n": 34,
+            "clusters": 31
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 34,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 34,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 0,
+        "tn": 0,
+        "fp": 0,
+        "fn": 34,
+        "n": 34,
+        "clusters": 31
+      },
+      "mean": 0,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    },
+    "type:USERNAME": {
+      "version": "1.0",
+      "split": "validation",
+      "description": "Identifier rows restricted to gold label USERNAME.",
+      "selectedRun": "seed-0",
+      "policy": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true,
+        "confidence": false,
+        "minRuns": 3
+      },
+      "gates": [
+        {
+          "key": "accuracy",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 72,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "precision",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "min",
+          "status": "skipped"
+        },
+        {
+          "key": "recall",
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 72,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": 0,
+          "direction": "min",
+          "status": "pass"
+        },
+        {
+          "key": "fpr",
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap",
+          "target": null,
+          "direction": "max",
+          "status": "skipped"
+        }
+      ],
+      "performance": "pass",
+      "stability": "pass",
+      "stabilityMetric": "recall",
+      "reproducibility": "pass",
+      "overall": "pass",
+      "runs": [
+        {
+          "id": "seed-0",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 72,
+            "n": 72,
+            "clusters": 64
+          }
+        },
+        {
+          "id": "seed-1",
+          "seed": 1,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 72,
+            "n": 72,
+            "clusters": 64
+          }
+        },
+        {
+          "id": "seed-2",
+          "seed": 2,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 72,
+            "n": 72,
+            "clusters": 64
+          }
+        },
+        {
+          "id": "seed-0-repeat",
+          "seed": 0,
+          "metrics": {
+            "accuracy": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "precision": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "recall": {
+              "value": 0,
+              "interval": [
+                0,
+                0
+              ],
+              "n": 72,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "fpr": {
+              "value": null,
+              "interval": null,
+              "n": 0,
+              "k": 0,
+              "interval_method": "cluster_bootstrap"
+            },
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 72,
+            "n": 72,
+            "clusters": 64
+          }
+        }
+      ],
+      "confusion": {
+        "accuracy": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 72,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "precision": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "recall": {
+          "value": 0,
+          "interval": [
+            0,
+            0
+          ],
+          "n": 72,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "fpr": {
+          "value": null,
+          "interval": null,
+          "n": 0,
+          "k": 0,
+          "interval_method": "cluster_bootstrap"
+        },
+        "tp": 0,
+        "tn": 0,
+        "fp": 0,
+        "fn": 72,
+        "n": 72,
+        "clusters": 64
+      },
+      "mean": 0,
+      "spread": 0,
+      "distinctSeeds": 3,
+      "agreement": 1,
+      "comparableGroups": 1,
+      "notes": [
+        "Binary classification: 1 is the positive class.",
+        "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters.",
+        "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+        "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+        "Final-test results must not be repeatedly used to tune the model or thresholds."
+      ]
+    }
+  },
+  "requiredViews": [
+    "document",
+    "identifier",
+    "word",
+    "type:AGE",
+    "type:DATE",
+    "type:EMAIL",
+    "type:ID_NUM",
+    "type:LOCATION",
+    "type:NAME_RELATED",
+    "type:NAME_STUDENT",
+    "type:PHONE_NUM",
+    "type:SCHOOL",
+    "type:USERNAME"
+  ],
+  "policy": {
+    "contract": "2.0",
+    "confidence": false,
+    "minRuns": 3,
+    "views": {
+      "identifier": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.221,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "document": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.033,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "word": {
+        "accuracy": null,
+        "precision": null,
+        "recall": null,
+        "fpr": 0.005,
+        "maxSpread": 0.005,
+        "stabilityMetric": "fpr",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:NAME_STUDENT": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.002,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:NAME_RELATED": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.187,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:AGE": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.521,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:LOCATION": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:SCHOOL": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:EMAIL": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:PHONE_NUM": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 1,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:USERNAME": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:DATE": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0.464,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:ID_NUM": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 1,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": true
+      },
+      "type:STREET_ADDRESS": {
+        "accuracy": null,
+        "precision": null,
+        "recall": 0,
+        "fpr": null,
+        "maxSpread": 0.005,
+        "stabilityMetric": "recall",
+        "selectedRun": "seed-0",
+        "required": false
+      }
+    }
+  },
+  "policy_sha256": "ba84826dfe470a6d3988e240b993d36123c175b6f39dc55eb88ea2d4fb6a2385",
+  "input_sha256": "0e362e2a3768f0c6adfaa490b70a10928b9c3551fb4817f0e7dd0bbc87f24a90",
+  "notes": [
+    "Binary classification: 1 is the positive class.",
+    "95% two-sided Wilson intervals assume independent representative observations; intervals are per metric, not simultaneous.",
+    "Data split and artifact hashes are supplied by the submitter, not independently verified.",
+    "Repeated-run stability is descriptive; it is not a guarantee about future runs.",
+    "Final-test results must not be repeatedly used to tune the model or thresholds.",
+    "Views are judged independently; the bundle verdict is the worst required view.",
+    "95% cluster-bootstrap intervals (1000 resamples of whole clusters, percentile method, seeded by run id) assume clusters are independent; they are per metric, not simultaneous, and unreliable with very few clusters."
+  ]
+}

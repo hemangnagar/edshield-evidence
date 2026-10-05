@@ -1,0 +1,344 @@
+{
+ "bundle": "edshield 0.2.0 · piilo_holdout · coppa · rules+model · python",
+ "dataset": "piilo_holdout",
+ "data_sha256": "bc5d0958b72eee52a7fd38b84ac4c775128eefae6f9e8acee5dbc710cea1ecf8",
+ "policy": "coppa",
+ "policy_fingerprint": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "detector": "rules+model",
+ "runtime": "python",
+ "text_included": false,
+ "runs": [
+  {
+   "id": "seed-0",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 372.38,
+   "n_documents": 680,
+   "n_documents_with_gold": 99,
+   "n_gold": 165,
+   "full_residuals": 0,
+   "partial_residuals": 1,
+   "identifier_recall": 1.0,
+   "by_label": {
+    "EMAIL": {
+     "n": 4,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 7,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 143,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 1,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "URL_PERSONAL": {
+     "n": 8,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 2,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "EMAIL": {
+     "EMAIL": 4
+    },
+    "ID_NUM": {
+     "ID_NUM": 7
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 143
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 1
+    },
+    "URL_PERSONAL": {
+     "URL_PERSONAL": 8
+    },
+    "USERNAME": {
+     "USERNAME": 2
+    }
+   },
+   "word": {
+    "n": 427681,
+    "tp": 293,
+    "fp": 331,
+    "fn": 1,
+    "tn": 427056,
+    "fpr": 0.0007744737205389962
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 5,
+   "text_included": false
+  },
+  {
+   "id": "seed-1",
+   "seed": 1,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 372.17,
+   "n_documents": 680,
+   "n_documents_with_gold": 99,
+   "n_gold": 165,
+   "full_residuals": 0,
+   "partial_residuals": 1,
+   "identifier_recall": 1.0,
+   "by_label": {
+    "EMAIL": {
+     "n": 4,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 7,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 143,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 1,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "URL_PERSONAL": {
+     "n": 8,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 2,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "EMAIL": {
+     "EMAIL": 4
+    },
+    "ID_NUM": {
+     "ID_NUM": 7
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 143
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 1
+    },
+    "URL_PERSONAL": {
+     "URL_PERSONAL": 8
+    },
+    "USERNAME": {
+     "USERNAME": 2
+    }
+   },
+   "word": {
+    "n": 427681,
+    "tp": 293,
+    "fp": 331,
+    "fn": 1,
+    "tn": 427056,
+    "fpr": 0.0007744737205389962
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 5,
+   "text_included": false
+  },
+  {
+   "id": "seed-2",
+   "seed": 2,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 371.98,
+   "n_documents": 680,
+   "n_documents_with_gold": 99,
+   "n_gold": 165,
+   "full_residuals": 0,
+   "partial_residuals": 1,
+   "identifier_recall": 1.0,
+   "by_label": {
+    "EMAIL": {
+     "n": 4,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 7,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 143,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 1,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "URL_PERSONAL": {
+     "n": 8,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 2,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "EMAIL": {
+     "EMAIL": 4
+    },
+    "ID_NUM": {
+     "ID_NUM": 7
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 143
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 1
+    },
+    "URL_PERSONAL": {
+     "URL_PERSONAL": 8
+    },
+    "USERNAME": {
+     "USERNAME": 2
+    }
+   },
+   "word": {
+    "n": 427681,
+    "tp": 293,
+    "fp": 331,
+    "fn": 1,
+    "tn": 427056,
+    "fpr": 0.0007744737205389962
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 5,
+   "text_included": false
+  },
+  {
+   "id": "seed-0-repeat",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield/models/piilo-deberta-v3-small-v2",
+   "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+   "seconds": 371.76,
+   "n_documents": 680,
+   "n_documents_with_gold": 99,
+   "n_gold": 165,
+   "full_residuals": 0,
+   "partial_residuals": 1,
+   "identifier_recall": 1.0,
+   "by_label": {
+    "EMAIL": {
+     "n": 4,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 7,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 143,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 1,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "URL_PERSONAL": {
+     "n": 8,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 2,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "EMAIL": {
+     "EMAIL": 4
+    },
+    "ID_NUM": {
+     "ID_NUM": 7
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 143
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 1
+    },
+    "URL_PERSONAL": {
+     "URL_PERSONAL": 8
+    },
+    "USERNAME": {
+     "USERNAME": 2
+    }
+   },
+   "word": {
+    "n": 427681,
+    "tp": 293,
+    "fp": 331,
+    "fn": 1,
+    "tn": 427056,
+    "fpr": 0.0007744737205389962
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 5,
+   "text_included": false
+  }
+ ]
+}
