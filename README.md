@@ -61,6 +61,7 @@ evidence/
   ledger.md
 judge/               git submodule -> model-evidence v2.0.0
 docs/LOOP.md         the bounded experiment loop and the agent-role boundaries
+docs/ARCHITECTURE.md diagrams: the two agents, the judge, the data flow, what is automated
 .github/workflows/   regression.yml (pull_request), acceptance.yml (workflow_dispatch)
 ```
 
