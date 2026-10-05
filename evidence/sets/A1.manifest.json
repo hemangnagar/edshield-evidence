@@ -1,0 +1,25 @@
+{
+  "set": "A1",
+  "sha256": "33cd35f40e718969737421284e3e8c9281a13b8219d64266292f0b8856d8aa99",
+  "size_bytes": 169312,
+  "n_documents": 400,
+  "label_counts": {
+    "AGE": 106,
+    "DATE": 103,
+    "EMAIL": 95,
+    "ID_NUM": 100,
+    "LOCATION": 111,
+    "NAME_RELATED": 113,
+    "NAME_STUDENT": 153,
+    "PHONE_NUM": 101,
+    "SCHOOL": 100,
+    "STREET_ADDRESS": 95,
+    "USERNAME": 106
+  },
+  "generator_version": "a-draft-3",
+  "review_date": "2026-10-05",
+  "sealed_at": "2026-10-05T04:06:53+00:00",
+  "cipher": "AES-256-GCM",
+  "role": "acceptance",
+  "used_for_decision": null
+}
