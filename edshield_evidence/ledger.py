@@ -94,7 +94,7 @@ def entry_from_report(report_dir: Path, key: str, note: str = "") -> Dict[str, s
         "policy": f"{md['policy']} ({md['policy_fingerprint'][:8]})",
         "detector": md["detector"],
         "runtime": md["runtime"],
-        "edshield commit": f"{md['edshield_version']} ({md['edshield_commit'][:7]})",
+        "edshield commit": f"{md['edshield_version']} ({md['edshield_commit'][:7]}{' candidate' if md.get('edshield_candidate') else ''})",
         "recipe sha": md["recipe_sha256"][:12],
         "identifier recall [interval]": f"{_fmt(ident.get('value'))} {_interval(ident)}" if ident else "n/a",
         "document recall": _fmt(doc.get("value")) if doc else "n/a",

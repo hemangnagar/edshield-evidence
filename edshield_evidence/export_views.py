@@ -27,6 +27,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import sys
 import time
 from collections import Counter, defaultdict
@@ -211,7 +212,10 @@ def build_bundle(dataset: Dataset, results: Sequence[RunResult], *, policy: str,
             "model": model_ref,
             "o_threshold": o_threshold,
             "edshield_version": recipe["edshield_version"],
-            "edshield_commit": EDSHIELD_COMMIT,
+            # A candidate edshield installed from a checkout is measured under its own commit:
+            # EDSHIELD_EVIDENCE_SUT_COMMIT=<sha> (baseline.sh sets it from EDSHIELD_SRC when given).
+            "edshield_commit": os.environ.get("EDSHIELD_EVIDENCE_SUT_COMMIT", EDSHIELD_COMMIT),
+            "edshield_candidate": bool(os.environ.get("EDSHIELD_EVIDENCE_SUT_COMMIT")),
             "exporter_version": EXPORTER_VERSION,
             "judge_tag": JUDGE_TAG,
             "recipe": recipe,

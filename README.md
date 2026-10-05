@@ -164,6 +164,18 @@ local machine with the PIILO holdout and the model; its README notes that its
 step 1 bundle was split and its PIILO diagnostics stripped of text by hand,
 before the code did either).
 
+Measuring a candidate edshield (a checkout on a branch) instead of the pinned release:
+
+```bash
+pip install -e /path/to/edshield-checkout
+EDSHIELD_SRC=/path/to/edshield-checkout scripts/baseline.sh --steps "1 3 4"
+pip install edshield==0.2.0          # restore the pin afterwards
+```
+
+The report directory gets a `-cand-<sha>` suffix, the bundles and the ledger
+row record the candidate's commit, and the judge compares it with the pinned
+regression targets. `ledger pin` is still only run by a human, after a merge.
+
 One step by hand:
 
 ```bash

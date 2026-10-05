@@ -35,12 +35,19 @@ while [ $# -gt 0 ]; do
   esac
 done
 SEEDS="${BASELINE_SEEDS:-0 1 2}"
+# Measuring a candidate edshield: EDSHIELD_SRC=<checkout> records its commit in the bundles and
+# the ledger (install it first: pip install -e "$EDSHIELD_SRC"). Without it the pinned release is assumed.
+if [ -n "${EDSHIELD_SRC:-}" ]; then
+  export EDSHIELD_EVIDENCE_SUT_COMMIT="$(git -C "$EDSHIELD_SRC" rev-parse HEAD)"
+  echo "candidate edshield: $EDSHIELD_SRC at ${EDSHIELD_EVIDENCE_SUT_COMMIT:0:7}"
+fi
 POLICY="${BASELINE_POLICY:-coppa}"
 JUDGE="$HERE/judge/dist/run-evidence.mjs"
 [ -f "$JUDGE" ] || { echo "judge missing: git submodule update --init" >&2; exit 2; }
 if [ -z "$REPORT_DIR" ]; then
   SHORT="$(git rev-parse --short HEAD 2>/dev/null || echo nogit)"
   REPORT_DIR="evidence/reports/$(date -u +%Y-%m-%d)-$SHORT"
+  [ -n "${EDSHIELD_EVIDENCE_SUT_COMMIT:-}" ] && REPORT_DIR="$REPORT_DIR-cand-${EDSHIELD_EVIDENCE_SUT_COMMIT:0:7}"
 fi
 mkdir -p "$REPORT_DIR"
 echo "report directory: $REPORT_DIR"
