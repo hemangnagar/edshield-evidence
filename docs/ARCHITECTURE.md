@@ -4,7 +4,7 @@ State on 2026-10-05. This page shows who does what in the edshield improvement
 loop, what moves between them, and which steps still need a person. The rules
 each role works under are in [LOOP.md](LOOP.md).
 
-![How edshield gets better: two AI agents in the workshop, a fixed judge on the scales, a sealed test and a human review at the gate, and a record of every run](how-edshield-gets-better.png)
+![edshield agent loop: two AI agents change the system, each try runs through edshield and the measurement bench, a fixed judge gives the verdict, guardrails keep the loop honest, and a sealed test plus human review gate any release](edshield-agent-loop.png)
 
 Two Claude Code agents do the work. Neither decides whether edshield is good
 enough: a pinned, task-blind judge does that from rows and a policy file, and
