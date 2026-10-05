@@ -217,11 +217,16 @@ starts with `ratify:`. Until then every summary carries
 
 ## Seal a set
 
+This repository is public, so a draft that is going to be sealed is
+generated on a private machine with a private seed and is never committed
+(drafts are git-ignored). A committed draft, or a committed seed with this
+generator, would leave the "sealed" set readable in git history.
+
 ```bash
-python scripts/gen_acceptance_draft.py A1 --n 400 --seed 11     # -> evidence/sets/A1.draft.jsonl + A1.draft.review.md
+python scripts/gen_acceptance_draft.py A1 --n 400        # fresh private seed, printed once; -> evidence/sets/A1.draft.jsonl + A1.draft.review.md (both ignored by git)
 # a human reviews A1.draft.review.md, edits A1.draft.jsonl, then:
-export EDSHIELD_EVIDENCE_SEAL_KEY=$(python -m edshield_evidence.seal keygen)   # keep it in a password manager and as a repo secret
-python -m edshield_evidence.seal seal A1 --from evidence/sets/A1.draft.jsonl --review-date 2026-10-04 --generator-version a-draft-1
+export EDSHIELD_EVIDENCE_SEAL_KEY=$(python -m edshield_evidence.seal keygen)   # keep it in a password manager and as the repo secret
+python -m edshield_evidence.seal seal A1 --from evidence/sets/A1.draft.jsonl --review-date 2026-10-05 --generator-version a-draft-3
 ```
 
 Sealing writes `A1.sha256`, `A1.jsonl.enc` (AES-256-GCM, key from
@@ -233,7 +238,9 @@ the exporter decrypts `sealed:A1` in memory. Once a verdict has been opened
 for diagnosis, `seal mark-used A1 <report id>` records it and moves the set
 to the regression role; draft `A2`.
 
-The A1 draft in this repo is **not sealed**; that is a human step.
+No draft is kept in this repo. An early A1 draft (seed 11) was committed
+before this rule and later removed; treat anything generated with that seed
+as a practice set, never as an acceptance set.
 
 ## Ledger
 

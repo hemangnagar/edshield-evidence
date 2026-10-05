@@ -5,8 +5,11 @@ build/
 dist/
 .pytest_cache/
 .venv/
-# unsealed acceptance data must never be committed
+# unsealed acceptance data must never be committed; drafts for sealing are generated privately
 evidence/sets/*.unsealed*
+evidence/sets/*.draft.jsonl
+evidence/sets/*.draft.review.md
+evidence/sets/*seal-key*
 evidence/sets/**/unsealed/
 /tmp/
 # local scratch bundles

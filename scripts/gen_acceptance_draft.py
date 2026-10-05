@@ -14,6 +14,11 @@ writes evidence/sets/A1.draft.jsonl (doc_id, text, gold_spans) and
 evidence/sets/A1.draft.review.md with 50 random documents for human review.
 The human edits or approves, then seals with `python -m edshield_evidence.seal`.
 This script never seals.
+
+A draft meant for sealing is generated on a private machine with a private
+seed (omit --seed) and is never committed: the repository is public, so a
+committed draft, or a committed seed with this generator, would make the
+seal cosmetic. Drafts are ignored by git; only the sealed files are pushed.
 """
 
 from __future__ import annotations
@@ -30,7 +35,7 @@ from typing import Callable, Dict, List, Tuple
 
 from faker import Faker
 
-GENERATOR_VERSION = "a-draft-2"
+GENERATOR_VERSION = "a-draft-3"
 
 HERE = Path(__file__).resolve().parent.parent
 SETS_DIR = HERE / "evidence" / "sets"
@@ -338,7 +343,9 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("name", help="A1, A2, ...")
     ap.add_argument("--n", type=int, default=400)
-    ap.add_argument("--seed", type=int, default=11)
+    ap.add_argument("--seed", type=int, default=None,
+                    help="omit for a fresh private seed (recommended for a set that will be sealed); "
+                         "the seed is printed once and never written into the repo")
     ap.add_argument("--review", type=int, default=50)
     ap.add_argument("--out-dir", default=str(SETS_DIR))
     a = ap.parse_args(argv)
@@ -347,6 +354,12 @@ def main(argv=None) -> int:
     if (out_dir / f"{a.name}.jsonl.enc").exists():
         print(f"{a.name} is already sealed; draft the next set instead", file=sys.stderr)
         return 1
+    if a.seed is None:
+        import secrets
+
+        a.seed = secrets.randbits(31)
+        print(f"private seed {a.seed}: keep it with the seal key if you ever need to regenerate; do not commit it",
+              file=sys.stderr)
     docs = generate(a.n, a.seed)
     draft = out_dir / f"{a.name}.draft.jsonl"
     with open(draft, "w", encoding="utf-8", newline="\n") as fh:
