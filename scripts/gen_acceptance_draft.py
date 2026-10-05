@@ -30,7 +30,7 @@ from typing import Callable, Dict, List, Tuple
 
 from faker import Faker
 
-GENERATOR_VERSION = "a-draft-1"
+GENERATOR_VERSION = "a-draft-2"
 
 HERE = Path(__file__).resolve().parent.parent
 SETS_DIR = HERE / "evidence" / "sets"
@@ -165,8 +165,8 @@ TUTOR_LINES: Dict[str, List[str]] = {
                "Student: {school} has a test on this friday"],
     "town": ["Student: it snowed in {town} so no school tmrw", "Student: we went to the library in {town} for this",
              "Tutor: is {town} on the same time zone as me"],
-    "age": ["Student: im {age} so i should know this by now", "Student: everyone whos {age} already did fractions",
-            "Tutor: for someone whos {age} this is really good", "Student: turning {age} next month actually"],
+    "age": ["Student: {age} and still counting on my fingers lol", "Student: everyone whos {age} already did fractions",
+            "Tutor: for someone whos {age} this is really good", "Student: {age} next month actually, big party"],
     "date": ["Student: the project is due {date} and i havent started", "Student: my recital is {date} so cant do tuesday",
              "Tutor: we'll pick this up {date} then"],
     "phone": ["Student: text {phone} if the link breaks", "Student: dad said call {phone} when we're done",
@@ -189,7 +189,7 @@ CHAT_LINES: Dict[str, List[str]] = {
                  "{friend} is being so annoying rn", "{relative} took my phone so i'm on the tablet"],
     "school": ["{school} lost again lol", "is {school} closed tmrw too", "the new kid came from {school}"],
     "town": ["we're in {town} till sunday", "{town} is sooo boring", "the tournament is in {town} this year"],
-    "age": ["im {age} not 5 stop", "ur {age}?? i thought u were older", "cant, u have to be {age} for that server",
+    "age": ["{age} not 5 stop treating me like a baby", "ur {age}?? i thought u were older", "cant, u have to be {age} for that server",
             "{age_words} is old enough to stay home alone imo"],
     "date": ["party is {date} dont forget", "sleepover {date}?", "tryouts got moved to {date}"],
     "phone": ["new number {phone}", "txt me {phone}", "{phone} thats my moms if u need a ride"],
@@ -203,7 +203,7 @@ CHAT_LINES: Dict[str, List[str]] = {
 REFLECTION_LINES: Dict[str, List[str]] = {
     "name": ["Everyone calls me {name} even though it is not my real name.", "This reflection is by {fullname}.",
              "When the coach yelled {name} I knew I was in trouble.", "{name} is how I sign all my drawings."],
-    "fullname": ["Written by {fullname} for the spring portfolio.", "{fullname} - period 3",
+    "fullname": ["Spring portfolio, {fullname}, room 12.", "{fullname} - period 3",
                  "I am {fullname} and this is what I learned this year."],
     "relative": ["{relative} drives me to school when it rains.", "{relative_full} came to the science fair and took pictures.",
                  "{teacher} is the strictest teacher I have ever had.", "{friend} and I built the volcano together."],
