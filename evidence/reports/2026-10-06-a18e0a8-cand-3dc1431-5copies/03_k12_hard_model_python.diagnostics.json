@@ -1,0 +1,3791 @@
+{
+ "bundle": "edshield 0.2.0 · k12_hard · coppa · rules+model · python",
+ "dataset": "k12_hard",
+ "data_sha256": "3da490d78315057c13668263b779ffd408f06471c8a567ff939a24b28aa1149c",
+ "policy": "coppa",
+ "policy_fingerprint": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "detector": "rules+model",
+ "runtime": "python",
+ "text_included": true,
+ "runs": [
+  {
+   "id": "seed-0",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/ckpt-seed0",
+   "model_sha256": "635201c6e1f775d4ed8c369c655a10c1f4be0b578905059a5472370f0294ffe9",
+   "seconds": 51.66,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 1,
+   "partial_residuals": 23,
+   "identifier_recall": 0.9993021632937893,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 195,
+     "NAME_STUDENT": 10
+    },
+    "DATE": {
+     "DATE": 66,
+     "LOCATION": 4,
+     "NAME_STUDENT": 1
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 2,
+     "NAME_STUDENT": 238
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 351
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "LOCATION": 2,
+     "NAME_STUDENT": 7,
+     "SCHOOL": 107
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2080,
+    "fp": 47,
+    "fn": 13,
+    "tn": 20792,
+    "fpr": 0.0022553865348625174
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 1,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-1",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in woodtown rn\ncan you make it sound less boring\nmy te",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-9",
+     "token": "rn",
+     "start": 18,
+     "end": 20,
+     "context": "im in west alicia rn\ncan you make it sound less boring\nwait ",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-13",
+     "token": "tmrw",
+     "start": 45,
+     "end": 49,
+     "context": "ere\ncan u help me with my essay its due tmrw\nmy teacher said to use the rubric but i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-13",
+     "token": "tmrw",
+     "start": 216,
+     "end": 220,
+     "context": "ect\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-27",
+     "token": "tmrw",
+     "start": 291,
+     "end": 295,
+     "context": "btw\ncan u help me with my essay its due tmrw\ntext me 5715549031",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in bergside rn\nwait how do i cite a website\ncan u help",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "rn",
+     "start": 131,
+     "end": 133,
+     "context": "anmayer at gmail dot com\nim in bergside rn\nok thx that helps\ncan u help me with my",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "s26\ncan u help me with my essay its due tmrw\ncan u help me with my essay its due tmr",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "tmrw",
+     "start": 143,
+     "end": 147,
+     "context": "mrw\ncan u help me with my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-108",
+     "token": "tmrw",
+     "start": 134,
+     "end": 138,
+     "context": "ces\ncan u help me with my essay its due tmrw\ntext me 5714008023",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-124",
+     "token": "tmrw",
+     "start": 181,
+     "end": 185,
+     "context": "btw\ncan u help me with my essay its due tmrw\nwait how do i cite a website\n14 yr old ",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in new samantha rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 213,
+     "end": 215,
+     "context": "7\ntext me 5717192740\nim in new samantha rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-192",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n15 yr old and i still dont get it\nadd m",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-197",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\nHAROLD CAMPBELL period 3\ncan you make i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-197",
+     "token": "tmrw",
+     "start": 136,
+     "end": 140,
+     "context": "ing\ncan u help me with my essay its due tmrw\ncan you make it sound less boring\nmy te",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "token": "tmrw",
+     "start": 70,
+     "end": 74,
+     "context": "ing\ncan u help me with my essay its due tmrw\nBRIAN RUSSELL period 3\ni go to riley el",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "token": "tmrw",
+     "start": 195,
+     "end": 199,
+     "context": "ite\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "d 3\ncan u help me with my essay its due tmrw\n14m here\nok thx that helps\nim cassandra",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-267",
+     "token": "tmrw",
+     "start": 97,
+     "end": 101,
+     "context": "272\ncan u help me with my essay its due tmrw\ntext me 5717772272\ni dont get fractions",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-267",
+     "token": "tmrw",
+     "start": 189,
+     "end": 193,
+     "context": "lol\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-301",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\nits keith again lol\nmy bday is apr 11\nc",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-301",
+     "token": "tmrw",
+     "start": 115,
+     "end": 119,
+     "context": " 11\ncan u help me with my essay its due tmrw\ncan you make it sound less boring\nok th",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-301",
+     "token": "tmrw",
+     "start": 208,
+     "end": 212,
+     "context": "lps\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west ryanton rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-357",
+     "token": "tmrw",
+     "start": 54,
+     "end": 58,
+     "context": "lps\ncan u help me with my essay its due tmrw\nmy bday is mar 5\ntext me 5716083720\ncan",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-357",
+     "token": "tmrw",
+     "start": 131,
+     "end": 135,
+     "context": "720\ncan u help me with my essay its due tmrw\nwait how do i cite a website\ncan u help",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-357",
+     "token": "tmrw",
+     "start": 201,
+     "end": 205,
+     "context": "ite\ncan u help me with my essay its due tmrw\nim diane btw\ntext me 5716083720",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "token": "tmrw",
+     "start": 89,
+     "end": 93,
+     "context": "ing\ncan u help me with my essay its due tmrw\ncan u help me with my essay its due tmr",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "token": "tmrw",
+     "start": 130,
+     "end": 134,
+     "context": "mrw\ncan u help me with my essay its due tmrw\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-370",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n16 yr old and i still dont get it\nwhats",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 53,
+     "end": 55,
+     "context": "actions at all lol\nim in south johnside rn\ni dont get fractions at all lol\nis it o",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": " story about space\nim in south johnside rn\nwhats a good hook for a story about spa",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 296,
+     "end": 298,
+     "context": " still dont get it\nim in south johnside rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-1",
+   "seed": 1,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/ckpt-seed1",
+   "model_sha256": "284713e11636657b72a3c55627615fe66c99aa81839c814bd97e1333391c84e1",
+   "seconds": 42.08,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 1,
+   "partial_residuals": 23,
+   "identifier_recall": 0.9993021632937893,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 190,
+     "NAME_STUDENT": 14,
+     "PHONE_NUM": 1
+    },
+    "DATE": {
+     "DATE": 64,
+     "LOCATION": 3,
+     "NAME_STUDENT": 4
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 4,
+     "NAME_STUDENT": 234,
+     "SCHOOL": 2
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 349,
+     "SCHOOL": 2
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 2,
+     "SCHOOL": 114
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2046,
+    "fp": 3,
+    "fn": 47,
+    "tn": 20836,
+    "fpr": 0.000143960842650799
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-2",
+   "seed": 2,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/ckpt-seed2",
+   "model_sha256": "7dcce48f5876cd538a443de62276c102056cd13598b94dba66468677ae7e5bce",
+   "seconds": 41.48,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 2,
+   "partial_residuals": 23,
+   "identifier_recall": 0.9986043265875785,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9971509971509972
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 205
+    },
+    "DATE": {
+     "DATE": 69,
+     "LOCATION": 2
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 3,
+     "NAME_STUDENT": 236,
+     "SCHOOL": 1
+    },
+    "NAME_STUDENT": {
+     "LOCATION": 4,
+     "NAME_STUDENT": 345,
+     "SCHOOL": 1,
+     "none": 1
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 1,
+     "SCHOOL": 115
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2091,
+    "fp": 31,
+    "fn": 2,
+    "tn": 20808,
+    "fpr": 0.0014875953740582561
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    },
+    {
+     "doc_id": "k12h-135",
+     "label": "NAME_STUDENT",
+     "text": "CROSS",
+     "touched": []
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-1",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in woodtown rn\ncan you make it sound less boring\nmy te",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-9",
+     "token": "rn",
+     "start": 18,
+     "end": 20,
+     "context": "im in west alicia rn\ncan you make it sound less boring\nwait ",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in bergside rn\nwait how do i cite a website\ncan u help",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "rn",
+     "start": 131,
+     "end": 133,
+     "context": "anmayer at gmail dot com\nim in bergside rn\nok thx that helps\ncan u help me with my",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-122",
+     "token": "rn",
+     "start": 16,
+     "end": 18,
+     "context": "im in smithview rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-143",
+     "token": "rn",
+     "start": 117,
+     "end": 119,
+     "context": "3\nadd me shelley.xd99\nim in port george rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-171",
+     "token": "rn",
+     "start": 156,
+     "end": 158,
+     "context": "but idk where it is\nim in tannerchester rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in new samantha rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 213,
+     "end": 215,
+     "context": "7\ntext me 5717192740\nim in new samantha rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-199",
+     "token": "rn",
+     "start": 47,
+     "end": 49,
+     "context": "e\nok thx that helps\nim in butlerchester rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "rn",
+     "start": 138,
+     "end": 140,
+     "context": "dd me monica.plays72\nim in new lukeberg rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "token": "rn",
+     "start": 205,
+     "end": 207,
+     "context": "ic but idk where it is\nim in new daniel rn\n9 yr old and i still dont get it\nok thx",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west ryanton rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-311",
+     "token": "rn",
+     "start": 67,
+     "end": 69,
+     "context": "on at gmail dot com\nim in new katieside rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-347",
+     "token": "rn",
+     "start": 109,
+     "end": 111,
+     "context": "is\nim in thomasstad rn\nim in thomasstad rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "token": "rn",
+     "start": 16,
+     "end": 18,
+     "context": "im in yatesside rn\ncan you make it sound less boring\ncan u",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 53,
+     "end": 55,
+     "context": "actions at all lol\nim in south johnside rn\ni dont get fractions at all lol\nis it o",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": " story about space\nim in south johnside rn\nwhats a good hook for a story about spa",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 296,
+     "end": 298,
+     "context": " still dont get it\nim in south johnside rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-3",
+   "seed": 3,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/ckpt-seed3",
+   "model_sha256": "5c7d36979f4f2090a4abfaf5e70a01901fde9eec577f5ce784b72cef6fedc472",
+   "seconds": 41.17,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 1,
+   "partial_residuals": 24,
+   "identifier_recall": 0.9993021632937893,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 1,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 205
+    },
+    "DATE": {
+     "DATE": 70,
+     "NAME_STUDENT": 1
+    },
+    "EMAIL": {
+     "EMAIL": 90,
+     "USERNAME": 2
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122,
+     "NAME_STUDENT": 2
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 8,
+     "NAME_STUDENT": 232
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 351
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 16,
+     "SCHOOL": 100
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2018,
+    "fp": 21,
+    "fn": 75,
+    "tn": 20818,
+    "fpr": 0.001007725898555593
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 0,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-258",
+     "label": "EMAIL",
+     "text": "stevengay at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-1",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in woodtown rn\ncan you make it sound less boring\nmy te",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-9",
+     "token": "rn",
+     "start": 18,
+     "end": 20,
+     "context": "im in west alicia rn\ncan you make it sound less boring\nwait ",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "r",
+     "start": 162,
+     "end": 163,
+     "context": "ith my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-132",
+     "token": "rn",
+     "start": 153,
+     "end": 155,
+     "context": "w do i cite a website\nim in stanleyfurt rn",
+     "labels": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-171",
+     "token": "rn",
+     "start": 156,
+     "end": 158,
+     "context": "but idk where it is\nim in tannerchester rn",
+     "labels": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in new samantha rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 213,
+     "end": 215,
+     "context": "7\ntext me 5717192740\nim in new samantha rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "rn",
+     "start": 138,
+     "end": 140,
+     "context": "dd me monica.plays72\nim in new lukeberg rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "r",
+     "start": 229,
+     "end": 230,
+     "context": "it is\nadd me monica.plays72\nme and anna r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 296,
+     "end": 298,
+     "context": " still dont get it\nim in south johnside rn",
+     "labels": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-4",
+   "seed": 4,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/ckpt-seed4",
+   "model_sha256": "e420ac898ddc9f352c1802ab22ecf79ae2b963e61c00de6c87172bb38df752d2",
+   "seconds": 41.5,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 1,
+   "partial_residuals": 34,
+   "identifier_recall": 0.9993021632937893,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 8,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 3,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 205
+    },
+    "DATE": {
+     "DATE": 70,
+     "NAME_STUDENT": 1
+    },
+    "EMAIL": {
+     "EMAIL": 89,
+     "USERNAME": 22
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122,
+     "NAME_STUDENT": 2
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 4,
+     "NAME_STUDENT": 236
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 351
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "NAME_STUDENT": 7,
+     "SCHOOL": 109
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "NAME_STUDENT": 1,
+     "USERNAME": 71
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2013,
+    "fp": 4,
+    "fn": 80,
+    "tn": 20835,
+    "fpr": 0.00019194779020106532
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 1,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "EMAIL",
+     "text": "susanmayer at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "label": "EMAIL",
+     "text": "susanmayer at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "EMAIL",
+     "text": "patriciagarcia at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-255",
+     "label": "EMAIL",
+     "text": "charlesbartlett at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL",
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-258",
+     "label": "EMAIL",
+     "text": "stevengay at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL",
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-265",
+     "label": "USERNAME",
+     "text": "heather.xd65",
+     "surviving_token": "xd65",
+     "touched": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-291",
+     "label": "EMAIL",
+     "text": "bryanbrown at gmail dot com",
+     "surviving_token": "bryanbrown",
+     "touched": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-316",
+     "label": "EMAIL",
+     "text": "kristenoconnor at gmail dot com",
+     "surviving_token": "gmail",
+     "touched": [
+      "EMAIL",
+      "USERNAME"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in new samantha rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 213,
+     "end": 215,
+     "context": "7\ntext me 5717192740\nim in new samantha rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-251",
+     "token": "rn",
+     "start": 138,
+     "end": 140,
+     "context": "dd me monica.plays72\nim in new lukeberg rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed-0-repeat",
+   "seed": 0,
+   "runtime": "python",
+   "model": "C:/edshield-candidate/models/ckpt-seed0",
+   "model_sha256": "635201c6e1f775d4ed8c369c655a10c1f4be0b578905059a5472370f0294ffe9",
+   "seconds": 40.88,
+   "n_documents": 400,
+   "n_documents_with_gold": 393,
+   "n_gold": 1433,
+   "full_residuals": 1,
+   "partial_residuals": 23,
+   "identifier_recall": 0.9993021632937893,
+   "by_label": {
+    "AGE": {
+     "n": 205,
+     "full_residual": 1,
+     "partial_residual": 0,
+     "recall": 0.9951219512195122
+    },
+    "DATE": {
+     "n": 71,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "EMAIL": {
+     "n": 90,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "ID_NUM": {
+     "n": 57,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "LOCATION": {
+     "n": 122,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 240,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "NAME_STUDENT": {
+     "n": 351,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "PHONE_NUM": {
+     "n": 75,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 116,
+     "full_residual": 0,
+     "partial_residual": 21,
+     "recall": 1.0
+    },
+    "STREET_ADDRESS": {
+     "n": 34,
+     "full_residual": 0,
+     "partial_residual": 2,
+     "recall": 1.0
+    },
+    "USERNAME": {
+     "n": 72,
+     "full_residual": 0,
+     "partial_residual": 0,
+     "recall": 1.0
+    }
+   },
+   "label_confusion": {
+    "AGE": {
+     "AGE": 195,
+     "NAME_STUDENT": 10
+    },
+    "DATE": {
+     "DATE": 66,
+     "LOCATION": 4,
+     "NAME_STUDENT": 1
+    },
+    "EMAIL": {
+     "EMAIL": 90
+    },
+    "ID_NUM": {
+     "ID_NUM": 57
+    },
+    "LOCATION": {
+     "LOCATION": 122
+    },
+    "NAME_RELATED": {
+     "NAME_RELATED": 2,
+     "NAME_STUDENT": 238
+    },
+    "NAME_STUDENT": {
+     "NAME_STUDENT": 351
+    },
+    "PHONE_NUM": {
+     "PHONE_NUM": 75
+    },
+    "SCHOOL": {
+     "LOCATION": 2,
+     "NAME_STUDENT": 7,
+     "SCHOOL": 107
+    },
+    "STREET_ADDRESS": {
+     "STREET_ADDRESS": 34
+    },
+    "USERNAME": {
+     "USERNAME": 72
+    }
+   },
+   "word": {
+    "n": 22932,
+    "tp": 2080,
+    "fp": 47,
+    "fn": 13,
+    "tn": 20792,
+    "fpr": 0.0022553865348625174
+   },
+   "alignment_failures": 0,
+   "edshield_self_reported_leaks": 1,
+   "text_included": true,
+   "residual_examples": [
+    {
+     "doc_id": "k12h-43",
+     "label": "AGE",
+     "text": "7",
+     "touched": [
+      "AGE"
+     ]
+    }
+   ],
+   "partial_examples": [
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-7",
+     "label": "SCHOOL",
+     "text": "mosley middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-8",
+     "label": "STREET_ADDRESS",
+     "text": "Ross Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "label": "SCHOOL",
+     "text": "griffith high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-18",
+     "label": "SCHOOL",
+     "text": "vazquez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-30",
+     "label": "SCHOOL",
+     "text": "hernandez elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "label": "SCHOOL",
+     "text": "reese elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-90",
+     "label": "SCHOOL",
+     "text": "ross high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-138",
+     "label": "SCHOOL",
+     "text": "johnson middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-180",
+     "label": "SCHOOL",
+     "text": "richards elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-212",
+     "label": "SCHOOL",
+     "text": "molina high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "label": "SCHOOL",
+     "text": "riley elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-228",
+     "label": "SCHOOL",
+     "text": "cooper elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-236",
+     "label": "STREET_ADDRESS",
+     "text": "Silva Drive",
+     "surviving_token": "drive",
+     "touched": [
+      "STREET_ADDRESS"
+     ]
+    },
+    {
+     "doc_id": "k12h-256",
+     "label": "SCHOOL",
+     "text": "mcbride high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-259",
+     "label": "SCHOOL",
+     "text": "castaneda elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-309",
+     "label": "SCHOOL",
+     "text": "brown high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-325",
+     "label": "SCHOOL",
+     "text": "stone middle school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-338",
+     "label": "SCHOOL",
+     "text": "boyd elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "label": "SCHOOL",
+     "text": "porter elementary school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "doc_id": "k12h-368",
+     "label": "SCHOOL",
+     "text": "bishop high school",
+     "surviving_token": "school",
+     "touched": [
+      "SCHOOL"
+     ]
+    }
+   ],
+   "over_redaction_sample": [
+    {
+     "doc_id": "k12h-1",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in woodtown rn\ncan you make it sound less boring\nmy te",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-9",
+     "token": "rn",
+     "start": 18,
+     "end": 20,
+     "context": "im in west alicia rn\ncan you make it sound less boring\nwait ",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-12",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west amyside rn\nhelenlittle at gmail dot com\ni go to gr",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-13",
+     "token": "tmrw",
+     "start": 45,
+     "end": 49,
+     "context": "ere\ncan u help me with my essay its due tmrw\nmy teacher said to use the rubric but i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-13",
+     "token": "tmrw",
+     "start": 216,
+     "end": 220,
+     "context": "ect\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-27",
+     "token": "tmrw",
+     "start": 291,
+     "end": 295,
+     "context": "btw\ncan u help me with my essay its due tmrw\ntext me 5715549031",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "rn",
+     "start": 15,
+     "end": 17,
+     "context": "im in bergside rn\nwait how do i cite a website\ncan u help",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 83,
+     "end": 87,
+     "context": "ite\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\nim in bergs",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "rn",
+     "start": 131,
+     "end": 133,
+     "context": "anmayer at gmail dot com\nim in bergside rn\nok thx that helps\ncan u help me with my",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-47",
+     "token": "tmrw",
+     "start": 188,
+     "end": 192,
+     "context": "lps\ncan u help me with my essay its due tmrw\nsusanmayer at gmail dot com\n7 yr old an",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-48",
+     "token": "rn",
+     "start": 20,
+     "end": 22,
+     "context": "im in new jamesbury rn\nkathrynrocha at gmail dot com\nkathrynro",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-66",
+     "token": "rn",
+     "start": 74,
+     "end": 76,
+     "context": "l r doing a project\nim in north stephen rn\nmy teacher said to use the rubric but i",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-69",
+     "token": "rn",
+     "start": 244,
+     "end": 246,
+     "context": "riod 3\nits john again lol\nim in carlton rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "s26\ncan u help me with my essay its due tmrw\ncan u help me with my essay its due tmr",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-87",
+     "token": "tmrw",
+     "start": 143,
+     "end": 147,
+     "context": "mrw\ncan u help me with my essay its due tmrw\nme and amanda r doing a project",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-108",
+     "token": "tmrw",
+     "start": 134,
+     "end": 138,
+     "context": "ces\ncan u help me with my essay its due tmrw\ntext me 5714008023",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-116",
+     "token": "tmrw",
+     "start": 169,
+     "end": 173,
+     "context": "lps\ncan u help me with my essay its due tmrw\nkevinmoore at gmail dot com\nis it ok if",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-124",
+     "token": "tmrw",
+     "start": 181,
+     "end": 185,
+     "context": "btw\ncan u help me with my essay its due tmrw\nwait how do i cite a website\n14 yr old ",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-163",
+     "token": "tmrw",
+     "start": 203,
+     "end": 207,
+     "context": " it\ncan u help me with my essay its due tmrw\nkarenortega at gmail dot com",
+     "labels": [
+      "EMAIL"
+     ]
+    },
+    {
+     "doc_id": "k12h-169",
+     "token": "rn",
+     "start": 17,
+     "end": 19,
+     "context": "im in lake jimmy rn\ntext me 5712521746\nmy bday is feb 25\nme",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in new samantha rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-179",
+     "token": "rn",
+     "start": 213,
+     "end": 215,
+     "context": "7\ntext me 5717192740\nim in new samantha rn\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-192",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n15 yr old and i still dont get it\nadd m",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-197",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\nHAROLD CAMPBELL period 3\ncan you make i",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-197",
+     "token": "tmrw",
+     "start": 136,
+     "end": 140,
+     "context": "ing\ncan u help me with my essay its due tmrw\ncan you make it sound less boring\nmy te",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "token": "tmrw",
+     "start": 70,
+     "end": 74,
+     "context": "ing\ncan u help me with my essay its due tmrw\nBRIAN RUSSELL period 3\ni go to riley el",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-213",
+     "token": "tmrw",
+     "start": 195,
+     "end": 199,
+     "context": "ite\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-218",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": "ke it sound less boring\nim in thomaston rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-223",
+     "token": "tmrw",
+     "start": 102,
+     "end": 106,
+     "context": "d 3\ncan u help me with my essay its due tmrw\n14m here\nok thx that helps\nim cassandra",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-235",
+     "token": "rn",
+     "start": 182,
+     "end": 184,
+     "context": " it is\nmy bday is feb 7\nim in east lisa rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-267",
+     "token": "tmrw",
+     "start": 97,
+     "end": 101,
+     "context": "272\ncan u help me with my essay its due tmrw\ntext me 5717772272\ni dont get fractions",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-267",
+     "token": "tmrw",
+     "start": 189,
+     "end": 193,
+     "context": "lol\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-301",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\nits keith again lol\nmy bday is apr 11\nc",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-301",
+     "token": "tmrw",
+     "start": 115,
+     "end": 119,
+     "context": " 11\ncan u help me with my essay its due tmrw\ncan you make it sound less boring\nok th",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-301",
+     "token": "tmrw",
+     "start": 208,
+     "end": 212,
+     "context": "lps\ncan u help me with my essay its due tmrw",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-305",
+     "token": "rn",
+     "start": 19,
+     "end": 21,
+     "context": "im in west ryanton rn\ncan u help me with my essay its due tmr",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-352",
+     "token": "rn",
+     "start": 28,
+     "end": 30,
+     "context": "im in north christopherside rn\ni go to harvey academy\ncan u help me wi",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-357",
+     "token": "tmrw",
+     "start": 54,
+     "end": 58,
+     "context": "lps\ncan u help me with my essay its due tmrw\nmy bday is mar 5\ntext me 5716083720\ncan",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-357",
+     "token": "tmrw",
+     "start": 131,
+     "end": 135,
+     "context": "720\ncan u help me with my essay its due tmrw\nwait how do i cite a website\ncan u help",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-357",
+     "token": "tmrw",
+     "start": 201,
+     "end": 205,
+     "context": "ite\ncan u help me with my essay its due tmrw\nim diane btw\ntext me 5716083720",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "token": "tmrw",
+     "start": 89,
+     "end": 93,
+     "context": "ing\ncan u help me with my essay its due tmrw\ncan u help me with my essay its due tmr",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-358",
+     "token": "tmrw",
+     "start": 130,
+     "end": 134,
+     "context": "mrw\ncan u help me with my essay its due tmrw\nis it ok if my paragraph is only 4 sent",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-370",
+     "token": "tmrw",
+     "start": 36,
+     "end": 40,
+     "context": "can u help me with my essay its due tmrw\n16 yr old and i still dont get it\nwhats",
+     "labels": [
+      "NAME_STUDENT"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 53,
+     "end": 55,
+     "context": "actions at all lol\nim in south johnside rn\ni dont get fractions at all lol\nis it o",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 196,
+     "end": 198,
+     "context": " story about space\nim in south johnside rn\nwhats a good hook for a story about spa",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-374",
+     "token": "rn",
+     "start": 296,
+     "end": 298,
+     "context": " still dont get it\nim in south johnside rn",
+     "labels": [
+      "LOCATION"
+     ]
+    },
+    {
+     "doc_id": "k12h-397",
+     "token": "rn",
+     "start": 178,
+     "end": 180,
+     "context": "ry about space\n14m here\nim in tammieton rn\nok thx that helps\nis it ok if my paragr",
+     "labels": [
+      "LOCATION"
+     ]
+    }
+   ]
+  }
+ ]
+}
