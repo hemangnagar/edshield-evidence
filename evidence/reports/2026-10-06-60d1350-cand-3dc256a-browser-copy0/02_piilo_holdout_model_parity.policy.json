@@ -1,0 +1,33 @@
+{
+  "contract": "2.0",
+  "confidence": false,
+  "minRuns": 2,
+  "_agreement_target": 0.995,
+  "views": {
+    "identifier": {
+      "recall": 0.99,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.01,
+      "selectedRun": "onnx",
+      "required": true
+    },
+    "document": {
+      "recall": 0.99,
+      "stabilityMetric": "recall",
+      "maxSpread": 0.01,
+      "selectedRun": "onnx",
+      "required": true
+    },
+    "word": {
+      "fpr": 0.006,
+      "stabilityMetric": "fpr",
+      "maxSpread": 0.01,
+      "selectedRun": "onnx",
+      "required": false
+    }
+  },
+  "_pin": false,
+  "_source": "policies\\regression.json#piilo_holdout/parity",
+  "_ratified": false,
+  "_dropped_views": []
+}
