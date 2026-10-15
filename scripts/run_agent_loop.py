@@ -248,7 +248,7 @@ def drive(client, session_id: str, run_dir: Path, messages: List[str], state: di
     return state
 
 
-def retrieve_outputs(client, session_id: str, run_dir: Path, final_texts: List[str]) -> dict:
+def retrieve_outputs(client, session_id: str, run_dir: Path, final_texts: List[str], verify: bool = False) -> dict:
     got = {"files": [], "extracted": [], "fallback_blocks": []}
     dest = run_dir / "outputs"
     dest.mkdir(exist_ok=True)
@@ -276,6 +276,9 @@ def retrieve_outputs(client, session_id: str, run_dir: Path, final_texts: List[s
                 name = m.name.lstrip("./")
                 if not (name.startswith("proposals/") or name.startswith("results/candidate/") or name.startswith("results/llm_view/")) or "/raw/" in name or ".." in name:
                     continue
+                if name.startswith("proposals/") and verify and name != "proposals/DRIVER_CHECK.md":
+                    # a verification run may not overwrite the agent's proposal files
+                    continue
                 if m.isfile():
                     data = tf.extractfile(m).read()
                     target = ROOT / name
@@ -298,7 +301,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--write-agent-md", action="store_true")
-    ap.add_argument("--phase", choices=["setup", "task", "both"], default="both",
+    ap.add_argument("--phase", choices=["setup", "task", "both", "verify"], default="both",
                     help="setup: create the session, send the setup message, retrieve baselines; task: send the task message to --session")
     ap.add_argument("--session", metavar="SESSION_ID", help="existing session for --phase task")
     ap.add_argument("--resume", metavar="SESSION_ID")
@@ -315,6 +318,9 @@ def main(argv=None) -> int:
         return 0
     branch = args.branch or current_branch()
     setup = SETUP_MD.read_text(encoding="utf-8").replace("{branch}", branch).replace("{runtime}", args.runtime)
+    if args.phase == "verify":
+        setup = (ROOT / "prompts" / "agent_verify_message.md").read_text(encoding="utf-8").replace("{branch}", branch).replace("{runtime}", args.runtime)
+        args.title = "edshield rule-proposal: driver verification"
     task = TASK_MD.read_text(encoding="utf-8").replace("{runtime}", args.runtime).replace("{budget_usd}", f"{int(args.budget_cents) / 100:.0f}")
     client = api.make_client(require_key=not args.dry_run)
     run_dir = api.new_run_dir("agent" + ("-dryrun" if args.dry_run else ""))
@@ -367,12 +373,12 @@ def main(argv=None) -> int:
         print(f"session {session_id} status {session.status}; trace: {state['console']}")
         state["phase"] = args.phase
         (run_dir / "SESSION.json").write_text(json.dumps(state, indent=1), encoding="utf-8")
-        drive(client, session_id, run_dir, [setup] if args.phase == "setup" else [setup, task], state)
+        drive(client, session_id, run_dir, [setup] if args.phase in ("setup", "verify") else [setup, task], state)
     s = client.beta.sessions.retrieve(session_id=session_id)
     state["final_status"] = s.status
     if getattr(s, "usage", None):
         state["usage"] = s.usage.to_dict() if hasattr(s.usage, "to_dict") else dict(s.usage)
-    state["retrieved"] = retrieve_outputs(client, session_id, run_dir, state.get("final_messages", []))
+    state["retrieved"] = retrieve_outputs(client, session_id, run_dir, state.get("final_messages", []), verify=(args.phase == "verify"))
     (run_dir / "SESSION.json").write_text(json.dumps(state, indent=1, default=str), encoding="utf-8")
     md = [f"# Agent session {session_id}", "", f"- ended: **{state.get('ended')}** (stop_reason `{state.get('stop_reason')}`, status `{s.status}`)",
           f"- usage: `{json.dumps(state.get('usage'), default=str)}`", f"- budget: {int(args.budget_cents) / 100:.2f} USD at list price",

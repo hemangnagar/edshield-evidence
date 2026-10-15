@@ -1,0 +1,54 @@
+diff --git a/edshield/rules.py b/edshield/rules.py
+index 91ff4f4..173f5bf 100644
+--- a/edshield/rules.py
++++ b/edshield/rules.py
+@@ -147,9 +147,11 @@ NAME_RELATED_RE = re.compile(
+ )
+ NAME_TITLE_RE = re.compile(rf"\b(?:Mr|Mrs|Ms|Miss|Mx|Dr|Coach|Principal|Professor|Prof)\.?[ \t]+({_PERSON})")
+ 
++# "High" and "Prep" are the short forms students use ("i go to Jefferson High",
++# "Summit Prep"); the longer forms come first so they still win.
+ SCHOOL_TYPES = (
+     "Elementary School|Middle School|High School|Junior High|Primary School|Secondary School|Charter School|"
+-    "Preparatory School|Elementary|Academy|School|College|University|Institute"
++    "Preparatory School|Elementary|Academy|School|College|University|Institute|High|Prep"
+ )
+ SCHOOL_KIND_WORDS = {
+     "High", "Middle", "Elementary", "Junior", "Senior", "Primary", "Secondary", "Charter", "Preparatory",
+@@ -391,6 +393,12 @@ def resolve_overlaps(ents: List[Entity]) -> List[Entity]:
+     return kept
+ 
+ 
++# An operator just before a lone capital letter makes it a variable, not an
++# initial: "x = A.", "100 - C.", "(B." A dash after a word ("great work - V.")
++# still reads as address.
++INITIAL_MATH_BEFORE_RE = re.compile(r"(?:[=+*/<>^(×÷]|[\d)][ \t]*[-−])[ \t]*$")
++
++
+ def propagate_names(
+     text: str, ents: List[Entity], min_token_len: int = 3, min_model_confidence: float = 0.75
+ ) -> List[Entity]:
+@@ -427,4 +435,23 @@ def propagate_names(
+                 continue
+             out.append(Entity(label, needle, m.start(), m.end(), conf, source="propagated"))
+             seen.add((m.start(), m.end()))
++    # A student addressed by an initial ("Well done, V.!") is the same student.
++    # Only the initial of a name already found in this document is tagged, and
++    # only where it stands alone: not inside "U.S." or "A.M.", and not a
++    # variable after an operator ("S = 100 - C.").
++    initials = {}  # letter -> (label, confidence); the first label wins
++    for e in sorted(names, key=lambda e: NAME_LABELS.index(e.label)):
++        first = e.text.strip().split()[0] if e.text.strip() else ""
++        if len(first.strip(".")) >= 2 and first[0].isalpha():
++            initials.setdefault(first[0].upper(), (e.label, e.confidence * 0.9))
++    for letter, (label, conf) in initials.items():
++        for m in re.finditer(r"(?<![\w.'’])" + re.escape(letter) + r"\.(?!\w)", text):
++            if (m.start(), m.end()) in seen:
++                continue
++            if INITIAL_MATH_BEFORE_RE.search(text[max(0, m.start() - 12):m.start()]):
++                continue
++            if any(k.start < m.end() and m.start() < k.end for k in out):
++                continue
++            out.append(Entity(label, m.group(), m.start(), m.end(), conf, source="propagated"))
++            seen.add((m.start(), m.end()))
+     return out

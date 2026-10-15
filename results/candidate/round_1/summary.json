@@ -1,0 +1,553 @@
+{
+ "out": "results/candidate/round_1",
+ "edshield": {
+  "version": "0.2.0",
+  "installed_from": "/workspace/edshield",
+  "commit": "a568e73a6c34d40335802235db81950e84004ab1+dirty",
+  "rules_sha256": "40e4b896f98342cb0a873595957ae69548164fa87363c6e97815029e22610449"
+ },
+ "runtime": "onnx",
+ "detector": "rules+model",
+ "model_sha256": "7f4dd8e5a58c45c941ac2b627fe1213a5d893d42defa6dd9854ebe1e4dd4b1fc",
+ "views": {
+  "deterministic": {
+   "all_identifiers": {
+    "n": 2841,
+    "span_recall": 0.9454417458641323,
+    "ci": [
+     0.9364728328106707,
+     0.9532076771869898
+    ]
+   },
+   "student_names": {
+    "n": 2014,
+    "span_recall": 0.9448857994041708,
+    "ci": [
+     0.9340459508625442,
+     0.9540317482612989
+    ]
+   },
+   "names_by_category": {
+    "anglo_common": {
+     "n": 506,
+     "span_recall": 0.9703557312252964,
+     "ci": [
+      0.9516692451071436,
+      0.9819543190581723
+     ]
+    },
+    "name_word_collision": {
+     "n": 483,
+     "span_recall": 0.8819875776397516,
+     "ci": [
+      0.8501571761939813,
+      0.9077897760806221
+     ]
+    },
+    "nicknames_and_variants": {
+     "n": 499,
+     "span_recall": 0.9739478957915831,
+     "ci": [
+      0.9559414206261279,
+      0.9847129181237313
+     ]
+    },
+    "non_anglo": {
+     "n": 526,
+     "span_recall": 0.9505703422053232,
+     "ci": [
+      0.9285597556218899,
+      0.9660474746254386
+     ]
+    }
+   },
+   "by_label": {
+    "EMAIL": {
+     "n": 56,
+     "span_recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 383,
+     "span_recall": 0.9477806788511749
+    },
+    "NAME_STUDENT": {
+     "n": 2014,
+     "span_recall": 0.9448857994041708
+    },
+    "PHONE_NUM": {
+     "n": 92,
+     "span_recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 218,
+     "span_recall": 0.8990825688073395
+    },
+    "USERNAME": {
+     "n": 78,
+     "span_recall": 0.9743589743589743
+    }
+   },
+   "per_dataset": {
+    "comta": {
+     "all_identifiers": 0.8776167471819646,
+     "student_names": 0.8609112709832134
+    },
+    "mathdial": {
+     "all_identifiers": 0.9644144144144144,
+     "student_names": 0.9668127739511584
+    }
+   }
+  },
+  "llm": {
+   "all_identifiers": {
+    "n": 2767,
+    "span_recall": 0.9707264185037947,
+    "ci": [
+     0.9637633134102542,
+     0.9763843055198259
+    ]
+   },
+   "student_names": {
+    "n": 1967,
+    "span_recall": 0.9628876461616676,
+    "ci": [
+     0.9535909576499584,
+     0.9703798629322564
+    ]
+   },
+   "names_by_category": {
+    "anglo_common": {
+     "n": 495,
+     "span_recall": 0.9919191919191919,
+     "ci": [
+      0.9794089062251194,
+      0.9968531732983994
+     ]
+    },
+    "name_word_collision": {
+     "n": 463,
+     "span_recall": 0.9308855291576674,
+     "ci": [
+      0.9040594504113536,
+      0.9506204251852436
+     ]
+    },
+    "nicknames_and_variants": {
+     "n": 486,
+     "span_recall": 0.9794238683127572,
+     "ci": [
+      0.9625424173480016,
+      0.9887857962014489
+     ]
+    },
+    "non_anglo": {
+     "n": 523,
+     "span_recall": 0.9483747609942639,
+     "ci": [
+      0.9259304494862212,
+      0.9642804329220892
+     ]
+    }
+   },
+   "by_label": {
+    "EMAIL": {
+     "n": 55,
+     "span_recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 373,
+     "span_recall": 0.9785522788203753
+    },
+    "NAME_STUDENT": {
+     "n": 1967,
+     "span_recall": 0.9628876461616676
+    },
+    "PHONE_NUM": {
+     "n": 83,
+     "span_recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 213,
+     "span_recall": 1.0
+    },
+    "USERNAME": {
+     "n": 76,
+     "span_recall": 1.0
+    }
+   },
+   "per_dataset": {
+    "comta": {
+     "all_identifiers": 0.9700996677740864,
+     "student_names": 0.9679012345679012
+    },
+    "mathdial": {
+     "all_identifiers": 0.9709006928406466,
+     "student_names": 0.9615877080665813
+    }
+   }
+  }
+ },
+ "control": {
+  "comta": {
+   "flags_per_1000_tokens": 0.5028856054982159,
+   "n_flags": 21,
+   "n_tokens": 41759,
+   "by_tag": {
+    "other": 21
+   },
+   "top_terms": [
+    [
+     "john",
+     4
+    ],
+    [
+     "khan academy",
+     3
+    ],
+    [
+     "samantha",
+     2
+    ],
+    [
+     "sara",
+     2
+    ],
+    [
+     "30",
+     1
+    ],
+    [
+     "rt16x",
+     1
+    ],
+    [
+     "sup5",
+     1
+    ],
+    [
+     "4900",
+     1
+    ],
+    [
+     "johnson",
+     1
+    ],
+    [
+     "davis",
+     1
+    ]
+   ]
+  },
+  "mathdial": {
+   "flags_per_1000_tokens": 15.101559881954879,
+   "n_flags": 2794,
+   "n_tokens": 185014,
+   "by_tag": {
+    "persona": 443,
+    "problem_name": 2208,
+    "other": 143
+   },
+   "top_terms": [
+    [
+     "60",
+     12
+    ],
+    [
+     "10",
+     10
+    ],
+    [
+     "5",
+     9
+    ],
+    [
+     "20",
+     8
+    ],
+    [
+     "4",
+     7
+    ],
+    [
+     "james",
+     7
+    ],
+    [
+     "jane",
+     6
+    ],
+    [
+     "lakeisha",
+     6
+    ],
+    [
+     "40",
+     5
+    ],
+    [
+     "12",
+     5
+    ]
+   ]
+  }
+ },
+ "baseline": {
+  "views": {
+   "deterministic": {
+    "source": "experiments/genre_shift/results/metrics.json",
+    "all_identifiers": {
+     "n": 2841,
+     "span_recall": 0.90320309750088,
+     "ci": [
+      0.8917796904525176,
+      0.9135375945749974
+     ]
+    },
+    "student_names": {
+     "n": 2014,
+     "span_recall": 0.8843098311817279,
+     "ci": [
+      0.8696032287515995,
+      0.8975531765183274
+     ]
+    },
+    "names_by_category": {
+     "anglo_common": {
+      "n": 506,
+      "span_recall": 0.9031620553359684,
+      "ci": [
+       0.8742746743173724,
+       0.9259740949671842
+      ]
+     },
+     "name_word_collision": {
+      "n": 483,
+      "span_recall": 0.8385093167701864,
+      "ci": [
+       0.80304181266042,
+       0.86863475480244
+      ]
+     },
+     "nicknames_and_variants": {
+      "n": 499,
+      "span_recall": 0.9018036072144289,
+      "ci": [
+       0.8725437654271446,
+       0.9249242892001146
+      ]
+     },
+     "non_anglo": {
+      "n": 526,
+      "span_recall": 0.8916349809885932,
+      "ci": [
+       0.8621761570959097,
+       0.9154149375494476
+      ]
+     }
+    },
+    "by_label": {
+     "EMAIL": {
+      "n": 56,
+      "span_recall": 1.0
+     },
+     "NAME_RELATED": {
+      "n": 383,
+      "span_recall": 0.9530026109660574
+     },
+     "NAME_STUDENT": {
+      "n": 2014,
+      "span_recall": 0.8843098311817279
+     },
+     "PHONE_NUM": {
+      "n": 92,
+      "span_recall": 1.0
+     },
+     "SCHOOL": {
+      "n": 218,
+      "span_recall": 0.8990825688073395
+     },
+     "USERNAME": {
+      "n": 78,
+      "span_recall": 0.9743589743589743
+     }
+    },
+    "per_dataset": {
+     "piilo_holdout": {
+      "all_identifiers": 1.0,
+      "student_names": 1.0
+     },
+     "comta": {
+      "all_identifiers": 0.8534621578099839,
+      "student_names": 0.8249400479616307
+     },
+     "mathdial": {
+      "all_identifiers": 0.9171171171171171,
+      "student_names": 0.8998121477770821
+     }
+    }
+   },
+   "llm": {
+    "source": "results/llm_view/llm/metrics.json",
+    "all_identifiers": {
+     "n": 2767,
+     "span_recall": 0.9183230936031803,
+     "ci": [
+      0.9075292526354213,
+      0.9279570190817132
+     ]
+    },
+    "student_names": {
+     "n": 1967,
+     "span_recall": 0.8891713268937468,
+     "ci": [
+      0.8745327399001855,
+      0.9022928099687714
+     ]
+    },
+    "names_by_category": {
+     "anglo_common": {
+      "n": 495,
+      "span_recall": 0.9050505050505051,
+      "ci": [
+       0.8760182364399387,
+       0.927844379348421
+      ]
+     },
+     "name_word_collision": {
+      "n": 463,
+      "span_recall": 0.8596112311015118,
+      "ci": [
+       0.8250011624195611,
+       0.888303094657298
+      ]
+     },
+     "nicknames_and_variants": {
+      "n": 486,
+      "span_recall": 0.9094650205761317,
+      "ci": [
+       0.8806408194066363,
+       0.9318669681313064
+      ]
+     },
+     "non_anglo": {
+      "n": 523,
+      "span_recall": 0.8814531548757171,
+      "ci": [
+       0.8509292420920641,
+       0.9064143444344089
+      ]
+     }
+    },
+    "by_label": {
+     "EMAIL": {
+      "n": 55,
+      "span_recall": 1.0
+     },
+     "NAME_RELATED": {
+      "n": 373,
+      "span_recall": 0.9785522788203753
+     },
+     "NAME_STUDENT": {
+      "n": 1967,
+      "span_recall": 0.8891713268937468
+     },
+     "PHONE_NUM": {
+      "n": 83,
+      "span_recall": 1.0
+     },
+     "SCHOOL": {
+      "n": 213,
+      "span_recall": 1.0
+     },
+     "USERNAME": {
+      "n": 76,
+      "span_recall": 1.0
+     }
+    },
+    "per_dataset": {
+     "comta": {
+      "all_identifiers": 0.9169435215946844,
+      "student_names": 0.8888888888888888
+     },
+     "mathdial": {
+      "all_identifiers": 0.9187066974595843,
+      "student_names": 0.8892445582586428
+     }
+    }
+   }
+  },
+  "control": {
+   "comta": {
+    "source": "experiments/genre_shift/results/metrics.json",
+    "flags_per_1000_tokens": 0.5028856054982159,
+    "by_tag": {
+     "other": 21
+    }
+   },
+   "mathdial": {
+    "source": "experiments/genre_shift/results/metrics.json",
+    "flags_per_1000_tokens": 16.21498913595728,
+    "by_tag": {
+     "persona": 446,
+     "problem_name": 2407,
+     "other": 147
+    }
+   }
+  }
+ },
+ "delta_pp": {
+  "views": {
+   "deterministic": {
+    "all_identifiers": 4.22,
+    "student_names": 6.06,
+    "names_by_category": {
+     "anglo_common": 6.72,
+     "name_word_collision": 4.35,
+     "nicknames_and_variants": 7.21,
+     "non_anglo": 5.89
+    },
+    "by_label": {
+     "EMAIL": 0.0,
+     "NAME_RELATED": -0.52,
+     "NAME_STUDENT": 6.06,
+     "PHONE_NUM": 0.0,
+     "SCHOOL": 0.0,
+     "USERNAME": 0.0
+    }
+   },
+   "llm": {
+    "all_identifiers": 5.24,
+    "student_names": 7.37,
+    "names_by_category": {
+     "anglo_common": 8.69,
+     "name_word_collision": 7.13,
+     "nicknames_and_variants": 7.0,
+     "non_anglo": 6.69
+    },
+    "by_label": {
+     "EMAIL": 0.0,
+     "NAME_RELATED": 0.0,
+     "NAME_STUDENT": 7.37,
+     "PHONE_NUM": 0.0,
+     "SCHOOL": 0.0,
+     "USERNAME": 0.0
+    }
+   }
+  },
+  "control": {
+   "comta": 0.0,
+   "mathdial": -1.113
+  }
+ },
+ "definitions": {
+  "span_recall": "gold text no longer occurs whole in the output (residual rule), pooled over comta + mathdial",
+  "control": "acted-on entities per 1,000 whitespace tokens on the untouched dialogues",
+  "delta_pp": "candidate minus baseline, percentage points (recall) or flags per 1,000 tokens (control)"
+ },
+ "sanity": {
+  "tolerance_pp": 0.5,
+  "deterministic_delta_pp": 4.22,
+  "within_tolerance": false,
+  "note": "round 0 on the unmodified checkout must be within tolerance of the sealed baseline, which was run on a GPU with the python runtime"
+ }
+}
