@@ -1,0 +1,12 @@
+{
+ "branch": "claude/compassionate-ritchie-tpkgv9",
+ "runtime": "onnx",
+ "budget_cents": "1000",
+ "run_dir": "/home/user/edshield-evidence/runs/20261015T145036Z-agent",
+ "environment_id": "env_01NY5PwGLj9H4QS2NirdJxqi",
+ "agent_id": "agent_01CGTciPNNHMs78SoXBpqrKB",
+ "agent_version": 1,
+ "session_id": "sesn_01JVPjSwZ9qiT5pE4WtsiFFm",
+ "console": "https://platform.claude.com/workspaces/default/sessions/sesn_01JVPjSwZ9qiT5pE4WtsiFFm",
+ "phase": "verify"
+}

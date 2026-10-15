@@ -20,6 +20,7 @@ def main(argv=None) -> int:
     ap.add_argument("--run")
     args = ap.parse_args(argv)
     comp: Dict[str, dict] = {}
+    sessions: Dict[str, dict] = {}
 
     def add(component: str, kind: str, usd: float, n: int, usage: Dict[str, int]):
         c = comp.setdefault(component, {"usd": 0.0, "requests": 0, "usage": {}, "kinds": set()})
@@ -46,12 +47,20 @@ def main(argv=None) -> int:
         sess = run / "SESSION.json"
         if sess.exists():
             s = json.loads(sess.read_text(encoding="utf-8"))
-            lc = (s.get("usage") or {}).get("list_cost") or {}
-            usd = int(lc.get("amount", 0)) / 100 if lc else 0.0
-            u = {k: v for k, v in (s.get("usage") or {}).items() if isinstance(v, int)}
-            add("agent", "session", usd, 1, u)
-            comp["agent"]["active_seconds"] = (s.get("usage") or {}).get("active_seconds")
-            comp["agent"]["stop_reason"] = s.get("stop_reason")
+            sid = s.get("session_id")
+            if sid and s.get("usage") and not s.get("dry_run"):
+                # several run directories can belong to one session (follow-ups, re-attachments);
+                # the usage event is cumulative, so keep the latest snapshot per session
+                sessions[sid] = {"usage": s["usage"], "stop_reason": s.get("stop_reason"), "ended": s.get("ended"),
+                                 "phase": s.get("phase"), "run": run.name}
+    for sid, s in sessions.items():
+        lc = (s["usage"] or {}).get("list_cost") or {}
+        usd = int(lc.get("amount", 0)) / 100 if lc else 0.0
+        u = {k: v for k, v in s["usage"].items() if isinstance(v, int)}
+        name = "agent-verify" if s.get("phase") == "verify" else "agent"
+        add(name, f"session {sid}", usd, 1, u)
+        comp[name]["active_seconds"] = s["usage"].get("active_seconds")
+        comp[name]["stop_reason"] = s.get("stop_reason")
     kc = api.RUNS / "KEY_CHECK.md"
     if kc.exists():
         for line in kc.read_text(encoding="utf-8").splitlines():
@@ -67,9 +76,10 @@ def main(argv=None) -> int:
         L.append(f"| {name} | {', '.join(sorted(c['kinds']))} | {c['requests']} | {u.get('input_tokens', 0):,} | {u.get('output_tokens', 0):,} | "
                  f"{u.get('cache_creation_input_tokens', 0):,} | {u.get('cache_read_input_tokens', 0):,} | {c['usd']:.2f} |")
     L += [f"| **total** | | | | | | | **{total:.2f}** |", "", f"Remaining of the ${api.BUDGET_USD:.0f} budget: ${api.BUDGET_USD - total:.2f}."]
-    if "agent" in comp:
-        L.append(f"Agent session: stop reason `{comp['agent'].get('stop_reason')}`, active {comp['agent'].get('active_seconds')} s "
-                 "(runtime is billed per active hour on top of tokens; the list_cost above includes it).")
+    for name in ("agent", "agent-verify"):
+        if name in comp:
+            L.append(f"{name}: stop reason `{comp[name].get('stop_reason')}`, active {comp[name].get('active_seconds')} s "
+                     "(runtime is billed per active hour on top of tokens; the session list_cost includes it).")
     L.append("")
     L.append("The platform Console is the authority for what was actually charged; these are list-price reconstructions from the logs.")
     run_dir = Path(args.run) if args.run else api.new_run_dir("cost")
