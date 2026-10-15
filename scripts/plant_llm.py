@@ -495,7 +495,7 @@ def cmd_submit(args) -> int:
 
 
 def cmd_collect(args) -> int:
-    run_dir = Path(args.run) if args.run else api.latest_run_dir("plant")
+    run_dir = Path(args.run).resolve() if args.run else api.latest_run_dir("plant")
     if run_dir is None:
         raise SystemExit("no plant run directory")
     client = api.make_client()
@@ -509,8 +509,11 @@ def cmd_collect(args) -> int:
     def handle(results: Dict[str, dict], attempt: int) -> List[dict]:
         retry = []
         for cid, row in results.items():
-            req = requests[cid]
+            cid0 = cid[:-len("-retry")] if cid.endswith("-retry") else cid
+            req = requests[cid0]
             did, ds = req["dialogue_id"], req["dataset"]
+            if did in accepted:
+                continue  # accepted in an earlier pass (the retry set may be wider than this run's rejects)
             by_id = {str(d[0]["dialogue_id"]): d for d in dialogues[ds]}
             errs: List[str]
             doc = None
@@ -547,11 +550,7 @@ def cmd_collect(args) -> int:
             bid = api.submit_batch(client, retry, run_dir, "plant-retry")
         api.wait_batch(client, bid, poll_seconds=args.poll)
         results2 = api.collect_batch(client, bid, run_dir, "plant-retry", MODEL)
-        results2 = {k[:-len("-retry")]: v for k, v in results2.items()}
-        # map back to the original request ids for validation
-        for cid, row in results2.items():
-            requests[cid + "-retry"]["dialogue_id"] = requests[cid]["dialogue_id"]
-        handle({k + "-retry": v for k, v in results2.items()}, 1)
+        handle(results2, 1)
     api.write_jsonl(rejects, run_dir / "plant_rejects.jsonl")
     for did, doc in accepted.items():
         docs[doc["meta"]["dataset"]].append(doc)

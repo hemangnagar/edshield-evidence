@@ -1,0 +1,14 @@
+{"custom_id": "plant-mathdial-mathdial-test-060-retry", "dialogue_id": "mathdial-test-060", "dataset": "mathdial", "errors": ["slot 0: surface 'Grace' not found exactly once inside the inserted material of turn 1"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-338-retry", "dialogue_id": "mathdial-test-338", "dataset": "mathdial", "errors": ["slot 4: username 'emma_jones.22' invalid"], "attempt": 1}
+{"custom_id": "plant-comta-comta-115-retry", "dialogue_id": "comta-115", "dataset": "comta", "errors": ["slots not filled: [2]"], "attempt": 1}
+{"custom_id": "plant-comta-comta-050-retry", "dialogue_id": "comta-050", "dataset": "comta", "errors": ["slot 6: surface 'Benny' not found exactly once inside the inserted material of turn 9"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-498-retry", "dialogue_id": "mathdial-test-498", "dataset": "mathdial", "errors": ["student_name 'Steven Miller' not in allowed_names"], "attempt": 1}
+{"custom_id": "plant-comta-comta-015-retry", "dialogue_id": "comta-015", "dataset": "comta", "errors": ["slots not filled: [2]"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-366-retry", "dialogue_id": "mathdial-test-366", "dataset": "mathdial", "errors": ["slot 0: surface 'Grace' not found exactly once inside the inserted material of turn 1"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-030-retry", "dialogue_id": "mathdial-test-030", "dataset": "mathdial", "errors": ["turn 2: original text not preserved verbatim", "slots not filled: [2]"], "attempt": 1}
+{"custom_id": "plant-comta-comta-177-retry", "dialogue_id": "comta-177", "dataset": "comta", "errors": ["slot 1: phone '555-0142' not a fictional 555 number"], "attempt": 1}
+{"custom_id": "plant-comta-comta-044-retry", "dialogue_id": "comta-044", "dataset": "comta", "errors": ["slot 1: phone '555-0142' not a fictional 555 number"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-099-retry", "dialogue_id": "mathdial-test-099", "dataset": "mathdial", "errors": ["slot 4: phone '555-0142-01' not a fictional 555 number"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-040-retry", "dialogue_id": "mathdial-test-040", "dataset": "mathdial", "errors": ["slot 3: phone '555-0142' not a fictional 555 number"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-253-retry", "dialogue_id": "mathdial-test-253", "dataset": "mathdial", "errors": ["turns returned [1, 2] != slots' turns [1, 2, 3, 6, 14]", "turn 2: original text not preserved verbatim", "slots not filled: [1, 2, 3, 4]"], "attempt": 1}
+{"custom_id": "plant-mathdial-mathdial-test-520-retry", "dialogue_id": "mathdial-test-520", "dataset": "mathdial", "errors": ["slots not filled: [0]"], "attempt": 1}
