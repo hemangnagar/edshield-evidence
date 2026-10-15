@@ -151,6 +151,7 @@ def drive(client, session_id: str, run_dir: Path, messages: List[str], state: di
     final_texts: List[str] = []
     seen: set = set()
     sent_first = False
+    last_id: Optional[str] = None  # last event handled; a reconnect replays history only after it
 
     def send(text: str) -> None:
         client.beta.sessions.events.send(session_id=session_id, events=[{"type": "user.message", "content": [{"type": "text", "text": text}]}])
@@ -164,6 +165,8 @@ def drive(client, session_id: str, run_dir: Path, messages: List[str], state: di
             return None
         if eid:
             seen.add(eid)
+            nonlocal last_id
+            last_id = eid
         api.append_jsonl(rec, log)
         t = ev.type
         if t == "agent.message":
@@ -201,9 +204,22 @@ def drive(client, session_id: str, run_dir: Path, messages: List[str], state: di
     while True:
         try:
             with client.beta.sessions.events.stream(session_id=session_id) as stream:
-                if attempts:
-                    # history first, then the live tail (dedup on id); only events of our own turns matter here
-                    for ev in client.beta.sessions.events.list(session_id=session_id):
+                if attempts or (not pending and not sent_first):
+                    # Replay the history we may have missed: everything after the last event we handled,
+                    # or, when we handled none yet (a --resume), everything after the latest user.message.
+                    history = list(client.beta.sessions.events.list(session_id=session_id))
+                    cut = None
+                    if last_id and any(getattr(e, "id", None) == last_id for e in history):
+                        cut = last_id
+                    else:
+                        for e in history:
+                            if e.type == "user.message":
+                                cut = getattr(e, "id", None)
+                    passed = cut is None
+                    for ev in history:
+                        if not passed:
+                            passed = getattr(ev, "id", None) == cut
+                            continue
                         if handle(ev) == "break":
                             state["final_messages"] = final_texts[-3:]
                             return state
