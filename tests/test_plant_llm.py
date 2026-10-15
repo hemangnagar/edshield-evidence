@@ -112,8 +112,12 @@ def test_corruptions_are_rejected():
     i = t.find(orig) + len(orig) // 2
     bad["turns"][0]["text"] = t[:i] + t[i + 1:]
     assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
-    # a slot left unfilled
+    # spans omitted but the names written: located in code, accepted
     bad = json.loads(json.dumps(good)); bad["turns"][0]["spans"] = []
+    rebuilt, errs = plant_llm.validate(bad, m, dialogues[doc["doc_id"]])
+    assert not errs and rebuilt["gold_spans"] == doc["gold_spans"]
+    # a slot genuinely left unfilled (the turn returned unchanged) is rejected
+    bad = json.loads(json.dumps(good)); bad["turns"][0]["spans"] = []; bad["turns"][0]["text"] = orig0
     assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
 
 

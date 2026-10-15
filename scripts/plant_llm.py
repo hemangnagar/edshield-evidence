@@ -201,12 +201,21 @@ def _dl1(a: str, b: str) -> bool:
 
 def inserted_blocks(orig: str, new: str) -> Optional[List[Tuple[int, int]]]:
     """(start, end) ranges in `new` that were inserted into `orig`, or None when
-    the edit is not insert-only (a character of the original changed or vanished)."""
+    the edit is not insert-only (a character of the original changed or vanished).
+    One tolerated deviation: the first letter of the original may change case
+    when material was prepended ("Priya, how much is 33-28?"); the models do
+    this despite the instruction and it alters nothing but that letter's case."""
     import difflib
     sm = difflib.SequenceMatcher(None, orig, new, autojunk=False)
     blocks = []
     for tag, i1, i2, j1, j2 in sm.get_opcodes():
         if tag == "equal":
+            continue
+        if tag == "replace" and i1 == 0 and i2 == 1 and j2 - j1 >= 1 and orig[0].isalpha() \
+                and new[j2 - 1].lower() == orig[0].lower() and new[j2 - 1] != orig[0]:
+            # prepended text plus the case-changed first letter: the insertion is everything before that letter
+            if j2 - 1 > j1:
+                blocks.append((j1, j2 - 1))
             continue
         if tag != "insert":
             return None
@@ -250,13 +259,23 @@ def validate(resp: dict, m: dict, dialogue: list) -> Tuple[Optional[dict], List[
     """Check one response against its manifest. Returns (doc, errors)."""
     errs: List[str] = []
     allowed = set(gs.names(m["category"]))
+    firsts = {n.split(" ", 1)[0] for n in allowed}
+    lasts = {n.split(" ", 1)[1] for n in allowed if " " in n}
+
+    def name_ok(n: str) -> bool:
+        # the category is a property of the first name; a full name may pair any first and last name of the list
+        if n in allowed:
+            return True
+        parts = n.split(" ", 1)
+        return len(parts) == 2 and parts[0] in firsts and parts[1] in lasts
+
     schools = set(gs.names("schools"))
     student = resp.get("student_name") or ""
     related = resp.get("related_name")
-    if student not in allowed:
+    if not name_ok(student):
         errs.append(f"student_name {student!r} not in allowed_names")
     need_related = any(s["kind"] == "related" for s in m["slots"])
-    if need_related and (related not in allowed or related == student):
+    if need_related and (not related or not name_ok(related) or related.split(" ")[0] == student.split(" ")[0]):
         errs.append(f"related_name {related!r} invalid")
     first = student.split(" ", 1)[0] if student else ""
     last = student.split(" ", 1)[1] if " " in student else ""
@@ -327,9 +346,46 @@ def validate(resp: dict, m: dict, dialogue: list) -> Tuple[Optional[dict], List[
                     errs.append(f"slot {sid}: username {surf!r} invalid")
             elif k == "phone":
                 digits = re.sub(r"\D", "", surf)
-                if len(digits) != 10 or digits[3:6] != "555" or digits[6:8] != "01":
-                    errs.append(f"slot {sid}: phone {surf!r} not a 555-01xx number")
+                digits = digits[1:] if len(digits) == 11 and digits[0] == "1" else digits
+                if len(digits) != 10 or not ((digits[3:6] == "555" and digits[6:8] == "01") or digits[:3] == "555"):
+                    errs.append(f"slot {sid}: phone {surf!r} not a fictional 555 number")
             local.append((s, e, slot["det_kind"], surf, sid))
+        # slots the model filled in the text but left out of `spans`: locate the expected surface form ourselves
+        for sid, ti in slot_turn.items():
+            if ti != i or sid in seen_slots:
+                continue
+            slot = slots[sid]
+            k = slot["kind"]
+            cand: Optional[str] = None
+            if k in ("name", "related"):
+                who = student if k == "name" else related
+                cand = expected_name(who, slot) if who and not slot.get("typo") else None
+            elif k == "school":
+                hits = [sc for sc in schools if locate(sc, text, -1, -1, blocks, taken)]
+                cand = hits[0] if len(hits) == 1 else None
+            else:
+                pat = {"email": r"[A-Za-z0-9._+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "phone": r"\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}",
+                       "username": r"@?[A-Za-z0-9_.-]{3,30}"}[k]
+                hits = [mm.group().lstrip("@") for mm in re.finditer(pat, text)
+                        if any(x <= mm.start() and mm.end() <= y for x, y in blocks)]
+                if k == "username":
+                    hits = [h for h in hits if any(x and x.lower()[:3] in h.lower() for x in (first, last)) and "@" not in h]
+                cand = hits[0] if len(hits) == 1 else None
+            if cand:
+                loc = locate(cand, text, -1, -1, blocks, taken)
+                if loc:
+                    seen_slots.add(sid)
+                    taken.add(loc)
+                    local.append((loc[0], loc[1], slot["det_kind"], cand, sid))
+                    # contact values still go through the format checks below
+                    if k == "email":
+                        mm = re.fullmatch(r"[A-Za-z0-9._+-]+@([A-Za-z0-9.-]+)", cand)
+                        if not mm or mm.group(1).lower() not in DOMAINS:
+                            errs.append(f"slot {sid}: email {cand!r} invalid")
+                    elif k == "phone":
+                        digits = re.sub(r"\D", "", cand)
+                        if len(digits) != 10 or not ((digits[3:6] == "555" and digits[6:8] == "01") or digits[:3] == "555"):
+                            errs.append(f"slot {sid}: phone {cand!r} not a fictional 555 number")
         new_turns[i] = (text, local)
     typo_slots = {s["slot_id"] for s in m["slots"] if s.get("typo")}
     missing = set(slots) - seen_slots
@@ -483,8 +539,12 @@ def cmd_collect(args) -> int:
     results = api.collect_batch(client, meta["id"], run_dir, "plant", MODEL)
     retry = handle(results, 0)
     if retry:
-        print(f"re-queueing {len(retry)} rejected dialogues once")
-        bid = api.submit_batch(client, retry, run_dir, "plant-retry")
+        if (run_dir / "batch_plant-retry.json").exists():
+            bid = api.batch_meta(run_dir, "plant-retry")["id"]
+            print(f"{len(retry)} dialogues still rejected; retry batch {bid} was already submitted, collecting it")
+        else:
+            print(f"re-queueing {len(retry)} rejected dialogues once")
+            bid = api.submit_batch(client, retry, run_dir, "plant-retry")
         api.wait_batch(client, bid, poll_seconds=args.poll)
         results2 = api.collect_batch(client, bid, run_dir, "plant-retry", MODEL)
         results2 = {k[:-len("-retry")]: v for k, v in results2.items()}
