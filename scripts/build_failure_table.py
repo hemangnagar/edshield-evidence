@@ -29,7 +29,7 @@ import score  # noqa: E402  (experiments/genre_shift/score.py, read-only: contex
 VIEWS = {
     "deterministic": {"misses": gs.GS_RESULTS / "misses.csv", "docs": lambda ds: gs.planted(ds),
                       "out": ROOT / "results" / "deterministic"},
-    "llm": {"misses": ROOT / "results" / "llm_view" / "misses.csv",
+    "llm": {"misses": ROOT / "results" / "llm_view" / "llm" / "misses.csv",
             "docs": lambda ds: gs.read_jsonl(ROOT / "data" / "planted_llm" / f"{ds}.jsonl"),
             "out": ROOT / "results" / "llm_view"},
 }
