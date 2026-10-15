@@ -1,0 +1,55 @@
+{
+ "policy": "coppa",
+ "policy_sha256": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "runtime": "onnx",
+ "detector": "rules+model",
+ "device": "cpu",
+ "seed": 0,
+ "versions": {
+  "python": "3.11.16",
+  "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+  "edshield": "0.2.0",
+  "edshield-evidence": "0.1.0",
+  "torch": "not installed",
+  "transformers": "5.19.0",
+  "onnxruntime": "1.29.0",
+  "huggingface_hub": "2.2.0",
+  "numpy": "2.4.6"
+ },
+ "edshield": {
+  "version": "0.2.0",
+  "installed_from": "/workspace/edshield-evidence/runs/edshield-checkout",
+  "commit": "a568e73a6c34d40335802235db81950e84004ab1+dirty",
+  "rules_sha256": "8203b137552926be7f941090f937bf070aaf6fdc55ca50a00047448ef5e99ce9"
+ },
+ "sets": {
+  "deterministic__comta": {
+   "docs": 188,
+   "seconds": 39.4
+  },
+  "deterministic__mathdial": {
+   "docs": 599,
+   "seconds": 125.5
+  },
+  "llm__comta": {
+   "docs": 181,
+   "seconds": 37.8
+  },
+  "llm__mathdial": {
+   "docs": 543,
+   "seconds": 117.8
+  },
+  "control__comta": {
+   "docs": 188,
+   "seconds": 39.0
+  },
+  "control__mathdial": {
+   "docs": 599,
+   "seconds": 122.2
+  }
+ },
+ "started": "2026-10-15T14:51:42",
+ "model_sha256": "7f4dd8e5a58c45c941ac2b627fe1213a5d893d42defa6dd9854ebe1e4dd4b1fc",
+ "model_ref": "/root/.cache/huggingface/hub/models--edshield--piilo-deberta-v3-small-onnx/snapshots/884f9536dc67de556909722607358376078f6e35/onnx/model_quantized.onnx",
+ "finished": "2026-10-15T14:59:53"
+}

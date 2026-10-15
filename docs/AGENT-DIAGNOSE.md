@@ -31,3 +31,7 @@ Every API call goes through `scripts/platform_api.py`, which reads the platform 
 - The diagnoser never sees the sealed run's heuristic `reason` tag.
 - The agent's tool permission policy is `always_allow`: the sandbox holds public code and synthetic identifiers only, and nobody attends the run.
 - Baseline numbers for the deterministic view are read from the desktop's committed `experiments/genre_shift/results/metrics.json`; this branch never re-runs that view as a baseline. Candidate rounds compare against it and against round 0 in the same sandbox.
+
+## Status (2026-10-15)
+
+Everything in the brief ran. Key check, both batches, the Managed Agents session (`sesn_01SpV798Yfa2nmVUmZX6fJTr`, two rounds, $3.77) and the fresh-container verification session (`sesn_01JVPjSwZ9qiT5pE4WtsiFFm`, $0.13) are done; nothing is still running on the platform. Deviations from the brief, all recorded in the files: the sandbox scored with the INT8 ONNX runtime because torch wheels are unreachable there (round 0 is 0.35 pp under the sealed GPU baseline); the planting validator accepts insert-only edits, a case change of the original's first letter after a prepended phrase, and locates surface forms itself; the LLM view is 724 of 738 dialogues. The findings note is `results/agent_findings.md`; spend is in `runs/20261015T144955Z-cost/COST.md`.
