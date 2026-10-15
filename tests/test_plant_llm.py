@@ -96,8 +96,18 @@ def test_corruptions_are_rejected():
     # an edited original turn
     bad = json.loads(json.dumps(good)); bad["turns"][0]["text"] = bad["turns"][0]["text"].replace(" ", "  ", 1) + "x"
     assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
-    # wrong offsets
+    # offsets off by one are repaired by locating the surface form inside the inserted material
     bad = json.loads(json.dumps(good)); bad["turns"][0]["spans"][0]["start"] += 1
+    rebuilt, errs = plant_llm.validate(bad, m, dialogues[doc["doc_id"]])
+    assert not errs and rebuilt["text"] == doc["text"]
+    # a surface form that is not in the inserted material (the name hidden inside the original text) is rejected
+    bad = json.loads(json.dumps(good)); bad["turns"][0]["spans"][0]["text"] = "the"
+    assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
+    # a deleted character of the original is rejected even when the span is fine
+    bad = json.loads(json.dumps(good)); t = bad["turns"][0]["text"]
+    orig = next(str(x["text"]) for x in dialogues[doc["doc_id"]] if x["turn_idx"] == bad["turns"][0]["turn_idx"])
+    i = t.find(orig) + len(orig) // 2
+    bad["turns"][0]["text"] = t[:i] + t[i + 1:]
     assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
     # a slot left unfilled
     bad = json.loads(json.dumps(good)); bad["turns"][0]["spans"] = []

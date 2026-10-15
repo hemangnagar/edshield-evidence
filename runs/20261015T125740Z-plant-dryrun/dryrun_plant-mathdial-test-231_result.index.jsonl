@@ -1,0 +1,1 @@
+{"custom_id": "plant-mathdial-mathdial-test-231", "type": "dry_run", "stop_reason": "end_turn", "usage": {"input_tokens": 2389, "output_tokens": 170, "cache_creation_input_tokens": 1994, "cache_read_input_tokens": 0}, "model": "claude-sonnet-5-5", "cost_usd": 0.011463, "request_id": "req_011Cg44WcP13R9G76RP47n4p"}

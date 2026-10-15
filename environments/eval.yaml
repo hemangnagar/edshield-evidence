@@ -25,5 +25,8 @@ config:
     allowed_hosts:
       - huggingface.co
       - "*.huggingface.co"          # a bare host does not match subdomains; both are needed
+      - hf.co                       # LFS / xet content hosts the weights actually download from
+      - "*.hf.co"
+      - "*.xethub.hf.co"
       - raw.githubusercontent.com   # the pinned CoMTA / MathDial raw files (download.py)
       - download.pytorch.org        # CPU-only torch wheels for the python runtime (setup message)

@@ -199,6 +199,37 @@ def _dl1(a: str, b: str) -> bool:
     return any(l[:i] + l[i + 1:] == s for i in range(len(l)))
 
 
+def inserted_blocks(orig: str, new: str) -> Optional[List[Tuple[int, int]]]:
+    """(start, end) ranges in `new` that were inserted into `orig`, or None when
+    the edit is not insert-only (a character of the original changed or vanished)."""
+    import difflib
+    sm = difflib.SequenceMatcher(None, orig, new, autojunk=False)
+    blocks = []
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == "equal":
+            continue
+        if tag != "insert":
+            return None
+        blocks.append((j1, j2))
+    return blocks
+
+
+def locate(surf: str, text: str, start: int, end: int, blocks: List[Tuple[int, int]], taken: set) -> Optional[Tuple[int, int]]:
+    """Where the surface form sits inside inserted material: the model's offsets
+    when they resolve there, else the unique whole-word occurrence inside the
+    inserted blocks that no other slot has claimed."""
+    def inside(a: int, b: int) -> bool:
+        return any(x <= a and b <= y for x, y in blocks)
+
+    if 0 <= start < end <= len(text) and text[start:end] == surf and inside(start, end) and (start, end) not in taken:
+        return start, end
+    cands = [(m.start(), m.end()) for m in re.finditer(r"(?<![\w'’])" + re.escape(surf) + r"(?!\w)", text)
+             if inside(m.start(), m.end()) and (m.start(), m.end()) not in taken]
+    if len(cands) == 1:
+        return cands[0]
+    return None
+
+
 def expected_name(full: str, slot: dict) -> str:
     first = full.split(" ", 1)[0]
     f = slot["form"]
@@ -246,11 +277,16 @@ def validate(resp: dict, m: dict, dialogue: list) -> Tuple[Optional[dict], List[
             errs.append(f"turn {i} does not exist")
             continue
         orig = turn_text[i]
-        pos = text.find(orig)
-        if pos < 0:
+        blocks = inserted_blocks(orig, text)
+        n_slots_here = sum(1 for sid, ti in slot_turn.items() if ti == i)
+        if blocks is None:
             errs.append(f"turn {i}: original text not preserved verbatim")
             continue
+        if len(blocks) > n_slots_here + 1:
+            errs.append(f"turn {i}: {len(blocks)} separate insertions for {n_slots_here} slots")
+            continue
         local: List[tuple] = []
+        taken: set = set()
         for sp in t["spans"]:
             sid = sp["slot_id"]
             if sid not in slots or slot_turn[sid] != i:
@@ -260,13 +296,13 @@ def validate(resp: dict, m: dict, dialogue: list) -> Tuple[Optional[dict], List[
                 errs.append(f"slot {sid} filled twice")
                 continue
             seen_slots.add(sid)
-            s, e, surf = sp["start"], sp["end"], sp["text"]
-            if not (0 <= s < e <= len(text)) or text[s:e] != surf:
-                errs.append(f"slot {sid}: offsets {s}:{e} do not resolve to {surf!r}")
+            surf = sp["text"]
+            loc = locate(surf, text, sp["start"], sp["end"], blocks, taken)
+            if loc is None:
+                errs.append(f"slot {sid}: surface {surf!r} not found exactly once inside the inserted material of turn {i}")
                 continue
-            if s < pos + len(orig) and pos < e:
-                errs.append(f"slot {sid}: span overlaps the original text")
-                continue
+            s, e = loc
+            taken.add(loc)
             slot = slots[sid]
             k = slot["kind"]
             if k in ("name", "related"):

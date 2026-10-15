@@ -38,7 +38,7 @@ SCHEMA = {
     "type": "object",
     "properties": {
         "primary": {"type": "string", "enum": CAUSES},
-        "secondary": {"type": ["string", "null"], "enum": CAUSES + [None]},
+        "secondary": {"anyOf": [{"type": "string", "enum": CAUSES}, {"type": "null"}]},
         "confidence": {"type": "number"},
         "fix_class": {"type": "string", "enum": FIX_CLASSES},
         "evidence": {"type": "string"},

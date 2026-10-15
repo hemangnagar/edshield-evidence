@@ -210,7 +210,7 @@ def retrieve_outputs(client, session_id: str, run_dir: Path, final_texts: List[s
         with tarfile.open(tgz) as tf:
             for m in tf.getmembers():
                 name = m.name.lstrip("./")
-                if not (name.startswith("proposals/") or name.startswith("results/candidate/")) or "/raw/" in name or ".." in name:
+                if not (name.startswith("proposals/") or name.startswith("results/candidate/") or name.startswith("results/llm_view/")) or "/raw/" in name or ".." in name:
                     continue
                 if m.isfile():
                     data = tf.extractfile(m).read()
@@ -234,6 +234,9 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--write-agent-md", action="store_true")
+    ap.add_argument("--phase", choices=["setup", "task", "both"], default="both",
+                    help="setup: create the session, send the setup message, retrieve baselines; task: send the task message to --session")
+    ap.add_argument("--session", metavar="SESSION_ID", help="existing session for --phase task")
     ap.add_argument("--resume", metavar="SESSION_ID")
     ap.add_argument("--retrieve", metavar="SESSION_ID")
     ap.add_argument("--budget-cents", default="3000", help="hard session cap at list price, in cents (brief: $30)")
@@ -258,6 +261,14 @@ def main(argv=None) -> int:
         session_id = args.resume
         state["session_id"] = session_id
         drive(client, session_id, run_dir, [], state)
+    elif args.phase == "task":
+        if not args.session:
+            raise SystemExit("--phase task needs --session SESSION_ID")
+        session_id = args.session
+        state["session_id"] = session_id
+        state["phase"] = "task"
+        (run_dir / "task_message.md").write_text(task, encoding="utf-8")
+        drive(client, session_id, run_dir, [task], state)
     else:
         ids = ensure_resources(client, args.dry_run)
         resources = upload_inputs(client, args.dry_run)
@@ -279,8 +290,9 @@ def main(argv=None) -> int:
         state["session_id"] = session_id
         state["console"] = f"https://platform.claude.com/workspaces/default/sessions/{session_id}"
         print(f"session {session_id} status {session.status}; trace: {state['console']}")
+        state["phase"] = args.phase
         (run_dir / "SESSION.json").write_text(json.dumps(state, indent=1), encoding="utf-8")
-        drive(client, session_id, run_dir, [setup, task], state)
+        drive(client, session_id, run_dir, [setup] if args.phase == "setup" else [setup, task], state)
     s = client.beta.sessions.retrieve(session_id=session_id)
     state["final_status"] = s.status
     if getattr(s, "usage", None):

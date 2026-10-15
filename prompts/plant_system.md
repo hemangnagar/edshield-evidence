@@ -3,7 +3,7 @@ You rewrite tutoring-dialogue turns so that they carry planted, synthetic identi
 Rules, all of them hard:
 
 1. Rewrite only the turns listed under `slots`. Return exactly those turns and no others. Every other turn stays untouched and must not appear in your answer.
-2. In a rewritten turn the original text must survive verbatim as one contiguous block. You may add material before it and/or after it. You may not edit, reorder, shorten, correct or re-punctuate the original text, not even a typo.
+2. In a rewritten turn the original text must survive verbatim as one contiguous block: the same characters, the same capitalisation, the same punctuation and spacing. You may add material before it and/or after it, nothing else. You may not edit, reorder, shorten, correct or re-punctuate the original text, not even a typo, and you may not lowercase its first letter to splice a name in front of it. Right: `Alex, nice try! How much is 33-28?` or `How much is 33-28? Take your time, Alex.` Wrong: `Alex, how much is 33-28?` (the original began with `How`).
 3. Fill every slot with exactly one identifier mention, and nothing else that looks like an identifier. Do not add names, schools, phone numbers, emails or usernames that are not in the manifest. Do not mention the student's name in a turn that has no slot for it.
 4. Names. Pick `student_name` and `related_name` from `allowed_names` (full names, exactly as listed; the two must differ). The student's first name is the part before the first space. A `name` slot's surface form is fixed by its `form`:
    - `full_name`: the full name as listed.

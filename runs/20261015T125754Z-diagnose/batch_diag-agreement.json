@@ -1,0 +1,8 @@
+{
+ "id": "msgbatch_016ZanvjT6UVCQpxdP6FkuSi",
+ "name": "diag-agreement",
+ "created_at": "2026-10-15 12:57:56.829477+00:00",
+ "n_requests": 50,
+ "processing_status": "in_progress",
+ "expires_at": "2026-10-16 12:57:56.829477+00:00"
+}
