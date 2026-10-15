@@ -67,12 +67,228 @@
 <main>
   <header>
     <div class="eyebrow">edshield-evidence · branch claude/compassionate-ritchie-tpkgv9</div>
-    <h1>How the agent-assisted diagnosis ran</h1>
-    <p class="lede">Three places did work: this Claude Code cloud session (plumbing only), the Claude Platform (every model call, billed to the platform org), and the Managed Agents sandbox (edshield inference on CPU). The brief's rule was that nothing judgment-shaped runs in the first lane, and the diagram is drawn to show where that line sits.</p>
+    <h1>Agent-assisted diagnosis: architecture and first run</h1>
+    <p class="lede">A scheduled cycle that measures a candidate edshield, labels its misses with a batch model call, lets a bounded agent propose rule-level fixes, re-scores them independently, and hands a pull request to a human. Model calls run on the Claude Platform; an orchestrator script holds the secrets and the ledger; a sandbox runs the inference. The first figure is the system; the later ones are its first run on 2026-10-15.</p>
   </header>
 
+
   <figure>
-    <h2>Components and data flow</h2>
+    <h2>System architecture</h2>
+    <div class="scroll">
+    <svg viewBox="0 0 1120 820" role="img" aria-label="Layered architecture: triggers fire an orchestrator script, which uses the Claude Platform's Message Batches and Managed Agents; the agent's tool calls run in a sandbox that clones the bench and the candidate; results, logs and proposals go back to git and a pull request for human review; a governance rail lists the budget cap, path allow-list, frozen rubric, independent re-score and human gate.">
+      <defs>
+        <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <!-- band: triggers -->
+      <rect x="16" y="16" width="860" height="88" rx="6" fill="var(--lane-code)" stroke="var(--line)"/>
+      <text x="32" y="38" font-size="12" font-weight="600">Triggers</text>
+      <rect x="32" y="48" width="400" height="44" rx="4" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="44" y="66" font-size="11" font-weight="500">GitHub Actions · .github/workflows/agent-diagnose.yml</text>
+      <text x="44" y="82" font-size="11" fill="var(--muted)">cron Mondays 08:54 ET · workflow_dispatch(edshield_ref, base)</text>
+      <rect x="452" y="48" width="408" height="44" rx="4" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="464" y="66" font-size="11" font-weight="500">Claude Code cloud scheduled task · "agent-diagnose weekly"</text>
+      <text x="464" y="82" font-size="11" fill="var(--muted)">fresh session in the environment that holds the keys · same cron</text>
+
+      <!-- band: orchestrator -->
+      <rect x="16" y="128" width="860" height="150" rx="6" fill="var(--lane-code)" stroke="var(--line)"/>
+      <text x="32" y="150" font-size="12" font-weight="600">Orchestrator · scripts/pipeline.py (no model calls of its own)</text>
+      <text x="32" y="167" font-size="11" fill="var(--muted)">holds EDSHIELD_PLATFORM_API_KEY and EDSHIELD_LLMVIEW_KEY · state in runs/pipeline-&lt;run id&gt;/state.json · idempotent per stage</text>
+      <g font-size="11" font-weight="500">
+        <rect x="32" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--line)"/><text x="80" y="199" text-anchor="middle">data</text>
+        <rect x="148" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--line)"/><text x="196" y="199" text-anchor="middle">branch</text>
+        <rect x="264" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5"/><text x="312" y="199" text-anchor="middle">regress</text>
+        <rect x="380" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5"/><text x="428" y="199" text-anchor="middle">diagnose</text>
+        <rect x="496" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5"/><text x="544" y="199" text-anchor="middle">propose</text>
+        <rect x="612" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5"/><text x="660" y="199" text-anchor="middle">verify</text>
+        <rect x="728" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--line)"/><text x="776" y="199" text-anchor="middle">report</text>
+      </g>
+      <g font-size="10" fill="var(--muted)">
+        <text x="80" y="228" text-anchor="middle">unseal LLM view,</text><text x="80" y="240" text-anchor="middle">rebuild planted set</text>
+        <text x="196" y="228" text-anchor="middle">auto/agent-diagnose-&lt;id&gt;</text><text x="196" y="240" text-anchor="middle">pushed for the sandbox</text>
+        <text x="312" y="228" text-anchor="middle">session · round 0</text><text x="312" y="240" text-anchor="middle">on candidate ref</text>
+        <text x="428" y="228" text-anchor="middle">batch, new misses only</text><text x="428" y="240" text-anchor="middle">causes.jsonl accumulates</text>
+        <text x="544" y="228" text-anchor="middle">task message ·</text><text x="544" y="240" text-anchor="middle">≤ 3 rounds</text>
+        <text x="660" y="228" text-anchor="middle">fresh container ·</text><text x="660" y="240" text-anchor="middle">path check + re-score</text>
+        <text x="776" y="228" text-anchor="middle">COST.md, RUN_&lt;id&gt;.md</text><text x="776" y="240" text-anchor="middle">commit, push, PR</text>
+      </g>
+      <line x1="128" y1="195" x2="148" y2="195" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrowA)"/>
+      <line x1="244" y1="195" x2="264" y2="195" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrowA)"/>
+      <line x1="360" y1="195" x2="380" y2="195" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrowA)"/>
+      <line x1="476" y1="195" x2="496" y2="195" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrowA)"/>
+      <line x1="592" y1="195" x2="612" y2="195" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrowA)"/>
+      <line x1="708" y1="195" x2="728" y2="195" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrowA)"/>
+      <text x="32" y="266" font-size="10" fill="var(--muted)">accent-outlined stages call the platform; the others touch only git and local files</text>
+
+      <!-- trigger -> orchestrator -->
+      <line x1="446" y1="104" x2="446" y2="128" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+      <text x="454" y="120" font-size="10" fill="var(--muted)">fires one cycle: --edshield-ref, --base</text>
+
+      <!-- band: platform -->
+      <rect x="16" y="302" width="860" height="210" rx="6" fill="var(--lane-platform)" stroke="var(--line)"/>
+      <text x="32" y="324" font-size="12" font-weight="600">Claude Platform · api.anthropic.com · billed to the platform org</text>
+      <rect x="32" y="338" width="256" height="160" rx="4" fill="var(--panel)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="44" y="358" font-size="11" font-weight="600">Message Batches</text>
+      <text x="44" y="376" font-size="11">diagnosis · claude-opus-5-5</text>
+      <text x="44" y="391" font-size="10" fill="var(--muted)">one request per new miss · frozen rubric</text>
+      <text x="44" y="404" font-size="10" fill="var(--muted)">structured JSON · 50-row reorder check</text>
+      <text x="44" y="424" font-size="11">planting · claude-sonnet-5-5 (one-off)</text>
+      <text x="44" y="439" font-size="10" fill="var(--muted)">per seed and dataset version, then sealed</text>
+      <text x="44" y="462" font-size="10" fill="var(--muted)">contract: custom_id keyed, validated in</text>
+      <text x="44" y="475" font-size="10" fill="var(--muted)">code, one retry, rejects counted; 50% price</text>
+
+      <rect x="304" y="338" width="556" height="160" rx="4" fill="var(--panel)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="316" y="358" font-size="11" font-weight="600">Managed Agents</text>
+      <rect x="316" y="368" width="168" height="118" rx="3" fill="var(--lane-platform)" stroke="var(--line)"/>
+      <text x="326" y="386" font-size="11" font-weight="500">Environment</text>
+      <text x="326" y="402" font-size="10">pip: edshield, onnxruntime,</text>
+      <text x="326" y="414" font-size="10">transformers, bench deps</text>
+      <text x="326" y="432" font-size="10">limited egress: package</text>
+      <text x="326" y="444" font-size="10">managers, hf.co, GitHub</text>
+      <text x="326" y="462" font-size="10" fill="var(--muted)">no secrets, no web tools</text>
+      <rect x="500" y="368" width="168" height="118" rx="3" fill="var(--lane-platform)" stroke="var(--line)"/>
+      <text x="510" y="386" font-size="11" font-weight="500">Agent · rule proposer</text>
+      <text x="510" y="402" font-size="10">claude-opus-5-5</text>
+      <text x="510" y="414" font-size="10">system prompt in git</text>
+      <text x="510" y="432" font-size="10">toolset: bash, read, write,</text>
+      <text x="510" y="444" font-size="10">edit, glob, grep</text>
+      <text x="510" y="462" font-size="10" fill="var(--muted)">may edit edshield/rules.py only</text>
+      <rect x="684" y="368" width="164" height="118" rx="3" fill="var(--lane-platform)" stroke="var(--line)"/>
+      <text x="694" y="386" font-size="11" font-weight="500">Session (per run)</text>
+      <text x="694" y="402" font-size="10">budget: hard list-price cap</text>
+      <text x="694" y="414" font-size="10">resources: uploaded docs</text>
+      <text x="694" y="432" font-size="10">events: SSE stream, replay</text>
+      <text x="694" y="444" font-size="10">on reconnect, logged whole</text>
+      <text x="694" y="462" font-size="10">outputs: Files API archive</text>
+
+      <!-- orchestrator <-> platform arrows -->
+      <line x1="428" y1="278" x2="160" y2="338" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+      <text x="236" y="298" font-size="10" fill="var(--muted)" transform="rotate(-12 236 298)">requests JSONL · results polled</text>
+      <line x1="544" y1="278" x2="582" y2="338" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+      <line x1="620" y1="338" x2="660" y2="278" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+      <text x="600" y="302" font-size="10" fill="var(--muted)" text-anchor="end">create · upload · send</text>
+      <text x="700" y="318" font-size="10" fill="var(--muted)">events · outputs</text>
+
+      <!-- band: sandbox -->
+      <rect x="16" y="536" width="860" height="132" rx="6" fill="var(--lane-sandbox)" stroke="var(--line)"/>
+      <text x="32" y="558" font-size="12" font-weight="600">Execution sandbox · one container per session · CPU</text>
+      <rect x="32" y="570" width="270" height="84" rx="4" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="44" y="588" font-size="11" font-weight="500">/workspace/edshield-evidence</text>
+      <text x="44" y="604" font-size="10">bench clone of the run branch</text>
+      <text x="44" y="616" font-size="10">fixed scorer (never edited) · make eval-candidate</text>
+      <text x="44" y="632" font-size="10" fill="var(--muted)">uploads: planted, control, LLM view (read-only)</text>
+      <rect x="318" y="570" width="250" height="84" rx="4" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="330" y="588" font-size="11" font-weight="500">/workspace/edshield · candidate</text>
+      <text x="330" y="604" font-size="10">clone at --edshield-ref, pip install -e</text>
+      <text x="330" y="616" font-size="10">agent edits rules.py; git diff → round_N.patch</text>
+      <text x="330" y="632" font-size="10" fill="var(--muted)">verify: clean clone + patch, re-scored</text>
+      <rect x="584" y="570" width="276" height="84" rx="4" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="596" y="588" font-size="11" font-weight="500">Inference</text>
+      <text x="596" y="604" font-size="10">INT8 ONNX weights from hf.co, once per container</text>
+      <text x="596" y="616" font-size="10">~2,300 documents per round (both views + control)</text>
+      <text x="596" y="632" font-size="10" fill="var(--muted)">compute only; no judgment here</text>
+      <line x1="776" y1="498" x2="776" y2="536" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowA)"/>
+      <text x="784" y="522" font-size="10" fill="var(--muted)">tool calls ↔ results</text>
+
+      <!-- band: evidence / git -->
+      <rect x="16" y="692" width="860" height="112" rx="6" fill="var(--lane-code)" stroke="var(--line)"/>
+      <text x="32" y="714" font-size="12" font-weight="600">Evidence and ledger · git (GitHub) · one run branch per cycle · pull request to main</text>
+      <g font-size="10">
+        <text x="32" y="736">sealed sets, plant_log.json, misses.csv (read-only)</text>
+        <text x="32" y="750">LLM view: *.jsonl.enc (AES-256-GCM) + sealed.json</text>
+        <text x="32" y="764">results/diagnosis/causes.jsonl (accumulates across runs)</text>
+        <text x="32" y="778">results/candidate/round_N, driver_rescore (text-free)</text>
+        <text x="440" y="736">proposals/round_N.patch, PROPOSAL.md, DRIVER_CHECK.md</text>
+        <text x="440" y="750">runs/&lt;ts&gt;/: request and result indexes, agent_events.jsonl</text>
+        <text x="440" y="764">runs/pipeline-&lt;id&gt;/: state.json, COST.md · results/RUN_&lt;id&gt;.md</text>
+        <text x="440" y="778" fill="var(--muted)">licensed text never committed in the clear</text>
+      </g>
+      <line x1="160" y1="668" x2="160" y2="692" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+      <text x="168" y="684" font-size="10" fill="var(--muted)">clone run branch</text>
+      <path d="M776 278 C 900 278, 900 700, 876 712" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+      <text x="892" y="470" font-size="10" fill="var(--muted)" transform="rotate(90 892 470)">commit + push after every stage</text>
+
+      <!-- governance rail -->
+      <rect x="912" y="16" width="192" height="788" rx="6" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="924" y="38" font-size="12" font-weight="600">Governance</text>
+      <g font-size="10">
+        <text x="924" y="66" font-weight="500">Budget</text>
+        <text x="924" y="80">hard list-price cap per session;</text>
+        <text x="924" y="92">the platform pauses, never bills past it</text>
+        <text x="924" y="118" font-weight="500">Write boundary</text>
+        <text x="924" y="132">agent may change rules.py only;</text>
+        <text x="924" y="144">patches re-applied to a clean clone</text>
+        <text x="924" y="156">and path-checked by the driver</text>
+        <text x="924" y="182" font-weight="500">Fixed instrument</text>
+        <text x="924" y="196">scorer, planted sets, sealed sets</text>
+        <text x="924" y="208">read-only; baseline from the sealed</text>
+        <text x="924" y="220">run, never recomputed</text>
+        <text x="924" y="246" font-weight="500">Frozen rubric</text>
+        <text x="924" y="260">diagnosis prompt sha256 pinned at</text>
+        <text x="924" y="272">first submission; reorder check</text>
+        <text x="924" y="298" font-weight="500">Independent re-score</text>
+        <text x="924" y="312">fresh container, same scorer, must</text>
+        <text x="924" y="324">match the agent within rounding</text>
+        <text x="924" y="350" font-weight="500">Auditability</text>
+        <text x="924" y="364">every request, result and session</text>
+        <text x="924" y="376">event logged; spend reconstructed</text>
+        <text x="924" y="388">from usage fields per component</text>
+        <text x="924" y="414" font-weight="500">Wording</text>
+        <text x="924" y="428">"no regression against pinned</text>
+        <text x="924" y="440">baseline" only; test forbids claims</text>
+        <text x="924" y="466" font-weight="500">Secrets</text>
+        <text x="924" y="480">orchestrator-only; the sandbox and</text>
+        <text x="924" y="492">the agent never see a key</text>
+        <text x="924" y="518" font-weight="500">Stop conditions</text>
+        <text x="924" y="532">3 rounds · &lt; 0.5 pp gain ·</text>
+        <text x="924" y="544">control + 0.5 flags/1k → revert</text>
+      </g>
+      <rect x="924" y="700" width="168" height="90" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+      <text x="1008" y="724" font-size="11" font-weight="600" text-anchor="middle">Human review gate</text>
+      <text x="1008" y="742" font-size="10" text-anchor="middle">pull request per run;</text>
+      <text x="1008" y="754" font-size="10" text-anchor="middle">nothing merges itself;</text>
+      <text x="1008" y="766" font-size="10" text-anchor="middle">ledger pin stays human</text>
+      <line x1="876" y1="745" x2="924" y2="745" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
+    </svg>
+    </div>
+    <figcaption>The system as it is wired: a trigger fires the orchestrator, the orchestrator uses the platform for every model call and the sandbox for every inference, and all state flows back into git on a run branch that ends in a pull request. The governance rail lists the mechanisms that keep the agent's work bounded and checkable.</figcaption>
+  </figure>
+
+  <figure>
+    <h2>The bounded loop</h2>
+    <div class="scroll">
+    <svg viewBox="0 0 1120 230" role="img" aria-label="State machine of the improve loop: evaluate round 0, read the diagnosis, write one patch, evaluate, then keep, revert or stop by the stop conditions, at most three rounds, then verify in a fresh container and hand to human review.">
+      <defs>
+        <marker id="arrowL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <g font-size="11" font-weight="500" text-anchor="middle">
+        <rect x="20" y="70" width="150" height="56" rx="6" fill="var(--lane-sandbox)" stroke="var(--line)"/><text x="95" y="94">Evaluate round 0</text><text x="95" y="110" font-size="10" fill="var(--muted)" font-weight="400">sanity gate ±0.5 pp</text>
+        <rect x="210" y="70" width="150" height="56" rx="6" fill="var(--lane-platform)" stroke="var(--accent)" stroke-width="1.5"/><text x="285" y="94">Read diagnosis</text><text x="285" y="110" font-size="10" fill="var(--muted)" font-weight="400">top RULE / GAZETTEER causes</text>
+        <rect x="400" y="70" width="150" height="56" rx="6" fill="var(--lane-platform)" stroke="var(--accent)" stroke-width="1.5"/><text x="475" y="94">Write one patch</text><text x="475" y="110" font-size="10" fill="var(--muted)" font-weight="400">rules.py only</text>
+        <rect x="590" y="70" width="150" height="56" rx="6" fill="var(--lane-sandbox)" stroke="var(--line)"/><text x="665" y="94">Evaluate round N</text><text x="665" y="110" font-size="10" fill="var(--muted)" font-weight="400">both views + control</text>
+        <rect x="780" y="70" width="150" height="56" rx="6" fill="var(--lane-platform)" stroke="var(--accent)" stroke-width="1.5"/><text x="855" y="94">Decide</text><text x="855" y="110" font-size="10" fill="var(--muted)" font-weight="400">keep · revert · stop</text>
+        <rect x="970" y="70" width="130" height="56" rx="6" fill="var(--accent-soft)" stroke="var(--accent)"/><text x="1035" y="94">Verify, review</text><text x="1035" y="110" font-size="10" fill="var(--muted)" font-weight="400">fresh container · PR</text>
+      </g>
+      <line x1="170" y1="98" x2="210" y2="98" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowL)"/>
+      <line x1="360" y1="98" x2="400" y2="98" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowL)"/>
+      <line x1="550" y1="98" x2="590" y2="98" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowL)"/>
+      <line x1="740" y1="98" x2="780" y2="98" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowL)"/>
+      <line x1="930" y1="98" x2="970" y2="98" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowL)"/>
+      <text x="950" y="90" font-size="10" fill="var(--muted)" text-anchor="middle">stop</text>
+      <path d="M855 126 C 855 180, 285 180, 285 126" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowL)"/>
+      <text x="570" y="170" font-size="10" fill="var(--muted)" text-anchor="middle">keep (gain ≥ 0.5 pp, control flat) → next round, at most 3</text>
+      <text x="570" y="196" font-size="10" fill="var(--muted)" text-anchor="middle">stop when: 3 rounds · gain &lt; 0.5 pp · control + 0.5 flags/1k (revert first) · budget pause · gate failed</text>
+      <text x="95" y="150" font-size="10" fill="var(--muted)" text-anchor="middle">gate fails → report, stop</text>
+    </svg>
+    </div>
+    <figcaption>One cycle of the agent's work. The agent decides only inside the "Decide" box, and only among keep, revert and stop; what it may touch and when it must stop are fixed by the system prompt and checked afterwards by the driver.</figcaption>
+  </figure>
+  <figure>
+    <h2>First run: components and data flow (2026-10-15)</h2>
     <div class="legend">
       <span><i class="sw" style="background: var(--lane-code)"></i>Claude Code cloud session</span>
       <span><i class="sw" style="background: var(--lane-platform)"></i>Claude Platform (model calls)</span>
@@ -232,7 +448,7 @@
   </figure>
 
   <figure>
-    <h2>Sequence of the run</h2>
+    <h2>First run: sequence</h2>
     <div class="scroll">
     <svg viewBox="0 0 1120 380" role="img" aria-label="Ordered steps of the run from the key check through the two batches, the agent session's four turns, the LLM-view diagnosis batch, and the verification session, with the dependency between them.">
       <defs>

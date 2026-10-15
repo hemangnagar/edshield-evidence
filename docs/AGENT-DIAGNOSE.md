@@ -57,6 +57,6 @@ Planting is not part of the cycle: the LLM view is data preparation done once pe
 Two triggers run the same script:
 
 - **GitHub Actions** `.github/workflows/agent-diagnose.yml`: Mondays 08:54 America/New_York and on demand (`workflow_dispatch` with `edshield_ref` and `base`). Needs the repository secrets `EDSHIELD_PLATFORM_API_KEY` and `EDSHIELD_LLMVIEW_KEY`. It opens the review PR with the job's own token. Nothing is merged automatically.
-- **Claude Code cloud scheduled task** in the environment that already holds `EDSHIELD_PLATFORM_API_KEY`: a fresh session runs the same pipeline and opens the PR. It also needs `EDSHIELD_LLMVIEW_KEY` in that environment.
+- **Claude Code cloud scheduled task** `agent-diagnose weekly` (`trig_017KKLG9MLzsYq8HM7Snxjza`, same cron, first fire 2026-10-19 08:54 ET) in the environment that already holds `EDSHIELD_PLATFORM_API_KEY`: a fresh session runs the same pipeline, pushes the run branch and opens the PR when it has a GitHub tool, otherwise reports the compare link. It also needs `EDSHIELD_LLMVIEW_KEY` in that environment; without it the session stops at the key check and reports.
 
 Secrets never enter the sandbox: the orchestrator holds both keys; the sandbox only ever sees public code, the planted documents mounted at session start, and the model weights it downloads.
