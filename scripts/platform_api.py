@@ -22,6 +22,10 @@ from typing import Any, Dict, Iterable, List, Optional
 ROOT = Path(__file__).resolve().parent.parent
 RUNS = ROOT / "runs"
 OFFICIAL_BASE_URL = "https://api.anthropic.com"
+# The platform key is read from the first of these that is set. Claude Code cloud warns that a secret named
+# ANTHROPIC_API_KEY is not used for its own session login and may not pass it through, so the brief's name
+# is accepted but the dedicated name is preferred.
+KEY_VARS = ("EDSHIELD_PLATFORM_API_KEY", "ANTHROPIC_API_KEY")
 
 # Models per the brief (§1). Batch prices are 50% of standard list price.
 MODELS = {"plant": "claude-sonnet-5-5", "diagnose": "claude-opus-5-5", "agent": "claude-opus-5-5",
@@ -76,12 +80,21 @@ def sha256_text(s: str) -> str:
 
 # --- client ---------------------------------------------------------------------
 
+def platform_key() -> tuple:
+    """(variable name, key) of the platform credential, or (None, '')."""
+    for name in KEY_VARS:
+        v = os.environ.get(name, "")
+        if v:
+            return name, v
+    return None, ""
+
+
 def make_client(require_key: bool = True):
     import anthropic
 
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    _, key = platform_key()
     if require_key and not key:
-        raise SystemExit("ANTHROPIC_API_KEY is not set; see WAITING.md (add it as an environment secret)")
+        raise SystemExit(f"none of {KEY_VARS} is set; see WAITING.md (add the platform key as an environment secret)")
     base = os.environ.get("EDSHIELD_PLATFORM_BASE_URL", OFFICIAL_BASE_URL)
     if os.environ.get("ANTHROPIC_BASE_URL") and os.environ["ANTHROPIC_BASE_URL"] != base:
         print(f"note: ignoring ANTHROPIC_BASE_URL={os.environ['ANTHROPIC_BASE_URL'][:40]}...; using {base}", file=sys.stderr)

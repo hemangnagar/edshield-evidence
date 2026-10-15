@@ -20,9 +20,9 @@ import platform_api as api  # noqa: E402
 
 
 def main() -> int:
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    var, key = api.platform_key()
     lines = [f"# Key check ({dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')})", ""]
-    lines.append(f"- `ANTHROPIC_API_KEY` set: **{'yes' if key else 'NO'}**")
+    lines.append(f"- platform key found in `{var}`" if key else f"- platform key: **NONE of {api.KEY_VARS} is set**")
     if key:
         lines.append(f"- key fingerprint: prefix `{key[:10]}…`, sha256 `{hashlib.sha256(key.encode()).hexdigest()[:16]}`")
     lines.append(f"- base URL used by this branch: `{os.environ.get('EDSHIELD_PLATFORM_BASE_URL', api.OFFICIAL_BASE_URL)}`")
@@ -31,10 +31,11 @@ def main() -> int:
                  + ("; equal to the official URL" if base == api.OFFICIAL_BASE_URL else "; **not** the official URL")
                  + ". Every script on this branch pins the official URL regardless, so spend cannot be routed elsewhere.)")
     lines.append("- Claude Code cloud's own credential is not an API key in this container's environment; the scripts "
-                 "refuse to run without `ANTHROPIC_API_KEY`, so there is no silent fall-back to it.")
+                 f"refuse to run without one of {api.KEY_VARS}, so there is no silent fall-back to it.")
     if not key:
-        lines += ["", "**Blocked.** No key. Add `ANTHROPIC_API_KEY` as an environment secret (cloud environment menu → Edit → "
-                  "Network secrets / environment variables) and restart; see WAITING.md."]
+        lines += ["", "**Blocked.** No key. Add the platform org's key as an environment secret named "
+                  "`EDSHIELD_PLATFORM_API_KEY` (cloud environment menu → Edit → environment variables) and start a new "
+                  "session; see WAITING.md."]
         Path("runs").mkdir(exist_ok=True)
         Path("runs/KEY_CHECK.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
         print("\n".join(lines))

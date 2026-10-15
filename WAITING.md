@@ -2,11 +2,13 @@
 
 Scaffolding for `docs/BRIEF-agent-diagnose.md` is complete and tested offline (`make test-agent-diagnose`). Nothing has been submitted to the platform. Two things block the next step; the first is the hard one.
 
-## 1. `ANTHROPIC_API_KEY` is not set in this cloud environment
+## 1. No platform API key in this cloud environment
 
-The key check (`runs/KEY_CHECK.md`) found no key, so no dry run, batch or agent session could be made. Add the platform org's key as an environment secret: cloud environment menu in the session title bar → Edit → Network secrets (or environment variables) → name it exactly `ANTHROPIC_API_KEY`. A new session picks it up. The scripts pin `https://api.anthropic.com` and refuse to run without this variable, so nothing can fall back to Claude Code's own credential.
+The key check (`runs/KEY_CHECK.md`) found no key, so no dry run, batch or agent session could be made. Add the platform org's key as an environment variable named **`EDSHIELD_PLATFORM_API_KEY`**: cloud environment menu in the session title bar → Edit → environment variables. A new session picks it up (a running session does not).
 
-Then restart with: "Read docs/BRIEF-agent-diagnose.md and continue from WAITING.md." The first actions will be `python scripts/key_check.py`, one dry run per component (`scripts/plant_llm.py dry-run`, `scripts/diagnose.py dry-run`, `scripts/run_agent_loop.py --dry-run`), then the planting batch.
+Why not `ANTHROPIC_API_KEY`: Claude Code cloud warns that a variable by that name "won't be used to authenticate requests" because its own sessions log in through the Anthropic account, and it may not pass the variable into the container at all. The scripts on this branch read `EDSHIELD_PLATFORM_API_KEY` first and `ANTHROPIC_API_KEY` second, hand the value to the SDK explicitly, and pin `https://api.anthropic.com`, so nothing can fall back to Claude Code's own credential and spend lands on the org that issued the key.
+
+Then start a new session with: "Read docs/BRIEF-agent-diagnose.md and continue from WAITING.md." The first actions will be `python scripts/key_check.py`, one dry run per component (`scripts/plant_llm.py dry-run`, `scripts/diagnose.py dry-run`, `scripts/run_agent_loop.py --dry-run`), then the planting batch.
 
 ## 2. `huggingface.co` is blocked by this environment's network policy
 

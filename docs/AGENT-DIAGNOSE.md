@@ -22,7 +22,7 @@ sealed run's layout existed; this maps its names to the real paths.
 - **C, improve loop:** `scripts/run_agent_loop.py` (Managed Agents: `agents/rule_proposer.md`, `environments/eval.yaml`, `prompts/agent_*.md`) → `proposals/`, `results/candidate/`, `runs/<ts>-agent/`; then `python scripts/enforce_patches.py` → `proposals/DRIVER_CHECK.md`.
 - **Reports:** `results/view_comparison.md`, `results/diagnosis/summary.md`, `proposals/PROPOSAL.md`, `results/agent_findings.md`, `runs/<ts>-cost/COST.md` (`python scripts/cost.py`).
 
-Every API call goes through `scripts/platform_api.py`, which pins the official API base URL and logs request and result JSONL under `runs/<ts>-<tag>/`. Files that carry the licensed dialogue text (full requests/results, planted documents, raw model outputs) are git-ignored; text-free `.index.jsonl` siblings with usage and cost are committed.
+Every API call goes through `scripts/platform_api.py`, which reads the platform key from `EDSHIELD_PLATFORM_API_KEY` (or `ANTHROPIC_API_KEY`), pins the official API base URL and logs request and result JSONL under `runs/<ts>-<tag>/`. Files that carry the licensed dialogue text (full requests/results, planted documents, raw model outputs) are git-ignored; text-free `.index.jsonl` siblings with usage and cost are committed.
 
 ## Design decisions worth knowing
 
