@@ -20,6 +20,10 @@ on:
         description: "branch of this repo to run from"
         required: true
         default: "main"
+      stages:
+        description: "comma-separated stages to run (data,branch,regress,diagnose,propose,verify,report); 'data' alone verifies the secrets at no platform cost"
+        required: false
+        default: "data,branch,regress,diagnose,propose,verify,report"
 
 permissions:
   contents: write
@@ -54,8 +58,10 @@ jobs:
           EDSHIELD_LLMVIEW_KEY: ${{ secrets.EDSHIELD_LLMVIEW_KEY }}
         run: |
           python scripts/pipeline.py --edshield-ref "${{ github.event.inputs.edshield_ref || 'main' }}" \
-            --base "${{ github.event.inputs.base || 'main' }}" --runtime onnx
+            --base "${{ github.event.inputs.base || 'main' }}" --runtime onnx \
+            --stages "${{ github.event.inputs.stages || 'data,branch,regress,diagnose,propose,verify,report' }}"
       - name: Open the review pull request
+        if: ${{ !github.event.inputs.stages || contains(github.event.inputs.stages, 'report') }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
