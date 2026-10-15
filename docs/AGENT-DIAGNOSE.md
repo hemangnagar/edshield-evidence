@@ -54,9 +54,9 @@ The one-off experiment above is the first run of a recurring cycle. `scripts/pip
 
 Planting is not part of the cycle: the LLM view is data preparation done once per seed and dataset version, and it is stored encrypted in git (AES-256-GCM through `edshield_evidence.seal`, key in `EDSHIELD_LLMVIEW_KEY`) so every run scores the same second view. `python scripts/llm_view_store.py keygen|seal|unseal|status`.
 
-Two triggers run the same script:
+One trigger runs the script, so that no Claude Code session time is spent on recurring runs and every model call is platform spend:
 
 - **GitHub Actions** `.github/workflows/agent-diagnose.yml`: Mondays 08:54 America/New_York and on demand (`workflow_dispatch` with `edshield_ref`, `base` and `stages`; `stages=data` verifies the secrets at no platform cost). Needs the repository secrets `EDSHIELD_PLATFORM_API_KEY` and `EDSHIELD_LLMVIEW_KEY` (both added 2026-10-15). GitHub registers `schedule` and `workflow_dispatch` only for workflow files on the default branch, so this path becomes live when the PR merges to `main`. It opens the review PR with the job's own token. Nothing is merged automatically.
-- **Claude Code cloud scheduled task** `agent-diagnose weekly` (`trig_017KKLG9MLzsYq8HM7Snxjza`, same cron, first fire 2026-10-19 08:54 ET) in the environment that already holds `EDSHIELD_PLATFORM_API_KEY`: a fresh session attaches and clones the repo, runs the same pipeline, pushes the run branch and opens the PR when it has a GitHub tool, otherwise reports the compare link. Both keys are set in that environment (verified 2026-10-15 by firing the task with a data-stage-only instruction).
+- A Claude Code cloud scheduled task (`trig_017KKLG9MLzsYq8HM7Snxjza`) was wired as a second path and then **disabled** at the owner's request; it stays in the account as a record and can be re-enabled, but the cycle is meant to run on Actions only.
 
-Secrets never enter the sandbox: the orchestrator holds both keys; the sandbox only ever sees public code, the planted documents mounted at session start, and the model weights it downloads.
+Secrets never enter the sandbox: the Actions job holds both keys as repository secrets; the sandbox only ever sees public code, the planted documents mounted at session start, and the model weights it downloads.

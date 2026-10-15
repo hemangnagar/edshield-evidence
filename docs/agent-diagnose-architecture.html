@@ -85,17 +85,17 @@
       <!-- band: triggers -->
       <rect x="16" y="16" width="860" height="88" rx="6" fill="var(--lane-code)" stroke="var(--line)"/>
       <text x="32" y="38" font-size="12" font-weight="600">Triggers</text>
-      <rect x="32" y="48" width="400" height="44" rx="4" fill="var(--panel)" stroke="var(--line)"/>
+      <rect x="32" y="48" width="520" height="44" rx="4" fill="var(--panel)" stroke="var(--line)"/>
       <text x="44" y="66" font-size="11" font-weight="500">GitHub Actions · .github/workflows/agent-diagnose.yml</text>
-      <text x="44" y="82" font-size="11" fill="var(--muted)">cron Mondays 08:54 ET · workflow_dispatch(edshield_ref, base)</text>
-      <rect x="452" y="48" width="408" height="44" rx="4" fill="var(--panel)" stroke="var(--line)"/>
-      <text x="464" y="66" font-size="11" font-weight="500">Claude Code cloud scheduled task · "agent-diagnose weekly"</text>
-      <text x="464" y="82" font-size="11" fill="var(--muted)">fresh session in the environment that holds the keys · same cron</text>
+      <text x="44" y="82" font-size="11" fill="var(--muted)">cron Mondays 08:54 ET · workflow_dispatch(edshield_ref, base, stages) · GitHub-hosted runner</text>
+      <rect x="572" y="48" width="288" height="44" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-dasharray="4 3"/>
+      <text x="584" y="66" font-size="11" font-weight="500">Secrets (repository)</text>
+      <text x="584" y="82" font-size="11" fill="var(--muted)">EDSHIELD_PLATFORM_API_KEY · EDSHIELD_LLMVIEW_KEY</text>
 
       <!-- band: orchestrator -->
       <rect x="16" y="128" width="860" height="150" rx="6" fill="var(--lane-code)" stroke="var(--line)"/>
       <text x="32" y="150" font-size="12" font-weight="600">Orchestrator · scripts/pipeline.py (no model calls of its own)</text>
-      <text x="32" y="167" font-size="11" fill="var(--muted)">holds EDSHIELD_PLATFORM_API_KEY and EDSHIELD_LLMVIEW_KEY · state in runs/pipeline-&lt;run id&gt;/state.json · idempotent per stage</text>
+      <text x="32" y="167" font-size="11" fill="var(--muted)">runs on the Actions runner with both secrets · state in runs/pipeline-&lt;run id&gt;/state.json · idempotent per stage · all model spend on the platform</text>
       <g font-size="11" font-weight="500">
         <rect x="32" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--line)"/><text x="80" y="199" text-anchor="middle">data</text>
         <rect x="148" y="180" width="96" height="30" rx="15" fill="var(--panel)" stroke="var(--line)"/><text x="196" y="199" text-anchor="middle">branch</text>
@@ -253,7 +253,7 @@
       <line x1="876" y1="745" x2="924" y2="745" stroke="currentColor" stroke-width="1.4" marker-end="url(#arrowA)"/>
     </svg>
     </div>
-    <figcaption>The system as it is wired: a trigger fires the orchestrator, the orchestrator uses the platform for every model call and the sandbox for every inference, and all state flows back into git on a run branch that ends in a pull request. The governance rail lists the mechanisms that keep the agent's work bounded and checkable.</figcaption>
+    <figcaption>The system as it is wired: the GitHub Actions schedule fires the orchestrator on a GitHub-hosted runner, the orchestrator uses the platform for every model call and the sandbox for every inference, and all state flows back into git on a run branch that ends in a pull request. The governance rail lists the mechanisms that keep the agent's work bounded and checkable.</figcaption>
   </figure>
 
   <figure>
