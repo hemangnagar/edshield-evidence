@@ -41,3 +41,4 @@ runs/*/diag_rejects.jsonl
 runs/*/outputs/
 runs/edshield-checkout/
 results/*/failure_table.jsonl
+runs/*/collect.log
