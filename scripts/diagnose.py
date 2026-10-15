@@ -185,12 +185,28 @@ def cmd_collect(args) -> int:
                 bad.append({**rec, "error": errs, "raw": row["text"][:500]})
                 continue
             causes.append({**rec, **resp, "usage": row["usage"], "cost_usd": row["cost_usd"]})
-    OUT.mkdir(parents=True, exist_ok=True)
-    api.write_jsonl(causes, OUT / "causes.jsonl")
+    api.write_jsonl(causes, run_dir / "causes.jsonl")
     api.write_jsonl(bad, run_dir / "diag_rejects.jsonl")
-    print(f"{len(causes)} cause rows, {len(bad)} rejected -> {OUT / 'causes.jsonl'}")
-    write_summary(causes, bad)
+    print(f"{len(causes)} cause rows, {len(bad)} rejected in {run_dir}")
+    merged, n_bad = merge_runs()
+    write_summary(merged, n_bad)
     return 0
+
+
+def merge_runs() -> Tuple[List[dict], List[dict]]:
+    """results/diagnosis/causes.jsonl = every run's causes (the deterministic and
+    the LLM view are diagnosed in separate batches); a later run wins on a duplicate id."""
+    rows: Dict[str, dict] = {}
+    bad: List[dict] = []
+    for run in sorted(api.RUNS.glob("*-diagnose")):
+        for r in api.read_jsonl(run / "causes.jsonl"):
+            rows[r["custom_id"]] = r
+        bad += api.read_jsonl(run / "diag_rejects.jsonl")
+    merged = sorted(rows.values(), key=lambda r: r["custom_id"])
+    OUT.mkdir(parents=True, exist_ok=True)
+    api.write_jsonl(merged, OUT / "causes.jsonl")
+    print(f"merged {len(merged)} cause rows -> {OUT / 'causes.jsonl'}")
+    return merged, bad
 
 
 def write_summary(causes: List[dict], bad: List[dict]) -> None:
@@ -260,8 +276,8 @@ def main(argv=None) -> int:
     ap.add_argument("--poll", type=int, default=60)
     args = ap.parse_args(argv)
     if args.mode == "summarize":
-        causes = api.read_jsonl(OUT / "causes.jsonl")
-        write_summary(causes, [])
+        merged, bad = merge_runs()
+        write_summary(merged, bad)
         return 0
     return {"build": cmd_build, "dry-run": cmd_dry_run, "submit": cmd_submit, "collect": cmd_collect, "status": cmd_status}[args.mode](args)
 

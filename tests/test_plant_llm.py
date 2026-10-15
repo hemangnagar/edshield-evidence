@@ -93,8 +93,11 @@ def test_corruptions_are_rejected():
     # a name outside the category list
     bad = json.loads(json.dumps(good)); bad["student_name"] = "Zorblax Quux"
     assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
-    # an edited original turn
-    bad = json.loads(json.dumps(good)); bad["turns"][0]["text"] = bad["turns"][0]["text"].replace(" ", "  ", 1) + "x"
+    # an edited original turn (a character of the original replaced in place)
+    bad = json.loads(json.dumps(good)); t = bad["turns"][0]["text"]
+    orig0 = next(str(x["text"]) for x in dialogues[doc["doc_id"]] if x["turn_idx"] == bad["turns"][0]["turn_idx"])
+    j = t.find(orig0) + 3
+    bad["turns"][0]["text"] = t[:j] + ("X" if t[j] != "X" else "Y") + t[j + 1:]
     assert plant_llm.validate(bad, m, dialogues[doc["doc_id"]])[1]
     # offsets off by one are repaired by locating the surface form inside the inserted material
     bad = json.loads(json.dumps(good)); bad["turns"][0]["spans"][0]["start"] += 1
