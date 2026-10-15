@@ -16,6 +16,8 @@ sealed run's layout existed; this maps its names to the real paths.
 
 ## Components
 
+Architecture and sequence diagrams: `docs/agent-diagnose-architecture.html` (open in a browser; the same page is published at https://claude.ai/artifact/Qy4fN9q4oc35qnpHyjrq5V).
+
 - **Key check:** `python scripts/key_check.py` → `runs/KEY_CHECK.md`.
 - **A, LLM-planted view:** `scripts/plant_llm.py {build,dry-run,submit,collect}` → `data/planted_llm/`; then `make score-llm-view`, `python scripts/build_failure_table.py llm`, `make view-comparison`.
 - **B, diagnosis:** `scripts/diagnose.py {build,dry-run,submit,collect}` → `results/diagnosis/{causes.jsonl,summary.md}`. Rubric `prompts/diagnose_system.md`; its sha256 is frozen at first submission.
