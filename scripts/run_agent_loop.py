@@ -143,49 +143,91 @@ def event_record(ev) -> dict:
 
 
 def drive(client, session_id: str, run_dir: Path, messages: List[str], state: dict) -> dict:
-    """Stream-first; send each message when the agent goes idle with end_turn; log every event."""
+    """Stream-first; send each message when the agent goes idle with end_turn; log every
+    event. A dropped SSE stream is reconnected: the event history is re-read through
+    events.list() and deduplicated on event id, so nothing is missed (lossless reconnect)."""
     log = run_dir / "agent_events.jsonl"
     pending = list(messages)
     final_texts: List[str] = []
-    with client.beta.sessions.events.stream(session_id=session_id) as stream:
-        if pending:
-            client.beta.sessions.events.send(session_id=session_id, events=[{"type": "user.message", "content": [{"type": "text", "text": pending.pop(0)}]}])
-            state["messages_sent"] = state.get("messages_sent", 0) + 1
-        for ev in stream:
-            rec = event_record(ev)
-            api.append_jsonl(rec, log)
-            t = ev.type
-            if t == "agent.message":
-                txt = "".join(getattr(b, "text", "") for b in ev.content if getattr(b, "type", "") == "text")
-                final_texts.append(txt)
-                print(f"[agent] {txt[:300]}", file=sys.stderr)
-            elif t in ("agent.tool_use", "agent.mcp_tool_use") and getattr(ev, "evaluated_permission", None) == "ask":
-                # unattended run: deny and say why; the agent can rephrase or stop
-                client.beta.sessions.events.send(session_id=session_id, events=[{
-                    "type": "user.tool_confirmation", "tool_use_id": ev.id, "result": "deny",
-                    "deny_message": "This run is unattended; no human can approve tool calls. Use an approach that needs no confirmation or stop."}])
-                state["denied_asks"] = state.get("denied_asks", 0) + 1
-            elif t == "session.usage":
-                state["usage"] = rec.get("usage") or {k: v for k, v in rec.items() if k not in ("type", "id")}
-            elif t == "session.error":
-                state.setdefault("errors", []).append(rec)
-                print(f"[error] {rec}", file=sys.stderr)
-            elif t == "session.status_idle":
-                sr = rec.get("stop_reason") or {}
-                srt = sr.get("type") if isinstance(sr, dict) else getattr(sr, "type", None)
-                state["stop_reason"] = srt
-                print(f"[idle] stop_reason={srt}", file=sys.stderr)
-                if srt == "requires_action":
-                    continue
-                if srt == "end_turn" and pending:
-                    client.beta.sessions.events.send(session_id=session_id, events=[{"type": "user.message", "content": [{"type": "text", "text": pending.pop(0)}]}])
-                    state["messages_sent"] = state.get("messages_sent", 0) + 1
-                    continue
-                state["ended"] = {"end_turn": "normal finish", "budget_reached": "budget pause", "retries_exhausted": "error"}.get(srt, srt)
-                break
-            elif t == "session.status_terminated":
+    seen: set = set()
+    sent_first = False
+
+    def send(text: str) -> None:
+        client.beta.sessions.events.send(session_id=session_id, events=[{"type": "user.message", "content": [{"type": "text", "text": text}]}])
+        state["messages_sent"] = state.get("messages_sent", 0) + 1
+
+    def handle(ev) -> Optional[str]:
+        """Returns 'break' when the session is done, else None."""
+        rec = event_record(ev)
+        eid = rec.get("id")
+        if eid and eid in seen:
+            return None
+        if eid:
+            seen.add(eid)
+        api.append_jsonl(rec, log)
+        t = ev.type
+        if t == "agent.message":
+            txt = "".join(getattr(b, "text", "") for b in ev.content if getattr(b, "type", "") == "text")
+            final_texts.append(txt)
+            print(f"[agent] {txt[:300]}", file=sys.stderr)
+        elif t in ("agent.tool_use", "agent.mcp_tool_use") and getattr(ev, "evaluated_permission", None) == "ask":
+            client.beta.sessions.events.send(session_id=session_id, events=[{
+                "type": "user.tool_confirmation", "tool_use_id": ev.id, "result": "deny",
+                "deny_message": "This run is unattended; no human can approve tool calls. Use an approach that needs no confirmation or stop."}])
+            state["denied_asks"] = state.get("denied_asks", 0) + 1
+        elif t == "session.usage":
+            state["usage"] = rec.get("usage") or {k: v for k, v in rec.items() if k not in ("type", "id")}
+        elif t == "session.error":
+            state.setdefault("errors", []).append(rec)
+            print(f"[error] {rec}", file=sys.stderr)
+        elif t == "session.status_idle":
+            sr = rec.get("stop_reason") or {}
+            srt = sr.get("type") if isinstance(sr, dict) else getattr(sr, "type", None)
+            state["stop_reason"] = srt
+            print(f"[idle] stop_reason={srt}", file=sys.stderr)
+            if srt == "requires_action":
+                return None
+            if srt == "end_turn" and pending:
+                send(pending.pop(0))
+                return None
+            state["ended"] = {"end_turn": "normal finish", "budget_reached": "budget pause", "retries_exhausted": "error"}.get(srt, srt)
+            return "break"
+        elif t == "session.status_terminated":
+            state["ended"] = "terminated"
+            return "break"
+        return None
+
+    attempts = 0
+    while True:
+        try:
+            with client.beta.sessions.events.stream(session_id=session_id) as stream:
+                if attempts:
+                    # history first, then the live tail (dedup on id); only events of our own turns matter here
+                    for ev in client.beta.sessions.events.list(session_id=session_id):
+                        if handle(ev) == "break":
+                            state["final_messages"] = final_texts[-3:]
+                            return state
+                if not sent_first and pending:
+                    send(pending.pop(0))
+                    sent_first = True
+                for ev in stream:
+                    if handle(ev) == "break":
+                        state["final_messages"] = final_texts[-3:]
+                        return state
+            # the stream closed without a terminal event: reconnect unless the session is idle
+            st = client.beta.sessions.retrieve(session_id=session_id).status
+            print(f"[stream closed] session status {st}; reconnecting", file=sys.stderr)
+            if st in ("terminated",):
                 state["ended"] = "terminated"
                 break
+        except Exception as exc:  # noqa: BLE001
+            print(f"[stream error] {exc}; reconnecting", file=sys.stderr)
+        attempts += 1
+        state["reconnects"] = attempts
+        if attempts > 200:
+            state["ended"] = "gave up reconnecting"
+            break
+        time.sleep(min(30, 5 * attempts))
     state["final_messages"] = final_texts[-3:]
     return state
 
@@ -199,8 +241,14 @@ def retrieve_outputs(client, session_id: str, run_dir: Path, final_texts: List[s
         if files:
             break
         time.sleep(3)
+    import anthropic
     for f in files:
-        content = client.beta.files.download(f.id, betas=BETA)
+        try:
+            content = client.beta.files.download(f.id, betas=BETA)
+        except anthropic.BadRequestError as exc:
+            # the session-scoped listing also holds the mounted input files, which are not downloadable
+            got.setdefault("skipped", []).append({"file": f.filename, "id": f.id, "error": str(exc)[:120]})
+            continue
         path = dest / f.filename
         path.parent.mkdir(parents=True, exist_ok=True)
         content.write_to_file(str(path))

@@ -1,0 +1,50 @@
+{
+ "session_id": "sesn_01SpV798Yfa2nmVUmZX6fJTr",
+ "retrieved": {
+  "files": [],
+  "extracted": [],
+  "fallback_blocks": [],
+  "skipped": [
+   {
+    "file": "comta.jsonl",
+    "id": "file_01Ws2AJYG64GwJm8MURv9gse",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01Ws2AJYG64GwJm8MU"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01TfWe7Lg2fFg6mgzEBReehm",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01TfWe7Lg2fFg6mgzE"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01LBQf5A7ss6RH4f1koytJr5",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01LBQf5A7ss6RH4f1k"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01KmwfRCHPVNcfGdetcC3Q17",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01KmwfRCHPVNcfGdet"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_016S6rNh9JsTbvucQYeTm319",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_016S6rNh9JsTbvucQY"
+   },
+   {
+    "file": "mathdial.spans.jsonl",
+    "id": "file_0157FWoHB9e2HxxB9CibiLhm",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_0157FWoHB9e2HxxB9C"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01561sgKykYTiBYUWhY7WgtD",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01561sgKykYTiBYUWh"
+   },
+   {
+    "file": "comta.spans.jsonl",
+    "id": "file_013eMXEXZdjsZjMsFdjHBEFb",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_013eMXEXZdjsZjMsFd"
+   }
+  ]
+ }
+}
