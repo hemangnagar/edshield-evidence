@@ -312,12 +312,14 @@ def main(argv=None) -> int:
     ap.add_argument("--runtime", default="onnx", choices=["python", "onnx"],
                     help="onnx: INT8 export under onnxruntime (no torch needed); python: fp32 torch, closest to the sealed GPU run")
     ap.add_argument("--title", default="edshield rule-proposal loop")
+    ap.add_argument("--setup-message", metavar="FILE", help="use this file instead of prompts/agent_setup_message.md for the setup phase")
     args = ap.parse_args(argv)
     if args.write_agent_md:
         write_agent_md()
         return 0
     branch = args.branch or current_branch()
-    setup = SETUP_MD.read_text(encoding="utf-8").replace("{branch}", branch).replace("{runtime}", args.runtime)
+    setup_src = Path(args.setup_message) if args.setup_message else SETUP_MD
+    setup = setup_src.read_text(encoding="utf-8").replace("{branch}", branch).replace("{runtime}", args.runtime)
     if args.phase == "verify":
         setup = (ROOT / "prompts" / "agent_verify_message.md").read_text(encoding="utf-8").replace("{branch}", branch).replace("{runtime}", args.runtime)
         args.title = "edshield rule-proposal: driver verification"

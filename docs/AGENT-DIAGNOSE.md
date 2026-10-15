@@ -37,3 +37,26 @@ Every API call goes through `scripts/platform_api.py`, which reads the platform 
 ## Status (2026-10-15)
 
 Everything in the brief ran. Key check, both batches, the Managed Agents session (`sesn_01SpV798Yfa2nmVUmZX6fJTr`, two rounds, $3.77) and the fresh-container verification session (`sesn_01JVPjSwZ9qiT5pE4WtsiFFm`, $0.13) are done; nothing is still running on the platform. Deviations from the brief, all recorded in the files: the sandbox scored with the INT8 ONNX runtime because torch wheels are unreachable there (round 0 is 0.35 pp under the sealed GPU baseline); the planting validator accepts insert-only edits, a case change of the original's first letter after a prepended phrase, and locates surface forms itself; the LLM view is 724 of 738 dialogues. The findings note is `results/agent_findings.md`; spend is in `runs/20261015T144955Z-cost/COST.md`.
+
+## Scheduled runs
+
+The one-off experiment above is the first run of a recurring cycle. `scripts/pipeline.py` runs one cycle end to end and is idempotent per run id (`runs/pipeline-<run id>/state.json` records finished stages):
+
+| stage | what runs | where | cost driver |
+|---|---|---|---|
+| data | raw files, sealed planted set rebuilt and checked, LLM view unsealed from `data/planted_llm/*.jsonl.enc` | orchestrator | none |
+| branch | `auto/agent-diagnose-<run id>` from `--base`, pushed so the sandbox can clone it | orchestrator | none |
+| regress | Managed Agents session: candidate edshield at `--edshield-ref`, round 0 on both views and the control | sandbox (CPU inference) | runtime hours |
+| diagnose | Batch API, Opus 5.5: cause labels only for misses not already in `results/diagnosis/causes.jsonl` | platform | tokens at batch price |
+| propose | the bounded improve loop (task message to the same session), proposals shipped back | platform + sandbox | tokens, capped by the session budget |
+| verify | fresh session: patch path check and independent re-score of the kept patch set | sandbox | runtime hours |
+| report | `COST.md`, `results/RUN_<run id>.md`, commit, push; the trigger opens the PR | orchestrator | none |
+
+Planting is not part of the cycle: the LLM view is data preparation done once per seed and dataset version, and it is stored encrypted in git (AES-256-GCM through `edshield_evidence.seal`, key in `EDSHIELD_LLMVIEW_KEY`) so every run scores the same second view. `python scripts/llm_view_store.py keygen|seal|unseal|status`.
+
+Two triggers run the same script:
+
+- **GitHub Actions** `.github/workflows/agent-diagnose.yml`: Mondays 08:54 America/New_York and on demand (`workflow_dispatch` with `edshield_ref` and `base`). Needs the repository secrets `EDSHIELD_PLATFORM_API_KEY` and `EDSHIELD_LLMVIEW_KEY`. It opens the review PR with the job's own token. Nothing is merged automatically.
+- **Claude Code cloud scheduled task** in the environment that already holds `EDSHIELD_PLATFORM_API_KEY`: a fresh session runs the same pipeline and opens the PR. It also needs `EDSHIELD_LLMVIEW_KEY` in that environment.
+
+Secrets never enter the sandbox: the orchestrator holds both keys; the sandbox only ever sees public code, the planted documents mounted at session start, and the model weights it downloads.

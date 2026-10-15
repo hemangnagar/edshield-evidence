@@ -85,14 +85,19 @@ def make_request(row: dict, alt: bool = False) -> dict:
                        "messages": [{"role": "user", "content": json.dumps(user, ensure_ascii=False)}]}}
 
 
-def build_requests(views: List[str]) -> Tuple[List[dict], List[dict]]:
+def already_diagnosed() -> set:
+    return {(c["view"], c["doc_id"], c["span_idx"]) for c in api.read_jsonl(OUT / "causes.jsonl") if not c.get("alt_order")}
+
+
+def build_requests(views: List[str], new_only: bool = False) -> Tuple[List[dict], List[dict]]:
     main, rows_all = [], []
+    done = already_diagnosed() if new_only else set()
     for v in views:
-        rows = failure_rows(v)
+        rows = [r for r in failure_rows(v) if (r["view"], r["doc_id"], r["span_idx"]) not in done]
         rows_all += rows
         main += [make_request(r) for r in rows]
     rng = random.Random(20261014)
-    sample = rng.sample(rows_all, min(AGREEMENT_N, len(rows_all)))
+    sample = rng.sample(rows_all, min(AGREEMENT_N if not new_only else min(AGREEMENT_N, len(rows_all) // 5), len(rows_all)))
     agree = [make_request(r, alt=True) for r in sample]
     return main, agree
 
@@ -124,14 +129,14 @@ def save_built(main, agree, run_dir: Path) -> None:
 
 def cmd_build(args) -> int:
     run_dir = Path(args.run) if args.run else api.new_run_dir("diagnose")
-    main, agree = build_requests(args.views)
+    main, agree = build_requests(args.views, new_only=args.new_only)
     save_built(main, agree, run_dir)
     return 0
 
 
 def cmd_dry_run(args) -> int:
     run_dir = Path(args.run) if args.run else api.new_run_dir("diagnose-dryrun")
-    main, agree = build_requests(args.views)
+    main, agree = build_requests(args.views, new_only=args.new_only)
     save_built(main, agree, run_dir)
     client = api.make_client()
     for req in random.Random(0).sample(main, args.n):
@@ -143,9 +148,10 @@ def cmd_dry_run(args) -> int:
 
 def cmd_submit(args) -> int:
     run_dir = Path(args.run) if args.run else api.new_run_dir("diagnose")
-    main, agree = build_requests(args.views)
+    main, agree = build_requests(args.views, new_only=args.new_only)
     if not main:
-        raise SystemExit("nothing to submit")
+        print("nothing to submit (no new misses)")
+        return 0
     save_built(main, agree, run_dir)
     client = api.make_client()
     api.submit_batch(client, main, run_dir, "diag")
@@ -274,6 +280,7 @@ def main(argv=None) -> int:
     ap.add_argument("--views", nargs="+", default=["deterministic", "llm"])
     ap.add_argument("--n", type=int, default=1)
     ap.add_argument("--poll", type=int, default=60)
+    ap.add_argument("--new-only", action="store_true", help="only misses not already in results/diagnosis/causes.jsonl")
     args = ap.parse_args(argv)
     if args.mode == "summarize":
         merged, bad = merge_runs()

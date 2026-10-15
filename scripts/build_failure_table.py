@@ -60,8 +60,10 @@ def window(doc_text: str, start: int, end: int, turn_idx: int, speakers: List[st
     return "\n".join(out)
 
 
-def build(view: str) -> List[dict]:
-    cfg = VIEWS[view]
+def build(view: str, candidate: str = "") -> List[dict]:
+    cfg = dict(VIEWS[view])
+    if candidate:
+        cfg["misses"] = ROOT / "results" / "candidate" / candidate / view / "misses.csv"
     if not cfg["misses"].exists():
         raise SystemExit(f"{cfg['misses']} is missing (score the {view} view first)")
     with cfg["misses"].open(encoding="utf-8", newline="") as f:
@@ -104,5 +106,10 @@ def build(view: str) -> List[dict]:
 
 
 if __name__ == "__main__":
-    for v in sys.argv[1:] or ["deterministic"]:
-        build(v)
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("views", nargs="*", default=["deterministic"])
+    ap.add_argument("--candidate", default="", help="read misses from results/candidate/<name>/<view>/misses.csv instead of the baselines")
+    a = ap.parse_args()
+    for v in a.views:
+        build(v, a.candidate)
