@@ -29,4 +29,5 @@ config:
       - "*.hf.co"
       - "*.xethub.hf.co"
       - raw.githubusercontent.com   # the pinned CoMTA / MathDial raw files (download.py)
-      - download.pytorch.org        # CPU-only torch wheels for the python runtime (setup message)
+      - download.pytorch.org        # CPU-only torch wheels for the python runtime (optional; the index redirects to r2)
+      - download-r2.pytorch.org

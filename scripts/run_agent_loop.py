@@ -238,10 +238,12 @@ def main(argv=None) -> int:
                     help="setup: create the session, send the setup message, retrieve baselines; task: send the task message to --session")
     ap.add_argument("--session", metavar="SESSION_ID", help="existing session for --phase task")
     ap.add_argument("--resume", metavar="SESSION_ID")
+    ap.add_argument("--message", metavar="TEXT_OR_FILE", help="with --session: send this follow-up message, stream to idle, retrieve outputs")
     ap.add_argument("--retrieve", metavar="SESSION_ID")
     ap.add_argument("--budget-cents", default="3000", help="hard session cap at list price, in cents (brief: $30)")
     ap.add_argument("--branch", default=None, help="edshield-evidence branch the sandbox clones (default: current)")
-    ap.add_argument("--runtime", default="python", choices=["python", "onnx"])
+    ap.add_argument("--runtime", default="onnx", choices=["python", "onnx"],
+                    help="onnx: INT8 export under onnxruntime (no torch needed); python: fp32 torch, closest to the sealed GPU run")
     ap.add_argument("--title", default="edshield rule-proposal loop")
     args = ap.parse_args(argv)
     if args.write_agent_md:
@@ -261,6 +263,15 @@ def main(argv=None) -> int:
         session_id = args.resume
         state["session_id"] = session_id
         drive(client, session_id, run_dir, [], state)
+    elif args.message:
+        if not args.session:
+            raise SystemExit("--message needs --session SESSION_ID")
+        session_id = args.session
+        text = Path(args.message).read_text(encoding="utf-8") if Path(args.message).exists() else args.message
+        text = text.replace("{runtime}", args.runtime).replace("{branch}", branch)
+        state["session_id"], state["phase"] = session_id, "message"
+        (run_dir / "message.md").write_text(text, encoding="utf-8")
+        drive(client, session_id, run_dir, [text], state)
     elif args.phase == "task":
         if not args.session:
             raise SystemExit("--phase task needs --session SESSION_ID")
