@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "installed_from": "/workspace/edshield-evidence/runs/edshield-checkout",
   "commit": "a568e73a6c34d40335802235db81950e84004ab1+dirty",
-  "rules_sha256": "8203b137552926be7f941090f937bf070aaf6fdc55ca50a00047448ef5e99ce9"
+  "rules_sha256": "8e252dc0d1f57b52a98225c8a377c2435943777053cc8f67e72140eff31ca215"
  },
  "runtime": "onnx",
  "detector": "rules+model",
@@ -13,35 +13,35 @@
   "deterministic": {
    "all_identifiers": {
     "n": 2841,
-    "span_recall": 0.9531854980640619,
+    "span_recall": 0.9517775431186202,
     "ci": [
-     0.9447870316994144,
-     0.9603600695427729
+     0.9432714177352503,
+     0.9590635760079321
     ]
    },
    "student_names": {
     "n": 2014,
-    "span_recall": 0.9448857994041708,
+    "span_recall": 0.9428997020854022,
     "ci": [
-     0.9340459508625442,
-     0.9540317482612989
+     0.9318973810324985,
+     0.9522156855059701
     ]
    },
    "names_by_category": {
     "anglo_common": {
      "n": 506,
-     "span_recall": 0.9703557312252964,
+     "span_recall": 0.9664031620553359,
      "ci": [
-      0.9516692451071436,
-      0.9819543190581723
+      0.9468582758571923,
+      0.9789197121386674
      ]
     },
     "name_word_collision": {
      "n": 483,
-     "span_recall": 0.8819875776397516,
+     "span_recall": 0.8799171842650103,
      "ci": [
-      0.8501571761939813,
-      0.9077897760806221
+      0.847889643997077,
+      0.9059491947150625
      ]
     },
     "nicknames_and_variants": {
@@ -54,10 +54,10 @@
     },
     "non_anglo": {
      "n": 526,
-     "span_recall": 0.9505703422053232,
+     "span_recall": 0.9486692015209125,
      "ci": [
-      0.9285597556218899,
-      0.9660474746254386
+      0.92634698399115,
+      0.9644855322045018
      ]
     }
    },
@@ -72,7 +72,7 @@
     },
     "NAME_STUDENT": {
      "n": 2014,
-     "span_recall": 0.9448857994041708
+     "span_recall": 0.9428997020854022
     },
     "PHONE_NUM": {
      "n": 92,
@@ -89,8 +89,8 @@
    },
    "per_dataset": {
     "comta": {
-     "all_identifiers": 0.8840579710144928,
-     "student_names": 0.8609112709832134
+     "all_identifiers": 0.8776167471819646,
+     "student_names": 0.8513189448441247
     },
     "mathdial": {
      "all_identifiers": 0.9725225225225225,
@@ -101,51 +101,51 @@
   "llm": {
    "all_identifiers": {
     "n": 2767,
-    "span_recall": 0.9707264185037947,
+    "span_recall": 0.9649439826526924,
     "ci": [
-     0.9637633134102542,
-     0.9763843055198259
+     0.9574209497167814,
+     0.9711778309001462
     ]
    },
    "student_names": {
     "n": 1967,
-    "span_recall": 0.9628876461616676,
+    "span_recall": 0.9547534316217591,
     "ci": [
-     0.9535909576499584,
-     0.9703798629322564
+     0.9446481855680344,
+     0.9630859154872002
     ]
    },
    "names_by_category": {
     "anglo_common": {
      "n": 495,
-     "span_recall": 0.9919191919191919,
+     "span_recall": 0.9797979797979798,
      "ci": [
-      0.9794089062251194,
-      0.9968531732983994
+      0.9632159788297604,
+      0.9889903615679226
      ]
     },
     "name_word_collision": {
      "n": 463,
-     "span_recall": 0.9308855291576674,
+     "span_recall": 0.9222462203023758,
      "ci": [
-      0.9040594504113536,
-      0.9506204251852436
+      0.8942333650291301,
+      0.943310071959014
      ]
     },
     "nicknames_and_variants": {
      "n": 486,
-     "span_recall": 0.9794238683127572,
+     "span_recall": 0.977366255144033,
      "ci": [
-      0.9625424173480016,
-      0.9887857962014489
+      0.9599296856143161,
+      0.9873155742289136
      ]
     },
     "non_anglo": {
      "n": 523,
-     "span_recall": 0.9483747609942639,
+     "span_recall": 0.9388145315487572,
      "ci": [
-      0.9259304494862212,
-      0.9642804329220892
+      0.9149008225439084,
+      0.9563290175955679
      ]
     }
    },
@@ -160,7 +160,7 @@
     },
     "NAME_STUDENT": {
      "n": 1967,
-     "span_recall": 0.9628876461616676
+     "span_recall": 0.9547534316217591
     },
     "PHONE_NUM": {
      "n": 83,
@@ -177,12 +177,12 @@
    },
    "per_dataset": {
     "comta": {
-     "all_identifiers": 0.9700996677740864,
-     "student_names": 0.9679012345679012
+     "all_identifiers": 0.9617940199335548,
+     "student_names": 0.9555555555555556
     },
     "mathdial": {
-     "all_identifiers": 0.9709006928406466,
-     "student_names": 0.9615877080665813
+     "all_identifiers": 0.9658198614318707,
+     "student_names": 0.9545454545454546
     }
    }
   }
@@ -498,36 +498,36 @@
  "delta_pp": {
   "views": {
    "deterministic": {
-    "all_identifiers": 5.0,
-    "student_names": 6.06,
+    "all_identifiers": 4.86,
+    "student_names": 5.86,
     "names_by_category": {
-     "anglo_common": 6.72,
-     "name_word_collision": 4.35,
+     "anglo_common": 6.32,
+     "name_word_collision": 4.14,
      "nicknames_and_variants": 7.21,
-     "non_anglo": 5.89
+     "non_anglo": 5.7
     },
     "by_label": {
      "EMAIL": 0.0,
      "NAME_RELATED": -0.52,
-     "NAME_STUDENT": 6.06,
+     "NAME_STUDENT": 5.86,
      "PHONE_NUM": 0.0,
      "SCHOOL": 10.09,
      "USERNAME": 0.0
     }
    },
    "llm": {
-    "all_identifiers": 5.24,
-    "student_names": 7.37,
+    "all_identifiers": 4.66,
+    "student_names": 6.56,
     "names_by_category": {
-     "anglo_common": 8.69,
-     "name_word_collision": 7.13,
-     "nicknames_and_variants": 7.0,
-     "non_anglo": 6.69
+     "anglo_common": 7.47,
+     "name_word_collision": 6.26,
+     "nicknames_and_variants": 6.79,
+     "non_anglo": 5.74
     },
     "by_label": {
      "EMAIL": 0.0,
      "NAME_RELATED": 0.0,
-     "NAME_STUDENT": 7.37,
+     "NAME_STUDENT": 6.56,
      "PHONE_NUM": 0.0,
      "SCHOOL": 0.0,
      "USERNAME": 0.0
@@ -546,7 +546,7 @@
  },
  "sanity": {
   "tolerance_pp": 0.5,
-  "deterministic_delta_pp": 5.0,
+  "deterministic_delta_pp": 4.86,
   "within_tolerance": false,
   "note": "round 0 on the unmodified checkout must be within tolerance of the sealed baseline, which was run on a GPU with the python runtime"
  }

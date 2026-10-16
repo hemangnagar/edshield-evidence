@@ -9,10 +9,11 @@ edshield checkout `a568e73`; allowed paths: `edshield/rules.py`, `edshield/gazet
 
 | number | agent | driver | diff |
 |---|---|---|---|
-| deterministic all_identifiers recall | 95.32% | 95.32% | +0.00 pp |
-| deterministic student_names recall | 94.49% | 94.49% | +0.00 pp |
-| llm all_identifiers recall | 97.07% | 97.07% | +0.00 pp |
-| llm student_names recall | 96.29% | 96.29% | +0.00 pp |
+| rules.py sha256 | 8e252dc0d1f5 | 8e252dc0d1f5 | same |
+| deterministic all_identifiers recall | 95.18% | 95.18% | +0.00 pp |
+| deterministic student_names recall | 94.29% | 94.29% | +0.00 pp |
+| llm all_identifiers recall | 96.49% | 96.49% | +0.00 pp |
+| llm student_names recall | 95.48% | 95.48% | +0.00 pp |
 | control comta flags/1k | 0.503 | 0.503 | +0.000 |
 | control mathdial flags/1k | 15.102 | 15.102 | +0.000 |
 

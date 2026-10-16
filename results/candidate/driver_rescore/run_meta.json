@@ -20,36 +20,36 @@
   "version": "0.2.0",
   "installed_from": "/workspace/edshield-evidence/runs/edshield-checkout",
   "commit": "a568e73a6c34d40335802235db81950e84004ab1+dirty",
-  "rules_sha256": "8203b137552926be7f941090f937bf070aaf6fdc55ca50a00047448ef5e99ce9"
+  "rules_sha256": "8e252dc0d1f57b52a98225c8a377c2435943777053cc8f67e72140eff31ca215"
  },
  "sets": {
   "deterministic__comta": {
    "docs": 188,
-   "seconds": 68.3
+   "seconds": 69.1
   },
   "deterministic__mathdial": {
    "docs": 599,
-   "seconds": 208.8
+   "seconds": 217.4
   },
   "llm__comta": {
    "docs": 181,
-   "seconds": 62.0
+   "seconds": 65.8
   },
   "llm__mathdial": {
    "docs": 543,
-   "seconds": 205.1
+   "seconds": 197.3
   },
   "control__comta": {
    "docs": 188,
-   "seconds": 64.7
+   "seconds": 64.1
   },
   "control__mathdial": {
    "docs": 599,
-   "seconds": 206.0
+   "seconds": 198.6
   }
  },
- "started": "2026-10-16T14:05:51",
+ "started": "2026-10-16T14:24:04",
  "model_sha256": "7f4dd8e5a58c45c941ac2b627fe1213a5d893d42defa6dd9854ebe1e4dd4b1fc",
  "model_ref": "/root/.cache/huggingface/hub/models--edshield--piilo-deberta-v3-small-onnx/snapshots/884f9536dc67de556909722607358376078f6e35/onnx/model_quantized.onnx",
- "finished": "2026-10-16T14:19:41"
+ "finished": "2026-10-16T14:37:52"
 }
