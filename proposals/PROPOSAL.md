@@ -1,139 +1,169 @@
-# edshield rule proposal: initials of detected names, short school names
+# edshield rule proposal: initials of detected names; short school names
 
-**Nothing here is merged.** These are proposed patches against edshield commit `a568e73` (the PyPI 0.2.0 release). A human reviews `round_1.patch` and `round_2.patch` and decides. Both patches change only `edshield/rules.py`. No gazetteer file was added.
+**Nothing here is merged.** These are proposed patches against edshield commit `a568e73` (release 0.2.0). A human reviews `round_1.patch` and `round_2.patch` and decides whether to apply them. Both patches change only `edshield/rules.py`. No gazetteer file was added.
 
-- Final proposal: `round_2.patch`. It is cumulative: round 1 plus round 2.
-- Rounds kept: 1 and 2. Rounds reverted: none. See `kept_rounds.json`.
+- **Final proposal:** `round_2.patch`. It is cumulative: round 1 plus round 2.
+- **Rounds:** kept 1 and 2; none reverted (see `kept_rounds.json`).
+- **Patches match what was measured.** Each patch was applied to a clean checkout of `a568e73`. The SHA-256 of the resulting `rules.py` equals the `edshield.rules_sha256` recorded in the matching summary:
+  - round 1: `454a40da…`
+  - round 2: `8e252dc0…`
 
-## How it was measured
+## Setup and how it was measured
 
-- **Command.** `make eval-candidate ROUND=N RUNTIME=onnx` from the bench root, with the candidate installed editable from `/workspace/edshield`. Every summary records `installed_from: /workspace/edshield`.
-- **Runtime.** INT8 ONNX on CPU. Torch could not be installed in the sandbox, so the PyTorch runtime was not used.
-- **Metric.** Span recall, scored by the residual rule: the identifier no longer occurs whole in the output. The deterministic and LLM views are pooled over comta and mathdial.
+- **Candidate.** `/workspace/edshield`, branch `candidate` made from `main`, HEAD `a568e73a6c34d40335802235db81950e84004ab1`. It is installed editable; every summary records `installed_from: /workspace/edshield` and that commit.
+- **Command.** From the bench root, `make eval-candidate ROUND=N RUNTIME=onnx`.
+  - Runtime: INT8 ONNX on CPU (`model_sha256 7f4dd8e5…`). Torch is not installed in the sandbox.
+- **Recall.** Span recall under the residual rule: the gold text no longer occurs whole in the output. Pooled over comta and mathdial.
 - **Control.** Acted-on entities per 1,000 whitespace tokens on the untouched dialogues.
+- **edshield test suite: not run.** `pytest` is not installed in the sandbox, and installing packages was out of scope.
+  - What was run instead: `python -c "import edshield"` plus small hand checks of the new regexes ("U.S.", "a.m.", "A.M.", "e.g." are not matched; "In High School", "Junior High", "So High" are not schools).
+- **Demo parity (needs a follow-up).** The project's CLAUDE.md requires `edshield/rules.py` and the JavaScript port in `demo/index.html` to stay in parity; `tests/test_demo_parity.py` enforces this. This session was allowed to change only `rules.py`, so applying either patch needs a matching change in `demo/index.html`. Until then that test is expected to fail.
 
-### Which baseline the deltas use
-
-The summaries compare each round with these baseline sources:
-
-- **Deterministic view:** the sealed GPU/python run, `experiments/genre_shift/results/metrics.json`.
-- **LLM view:** `results/llm_view/llm/metrics.json`.
-- **Control:** the sealed run.
-
-The sealed run used a different runtime from these rounds, so I report every number twice: against the sealed baseline as printed in the summary, and against round 0. Round 0 is the unmodified checkout under the same ONNX runtime. The round-0 column isolates the effect of the patch.
-
-### Round 0 (sanity gate, unmodified checkout)
+## Round 0: sanity gate (unmodified checkout)
 
 Source: `results/candidate/round_0/summary.json`.
 
-- **Deterministic view:** identifier recall 89.97% against the sealed 90.32%, delta −0.35 pp. `sanity.within_tolerance` is `true` (tolerance 0.5 pp).
-- **Control, mathdial:** 15.102 flags per 1,000 tokens against the sealed 16.215, delta −1.113. This is a runtime difference (fewer `problem_name` flags under ONNX/INT8), not a patch effect. It appears unchanged in every round below.
-- **Control, comta:** 0.503 flags per 1,000 tokens, delta +0.000.
+- **Deterministic view, all identifiers:** 89.97% against the sealed 90.32%, delta −0.35 pp. `sanity.within_tolerance: true` (tolerance 0.5 pp).
+  - The sealed run used the GPU and the Python runtime; this run uses ONNX INT8 on CPU.
+- **LLM view, all identifiers:** 91.83%, delta 0.0 pp.
+- **Control comta:** 0.503 flags per 1,000 tokens (21 flags), delta 0.0.
+- **Control mathdial:** 15.102 flags per 1,000 tokens (2,794 flags), delta −1.113. This is a runtime difference: fewer `problem_name` flags under ONNX/INT8. It is the same in every round.
+
+The summaries' `delta_pp` compares each round with the sealed run (deterministic view, control) or with `results/llm_view` (LLM view). The runtime differs from the sealed run, so the tables below also give the delta against round 0 / the previous kept round. That column isolates the patch.
 
 ## Round 1: initials of an already-detected name (kept)
 
-**What the patch does.** It adds a final step to `propagate_names`:
+**What it does.** It adds `_propagate_initials`, called at the end of `propagate_names`. It tags a standalone capital-plus-full-stop (`X.`), as in "Well done, V.!" or "Keep going, L..", but only when a name already detected in the same document begins with that letter.
 
-- For each name the document already contains with enough confidence (the same set that `propagate_names` already spreads: rule names, propagated names, model names with confidence ≥ 0.75), it takes the first letter of the first token.
-- It then tags every standalone `X.` with that letter: "Well done, V.!", "Keep going, K.".
-- The tagged initial gets the name's label, at the name's confidence × 0.9, with `source="propagated"`.
+- **Which names count.** The same set `propagate_names` already spreads: rule and propagated names, and model names with confidence ≥ 0.75.
+- **What the tag gets.** The name's label, the name's confidence × 0.9, and `source="propagated"`.
 - **Guards:**
-  - Not inside "U.S." or "A.M." (no word character or `.` just before, no word character just after).
-  - Not after an arithmetic operator, so "x = A." and "S = 100 − C." are skipped (`INITIAL_MATH_BEFORE_RE`).
+  - No word character, `.` or apostrophe just before the letter.
+  - Not followed by a word character, nor by `.` plus a word character. This excludes "U.S.", "a.m." and "e.g.", but accepts an initial followed by the sentence's own full stop ("L..").
+  - Not after an arithmetic operator ("x = A.").
+  - Not after a word that makes it a label: "point A.", "option B.", "answer C.", "angle", "side", "grade", "part", "step", "question", …
   - Not where the span overlaps an existing entity.
 
-**Why it is in `propagate_names`.** With a model loaded, `NAME_STUDENT` is under model authority: `detect_rules` is not run for it (`edshield/__init__.py` lines 107–111). A new name rule inside `detect_rules` would therefore never fire in `rules+model` mode. `propagate_names` does run after the model.
+**Why in `propagate_names`, not `detect_rules`.** With a model loaded, `NAME_STUDENT` is under model authority and `detect_rules` is not run for it (`edshield/__init__.py`, `analyze_text`). A name rule in `detect_rules` would never fire in rules+model mode. `propagate_names` runs after the model.
 
-**Cause codes addressed** (`results/diagnosis/causes.jsonl`, primary-order rows only):
+**Causes addressed** (`results/diagnosis/causes.jsonl`, primary-order rows, joined to the failure tables):
 
-- `nickname:initial` rows are TOKENIZATION / RULE: 166 deterministic rows (mean confidence 0.78) and 164 LLM-view rows (mean confidence 0.77).
-- These are the largest RULE cause in both views, and recall on this form was 1.2% (deterministic) and 0.0% (LLM) according to `results/view_comparison.md`.
-- In the planted data, 167 of 168 deterministic and 164 of 164 LLM-view initials belong to a student whose full name also appears in the same dialogue.
+- Form `nickname:initial`, primary TOKENIZATION, fix RULE:
+  - 166 deterministic rows, mean confidence 0.78.
+  - 164 LLM-view rows, mean confidence 0.77.
+- This is the largest RULE cause in both views. It includes all ten "highest-confidence RULE / GAZETTEER misses" except "Summit Prep" in `results/diagnosis/summary.md`.
 
-**Numbers** (all from `results/candidate/round_1/summary.json`):
+**Offline preview before the run** (re-applying the patched `propagate_names` to round 0's stored entities; an estimate only):
 
-| metric | round 1 | vs sealed / LLM baseline (summary `delta_pp`) | vs round 0 (`results/candidate/round_0/summary.json`) |
-|---|---|---|---|
-| deterministic, all identifiers (n=2841) | 94.54% [93.65, 95.32] | +4.22 pp | +4.58 pp (from 89.97%) |
-| deterministic, student names (n=2014) | 94.49% | +6.06 pp | +6.45 pp |
-| LLM view, all identifiers (n=2767) | 97.07% [96.38, 97.64] | +5.24 pp | +5.24 pp (from 91.83%) |
-| LLM view, student names (n=1967) | 96.29% | +7.37 pp | +7.37 pp |
-| control comta, flags per 1,000 tokens | 0.503 (21 flags) | +0.000 | +0.000 |
-| control mathdial, flags per 1,000 tokens | 15.102 (2,794 flags) | −1.113 | +0.000 (same 2,794 flags) |
+- 159 of 168 deterministic and 144 of 164 LLM-view gold initials newly tagged.
+- 1 non-gold tag on the planted sets.
+- 0 new tags on either control dataset.
 
-- **Misses:**
-  - Deterministic view: 285 → 155.
-  - LLM view: 226 → 81.
-  - These counts are from the `make eval-candidate` console output, which matches the row counts of `results/candidate/round_{0,1}/{deterministic,llm}/misses.csv`.
-- **Per category:** every student-name category rises on both views (deterministic +4.35 to +7.21 pp, LLM +6.69 to +8.69 pp against the summary baseline).
-- **Control:** no regression against pinned baseline round 0 on either control dataset.
-- **Unchanged slice:** deterministic NAME_RELATED is −0.52 pp against the sealed baseline in round 0, 1 and 2 alike. It is a runtime difference, not caused by this patch.
+**Numbers** (all from `results/candidate/round_1/summary.json`; round 0 from `results/candidate/round_0/summary.json`):
+
+| metric | round 0 | round 1 | summary `delta_pp` | vs round 0 |
+|---|---|---|---|---|
+| deterministic, all identifiers (n=2841) | 89.97% | 94.40% [93.50, 95.19] | +4.08 pp | +4.44 pp |
+| deterministic, student names (n=2014) | 88.03% | 94.29% | +5.86 pp | +6.26 pp |
+| LLM view, all identifiers (n=2767) | 91.83% | 96.49% [95.74, 97.12] | +4.66 pp | +4.66 pp |
+| LLM view, student names (n=1967) | 88.92% | 95.48% | +6.56 pp | +6.56 pp |
+| control comta, flags per 1,000 tokens | 0.503 (21) | 0.503 (21) | 0.0 | +0.000 |
+| control mathdial, flags per 1,000 tokens | 15.102 (2,794) | 15.102 (2,794) | −1.113 | +0.000 |
+
+- **Misses** (from the `make eval-candidate` console output):
+  - deterministic: 285 → 159
+  - LLM view: 226 → 97
+- **Name categories.** Every student-name category rises on both views against round 0:
+  - deterministic: +5.13 to +7.21 pp
+  - LLM view: +5.74 to +7.47 pp
+- **Other labels.** All other labels are unchanged.
+- **Control.** No regression against pinned baseline round 0 on either control dataset: identical flag counts.
 
 **What it does not fix:**
 
-- **Initials where the scorer still finds the letter (33 deterministic, 17 LLM view).** All of these initials are masked at the mention itself, and the exact text "X." does not occur in the output. They are still counted as misses because the residual rule (`edshield_evidence/residual.py`, `find_residual`) case-folds the gold text and strips its edge punctuation. `A.` therefore becomes `a` and is searched as a whole word anywhere in the output. The article "a", the pronoun "I", and contraction tails ("let's", "don't", "I'm") hit `A.`, `I.`, `S.`, `T.`, `M.`:
-  - Deterministic: A 11, S 8, I 5, T 4, L 2, M 2, Y 1.
-  - LLM view: A 9, S 5, M 3.
-  - No rule can recover these without masking ordinary words. I did not try, and the scorer is out of scope.
-- **Initials of a name that was never detected (3 deterministic, 2 LLM view).** There is no anchor name to propagate from.
-- **Initials of names the model found with confidence < 0.75.** They are not propagated, by the existing design decision that weak guesses are not spread.
-- **Risk outside the bench.** An unrelated standalone capital plus full stop that shares the detected student's initial will be masked in the same document, for example "point A." in a geometry turn when the student is called Alex. On the control this happened once in 227k tokens before the operator guard and 0 times after it (offline estimate on the round 0 entities; the measured control delta is +0.000). It is a false alarm, not a leak, which fits the project's recall-first rule. A reviewer may still want a lookbehind for words like "point", "angle" and "option".
+- **Initials the scorer still counts as leaked: 33 deterministic, 15 LLM view** (reason `elsewhere` in `results/candidate/round_1/*/misses.csv`).
+  - The mention itself is masked. The residual rule case-folds `A.` to `a` and searches for it as a whole word anywhere in the output, so the article "a", the pronoun "I" and contraction tails ("let's", "don't") hit `A.`, `I.`, `S.`, `T.`, `M.`.
+  - Letters among all 40 remaining deterministic initial misses: A 11, S 8, M 6, I 5, T 4, …
+  - No rule can recover these without masking ordinary words. The scorer is out of scope.
+- **Initials with no usable anchor: 7 deterministic, 20 LLM view** (reason `nickname`).
+  - Either the student's name was never detected, or only by the model below 0.75. Weak model guesses are not spread, by the existing design decision.
+- **Risk outside the bench.** An unrelated standalone capital-plus-full-stop that shares a detected student's initial is masked in the same document (e.g. "it's in box A." when the student is Alex).
+  - That is a false alarm, not a leak, and the project ranks recall first.
+  - The measured control delta is +0.000, but a reviewer may want to extend the label-word list.
 
 ## Round 2: short school names "X High" and "X Prep" (kept)
 
-**What the patch does.** It adds `High` and `Prep` as the last two alternatives of `SCHOOL_TYPES`. The longer forms ("High School", "Preparatory School", "Junior High") stay earlier in the alternation, so they still match whole. The existing guards are unchanged: a sentence opener is stripped, and a name made only of kind words ("Junior High", "So High") is skipped. `SCHOOL` is a rules-only label, so this rule runs with or without the model.
+**What it does.** It appends `High` and `Prep` as the last alternatives of `SCHOOL_TYPES`.
 
-**Cause codes addressed.** SCHEMA_GAP (`results/diagnosis/causes.jsonl`), all 22 of them deterministic-view SCHOOL misses:
+- The longer forms ("High School", "Junior High", "Preparatory School") stay earlier in the alternation, so they still match whole.
+- The existing guards are unchanged: a sentence opener is stripped, and a name made only of kind words ("Junior High", "In High School", "So High") is skipped.
+- `SCHOOL` is rules-only, so this works with or without the model.
 
-- 20 rows are SCHEMA_GAP / RULE and 2 are SCHEMA_GAP / GAZETTEER; mean confidence 0.68.
-- The forms are "X High" (12) and "X Prep" (10).
-- One of these, "Summit Prep" in comta-014, is the second-highest-confidence RULE miss in `results/diagnosis/summary.md`.
+**Causes addressed.** All 22 deterministic-view SCHOOL misses, primary SCHEMA_GAP:
 
-**Numbers** (all from `results/candidate/round_2/summary.json`):
+- 20 rows fix RULE (mean confidence 0.67) and 2 rows fix GAZETTEER (0.80).
+- Forms: "X High" 12, "X Prep" 10. Three distinct planted names.
+- Includes "Summit Prep" (comta-014), the second-highest-confidence RULE miss in `results/diagnosis/summary.md`.
+- The regex finds neither form anywhere in the control text (checked before the run).
 
-| metric | round 2 | vs sealed / LLM baseline (summary `delta_pp`) | vs round 1 (`results/candidate/round_1/summary.json`) | vs round 0 |
-|---|---|---|---|---|
-| deterministic, all identifiers (n=2841) | 95.32% [94.48, 96.04] | +5.00 pp | +0.77 pp | +5.35 pp |
-| deterministic, SCHOOL (n=218) | 100.0% | +10.09 pp | +10.09 pp (from 89.91%) | +10.09 pp |
-| deterministic, student names | 94.49% | +6.06 pp | +0.00 pp | +6.45 pp |
-| LLM view, all identifiers (n=2767) | 97.07% [96.38, 97.64] | +5.24 pp | +0.00 pp | +5.24 pp |
-| LLM view, SCHOOL (n=213) | 100.0% | +0.00 pp | +0.00 pp | +0.00 pp |
-| control comta, flags per 1,000 tokens | 0.503 (21 flags) | +0.000 | +0.000 | +0.000 |
-| control mathdial, flags per 1,000 tokens | 15.102 (2,794 flags) | −1.113 | +0.000 | +0.000 |
+**Numbers** (all from `results/candidate/round_2/summary.json`; round 1 from `results/candidate/round_1/summary.json`):
 
-- **Misses:** deterministic view 155 → 133; LLM view unchanged at 81.
-- **Control:** no regression against pinned baseline round 1 on either control dataset. Neither form occurs in the control text at all (0 regex hits on either dataset before the run).
+| metric | round 1 | round 2 | summary `delta_pp` | vs round 1 | vs round 0 |
+|---|---|---|---|---|---|
+| deterministic, all identifiers (n=2841) | 94.40% | 95.18% [94.33, 95.91] | +4.86 pp | +0.77 pp | +5.21 pp |
+| deterministic, SCHOOL (n=218) | 89.91% | 100.0% | +10.09 pp | +10.09 pp | +10.09 pp |
+| deterministic, student names (n=2014) | 94.29% | 94.29% | +5.86 pp | +0.00 pp | +6.26 pp |
+| LLM view, all identifiers (n=2767) | 96.49% | 96.49% [95.74, 97.12] | +4.66 pp | +0.00 pp | +4.66 pp |
+| LLM view, SCHOOL (n=213) | 100.0% | 100.0% | 0.0 pp | +0.00 pp | +0.00 pp |
+| control comta, flags per 1,000 tokens | 0.503 (21) | 0.503 (21) | 0.0 | +0.000 | +0.000 |
+| control mathdial, flags per 1,000 tokens | 15.102 (2,794) | 15.102 (2,794) | −1.113 | +0.000 | +0.000 |
+
+- **Misses:** deterministic 159 → 137; LLM view unchanged at 97.
+- **Control.** No regression against pinned baseline round 1 on either control dataset.
 
 **What it does not fix, and caveats:**
 
-- **The gain shows up on the deterministic view only.** The LLM view's SCHOOL slice was already at 100%, and `results/view_comparison.md` lists SCHOOL as a slice whose phrasing alone moves the number (non-overlapping CIs). The +0.77 pp reflects how the deterministic templates write school names. How common short forms are in real student chat is not measured here.
-- **Possible false alarms.** "Test Prep" or "SAT Prep" written in title case, or a capitalised phrase ending in "High" ("Too High"), would now be flagged as SCHOOL. Lower-case "prep" and "high" are not affected.
-- **Lower-case school names** ("jefferson high") remain uncovered, as before.
+- **The gain is on the deterministic view only.**
+  - The LLM view's SCHOOL slice was already at 100%.
+  - `results/view_comparison.md` lists SCHOOL among slices that move with phrasing alone.
+  - The +0.77 pp reflects how the deterministic templates write school names (three names). How often short forms occur in real student chat is not measured here.
+- **New false alarms.** A title-case phrase ending in "High" or "Prep" is now flagged as SCHOOL:
+  - "Too High" (checked by hand: flagged)
+  - "Test Prep" and "SAT Prep" (expected from the regex, not checked)
+
+  Lower-case "high" and "prep" are unaffected.
+- **Lower-case school names** ("jefferson high") remain uncovered.
+
+## What the loop leaves unfixed
+
+Round 2 misses, joined to `results/diagnosis/causes.jsonl`:
+
+- **Deterministic view (137 misses):**
+  - 40 `nickname:initial`: 33 are the scorer artefact above.
+  - 30 + 4 + 3 + 2 NAME_WORD_COLLISION / REGISTER rows labelled MODEL (e.g. a name that is also an ordinary word). These need the model, not a rule.
+  - 10 REGISTER lowercase-first-name rows labelled RULE.
+  - 5 OTHER and 4 NAME_WORD_COLLISION capitalised rows labelled RULE.
+  - The rest are small.
+- **LLM view (97 misses):**
+  - 35 initials.
+  - 9 + 7 truncated nicknames (RULE / MODEL).
+  - 8 + 9 collisions (RULE / MODEL).
+  - 6 lowercase first names.
+  - The rest are small.
 
 ## Why the loop stopped after round 2
 
 **None of the listed stop conditions fired:**
 
-- Round 1 improved deterministic identifier recall by +4.58 pp against round 0.
-- Round 2 improved it by +0.77 pp against round 1.
+- Round 1 improved deterministic identifier recall by +4.44 pp over round 0.
+- Round 2 improved it by +0.77 pp over round 1. Both are above the 0.5 pp continuation bar.
 - Neither round raised control over-redaction (+0.000 flags per 1,000 tokens on both datasets).
-- The session budget was not reported as reached.
+- Two of three rounds were used, and the budget was not reported as reached.
 
-**I stopped by choice instead of running round 3.** The best remaining RULE candidate was projected to fall under the "improves deterministic-view identifier recall by less than 0.5 percentage points" condition. Of the 133 remaining deterministic misses:
+**I stopped by judgment, for this reason.** No single focused change left can clear the 0.5 pp bar on the deterministic view:
 
-- 58 are name/word collisions that are mostly MODEL-class in the diagnosis.
-- 40 are "elsewhere", including the 33 single-letter scorer cases above.
-- 22 are nickname forms, 7 lowercase, 4 typo and 2 other.
+- The largest remaining RULE cause there that a rule could reach is lowercase first names (REGISTER / RULE, 10 rows). Recovering all of them would add at most 10 / 2841 = 0.35 pp.
+- That cause is also the riskiest for the control ("im fine", "i'm good").
+- The 33 `elsewhere` initials are a scorer artefact that no rule can reach.
 
-An offline estimate on the round 2 entities for the largest remaining RULE idea gave a low payoff. The idea was case-insensitive propagation of detected names, for lowercase mentions (REGISTER). It would recover at most 4 deterministic misses (about +0.14 pp, under 0.5 pp) and add 17 control flags on mathdial. Truncated nicknames (7 deterministic rows) cannot reach 0.5 pp (14.2 spans) either. A third run would most likely have ended the loop through the <0.5 pp condition, at the cost of a full evaluation.
-
-## Notes for the reviewer
-
-- **Demo parity.** `demo/index.html` has a JavaScript port of `propagateNames` and of the school rule. `tests/test_demo_parity.py` checks that the port matches the Python. I was not allowed to edit `demo/`, so if these patches are accepted the JavaScript needs the same two changes. Otherwise the parity test may fail on any sentence that exercises them.
-- **Tests not run.** edshield's pytest suite was not run, because pytest is not installed in the sandbox and installing it was not permitted. What I did run:
-  - `import edshield` from the candidate.
-  - Synthetic checks of both changes: `, M.!` and `Nice, M.` tagged; `U.S.`, `x = M.` and `100 - M.` not tagged; "Jefferson High" and "Summit Prep" caught; "Junior High", "So High" and "SAT prep" not caught.
-  - The three bench evaluations.
-- **Not tuned to the hard set.** The rules were written from the diagnosis rows and checked against the bench views. They were not tuned to `eval/k12_bench.py`'s hard set.
-- **Runtime.** All numbers come from the INT8 ONNX runtime on CPU. The sealed baseline is GPU/python. The before/after comparisons that isolate each patch are the round-0 and round-1 columns.
-- **Data handling.** The `raw/` subdirectories of `results/candidate/round_*` are not included in the outputs.
+A third round would therefore have been expected to end the loop under the "less than 0.5 pp" condition, at the cost of another full evaluation. Given the session's instruction to prefer fewer, better-measured rounds, I did not run it.
