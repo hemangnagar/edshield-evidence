@@ -44,3 +44,15 @@ submitted batch msgbatch_01H99GXCKJLV6AZ7278P1mtr (2 requests) -> /home/user/eds
 
 $ /usr/bin/python3 scripts/diagnose.py collect --poll 90
   msgbatch_01N31mANjeD9Ej6e2Tpy7aJo: in_progress processing=14 succeeded=0 errored=0 expired=0 canceled=0
+  msgbatch_01N31mANjeD9Ej6e2Tpy7aJo: in_progress processing=14 succeeded=0 errored=0 expired=0 canceled=0
+  msgbatch_01N31mANjeD9Ej6e2Tpy7aJo: in_progress processing=14 succeeded=0 errored=0 expired=0 canceled=0
+  msgbatch_01N31mANjeD9Ej6e2Tpy7aJo: in_progress processing=14 succeeded=0 errored=0 expired=0 canceled=0
+  msgbatch_01N31mANjeD9Ej6e2Tpy7aJo: in_progress processing=14 succeeded=0 errored=0 expired=0 canceled=0
+  msgbatch_01N31mANjeD9Ej6e2Tpy7aJo: ended processing=0 succeeded=14 errored=0 expired=0 canceled=0
+collected 14 results (14 succeeded), batch cost $0.0714
+  msgbatch_01H99GXCKJLV6AZ7278P1mtr: ended processing=0 succeeded=2 errored=0 expired=0 canceled=0
+collected 2 results (2 succeeded), batch cost $0.0095
+16 cause rows, 0 rejected in /home/user/edshield-evidence/runs/20261016T131642Z-diagnose
+merged 617 cause rows -> /home/user/edshield-evidence/results/diagnosis/causes.jsonl
+wrote /home/user/edshield-evidence/results/diagnosis/summary.md
+$ git add -A results/diagnosis results/candidate/round_0 runs

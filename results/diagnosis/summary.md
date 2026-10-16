@@ -1,34 +1,35 @@
 # Miss diagnosis (Batch API, claude-opus-5-5)
 
-Rubric `prompts/diagnose_system.md` sha256 `c242140c89c66464…`; 501 rows diagnosed, 0 rejected (see the run directory). Every number below is read from `results/diagnosis/causes.jsonl`.
+Rubric `prompts/diagnose_system.md` sha256 `c242140c89c66464…`; 515 rows diagnosed, 0 rejected (see the run directory). Every number below is read from `results/diagnosis/causes.jsonl`.
 
-## View: deterministic (275 misses)
+## View: deterministic (289 misses)
 
 | primary cause | n | share | mean confidence |
 |---|---|---|---|
-| TOKENIZATION | 176 | 64.0% | 0.76 |
-| NAME_WORD_COLLISION | 43 | 15.6% | 0.72 |
-| SCHEMA_GAP | 23 | 8.4% | 0.68 |
-| REGISTER | 20 | 7.3% | 0.65 |
-| OTHER | 10 | 3.6% | 0.48 |
+| TOKENIZATION | 180 | 62.3% | 0.76 |
+| NAME_WORD_COLLISION | 47 | 16.3% | 0.72 |
+| SCHEMA_GAP | 24 | 8.3% | 0.67 |
+| REGISTER | 24 | 8.3% | 0.66 |
+| OTHER | 11 | 3.8% | 0.47 |
 | CONTEXT_CUE_MISSING | 2 | 0.7% | 0.53 |
-| NON_ANGLO_NAME | 1 | 0.4% | 0.50 |
+| NON_ANGLO_NAME | 1 | 0.3% | 0.50 |
 
 | fix class | n | share |
 |---|---|---|
-| RULE | 218 | 79.3% |
-| MODEL | 48 | 17.5% |
-| NONE | 7 | 2.5% |
+| RULE | 224 | 77.5% |
+| MODEL | 55 | 19.0% |
+| NONE | 8 | 2.8% |
 | GAZETTEER | 2 | 0.7% |
 
 Primary cause by name category:
 
 | category | REGISTER | NAME_WORD_COLLISION | NON_ANGLO_NAME | SCHEMA_GAP | TOKENIZATION | CONTEXT_CUE_MISSING | AMBIGUOUS | OTHER |
 |---|---|---|---|---|---|---|---|---|
-| anglo_common | 1 | 2 | 0 | 6 | 45 | 0 | 0 | 1 |
-| name_word_collision | 7 | 39 | 0 | 5 | 39 | 1 | 0 | 4 |
-| nicknames_and_variants | 5 | 2 | 1 | 7 | 42 | 1 | 0 | 3 |
-| non_anglo | 7 | 0 | 0 | 5 | 50 | 0 | 0 | 2 |
+| ? | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 2 |
+| anglo_common | 2 | 2 | 0 | 6 | 45 | 0 | 0 | 1 |
+| name_word_collision | 9 | 43 | 0 | 5 | 43 | 1 | 0 | 5 |
+| nicknames_and_variants | 6 | 2 | 1 | 8 | 42 | 1 | 0 | 3 |
+| non_anglo | 7 | 0 | 0 | 4 | 49 | 0 | 0 | 0 |
 
 ## View: llm (226 misses)
 
@@ -59,7 +60,7 @@ Primary cause by name category:
 
 ## Consistency check
 
-100 rows were submitted twice, the second time with the taxonomy listed in reverse order. Primary-cause agreement: **98/100 = 98%**; fix-class agreement: 95/100 = 95%.
+102 rows were submitted twice, the second time with the taxonomy listed in reverse order. Primary-cause agreement: **100/102 = 98%**; fix-class agreement: 96/102 = 94%.
 
 ## Ten highest-confidence RULE / GAZETTEER misses
 
@@ -76,4 +77,4 @@ Primary cause by name category:
 | deterministic | comta | comta-069 | `Z.` (nickname:initial) | TOKENIZATION | RULE | 0.80 | Well done, [[Z.]]! |
 | deterministic | comta | comta-081 | `R.` (nickname:initial) | TOKENIZATION | RULE | 0.80 | Tutor: Good thinking, [[R.]]. That's right! |
 
-Batch spend for this component: $2.00 (from the per-request `usage` fields, batch price).
+Batch spend for this component: $2.08 (from the per-request `usage` fields, batch price).
