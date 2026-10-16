@@ -9,6 +9,9 @@
    "done_at": "2026-10-16T13:16:42+00:00",
    "session_id": "sesn_01TqN2pLjWXhqgTbuXhJtDts",
    "run_dir": "/home/user/edshield-evidence/runs/20261016T125922Z-agent"
+  },
+  "diagnose": {
+   "done_at": "2026-10-16T13:24:21+00:00"
   }
  }
 }
