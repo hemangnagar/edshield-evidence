@@ -7,7 +7,7 @@
  "seed": 0,
  "versions": {
   "python": "3.11.16",
-  "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "edshield": "0.2.0",
   "edshield-evidence": "0.1.0",
   "torch": "not installed",
@@ -25,31 +25,31 @@
  "sets": {
   "deterministic__comta": {
    "docs": 188,
-   "seconds": 39.4
+   "seconds": 68.3
   },
   "deterministic__mathdial": {
    "docs": 599,
-   "seconds": 125.5
+   "seconds": 208.8
   },
   "llm__comta": {
    "docs": 181,
-   "seconds": 37.8
+   "seconds": 62.0
   },
   "llm__mathdial": {
    "docs": 543,
-   "seconds": 117.8
+   "seconds": 205.1
   },
   "control__comta": {
    "docs": 188,
-   "seconds": 39.0
+   "seconds": 64.7
   },
   "control__mathdial": {
    "docs": 599,
-   "seconds": 122.2
+   "seconds": 206.0
   }
  },
- "started": "2026-10-15T14:51:42",
+ "started": "2026-10-16T14:05:51",
  "model_sha256": "7f4dd8e5a58c45c941ac2b627fe1213a5d893d42defa6dd9854ebe1e4dd4b1fc",
  "model_ref": "/root/.cache/huggingface/hub/models--edshield--piilo-deberta-v3-small-onnx/snapshots/884f9536dc67de556909722607358376078f6e35/onnx/model_quantized.onnx",
- "finished": "2026-10-15T14:59:53"
+ "finished": "2026-10-16T14:19:41"
 }
