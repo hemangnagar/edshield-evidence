@@ -64,3 +64,4 @@ Automated by scripts/pipeline.py
 $ /usr/bin/python3 -u scripts/run_agent_loop.py --phase task --runtime onnx --branch claude/compassionate-ritchie-tpkgv9 --budget-cents 3000 --session sesn_01TqN2pLjWXhqgTbuXhJtDts
 [agent] The pull is blocked by this run's round_0 files. I'll back them up, pull, then see what upstream changed in round_0 before putting mine back.
 [agent] Upstream had already committed this run's round 0 (identical files), so the baseline is unchanged. The failure tables are missing, so I'll rebuild them.
+[agent] Next I'll join the causes with the failure tables and break the RULE rows down by mention form (no dialogue text printed).
