@@ -12,6 +12,12 @@
   },
   "diagnose": {
    "done_at": "2026-10-16T13:24:21+00:00"
+  },
+  "propose": {
+   "done_at": "2026-10-16T14:04:54+00:00",
+   "session_id": "sesn_01TqN2pLjWXhqgTbuXhJtDts",
+   "ended": "normal finish",
+   "stop_reason": "end_turn"
   }
  }
 }
