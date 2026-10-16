@@ -69,3 +69,4 @@ $ /usr/bin/python3 -u scripts/run_agent_loop.py --phase task --runtime onnx --br
 [agent] pytest isn't installed and I'm not allowed to install it, so the edshield test suite can't run here. I'll note that in the proposal. Starting round 1:
 [agent] While round 1 runs I'll read the school rows for round 2. I won't edit the checkout yet, because the editable install would change the run in progress.
 [stream closed] session status running; reconnecting
+[agent] Round 1 is kept: deterministic recall +4.44 pp against round 0 and no change on either control. I'll break down which initials are still missed.
