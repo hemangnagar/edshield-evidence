@@ -67,12 +67,13 @@ def cmd_seal() -> int:
 
 def cmd_unseal(force: bool = False) -> int:
     man = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    k = key()
+    k = None
     for ds, m in man["datasets"].items():
         dst = STORE / f"{ds}.jsonl"
         if dst.exists() and not force and sha256(dst.read_bytes()) == m["sha256"]:
             print(f"{ds}: plaintext already present and matches")
             continue
+        k = k or key()
         data = sealmod.decrypt((STORE / f"{ds}.jsonl.enc").read_bytes(), k, f"planted_llm/{ds}".encode())
         if sha256(data) != m["sha256"]:
             raise SystemExit(f"{ds}: unsealed content does not match the manifest sha256")
