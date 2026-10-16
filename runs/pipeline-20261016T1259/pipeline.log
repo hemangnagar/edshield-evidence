@@ -1,0 +1,18 @@
+[data] starting
+$ /usr/bin/python3 scripts/llm_view_store.py unseal
+comta: plaintext already present and matches
+mathdial: plaintext already present and matches
+$ make raw
+cd experiments/genre_shift && python3 download.py comta mathdial
+[comta] CoMTA_dataset.json sha256 6937272dc10aea3545fcb15c97c07bf9f4ade7edf7199a67333e7c0754e68e37
+[comta] LICENSE sha256 53cf7aa78a8992fdc0ca5854d9a262a36497c6fd379fc4d00813bbccfd10d112
+[mathdial] test.jsonl sha256 3ec54ee8ab921dc6191bf5e2ee766d4e7916b4264394eb17a6be9b3fe486e50b
+$ make plant-check
+python3 -c "import sys; sys.path.insert(0,'scripts'); import genre_shift_data as g; g.ensure_planted(); print('sealed planted set reproduced')"
+sealed planted set reproduced
+[regress] starting
+$ /usr/bin/python3 -u scripts/run_agent_loop.py --phase setup --runtime onnx --branch claude/compassionate-ritchie-tpkgv9 --budget-cents 3000 --setup-message /home/user/edshield-evidence/runs/pipeline-20261016T1259/regress_message.md --title agent-diagnose 20261016T1259: regression
+updated agent agent_01CGTciPNNHMs78SoXBpqrKB -> version 2
+uploaded 8 files
+session sesn_01TqN2pLjWXhqgTbuXhJtDts status idle; trace: https://platform.claude.com/workspaces/default/sessions/sesn_01TqN2pLjWXhqgTbuXhJtDts
+[agent] Candidate HEAD is the pinned a568e73, so round 0 is the sanity gate.
