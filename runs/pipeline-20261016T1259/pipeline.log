@@ -71,3 +71,4 @@ $ /usr/bin/python3 -u scripts/run_agent_loop.py --phase task --runtime onnx --br
 [stream closed] session status running; reconnecting
 [agent] Round 1 is kept: deterministic recall +4.44 pp against round 0 and no change on either control. I'll break down which initials are still missed.
 [agent] The checks behave as intended. "Too High" is a known false-alarm risk that I'll document rather than guard against. Starting round 2:
+[agent] The run is still going. `round_2/` already holds the earlier session's committed `summary.json`, so before reading it I'll check the `run_meta` timestamps once the process exits.
