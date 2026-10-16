@@ -210,3 +210,9 @@ The platform Console is the authority for what was actually charged; these are l
 $ git add -A results runs
 warning: in the working copy of 'results/candidate/driver_rescore/deterministic/misses.csv', CRLF will be replaced by LF the next time Git touches it
 warning: in the working copy of 'results/candidate/driver_rescore/llm/misses.csv', CRLF will be replaced by LF the next time Git touches it
+$ git diff --cached --quiet
+$ git commit -q -m report: run 20261016T1259
+
+Automated by scripts/pipeline.py
+
+Run 20261016T1259 complete on branch claude/compassionate-ritchie-tpkgv9. Open a PR against main titled "exp: agent-diagnose run 20261016T1259" (the scheduled session or the Actions job does this).

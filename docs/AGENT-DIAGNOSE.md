@@ -38,6 +38,12 @@ Every API call goes through `scripts/platform_api.py`, which reads the platform 
 
 Everything in the brief ran. Key check, both batches, the Managed Agents session (`sesn_01SpV798Yfa2nmVUmZX6fJTr`, two rounds, $3.77) and the fresh-container verification session (`sesn_01JVPjSwZ9qiT5pE4WtsiFFm`, $0.13) are done; nothing is still running on the platform. Deviations from the brief, all recorded in the files: the sandbox scored with the INT8 ONNX runtime because torch wheels are unreachable there (round 0 is 0.35 pp under the sealed GPU baseline); the planting validator accepts insert-only edits, a case change of the original's first letter after a prepended phrase, and locates surface forms itself; the LLM view is 724 of 738 dialogues. The findings note is `results/agent_findings.md`; spend is in `runs/20261015T144955Z-cost/COST.md`.
 
+### Second cycle: run 20261016T1259 (2026-10-16)
+
+The full `scripts/pipeline.py` cycle ran against edshield `main` (still `a568e73`, so round 0 doubled as the sanity gate: 89.97%, 0.35 pp under the sealed baseline, within tolerance). It was started from the Claude Code session with `--no-push` because the GitHub Actions workflow is not on `main` yet; every model call was platform spend (regression and proposal session `sesn_01TqN2pLjWXhqgTbuXhJtDts`, diagnosis batches `msgbatch_01N31mANjeD9Ej6e2Tpy7aJo` and `msgbatch_01H99GXCKJLV6AZ7278P1mtr` for the 14 new misses, verification `sesn_01H9Eoposw3uCexp2fqj3pjY`). The agent kept two rounds again, with different patches from the first cycle: initials of an already-detected name (89.97 to 94.40%) and short school names `X High` / `X Prep` (to 95.18%); LLM view 91.83 to 96.49%; both controls unchanged. The driver re-score matches round 2 exactly on the same `rules.py` hash (`8e252dc0`). Report: `results/RUN_20261016T1259.md`; spend to date `runs/pipeline-20261016T1259/COST.md` ($13.97 of $71 across both cycles).
+
+One pipeline defect was found and fixed by this run: the first verification session cloned the branch before the run's proposals were pushed and re-scored the previous cycle's patch. The verify phase now uploads this run's patches and round summaries into the session and the driver check records the `rules.py` hash it measured; the pipeline also pushes after each of its commits.
+
 ## Scheduled runs
 
 The one-off experiment above is the first run of a recurring cycle. `scripts/pipeline.py` runs one cycle end to end and is idempotent per run id (`runs/pipeline-<run id>/state.json` records finished stages):
