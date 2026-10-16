@@ -1,0 +1,2 @@
+{"custom_id": "diag-det-mathdial-mathdial-test-305-0-alt", "model": "claude-opus-5-5", "sha256": "0ffd1798ef1d8439398b6e1974408fbbbe3f98fbdb4184d3928beaf96c5f169f", "chars": 5002, "view": "deterministic", "dataset": "mathdial", "doc_id": "mathdial-test-305", "span_idx": 0, "alt": true}
+{"custom_id": "diag-det-mathdial-mathdial-test-034-1-alt", "model": "claude-opus-5-5", "sha256": "3457dbc8eb2b6c083acadcb9b6cf43935026c020d96c2bf2d486a9f89461860a", "chars": 4951, "view": "deterministic", "dataset": "mathdial", "doc_id": "mathdial-test-034", "span_idx": 1, "alt": true}
