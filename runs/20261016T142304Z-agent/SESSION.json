@@ -1,0 +1,133 @@
+{
+ "branch": "claude/compassionate-ritchie-tpkgv9",
+ "runtime": "onnx",
+ "budget_cents": "1000",
+ "run_dir": "/home/user/edshield-evidence/runs/20261016T142304Z-agent",
+ "environment_id": "env_01NY5PwGLj9H4QS2NirdJxqi",
+ "agent_id": "agent_01CGTciPNNHMs78SoXBpqrKB",
+ "agent_version": 2,
+ "session_id": "sesn_01H9Eoposw3uCexp2fqj3pjY",
+ "console": "https://platform.claude.com/workspaces/default/sessions/sesn_01H9Eoposw3uCexp2fqj3pjY",
+ "phase": "verify",
+ "messages_sent": 1,
+ "usage": {
+  "active_seconds": 924.874,
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 0,
+   "ephemeral_5m_input_tokens": 8046
+  },
+  "cache_read_input_tokens": 100987,
+  "input_tokens": 22,
+  "list_cost": {
+   "amount": "14",
+   "currency": "USD"
+  },
+  "output_tokens": 3180,
+  "server_tool_use": {
+   "web_fetch_requests": 0,
+   "web_search_requests": 0
+  }
+ },
+ "stop_reason": "end_turn",
+ "ended": "normal finish",
+ "final_messages": [
+  "The driver check finished: both patches apply cleanly, and its independent re-score of `round_2.patch` exactly matches the agent's round 2 summary. Contents of `proposals/DRIVER_CHECK.md`, verbatim:\n\n```\n# Driver check of the agent's patches\n\nedshield checkout `a568e73`; allowed paths: `edshield/rules.py`, `edshield/gazetteer/*`.\n\n- `round_1.patch`: applies cleanly; touches ['edshield/rules.py']\n- `round_2.patch`: applies cleanly; touches ['edshield/rules.py']\n\n## Independent re-score of `round_2.patch` vs the agent's `round_2/summary.json`\n\n| number | agent | driver | diff |\n|---|---|---|---|\n| rules.py sha256 | 8e252dc0d1f5 | 8e252dc0d1f5 | same |\n| deterministic all_identifiers recall | 95.18% | 95.18% | +0.00 pp |\n| deterministic student_names recall | 94.29% | 94.29% | +0.00 pp |\n| llm all_identifiers recall | 96.49% | 96.49% | +0.00 pp |\n| llm student_names recall | 95.48% | 95.48% | +0.00 pp |\n| control comta flags/1k | 0.503 | 0.503 | +0.000 |\n| control mathdial flags/1k | 15.102 | 15.102 | +0.000 |\n\nLargest discrepancy: 0.00 (tolerance 0.5). **Matches within rounding.**\n```\n\n- **Run:** All steps ran as given and no files were edited. `make raw` and `make plant-check` passed (\"sealed planted set reproduced\"), and `enforce_patches.py --runtime onnx` exited normally. Afterwards edshield was back at the pinned release 0.2.0.\n- **Leftover files in the clone:** The branch already had `proposals/PROPOSAL.md`, `proposals/DRIVER_CHECK.md` and `results/candidate/driver_rescore/` from an earlier run. This run rewrote `DRIVER_CHECK.md` (new timestamp, and its text matches the log) and `driver_rescore/`. Nothing was uploaded to replace `PROPOSAL.md`, so the clone still has the old one; the check didn't use it.\n- **Outputs:** `/mnt/session/outputs/` has `proposals/DRIVER_CHECK.md` and `results/candidate/driver_rescore/` (without `raw/`). The same files are packed in `/mnt/session/outputs/outputs.tar.gz`, with paths relative to the bench root."
+ ],
+ "final_status": "idle",
+ "retrieved": {
+  "files": [
+   "summary.json",
+   "outputs.tar.gz",
+   "DRIVER_CHECK.md",
+   "misses.csv",
+   "metrics.json",
+   "metrics.json",
+   "run_meta.json",
+   "metrics.json",
+   "misses.csv"
+  ],
+  "extracted": [
+   "proposals/DRIVER_CHECK.md",
+   "results/candidate/driver_rescore/summary.json",
+   "results/candidate/driver_rescore/llm/metrics.json",
+   "results/candidate/driver_rescore/llm/misses.csv",
+   "results/candidate/driver_rescore/run_meta.json",
+   "results/candidate/driver_rescore/control/metrics.json",
+   "results/candidate/driver_rescore/deterministic/metrics.json",
+   "results/candidate/driver_rescore/deterministic/misses.csv"
+  ],
+  "fallback_blocks": [],
+  "skipped": [
+   {
+    "file": "comta.spans.jsonl",
+    "id": "file_01RRLKD4QdyCJpYJEbnCSsHw",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01RRLKD4QdyCJpYJEb"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01LzWxXjY2sk2adFaUZ2K7hi",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01LzWxXjY2sk2adFaU"
+   },
+   {
+    "file": "summary.json",
+    "id": "file_01Kmg8iZRFRe1Coxn6FypV3W",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01Kmg8iZRFRe1Coxn6"
+   },
+   {
+    "file": "kept_rounds.json",
+    "id": "file_01KbGnxJYKmWtJqzKTSXJEHa",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01KbGnxJYKmWtJqzKT"
+   },
+   {
+    "file": "round_2.patch",
+    "id": "file_01KaGzpkSXq4zdHcuAHcVqrh",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01KaGzpkSXq4zdHcuA"
+   },
+   {
+    "file": "summary.json",
+    "id": "file_01EssADkoj9SxN7KzHNgYY1c",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01EssADkoj9SxN7KzH"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01CoRtzxywyoZj41PxZ8sF6t",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01CoRtzxywyoZj41Px"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01ARjzkNFfrvg6hMDzP5npvB",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01ARjzkNFfrvg6hMDz"
+   },
+   {
+    "file": "round_1.patch",
+    "id": "file_018dbJh3UQAEfea5oDjZaBLT",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_018dbJh3UQAEfea5oD"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01694BSDBTEdWYKNKYDygpWL",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01694BSDBTEdWYKNKY"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_014JN4NkmaF7PmPi5cTAtsNS",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_014JN4NkmaF7PmPi5c"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_013y6G4rY7yDyEDVeTrkM9DG",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_013y6G4rY7yDyEDVeT"
+   },
+   {
+    "file": "summary.json",
+    "id": "file_013TidcMFQAHQYUcCvmxaNmm",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_013TidcMFQAHQYUcCv"
+   },
+   {
+    "file": "mathdial.spans.jsonl",
+    "id": "file_013HfnkEQKuYWKckwXxz8QN8",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_013HfnkEQKuYWKckwX"
+   }
+  ]
+ }
+}

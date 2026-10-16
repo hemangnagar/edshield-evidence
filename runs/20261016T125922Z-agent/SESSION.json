@@ -1,0 +1,103 @@
+{
+ "branch": "claude/compassionate-ritchie-tpkgv9",
+ "runtime": "onnx",
+ "budget_cents": "3000",
+ "run_dir": "/home/user/edshield-evidence/runs/20261016T125922Z-agent",
+ "environment_id": "env_01NY5PwGLj9H4QS2NirdJxqi",
+ "agent_id": "agent_01CGTciPNNHMs78SoXBpqrKB",
+ "agent_version": 2,
+ "session_id": "sesn_01TqN2pLjWXhqgTbuXhJtDts",
+ "console": "https://platform.claude.com/workspaces/default/sessions/sesn_01TqN2pLjWXhqgTbuXhJtDts",
+ "phase": "setup",
+ "messages_sent": 1,
+ "usage": {
+  "active_seconds": 1029.439,
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 0,
+   "ephemeral_5m_input_tokens": 20384
+  },
+  "cache_read_input_tokens": 160557,
+  "input_tokens": 30,
+  "list_cost": {
+   "amount": "23",
+   "currency": "USD"
+  },
+  "output_tokens": 3857,
+  "server_tool_use": {
+   "web_fetch_requests": 0,
+   "web_search_requests": 0
+  }
+ },
+ "stop_reason": "end_turn",
+ "ended": "normal finish",
+ "final_messages": [
+  "Candidate HEAD is the pinned a568e73, so round 0 is the sanity gate.",
+  "The numbers are identical to the copy committed earlier; only the timestamps in `run_meta.json` differ. Now I'll copy and pack.",
+  "The sandbox is set up and round 0 has finished. The sanity gate passed (`sanity.within_tolerance: true`). I haven't edited anything in the candidate checkout yet.\n\n**Setup**\n- `EDSHIELD_ALLOW_DOWNLOAD=1` is exported and added to `~/.bashrc`.\n- The bench is cloned on branch `claude/compassionate-ritchie-tpkgv9` with its `judge` submodule and installed in editable mode.\n- The candidate is on branch `candidate`, created from `main`. Its HEAD is **a568e73a6c34d40335802235db81950e84004ab1**, the pinned commit, so round 0 counts as the sanity gate.\n- edshield **0.2.0** resolves from **`/workspace/edshield/edshield/__init__.py`**. The summary also records `installed_from: /workspace/edshield` and `rules_sha256 8e7f0fdf\u2026`.\n- The uploaded files are copied into place. `make raw` downloaded CoMTA and MathDial and printed their checksums. `make plant-check` printed \"sealed planted set reproduced\".\n\n**Round 0** (ONNX runtime on CPU; all numbers from `results/candidate/round_0/summary.json`)\n\n| | Round 0 | Baseline | Delta |\n|---|---|---|---|\n| Deterministic view, all-identifier recall (n=2841) | 0.8997 (CI 0.888\u20130.910) | 0.9032 | **\u22120.35 pp** |\n| Deterministic view, student names (n=2014) | 0.8803 | 0.8843 | \u22120.40 pp |\n| LLM view, all-identifier recall (n=2767) | 0.9183 (CI 0.908\u20130.928) | 0.9183 | **0.0 pp** |\n| LLM view, student names (n=1967) | 0.8892 | 0.8892 | 0.0 pp |\n| Control, CoMTA (flags per 1,000 tokens) | 0.50 | 0.50 | 0.0 |\n| Control, MathDial (flags per 1,000 tokens) | 15.10 | 16.21 | \u22121.113 |\n\n- **Sanity:** the deterministic-view delta is \u22120.35 pp against a 0.5 pp tolerance, so `within_tolerance` is **true**. The \u22120.35 pp gap comes mostly from name\u2013word collisions (\u22122.07 pp on that category); the summary notes the sealed baseline was run on a GPU with the Python runtime.\n- **Misses:** 285 on the deterministic view, mostly nicknames (185) and name\u2013word collisions (58), with 22 rule gaps. The LLM view has 226 misses, 188 of them nicknames.\n\n**Already in the bench repo:** the clone came with committed `results/candidate/round_1`, `round_2`, `driver_rescore` and a `proposals/` directory (PROPOSAL.md, round_1/2 patches, kept_rounds.json, DRIVER_CHECK.md). These are from an earlier session, not this run. This run's round 0 overwrote the committed round 0 with identical metrics; only the timestamps in `run_meta.json` changed. I haven't touched the old proposals. When I start the proposal rounds, my files will overwrite them unless you'd rather I move them aside first.\n\n**Outputs:** `round_0/` (without `raw/`) is copied to `/mnt/session/outputs/results/candidate/round_0/` and packed into `/mnt/session/outputs/outputs.tar.gz`, with paths relative to the bench root.\n\nReady for the task message."
+ ],
+ "final_status": "idle",
+ "retrieved": {
+  "files": [
+   "outputs.tar.gz",
+   "misses.csv",
+   "metrics.json",
+   "metrics.json",
+   "metrics.json",
+   "misses.csv",
+   "summary.json",
+   "run_meta.json"
+  ],
+  "extracted": [
+   "results/candidate/round_0/summary.json",
+   "results/candidate/round_0/llm/metrics.json",
+   "results/candidate/round_0/llm/misses.csv",
+   "results/candidate/round_0/run_meta.json",
+   "results/candidate/round_0/control/metrics.json",
+   "results/candidate/round_0/deterministic/metrics.json",
+   "results/candidate/round_0/deterministic/misses.csv"
+  ],
+  "fallback_blocks": [],
+  "skipped": [
+   {
+    "file": "comta.spans.jsonl",
+    "id": "file_01SDd8dac3WE4ejkTZqXHNZo",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01SDd8dac3WE4ejkTZ"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01Je2X9YGcWh5QJSj4U1rgQe",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01Je2X9YGcWh5QJSj4"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01HeVisTUrSV6asPEhy4iTLo",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01HeVisTUrSV6asPEh"
+   },
+   {
+    "file": "mathdial.spans.jsonl",
+    "id": "file_01GSUKg9UgzyBfZP756cp5T1",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01GSUKg9UgzyBfZP75"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01EaqEwtP81dc8PfWHdbhNXa",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01EaqEwtP81dc8PfWH"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01DhieSALtQSKnMPpFTFRpGG",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01DhieSALtQSKnMPpF"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01C1ZbpvUMNXjQvW8ETMitq1",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01C1ZbpvUMNXjQvW8E"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_017J9R4r2Wy8GATbfiyBPHyZ",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_017J9R4r2Wy8GATbfi"
+   }
+  ]
+ }
+}

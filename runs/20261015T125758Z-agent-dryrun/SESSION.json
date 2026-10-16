@@ -1,0 +1,10 @@
+{
+ "branch": "claude/compassionate-ritchie-tpkgv9",
+ "runtime": "python",
+ "budget_cents": "3000",
+ "run_dir": "/home/user/edshield-evidence/runs/20261015T125758Z-agent-dryrun",
+ "environment_id": "env_DRYRUN",
+ "agent_id": "agent_DRYRUN",
+ "agent_version": 1,
+ "dry_run": true
+}

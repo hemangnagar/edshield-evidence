@@ -1,0 +1,102 @@
+{
+ "branch": "claude/compassionate-ritchie-tpkgv9",
+ "runtime": "onnx",
+ "budget_cents": "1000",
+ "run_dir": "/home/user/edshield-evidence/runs/20261016T140456Z-agent",
+ "environment_id": "env_01NY5PwGLj9H4QS2NirdJxqi",
+ "agent_id": "agent_01CGTciPNNHMs78SoXBpqrKB",
+ "agent_version": 2,
+ "session_id": "sesn_01FK1D3ScnWBvy9LknQm3eVd",
+ "console": "https://platform.claude.com/workspaces/default/sessions/sesn_01FK1D3ScnWBvy9LknQm3eVd",
+ "phase": "verify",
+ "messages_sent": 1,
+ "usage": {
+  "active_seconds": 958.649,
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 0,
+   "ephemeral_5m_input_tokens": 6237
+  },
+  "cache_read_input_tokens": 93499,
+  "input_tokens": 22,
+  "list_cost": {
+   "amount": "12",
+   "currency": "USD"
+  },
+  "output_tokens": 2626,
+  "server_tool_use": {
+   "web_fetch_requests": 0,
+   "web_search_requests": 0
+  }
+ },
+ "stop_reason": "end_turn",
+ "ended": "normal finish",
+ "final_messages": [
+  "The driver check ran to completion and both patches passed. The re-score matched the agent's `round_2` numbers exactly (largest gap 0.00, tolerance 0.5). But the driver did not put the pinned edshield release back: `edshield` still resolves to the editable install at `/workspace/edshield-evidence/runs/edshield-checkout`. The setup message said it would be restored, and since you asked for no other steps I left it as is.\n\nHere is `proposals/DRIVER_CHECK.md`, verbatim:\n\n```\n# Driver check of the agent's patches\n\nedshield checkout `a568e73`; allowed paths: `edshield/rules.py`, `edshield/gazetteer/*`.\n\n- `round_1.patch`: applies cleanly; touches ['edshield/rules.py']\n- `round_2.patch`: applies cleanly; touches ['edshield/rules.py']\n\n## Independent re-score of `round_2.patch` vs the agent's `round_2/summary.json`\n\n| number | agent | driver | diff |\n|---|---|---|---|\n| deterministic all_identifiers recall | 95.32% | 95.32% | +0.00 pp |\n| deterministic student_names recall | 94.49% | 94.49% | +0.00 pp |\n| llm all_identifiers recall | 97.07% | 97.07% | +0.00 pp |\n| llm student_names recall | 96.29% | 96.29% | +0.00 pp |\n| control comta flags/1k | 0.503 | 0.503 | +0.000 |\n| control mathdial flags/1k | 15.102 | 15.102 | +0.000 |\n\nLargest discrepancy: 0.00 (tolerance 0.5). **Matches within rounding.**\n```\n\n- **Setup:** the clone, install, document copy, `make raw` and `make plant-check` all succeeded (\"sealed planted set reproduced\"). No files were edited.\n- **Not restored:** `python -c \"import edshield\"` loads from `runs/edshield-checkout`, and `pip list` shows `edshield 0.2.0` at that path. Any later runs will use the patched checkout until the pinned 0.2.0 release is reinstalled.\n\nFiles are in `/mnt/session/outputs/`:\n- `proposals/DRIVER_CHECK.md`\n- `results/candidate/driver_rescore/`\n- `outputs.tar.gz` (both of the above, paths relative to the bench root)\n\nNone of them include the `raw/` dialogue text."
+ ],
+ "final_status": "idle",
+ "retrieved": {
+  "files": [
+   "outputs.tar.gz",
+   "metrics.json",
+   "metrics.json",
+   "summary.json",
+   "DRIVER_CHECK.md",
+   "metrics.json",
+   "misses.csv",
+   "misses.csv"
+  ],
+  "extracted": [
+   "proposals/DRIVER_CHECK.md",
+   "results/candidate/driver_rescore/summary.json",
+   "results/candidate/driver_rescore/llm/metrics.json",
+   "results/candidate/driver_rescore/llm/misses.csv",
+   "results/candidate/driver_rescore/run_meta.json",
+   "results/candidate/driver_rescore/control/metrics.json",
+   "results/candidate/driver_rescore/deterministic/metrics.json",
+   "results/candidate/driver_rescore/deterministic/misses.csv"
+  ],
+  "fallback_blocks": [],
+  "skipped": [
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01XLZpWxEVT1YjPvZASmHftA",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01XLZpWxEVT1YjPvZA"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01Ts6RVPELJdbuyshGvrNhdJ",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01Ts6RVPELJdbuyshG"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01SWu8Bovv9xWh34aGdi71x4",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01SWu8Bovv9xWh34aG"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01MveTgiWzzHdYFT7fyRSLnJ",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01MveTgiWzzHdYFT7f"
+   },
+   {
+    "file": "comta.jsonl",
+    "id": "file_01JNLW5d5wVDEMLFAs7xA2sP",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01JNLW5d5wVDEMLFAs"
+   },
+   {
+    "file": "mathdial.jsonl",
+    "id": "file_01DAFQ5wJVhAohmoCfLE7ey4",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_01DAFQ5wJVhAohmoCf"
+   },
+   {
+    "file": "comta.spans.jsonl",
+    "id": "file_019QB1EDejQb3oA4BnnUXJ2d",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_019QB1EDejQb3oA4Bn"
+   },
+   {
+    "file": "mathdial.spans.jsonl",
+    "id": "file_016ZHB5yUvQiHHwoj6ThFAKZ",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'File `file_016ZHB5yUvQiHHwoj6"
+   }
+  ]
+ }
+}

@@ -1,0 +1,66 @@
+Newton
+Newton's method
+Taylor series
+Taylor polynomial
+Pascal's triangle
+Pascal
+Euler
+Euler's formula
+Riemann sum
+Riemann
+Gauss
+Gaussian
+Hilbert
+Fourier
+Bayes
+Boole
+Boolean
+Markov
+Fermat
+Abel
+Leibniz
+Laplace
+Lagrange
+Bernoulli
+Hamilton
+Cantor
+Pythagorean
+Pythagoras
+Fibonacci
+Descartes
+Cartesian
+Archimedes
+Euclid
+Euclidean
+Venn
+Heron
+Cramer
+L'Hopital
+Hopital
+Simpson's rule
+Simpson
+mean
+mode
+median
+range
+grace period
+prime
+factor
+product
+slope
+tangent
+chord
+root
+power
+degree
+term
+set
+function
+matrix
+vector
+Python
+Java
+Jupyter
+pandas
+numpy
+Newton-Raphson

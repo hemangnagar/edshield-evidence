@@ -1,0 +1,15 @@
+{
+ "datasets": {
+  "comta": {
+   "sha256": "a1ec0ff74341ab625b6fbd44b25d3aa45228e3dac60c2f4182b9fbe391444e6e",
+   "bytes": 398632,
+   "docs": 181
+  },
+  "mathdial": {
+   "sha256": "cdb90dba25728d3cbe4a24f9eef325b2c481f455843b39f98802bef4c91b6679",
+   "bytes": 1447254,
+   "docs": 543
+  }
+ },
+ "note": "AES-256-GCM via edshield_evidence.seal; AAD = 'planted_llm/<dataset>'; key in EDSHIELD_LLMVIEW_KEY"
+}

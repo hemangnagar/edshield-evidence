@@ -1,0 +1,168 @@
+{
+ "comta": {
+  "n_docs": 188,
+  "n_tokens": 41759,
+  "n_flags": 21,
+  "flags_per_1000_tokens": 0.5028856054982159,
+  "by_tag": {
+   "other": 21
+  },
+  "share_curricular": 0.0,
+  "share_curricular_ci": [
+   0.0,
+   0.15463902098714374
+  ],
+  "by_label": {
+   "AGE": 1,
+   "SCHOOL": 3,
+   "USERNAME": 2,
+   "ID_NUM": 3,
+   "NAME_STUDENT": 9,
+   "NAME_RELATED": 2,
+   "LOCATION": 1
+  },
+  "top_terms": [
+   [
+    "john",
+    4
+   ],
+   [
+    "khan academy",
+    3
+   ],
+   [
+    "samantha",
+    2
+   ],
+   [
+    "sara",
+    2
+   ],
+   [
+    "30",
+    1
+   ],
+   [
+    "rt16x",
+    1
+   ],
+   [
+    "sup5",
+    1
+   ],
+   [
+    "4900",
+    1
+   ],
+   [
+    "johnson",
+    1
+   ],
+   [
+    "davis",
+    1
+   ],
+   [
+    "hence, ma",
+    1
+   ],
+   [
+    ".00000122718463",
+    1
+   ],
+   [
+    "3927n",
+    1
+   ],
+   [
+    "khanmigo",
+    1
+   ]
+  ]
+ },
+ "mathdial": {
+  "n_docs": 599,
+  "n_tokens": 185014,
+  "n_flags": 2794,
+  "flags_per_1000_tokens": 15.101559881954879,
+  "by_tag": {
+   "persona": 443,
+   "problem_name": 2208,
+   "other": 143
+  },
+  "share_curricular": 0.0,
+  "share_curricular_ci": [
+   0.0,
+   0.0013730080627341874
+  ],
+  "by_label": {
+   "NAME_STUDENT": 2681,
+   "ID_NUM": 4,
+   "NAME_RELATED": 23,
+   "AGE": 83,
+   "SCHOOL": 3
+  },
+  "top_terms": [
+   [
+    "60",
+    12
+   ],
+   [
+    "10",
+    10
+   ],
+   [
+    "5",
+    9
+   ],
+   [
+    "20",
+    8
+   ],
+   [
+    "4",
+    7
+   ],
+   [
+    "james",
+    7
+   ],
+   [
+    "jane",
+    6
+   ],
+   [
+    "lakeisha",
+    6
+   ],
+   [
+    "40",
+    5
+   ],
+   [
+    "12",
+    5
+   ],
+   [
+    "cody",
+    4
+   ],
+   [
+    "ty",
+    4
+   ],
+   [
+    "44",
+    3
+   ],
+   [
+    "01616162",
+    2
+   ],
+   [
+    "49",
+    2
+   ]
+  ]
+ }
+}

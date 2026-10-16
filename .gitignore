@@ -14,3 +14,32 @@ evidence/sets/**/unsealed/
 /tmp/
 # local scratch bundles
 *.bundle.json.tmp
+
+# genre-shift experiment: raw downloads and raw model outputs are never committed
+# (licensed third-party dialogue; PIILO holdout essays)
+experiments/genre_shift/data/raw/
+experiments/genre_shift/results/raw/
+experiments/genre_shift/__pycache__/
+# planted/control documents carry the licensed dialogue text; `make plant` rebuilds them
+experiments/genre_shift/data/planted/
+experiments/genre_shift/data/control/
+
+# agent-diagnose branch (docs/BRIEF-agent-diagnose.md): anything carrying the licensed dialogue text stays local.
+# Text-free derivatives (*.index.jsonl, *.spans.jsonl, metrics, misses.csv with 20-token contexts) are committed.
+data/planted_llm/*.jsonl
+!data/planted_llm/*.spans.jsonl
+results/**/raw/
+runs/*/batch_*_requests.jsonl
+runs/*/batch_*_results.jsonl
+runs/*/dryrun_*_request.jsonl
+runs/*/dryrun_*_result.jsonl
+runs/*/plant_requests_built.jsonl
+runs/*/plant_manifests.json
+runs/*/diag_requests_built.jsonl
+runs/*/diag_agreement_requests_built.jsonl
+runs/*/diag_rejects.jsonl
+runs/*/outputs/
+runs/edshield-checkout/
+results/*/failure_table.jsonl
+runs/*/collect*.log
+runs/agent_*.log

@@ -1,0 +1,10 @@
+Set up the sandbox; do not propose anything yet.
+
+1. `export EDSHIELD_ALLOW_DOWNLOAD=1` (edshield refuses model downloads otherwise) and add it to `~/.bashrc`.
+2. Clone the bench: `git clone --recurse-submodules --branch claude/compassionate-ritchie-tpkgv9 https://github.com/hemangnagar/edshield-evidence /workspace/edshield-evidence`.
+3. Clone the candidate: `git clone https://github.com/hemangnagar/edshield /workspace/edshield && cd /workspace/edshield && git checkout a568e73 && git checkout -b candidate`.
+4. Install CPU torch from the PyTorch index: `pip install torch --index-url https://download.pytorch.org/whl/cpu`. Then `pip install -e /workspace/edshield-evidence` and finally `pip install -e /workspace/edshield` so the candidate checkout is the installed edshield (`python -c "import edshield, inspect; print(inspect.getfile(edshield))"` must print a path under /workspace/edshield).
+5. The planted documents are not in git. Copy the uploaded files into place: `/mnt/session/uploads/planted/*.jsonl` -> `/workspace/edshield-evidence/experiments/genre_shift/data/planted/`, `/mnt/session/uploads/control/*.jsonl` -> `.../experiments/genre_shift/data/control/`, `/mnt/session/uploads/planted_llm/*.jsonl` -> `/workspace/edshield-evidence/data/planted_llm/`. Then run `make raw` in the bench root (downloads the pinned raw dialogue files) and `python scripts/genre_shift_data.py` to confirm the plant log check passes.
+6. Sanity gate: `cd /workspace/edshield-evidence && make eval-candidate ROUND=0 RUNTIME=python`. Read `results/candidate/round_0/summary.json`. Report the deterministic-view identifier recall it measured, the sealed baseline it compares against, the delta, and whether `sanity.within_tolerance` is true. If the gate fails or anything above errors, say exactly what failed and stop.
+
+Reply with a short status (what is installed, where edshield resolves from, the round 0 numbers) and wait for the task message.

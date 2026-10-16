@@ -1,0 +1,79 @@
+name: agent-diagnose
+
+# The scheduled trigger for the agent-assisted diagnosis cycle (docs/AGENT-DIAGNOSE.md, "Scheduled runs").
+# Every model call runs on the Claude Platform under EDSHIELD_PLATFORM_API_KEY; this job is the orchestrator
+# (scripts/pipeline.py): it submits batches, drives the Managed Agents sessions, commits the text-free
+# results to a run branch and opens a pull request for a human to review. Nothing is merged automatically.
+#
+# Secrets: EDSHIELD_PLATFORM_API_KEY (platform org key), EDSHIELD_LLMVIEW_KEY (unseals data/planted_llm/*.jsonl.enc).
+
+on:
+  schedule:
+    - cron: "54 12 * * 1"   # Mondays 08:54 America/New_York (12:54 UTC during EDT); GitHub cron is UTC only
+  workflow_dispatch:
+    inputs:
+      edshield_ref:
+        description: "git ref of hemangnagar/edshield to measure as the candidate"
+        required: true
+        default: "main"
+      base:
+        description: "branch of this repo to run from"
+        required: true
+        default: "main"
+      stages:
+        description: "comma-separated stages to run (data,branch,regress,diagnose,propose,verify,report); 'data' alone verifies the secrets at no platform cost"
+        required: false
+        default: "data,branch,regress,diagnose,propose,verify,report"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: agent-diagnose
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.base || 'main' }}
+          submodules: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install the bench and the platform SDK (no model inference runs here)
+        run: python -m pip install -e . anthropic
+      - name: Configure git identity
+        run: |
+          git config user.name "agent-diagnose[bot]"
+          git config user.email "agent-diagnose@users.noreply.github.com"
+      - name: Run the cycle
+        env:
+          EDSHIELD_PLATFORM_API_KEY: ${{ secrets.EDSHIELD_PLATFORM_API_KEY }}
+          EDSHIELD_LLMVIEW_KEY: ${{ secrets.EDSHIELD_LLMVIEW_KEY }}
+        run: |
+          python scripts/pipeline.py --edshield-ref "${{ github.event.inputs.edshield_ref || 'main' }}" \
+            --base "${{ github.event.inputs.base || 'main' }}" --runtime onnx \
+            --stages "${{ github.event.inputs.stages || 'data,branch,regress,diagnose,propose,verify,report' }}"
+      - name: Open the review pull request
+        if: ${{ !github.event.inputs.stages || contains(github.event.inputs.stages, 'report') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          RUN_ID=${BRANCH#auto/agent-diagnose-}
+          gh pr create --base "${{ github.event.inputs.base || 'main' }}" --head "$BRANCH" \
+            --title "exp: agent-diagnose run $RUN_ID" \
+            --body-file "results/RUN_$RUN_ID.md" || echo "PR exists or could not be created; branch $BRANCH is pushed"
+      - name: Upload run logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-diagnose-runs-${{ github.run_id }}
+          path: runs/
+          if-no-files-found: warn

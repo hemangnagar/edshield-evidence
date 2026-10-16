@@ -1,0 +1,33 @@
+# Managed Agents environment for the bounded improve loop (brief §4.2).
+# Created by scripts/run_agent_loop.py (or `ant apply environments/eval.yaml`).
+name: edshield-eval
+config:
+  type: cloud
+  packages:
+    type: packages
+    pip:
+      - edshield==0.2.0
+      - onnxruntime
+      - transformers>=4.40
+      - sentencepiece>=0.2
+      - protobuf
+      - huggingface_hub>=0.23
+      - safetensors
+      - numpy
+      - pyyaml>=6
+      - cryptography>=42
+      - faker>=20
+      - matplotlib
+      - anthropic
+  networking:
+    type: limited
+    allow_package_managers: true   # github.com, pypi.org, files.pythonhosted.org
+    allowed_hosts:
+      - huggingface.co
+      - "*.huggingface.co"          # a bare host does not match subdomains; both are needed
+      - hf.co                       # LFS / xet content hosts the weights actually download from
+      - "*.hf.co"
+      - "*.xethub.hf.co"
+      - raw.githubusercontent.com   # the pinned CoMTA / MathDial raw files (download.py)
+      - download.pytorch.org        # CPU-only torch wheels for the python runtime (optional; the index redirects to r2)
+      - download-r2.pytorch.org

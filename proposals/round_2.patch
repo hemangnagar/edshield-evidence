@@ -1,0 +1,52 @@
+diff --git a/edshield/rules.py b/edshield/rules.py
+index 91ff4f4..4726740 100644
+--- a/edshield/rules.py
++++ b/edshield/rules.py
+@@ -149,7 +149,9 @@ NAME_TITLE_RE = re.compile(rf"\b(?:Mr|Mrs|Ms|Miss|Mx|Dr|Coach|Principal|Professo
+ 
+ SCHOOL_TYPES = (
+     "Elementary School|Middle School|High School|Junior High|Primary School|Secondary School|Charter School|"
+-    "Preparatory School|Elementary|Academy|School|College|University|Institute"
++    "Preparatory School|Elementary|Academy|School|College|University|Institute|"
++    # Short forms ("Jefferson High", "Summit Prep"); last, so the long forms match whole.
++    "High|Prep"
+ )
+ SCHOOL_KIND_WORDS = {
+     "High", "Middle", "Elementary", "Junior", "Senior", "Primary", "Secondary", "Charter", "Preparatory",
+@@ -427,4 +429,36 @@ def propagate_names(
+                 continue
+             out.append(Entity(label, needle, m.start(), m.end(), conf, source="propagated"))
+             seen.add((m.start(), m.end()))
++    _propagate_initials(text, names, out)
+     return out
++
++
++# A standalone capital plus full stop ("Well done, V.!") is an initial. It is
++# only tagged when a name already detected in the same document starts with
++# that letter, and not inside "U.S." / "a.m.", after an operator ("x = A."),
++# or after a word that makes it a label ("point A.", "option B.").
++INITIAL_RE = re.compile(r"(?<![\w.'’])([A-Z])\.(?!\w|\.\w)")
++INITIAL_NOT_AFTER_RE = re.compile(
++    r"(?:[=+\-*/×÷<>^(]|\b(?i:point|points|option|choice|answer|letter|angle|line|side|vertex|grade|part|step|"
++    r"plan|section|chapter|figure|fig|table|appendix|type|column|row|group|exercise|question|problem|vitamin))[ \t]*$"
++)
++
++
++def _propagate_initials(text: str, names: List[Entity], out: List[Entity]) -> None:
++    letters = {}  # letter -> (label, confidence); student names first
++    for e in sorted(names, key=lambda e: NAME_LABELS.index(e.label)):
++        first = e.text.strip().split()[0].strip(".") if e.text.strip() else ""
++        if len(first) >= 2 and first[0].isupper() and first not in NAME_STOPWORDS:
++            letters.setdefault(first[0], (e.label, e.confidence * 0.9))
++    if not letters:
++        return
++    for m in INITIAL_RE.finditer(text):
++        hit = letters.get(m.group(1))
++        if hit is None:
++            continue
++        if INITIAL_NOT_AFTER_RE.search(text[max(0, m.start() - 20):m.start()]):
++            continue
++        span = (m.start(), m.end())
++        if any(k.start < span[1] and span[0] < k.end for k in out):
++            continue
++        out.append(Entity(hit[0], m.group(), span[0], span[1], hit[1], source="propagated"))

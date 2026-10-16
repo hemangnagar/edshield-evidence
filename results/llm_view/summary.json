@@ -1,0 +1,354 @@
+{
+ "out": "results/llm_view",
+ "edshield": {
+  "version": "0.2.0",
+  "installed_from": "/usr/local/lib/python3.11/dist-packages",
+  "commit": "pypi 0.2.0 (a568e73)",
+  "rules_sha256": "8e7f0fdf14a36de7fa7fdafa9d0436b923480fbba7efd797830bffe44fad3a9d"
+ },
+ "runtime": "onnx",
+ "detector": "rules+model",
+ "model_sha256": "7f4dd8e5a58c45c941ac2b627fe1213a5d893d42defa6dd9854ebe1e4dd4b1fc",
+ "views": {
+  "llm": {
+   "all_identifiers": {
+    "n": 2767,
+    "span_recall": 0.9183230936031803,
+    "ci": [
+     0.9075292526354213,
+     0.9279570190817132
+    ]
+   },
+   "student_names": {
+    "n": 1967,
+    "span_recall": 0.8891713268937468,
+    "ci": [
+     0.8745327399001855,
+     0.9022928099687714
+    ]
+   },
+   "names_by_category": {
+    "anglo_common": {
+     "n": 495,
+     "span_recall": 0.9050505050505051,
+     "ci": [
+      0.8760182364399387,
+      0.927844379348421
+     ]
+    },
+    "name_word_collision": {
+     "n": 463,
+     "span_recall": 0.8596112311015118,
+     "ci": [
+      0.8250011624195611,
+      0.888303094657298
+     ]
+    },
+    "nicknames_and_variants": {
+     "n": 486,
+     "span_recall": 0.9094650205761317,
+     "ci": [
+      0.8806408194066363,
+      0.9318669681313064
+     ]
+    },
+    "non_anglo": {
+     "n": 523,
+     "span_recall": 0.8814531548757171,
+     "ci": [
+      0.8509292420920641,
+      0.9064143444344089
+     ]
+    }
+   },
+   "by_label": {
+    "EMAIL": {
+     "n": 55,
+     "span_recall": 1.0
+    },
+    "NAME_RELATED": {
+     "n": 373,
+     "span_recall": 0.9785522788203753
+    },
+    "NAME_STUDENT": {
+     "n": 1967,
+     "span_recall": 0.8891713268937468
+    },
+    "PHONE_NUM": {
+     "n": 83,
+     "span_recall": 1.0
+    },
+    "SCHOOL": {
+     "n": 213,
+     "span_recall": 1.0
+    },
+    "USERNAME": {
+     "n": 76,
+     "span_recall": 1.0
+    }
+   },
+   "per_dataset": {
+    "comta": {
+     "all_identifiers": 0.9169435215946844,
+     "student_names": 0.8888888888888888
+    },
+    "mathdial": {
+     "all_identifiers": 0.9187066974595843,
+     "student_names": 0.8892445582586428
+    }
+   }
+  }
+ },
+ "control": {
+  "comta": {
+   "flags_per_1000_tokens": 0.5028856054982159,
+   "n_flags": 21,
+   "n_tokens": 41759,
+   "by_tag": {
+    "other": 21
+   },
+   "top_terms": [
+    [
+     "john",
+     4
+    ],
+    [
+     "khan academy",
+     3
+    ],
+    [
+     "samantha",
+     2
+    ],
+    [
+     "sara",
+     2
+    ],
+    [
+     "30",
+     1
+    ],
+    [
+     "rt16x",
+     1
+    ],
+    [
+     "sup5",
+     1
+    ],
+    [
+     "4900",
+     1
+    ],
+    [
+     "johnson",
+     1
+    ],
+    [
+     "davis",
+     1
+    ]
+   ]
+  },
+  "mathdial": {
+   "flags_per_1000_tokens": 15.101559881954879,
+   "n_flags": 2794,
+   "n_tokens": 185014,
+   "by_tag": {
+    "persona": 443,
+    "problem_name": 2208,
+    "other": 143
+   },
+   "top_terms": [
+    [
+     "60",
+     12
+    ],
+    [
+     "10",
+     10
+    ],
+    [
+     "5",
+     9
+    ],
+    [
+     "20",
+     8
+    ],
+    [
+     "4",
+     7
+    ],
+    [
+     "james",
+     7
+    ],
+    [
+     "jane",
+     6
+    ],
+    [
+     "lakeisha",
+     6
+    ],
+    [
+     "40",
+     5
+    ],
+    [
+     "12",
+     5
+    ]
+   ]
+  }
+ },
+ "baseline": {
+  "views": {
+   "llm": {
+    "source": "results/llm_view/llm/metrics.json",
+    "all_identifiers": {
+     "n": 2767,
+     "span_recall": 0.9183230936031803,
+     "ci": [
+      0.9075292526354213,
+      0.9279570190817132
+     ]
+    },
+    "student_names": {
+     "n": 1967,
+     "span_recall": 0.8891713268937468,
+     "ci": [
+      0.8745327399001855,
+      0.9022928099687714
+     ]
+    },
+    "names_by_category": {
+     "anglo_common": {
+      "n": 495,
+      "span_recall": 0.9050505050505051,
+      "ci": [
+       0.8760182364399387,
+       0.927844379348421
+      ]
+     },
+     "name_word_collision": {
+      "n": 463,
+      "span_recall": 0.8596112311015118,
+      "ci": [
+       0.8250011624195611,
+       0.888303094657298
+      ]
+     },
+     "nicknames_and_variants": {
+      "n": 486,
+      "span_recall": 0.9094650205761317,
+      "ci": [
+       0.8806408194066363,
+       0.9318669681313064
+      ]
+     },
+     "non_anglo": {
+      "n": 523,
+      "span_recall": 0.8814531548757171,
+      "ci": [
+       0.8509292420920641,
+       0.9064143444344089
+      ]
+     }
+    },
+    "by_label": {
+     "EMAIL": {
+      "n": 55,
+      "span_recall": 1.0
+     },
+     "NAME_RELATED": {
+      "n": 373,
+      "span_recall": 0.9785522788203753
+     },
+     "NAME_STUDENT": {
+      "n": 1967,
+      "span_recall": 0.8891713268937468
+     },
+     "PHONE_NUM": {
+      "n": 83,
+      "span_recall": 1.0
+     },
+     "SCHOOL": {
+      "n": 213,
+      "span_recall": 1.0
+     },
+     "USERNAME": {
+      "n": 76,
+      "span_recall": 1.0
+     }
+    },
+    "per_dataset": {
+     "comta": {
+      "all_identifiers": 0.9169435215946844,
+      "student_names": 0.8888888888888888
+     },
+     "mathdial": {
+      "all_identifiers": 0.9187066974595843,
+      "student_names": 0.8892445582586428
+     }
+    }
+   }
+  },
+  "control": {
+   "comta": {
+    "source": "experiments/genre_shift/results/metrics.json",
+    "flags_per_1000_tokens": 0.5028856054982159,
+    "by_tag": {
+     "other": 21
+    }
+   },
+   "mathdial": {
+    "source": "experiments/genre_shift/results/metrics.json",
+    "flags_per_1000_tokens": 16.21498913595728,
+    "by_tag": {
+     "persona": 446,
+     "problem_name": 2407,
+     "other": 147
+    }
+   }
+  }
+ },
+ "delta_pp": {
+  "views": {
+   "llm": {
+    "all_identifiers": 0.0,
+    "student_names": 0.0,
+    "names_by_category": {
+     "anglo_common": 0.0,
+     "name_word_collision": 0.0,
+     "nicknames_and_variants": 0.0,
+     "non_anglo": 0.0
+    },
+    "by_label": {
+     "EMAIL": 0.0,
+     "NAME_RELATED": 0.0,
+     "NAME_STUDENT": 0.0,
+     "PHONE_NUM": 0.0,
+     "SCHOOL": 0.0,
+     "USERNAME": 0.0
+    }
+   }
+  },
+  "control": {
+   "comta": 0.0,
+   "mathdial": -1.113
+  }
+ },
+ "definitions": {
+  "span_recall": "gold text no longer occurs whole in the output (residual rule), pooled over comta + mathdial",
+  "control": "acted-on entities per 1,000 whitespace tokens on the untouched dialogues",
+  "delta_pp": "candidate minus baseline, percentage points (recall) or flags per 1,000 tokens (control)"
+ },
+ "sanity": {
+  "tolerance_pp": 0.5,
+  "deterministic_delta_pp": null,
+  "within_tolerance": null,
+  "note": "round 0 on the unmodified checkout must be within tolerance of the sealed baseline, which was run on a GPU with the python runtime"
+ }
+}

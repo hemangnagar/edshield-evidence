@@ -1,0 +1,53 @@
+{
+ "view": "llm",
+ "model": "claude-sonnet-5-5",
+ "run_dir": "runs/20261015T125916Z-plant",
+ "batch_ids": [
+  "msgbatch_01TS65FQfabXX2PUUPHi5FZV",
+  "msgbatch_012Pa3ooAT3oGxSDzk1aCa6c"
+ ],
+ "prompt_sha256": "e3ddc4375dbd0b55a4966f7b05ef72132000f516007028d956e06522746f8f66",
+ "dropped": 14,
+ "datasets": {
+  "comta": {
+   "dialogues": 181,
+   "dropped": 5,
+   "spans_by_kind": {
+    "first": 176,
+    "school": 54,
+    "related": 90,
+    "username": 21,
+    "phone": 20,
+    "email": 12,
+    "later": 172,
+    "nickname": 57
+   },
+   "dialogues_by_category": {
+    "nicknames_and_variants": 42,
+    "anglo_common": 50,
+    "name_word_collision": 38,
+    "non_anglo": 51
+   }
+  },
+  "mathdial": {
+   "dialogues": 543,
+   "dropped": 9,
+   "spans_by_kind": {
+    "first": 532,
+    "later": 771,
+    "related": 283,
+    "nickname": 259,
+    "phone": 63,
+    "school": 159,
+    "email": 43,
+    "username": 55
+   },
+   "dialogues_by_category": {
+    "name_word_collision": 131,
+    "nicknames_and_variants": 136,
+    "non_anglo": 143,
+    "anglo_common": 133
+   }
+  }
+ }
+}
