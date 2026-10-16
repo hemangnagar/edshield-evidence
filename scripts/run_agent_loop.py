@@ -135,6 +135,31 @@ def upload_inputs(client, dry: bool) -> List[dict]:
     return resources
 
 
+def upload_verify_inputs(client, dry: bool) -> List[dict]:
+    """The verify phase checks THIS checkout's proposals, not whatever the branch on GitHub holds:
+    upload proposals/round_*.patch, kept_rounds.json and every results/candidate/round_N/summary.json
+    (mounted flat as /candidate/round_N.summary.json; the verify message copies them into place)."""
+    pairs = [(f"/proposals/{f.name}", f) for f in sorted((ROOT / "proposals").glob("round_*.patch"))]
+    kept = ROOT / "proposals" / "kept_rounds.json"
+    if kept.exists():
+        pairs.append(("/proposals/kept_rounds.json", kept))
+    for d in sorted((ROOT / "results" / "candidate").glob("round_*")):
+        if (d / "summary.json").exists():
+            pairs.append((f"/candidate/{d.name}.summary.json", d / "summary.json"))
+    if not pairs:
+        raise SystemExit("no proposals/round_*.patch to verify")
+    resources = []
+    for mount, f in pairs:
+        if dry:
+            fid = f"file_DRYRUN_{f.stem}"
+        else:
+            with f.open("rb") as fh:
+                fid = client.beta.files.upload(file=fh).id
+        resources.append({"type": "file", "file_id": fid, "mount_path": mount})
+    print(f"{'would upload' if dry else 'uploaded'} {len(resources)} proposal/summary files for verification")
+    return resources
+
+
 def event_record(ev) -> dict:
     try:
         return ev.to_dict()
@@ -355,6 +380,8 @@ def main(argv=None) -> int:
     else:
         ids = ensure_resources(client, args.dry_run)
         resources = upload_inputs(client, args.dry_run)
+        if args.phase == "verify":
+            resources += upload_verify_inputs(client, args.dry_run)
         state.update(ids)
         budget = {"type": "limit", "max_list_cost": {"amount": str(int(args.budget_cents)), "currency": "USD"}}
         (run_dir / "setup_message.md").write_text(setup, encoding="utf-8")

@@ -96,6 +96,10 @@ def main(argv=None) -> int:
                    "| number | agent | driver | diff |", "|---|---|---|---|"]
         if theirs_p.exists():
             theirs = json.loads(theirs_p.read_text(encoding="utf-8"))
+            a_sha = (theirs.get("edshield") or {}).get("rules_sha256", "")
+            b_sha = (mine.get("edshield") or {}).get("rules_sha256", "")
+            report.append(f"| rules.py sha256 | {a_sha[:12] or 'n/a'} | {b_sha[:12] or 'n/a'} | "
+                          + ("same" if a_sha and a_sha == b_sha else "**DIFFERENT: not the same patch**") + " |")
             worst = 0.0
             for v in ("deterministic", "llm"):
                 for key in ("all_identifiers", "student_names"):
@@ -113,7 +117,8 @@ def main(argv=None) -> int:
                     worst = max(worst, abs(d))
                     report.append(f"| control {ds} flags/1k | {a:.3f} | {b:.3f} | {d:+.3f} |")
             report += ["", f"Largest discrepancy: {worst:.2f} (tolerance {TOLERANCE_PP}). "
-                       + ("**Matches within rounding.**" if worst <= TOLERANCE_PP else "**DISCREPANCY beyond rounding; reported, not overwritten.**")]
+                       + ("**Matches within rounding.**" if worst <= TOLERANCE_PP else "**DISCREPANCY beyond rounding; reported, not overwritten.**")
+                       + ("" if a_sha and a_sha == b_sha else " **The agent summary and the driver measured different rules.py files; the comparison is void.**")]
         else:
             report.append(f"| (agent summary {theirs_p} missing) | | | |")
     finally:

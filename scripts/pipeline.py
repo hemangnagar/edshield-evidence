@@ -125,6 +125,8 @@ class Pipeline:
         sh(["git", "add", "-A", *paths], check=False)
         if sh(["git", "diff", "--cached", "--quiet"], check=False).returncode != 0:
             sh(["git", "commit", "-q", "-m", message + "\n\nAutomated by scripts/pipeline.py"])
+            if self.args.push:
+                sh(["git", "push", "-q", "origin", self.branch])
 
     def _write_run_report(self) -> None:
         def load(p):
