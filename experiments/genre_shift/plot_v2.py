@@ -153,7 +153,7 @@ def f3_transfer(m: dict) -> None:
                         xytext=(4, -8), textcoords="offset points", fontsize=5.5, color=MUTED)
     lo, hi = np.floor(min(vals) / 5) * 5 - 2, min(100, np.ceil(max(vals) / 5) * 5 + 2)
     ax.plot([lo, hi], [lo, hi], color=MUTED, lw=0.7, zorder=1)
-    ax.text(hi - 0.5, hi - 1.5, "predicted = measured", ha="right", va="top", fontsize=6.5, color=MUTED, rotation=45,
+    ax.text(lo + 3, lo + 2, "predicted = measured", ha="left", va="top", fontsize=6.5, color=MUTED, rotation=45,
             rotation_mode="anchor")
     ax.set_xlim(lo, hi)
     ax.set_ylim(lo, hi)
