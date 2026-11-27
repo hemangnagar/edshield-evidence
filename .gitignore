@@ -14,3 +14,12 @@ evidence/sets/**/unsealed/
 /tmp/
 # local scratch bundles
 *.bundle.json.tmp
+
+# genre-shift experiment: raw downloads and raw model outputs are never committed
+# (licensed third-party dialogue; PIILO holdout essays)
+experiments/genre_shift/data/raw/
+experiments/genre_shift/results/raw/
+experiments/genre_shift/__pycache__/
+# planted/control documents carry the licensed dialogue text; `make plant` rebuilds them
+experiments/genre_shift/data/planted/
+experiments/genre_shift/data/control/
