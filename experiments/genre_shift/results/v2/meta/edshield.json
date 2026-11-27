@@ -1,0 +1,77 @@
+{
+ "sets": {
+  "planted__20261014__comta": {
+   "docs": 188,
+   "seconds": 51.2
+  },
+  "planted__20261014__mathdial": {
+   "docs": 599,
+   "seconds": 133.4
+  },
+  "planted__20261015__comta": {
+   "docs": 188,
+   "seconds": 42.5
+  },
+  "planted__20261015__mathdial": {
+   "docs": 599,
+   "seconds": 127.4
+  },
+  "planted__20261016__comta": {
+   "docs": 188,
+   "seconds": 46.4
+  },
+  "planted__20261016__mathdial": {
+   "docs": 599,
+   "seconds": 132.6
+  },
+  "planted__20261017__comta": {
+   "docs": 188,
+   "seconds": 47.6
+  },
+  "planted__20261017__mathdial": {
+   "docs": 599,
+   "seconds": 130.3
+  },
+  "planted__20261018__comta": {
+   "docs": 188,
+   "seconds": 823.4
+  },
+  "planted__20261018__mathdial": {
+   "docs": 599,
+   "seconds": 117.8
+  },
+  "control__comta": {
+   "docs": 188,
+   "seconds": 39.2
+  },
+  "control__mathdial": {
+   "docs": 599,
+   "seconds": 111.0
+  },
+  "piilo__piilo_holdout": {
+   "docs": 680,
+   "seconds": 236.0
+  }
+ },
+ "model_id": "edshield/piilo-deberta-v3-small",
+ "model_revision": "5effafd0299ac576b6c5b3a91b3f26800ce89e62",
+ "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+ "detector": "rules+model",
+ "policy": "coppa",
+ "policy_sha256": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "seed": 0,
+ "device": "cpu",
+ "versions": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "cpu_count": 4,
+  "edshield": "0.2.0",
+  "edshield-evidence": "0.1.0",
+  "torch": "2.15.0",
+  "transformers": "5.24.1",
+  "gpu": "none"
+ },
+ "started": "2026-11-27T03:03:13",
+ "finished": "2026-11-27T03:37:12"
+}

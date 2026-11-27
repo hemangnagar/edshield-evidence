@@ -49,6 +49,7 @@ EDSHIELD_REV = "5effafd0299ac576b6c5b3a91b3f26800ce89e62"
 EDSHIELD_POLICY = "coppa"
 HF_PII_MODEL = "iiiorg/piiranha-v1-detect-personal-information"
 HF_PII_REV = "255acde67a2f34cf452eb42e365b24d2957352fc"
+HF_PII_WINDOW, HF_PII_STRIDE = 256, 64
 GPT_MODEL = "gpt-4o-mini"
 GPT_USD_PER_M = {"input": 0.15, "output": 0.60}  # list price; cached-input discount ignored
 # Output cap. In JSON mode the model sometimes repeats one span until it runs out of tokens
@@ -182,17 +183,20 @@ def make_spacy_trf(device: str):
 
 
 def make_hf_pii(device: str):
-    from transformers import pipeline
-    pipe = pipeline("token-classification", model=HF_PII_MODEL, revision=HF_PII_REV, aggregation_strategy="simple",
-                    stride=128, device=0 if device == "cuda" else -1)
+    from transformers import AutoTokenizer, pipeline
+    # The model card gives a context length of 256 DeBERTa tokens ("if your text is longer than
+    # that, just split it up"); its tokenizer config sets no limit, so the window is set here.
+    tok = AutoTokenizer.from_pretrained(HF_PII_MODEL, revision=HF_PII_REV, model_max_length=HF_PII_WINDOW)
+    pipe = pipeline("token-classification", model=HF_PII_MODEL, revision=HF_PII_REV, tokenizer=tok,
+                    aggregation_strategy="simple", stride=HF_PII_STRIDE, device=0 if device == "cuda" else -1)
 
     def run(texts: List[str]) -> List[List[Span]]:
         res = pipe(texts, batch_size=1)  # on CPU, padding a batch to its longest document costs more than it saves
         return [[{"start": int(e["start"]), "end": int(e["end"]), "label": e["entity_group"],
                   "score": round(float(e["score"]), 3)} for e in doc] for doc in res]
 
-    meta = {"model_id": HF_PII_MODEL, "model_revision": HF_PII_REV, "aggregation_strategy": "simple", "stride": 128,
-            "window": "512 tokens", "device": device, "versions": versions(["transformers", "torch"])}
+    meta = {"model_id": HF_PII_MODEL, "model_revision": HF_PII_REV, "aggregation_strategy": "simple",
+            "stride": HF_PII_STRIDE, "window": f"{HF_PII_WINDOW} tokens (model card)", "device": device, "versions": versions(["transformers", "torch"])}
     return meta, run
 
 

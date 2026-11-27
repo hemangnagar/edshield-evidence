@@ -194,11 +194,7 @@ def f4_over_redaction(m: dict) -> None:
                 if h:
                     ax.bar(j, h, 0.6, bottom=bottom, color=c, edgecolor="white", linewidth=1.0, zorder=2)
                 bottom += h
-            cur = o["share_curricular"] or 0
             ax.text(j, bottom, f"{bottom:.1f}" if bottom >= 0.95 else f"{bottom:.2f}", ha="center", va="bottom", fontsize=6.5)
-            if cur:
-                ax.text(j, -0.13, f"{100 * cur:.0f}% curr.", ha="center", va="top", fontsize=5.5, color=MUTED,
-                        transform=ax.get_xaxis_transform())
         ax.set_title(DATASET[g].replace("\n", " "), fontsize=8)
         ax.set_xticks(range(len(dets)))
         ax.set_xticklabels([NAME[d].replace(" (HF)", "").replace(", propagated", "\nprop.").replace(" 0.2.0", "") for d in dets],
@@ -211,7 +207,7 @@ def f4_over_redaction(m: dict) -> None:
     fig.legend(handles=[plt.Rectangle((0, 0), 1, 1, color=c, label=l) for _, l, c in tags], loc="lower center",
                bbox_to_anchor=(0.5, 0.98), ncol=4, fontsize=6.5, handlelength=1, columnspacing=1.2)
     fig.text(0.01, -0.12, "Untouched control dialogues (PIILO: flags overlapping no gold span). Vertical scales differ by panel. "
-             "\"% curr.\": share of a detector's flags on curricular terms, shown where it is not zero.", fontsize=6.5, color=MUTED)
+             "Flags on curricular terms are too few to see at this scale; table T4 has the counts.", fontsize=6.5, color=MUTED)
     fig.tight_layout(w_pad=1.5)
     save(fig, "F4_over_redaction")
 

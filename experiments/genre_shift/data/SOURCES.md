@@ -47,7 +47,7 @@ file is used instead.
 | `edshield` | `edshield/piilo-deberta-v3-small`, edshield 0.2.0 rules + model, policy `coppa` | revision `5effafd0299ac576b6c5b3a91b3f26800ce89e62`, weights sha256 `71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a` (same as v1) | see edshield |
 | `presidio` | Microsoft Presidio Analyzer, default recognizers, spaCy `en_core_web_lg` | `presidio-analyzer` 2.2.366, `en_core_web_lg` 3.8.0 | MIT (Presidio, spaCy model) |
 | `spacy_trf` | spaCy `en_core_web_trf` NER (RoBERTa-base) | `en_core_web_trf` 3.8.0, spaCy 3.8.18 | MIT |
-| `hf_pii` | `iiiorg/piiranha-v1-detect-personal-information` (mDeBERTa-v3-base token classifier; 249,618 downloads in the 30 days to 2026-11-27) | revision `255acde67a2f34cf452eb42e365b24d2957352fc` | CC BY-NC-ND 4.0 (used unmodified, for evaluation) |
+| `hf_pii` | `iiiorg/piiranha-v1-detect-personal-information` (mDeBERTa-v3-base token classifier; 249,618 downloads in the 30 days to 2026-11-27) | revision `255acde67a2f34cf452eb42e365b24d2957352fc`; run in 256-token windows with a 64-token overlap, the context length its model card gives (the tokenizer config sets no limit) | CC BY-NC-ND 4.0 (used unmodified, for evaluation) |
 | `gpt4o_mini` | OpenAI `gpt-4o-mini`, temperature 0, seed 0, JSON mode, prompt `detectors/gpt_prompt.txt` | served snapshot and system fingerprint are in every `cache/gpt/*.json` | OpenAI API terms |
 
 Text sent to the OpenAI API: the planted and control dialogues (CoMTA, MathDial) and the 680

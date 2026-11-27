@@ -1,0 +1,74 @@
+{
+ "sets": {
+  "planted__20261014__comta": {
+   "docs": 188,
+   "seconds": 54.2
+  },
+  "planted__20261014__mathdial": {
+   "docs": 599,
+   "seconds": 184.6
+  },
+  "planted__20261015__comta": {
+   "docs": 188,
+   "seconds": 51.0
+  },
+  "planted__20261015__mathdial": {
+   "docs": 599,
+   "seconds": 173.5
+  },
+  "planted__20261016__comta": {
+   "docs": 188,
+   "seconds": 51.1
+  },
+  "planted__20261016__mathdial": {
+   "docs": 599,
+   "seconds": 171.2
+  },
+  "planted__20261017__comta": {
+   "docs": 188,
+   "seconds": 49.9
+  },
+  "planted__20261017__mathdial": {
+   "docs": 599,
+   "seconds": 168.5
+  },
+  "planted__20261018__comta": {
+   "docs": 188,
+   "seconds": 52.0
+  },
+  "planted__20261018__mathdial": {
+   "docs": 599,
+   "seconds": 169.5
+  },
+  "control__comta": {
+   "docs": 188,
+   "seconds": 47.3
+  },
+  "control__mathdial": {
+   "docs": 599,
+   "seconds": 161.3
+  },
+  "piilo__piilo_holdout": {
+   "docs": 680,
+   "seconds": 361.2
+  }
+ },
+ "spacy_model": "en_core_web_trf 3.8.0",
+ "pipeline": [
+  "transformer",
+  "ner"
+ ],
+ "device": "cpu",
+ "versions": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "cpu_count": 4,
+  "spacy": "3.8.18",
+  "spacy-curated-transformers": "0.3.1",
+  "torch": "2.15.0",
+  "gpu": "none"
+ },
+ "started": "2026-11-27T03:41:12",
+ "finished": "2026-11-27T04:09:27"
+}
