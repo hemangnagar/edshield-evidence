@@ -1,0 +1,84 @@
+{
+ "sets": {
+  "planted__20261014__comta": {
+   "docs": 188,
+   "seconds": 0.1
+  },
+  "planted__20261014__mathdial": {
+   "docs": 599,
+   "seconds": 72.1
+  },
+  "planted__20261015__comta": {
+   "docs": 188,
+   "seconds": 56.3
+  },
+  "planted__20261015__mathdial": {
+   "docs": 599,
+   "seconds": 143.4
+  },
+  "planted__20261016__comta": {
+   "docs": 188,
+   "seconds": 15.7
+  },
+  "planted__20261016__mathdial": {
+   "docs": 599,
+   "seconds": 132.5
+  },
+  "planted__20261017__comta": {
+   "docs": 188,
+   "seconds": 55.6
+  },
+  "planted__20261017__mathdial": {
+   "docs": 599,
+   "seconds": 137.0
+  },
+  "planted__20261018__comta": {
+   "docs": 188,
+   "seconds": 14.2
+  },
+  "planted__20261018__mathdial": {
+   "docs": 599,
+   "seconds": 128.2
+  },
+  "control__comta": {
+   "docs": 188,
+   "seconds": 7.0
+  },
+  "control__mathdial": {
+   "docs": 599,
+   "seconds": 98.1
+  },
+  "piilo__piilo_holdout": {
+   "docs": 680,
+   "seconds": 64.3
+  }
+ },
+ "model": "gpt-4o-mini",
+ "temperature": 0,
+ "seed": 0,
+ "response_format": "json_object",
+ "max_completion_tokens": 2000,
+ "prompt_sha256": "52ffeeebd78af7488807247872e80ba26a9ed4270d4a1dcfe78662301aa4a897",
+ "budget_usd": 30.0,
+ "usd_per_million_tokens": {
+  "input": 0.15,
+  "output": 0.6
+ },
+ "versions": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "cpu_count": 4,
+  "openai": "3.60.0",
+  "gpu": "none"
+ },
+ "started": "2026-11-27T03:12:51",
+ "usd_spent_total": 0.9347,
+ "api_calls_this_run": 4752,
+ "cache_hits_this_run": 742,
+ "unparseable_this_run": 43,
+ "models_served": [
+  "gpt-4o-mini-2024-07-18"
+ ],
+ "finished": "2026-11-27T03:28:15"
+}
