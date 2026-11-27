@@ -6,6 +6,7 @@ in order. System prompts and empty turns are dropped. Nothing is modified.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -139,6 +140,16 @@ def load_tscc(raw: Path = RAW) -> List[Dialogue]:
         if dlg:
             out.append(dlg)
     return out
+
+
+def sample_dialogues(dialogues: List[Dialogue], n: int = 600) -> List[Dialogue]:
+    """At most n dialogues, chosen by the n smallest sha256(dialogue_id) and
+    kept in their original order: deterministic and independent of any seed."""
+    if len(dialogues) <= n:
+        return dialogues
+    key = lambda d: hashlib.sha256(str(d[0]["dialogue_id"]).encode("utf-8")).hexdigest()
+    keep = {str(d[0]["dialogue_id"]) for d in sorted(dialogues, key=key)[:n]}
+    return [d for d in dialogues if str(d[0]["dialogue_id"]) in keep]
 
 
 LOADERS = {"comta": load_comta, "mathdial": load_mathdial, "studychat": load_studychat, "tscc": load_tscc}

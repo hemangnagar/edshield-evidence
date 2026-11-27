@@ -5,6 +5,7 @@ written to data/raw/<name>/SHA256SUMS.
 
     python download.py            # all sets; a blocked set is reported, not fatal
     python download.py comta      # one set
+    python download.py piilo_public   # the public PIILO corpus, only for rebuild_piilo.py
 """
 from __future__ import annotations
 
@@ -32,6 +33,9 @@ GITHUB = {
     ],
 }
 STUDYCHAT = ("wmcnicho/StudyChat", STUDYCHAT_REV, ["data.jsonl", "LICENSE"])
+# The PIILO corpus (Kaggle "The Learning Agency Lab - PII Data Detection" train.json, CC BY 4.0) as mirrored
+# on the Hub; rebuild_piilo.py checks every held-out essay against the committed baseline bundle.
+PIILO_PUBLIC = ("melaniasala/PII_Data_Detection", "4d5200883df788426d9fa609d41328fd2f099bd4", ["train.json"])
 
 
 def sha256(path: Path) -> str:
@@ -63,6 +67,17 @@ def fetch_github(name: str) -> None:
         _record(d, fname)
 
 
+def fetch_piilo_public() -> None:
+    from huggingface_hub import hf_hub_download
+    d = RAW / "piilo_public"
+    d.mkdir(parents=True, exist_ok=True)
+    repo, rev, files = PIILO_PUBLIC
+    for f in files:
+        if not (d / f).exists():
+            hf_hub_download(repo, f, repo_type="dataset", revision=rev, local_dir=str(d))
+        _record(d, f)
+
+
 def fetch_studychat() -> bool:
     d = RAW / "studychat"
     d.mkdir(parents=True, exist_ok=True)
@@ -91,6 +106,8 @@ def main(argv):
             fetch_github(name)
         elif name == "studychat":
             fetch_studychat()
+        elif name == "piilo_public":
+            fetch_piilo_public()
         elif name == "tscc":
             if not (RAW / "tscc").is_dir():
                 print("[tscc] arrives by request form; drop the files into data/raw/tscc/ (see loaders.load_tscc)")

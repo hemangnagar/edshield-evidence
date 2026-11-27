@@ -1,0 +1,300 @@
+{
+ "seeds": [
+  20261014,
+  20261015,
+  20261016,
+  20261017,
+  20261018
+ ],
+ "max_dialogues": 600,
+ "datasets": {
+  "comta": {
+   "dialogues_raw": 188,
+   "by_seed": {
+    "20261014": {
+     "dialogues": 188,
+     "turns": 2022,
+     "register": {
+      "n_student_turns": 747,
+      "lowercase_start": 0.47121820615796517,
+      "no_terminal_punct": 0.6492637215528781
+     },
+     "spans_by_kind": {
+      "first": 181,
+      "school": 55,
+      "related": 91,
+      "username": 22,
+      "phone": 24,
+      "email": 12,
+      "later": 177,
+      "nickname": 59
+     },
+     "dialogues_by_category": {
+      "nicknames_and_variants": 45,
+      "anglo_common": 50,
+      "name_word_collision": 39,
+      "non_anglo": 54
+     },
+     "persona_replaced": 0,
+     "median_doc_chars": 1048.5
+    },
+    "20261015": {
+     "dialogues": 188,
+     "turns": 2022,
+     "register": {
+      "n_student_turns": 747,
+      "lowercase_start": 0.47121820615796517,
+      "no_terminal_punct": 0.6492637215528781
+     },
+     "spans_by_kind": {
+      "related": 102,
+      "first": 176,
+      "later": 157,
+      "email": 32,
+      "school": 64,
+      "username": 20,
+      "phone": 16,
+      "nickname": 52
+     },
+     "dialogues_by_category": {
+      "name_word_collision": 49,
+      "anglo_common": 48,
+      "nicknames_and_variants": 39,
+      "non_anglo": 52
+     },
+     "persona_replaced": 0,
+     "median_doc_chars": 1005.0
+    },
+    "20261016": {
+     "dialogues": 188,
+     "turns": 2022,
+     "register": {
+      "n_student_turns": 747,
+      "lowercase_start": 0.47121820615796517,
+      "no_terminal_punct": 0.6492637215528781
+     },
+     "spans_by_kind": {
+      "first": 182,
+      "school": 50,
+      "related": 89,
+      "username": 22,
+      "later": 177,
+      "nickname": 54,
+      "email": 14,
+      "phone": 26
+     },
+     "dialogues_by_category": {
+      "anglo_common": 42,
+      "name_word_collision": 48,
+      "non_anglo": 50,
+      "nicknames_and_variants": 48
+     },
+     "persona_replaced": 0,
+     "median_doc_chars": 1029.0
+    },
+    "20261017": {
+     "dialogues": 188,
+     "turns": 2022,
+     "register": {
+      "n_student_turns": 747,
+      "lowercase_start": 0.47121820615796517,
+      "no_terminal_punct": 0.6492637215528781
+     },
+     "spans_by_kind": {
+      "first": 173,
+      "school": 72,
+      "related": 87,
+      "phone": 16,
+      "later": 172,
+      "username": 16,
+      "nickname": 54,
+      "email": 11
+     },
+     "dialogues_by_category": {
+      "name_word_collision": 45,
+      "non_anglo": 46,
+      "anglo_common": 55,
+      "nicknames_and_variants": 42
+     },
+     "persona_replaced": 0,
+     "median_doc_chars": 1026.0
+    },
+    "20261018": {
+     "dialogues": 188,
+     "turns": 2022,
+     "register": {
+      "n_student_turns": 747,
+      "lowercase_start": 0.47121820615796517,
+      "no_terminal_punct": 0.6492637215528781
+     },
+     "spans_by_kind": {
+      "first": 178,
+      "related": 86,
+      "later": 188,
+      "school": 50,
+      "nickname": 57,
+      "phone": 19,
+      "username": 20,
+      "email": 16
+     },
+     "dialogues_by_category": {
+      "name_word_collision": 50,
+      "anglo_common": 41,
+      "non_anglo": 48,
+      "nicknames_and_variants": 49
+     },
+     "persona_replaced": 0,
+     "median_doc_chars": 993.5
+    }
+   }
+  },
+  "mathdial": {
+   "dialogues_raw": 599,
+   "by_seed": {
+    "20261014": {
+     "dialogues": 599,
+     "turns": 6781,
+     "register": {
+      "n_student_turns": 2935,
+      "lowercase_start": 0.0,
+      "no_terminal_punct": 0.05417376490630324
+     },
+     "spans_by_kind": {
+      "first": 541,
+      "later": 792,
+      "related": 292,
+      "nickname": 264,
+      "phone": 68,
+      "school": 163,
+      "email": 44,
+      "username": 56
+     },
+     "dialogues_by_category": {
+      "name_word_collision": 141,
+      "nicknames_and_variants": 153,
+      "non_anglo": 154,
+      "anglo_common": 151
+     },
+     "persona_replaced": 355,
+     "median_doc_chars": 1460
+    },
+    "20261015": {
+     "dialogues": 599,
+     "turns": 6781,
+     "register": {
+      "n_student_turns": 2935,
+      "lowercase_start": 0.0,
+      "no_terminal_punct": 0.05417376490630324
+     },
+     "spans_by_kind": {
+      "first": 548,
+      "related": 275,
+      "nickname": 263,
+      "later": 812,
+      "school": 163,
+      "username": 51,
+      "email": 66,
+      "phone": 48
+     },
+     "dialogues_by_category": {
+      "name_word_collision": 126,
+      "non_anglo": 152,
+      "anglo_common": 160,
+      "nicknames_and_variants": 161
+     },
+     "persona_replaced": 355,
+     "median_doc_chars": 1474
+    },
+    "20261016": {
+     "dialogues": 599,
+     "turns": 6781,
+     "register": {
+      "n_student_turns": 2935,
+      "lowercase_start": 0.0,
+      "no_terminal_punct": 0.05417376490630324
+     },
+     "spans_by_kind": {
+      "first": 540,
+      "later": 813,
+      "nickname": 292,
+      "school": 155,
+      "related": 265,
+      "username": 62,
+      "phone": 55,
+      "email": 69
+     },
+     "dialogues_by_category": {
+      "anglo_common": 149,
+      "name_word_collision": 171,
+      "non_anglo": 143,
+      "nicknames_and_variants": 136
+     },
+     "persona_replaced": 355,
+     "median_doc_chars": 1468
+    },
+    "20261017": {
+     "dialogues": 599,
+     "turns": 6781,
+     "register": {
+      "n_student_turns": 2935,
+      "lowercase_start": 0.0,
+      "no_terminal_punct": 0.05417376490630324
+     },
+     "spans_by_kind": {
+      "first": 547,
+      "later": 836,
+      "username": 52,
+      "school": 165,
+      "nickname": 278,
+      "related": 276,
+      "phone": 61,
+      "email": 51
+     },
+     "dialogues_by_category": {
+      "anglo_common": 146,
+      "name_word_collision": 155,
+      "non_anglo": 149,
+      "nicknames_and_variants": 149
+     },
+     "persona_replaced": 355,
+     "median_doc_chars": 1462
+    },
+    "20261018": {
+     "dialogues": 599,
+     "turns": 6781,
+     "register": {
+      "n_student_turns": 2935,
+      "lowercase_start": 0.0,
+      "no_terminal_punct": 0.05417376490630324
+     },
+     "spans_by_kind": {
+      "first": 551,
+      "later": 814,
+      "nickname": 275,
+      "related": 280,
+      "phone": 69,
+      "school": 161,
+      "username": 60,
+      "email": 56
+     },
+     "dialogues_by_category": {
+      "name_word_collision": 135,
+      "nicknames_and_variants": 153,
+      "anglo_common": 160,
+      "non_anglo": 151
+     },
+     "persona_replaced": 355,
+     "median_doc_chars": 1455
+    }
+   }
+  },
+  "studychat": {
+   "dialogues": 0,
+   "note": "no raw data present"
+  },
+  "tscc": {
+   "dialogues": 0,
+   "note": "no raw data present"
+  }
+ }
+}

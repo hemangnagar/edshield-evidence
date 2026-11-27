@@ -23,3 +23,9 @@ experiments/genre_shift/__pycache__/
 # planted/control documents carry the licensed dialogue text; `make plant` rebuilds them
 experiments/genre_shift/data/planted/
 experiments/genre_shift/data/control/
+# v2: the same, per seed; raw detector output; debug runs
+experiments/genre_shift/data/v2/planted/
+experiments/genre_shift/data/v2/control/
+experiments/genre_shift/results/v2/raw/
+experiments/genre_shift/results/v2/raw_debug/
+experiments/genre_shift/**/__pycache__/

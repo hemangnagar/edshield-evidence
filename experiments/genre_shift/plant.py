@@ -1,11 +1,19 @@
 """Plant synthetic identifiers into real tutoring dialogue at natural slots.
 
-    python plant.py --seed 20261014
+    python plant.py --seed 20261014                                  # v1 layout
+    python plant.py --seeds 20261014 20261015 ... --out data/v2      # v2 layout
 
 Writes data/planted/<dataset>.jsonl (planted text + gold spans in edshield's
 label schema), data/control/<dataset>.jsonl (the same dialogues untouched)
 and data/plant_log.json (what was planted where). Every name comes from
 names/*.txt; contact values are synthetic (555-01xx phones, made-up handles).
+
+With --seeds (v2): <out>/planted/<seed>/<dataset>.jsonl per seed, the control
+once (it does not depend on the seed), <out>/gold/<seed>.jsonl with one row per
+planted span and <out>/plant_log.json with counts only. A dataset with more
+than --max-dialogues dialogues is sampled deterministically first. Every name
+mention carries its surface-form record (strata.surface_form): case, speaker,
+position, category, is_dict_word, n_wordpieces, is_initial.
 
 Document = one dialogue, turns joined as "Student: ..." / "Tutor: ..." lines.
 Gold spans are character offsets into that document, plus meta per span:
@@ -23,6 +31,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import loaders
+import strata
 
 HERE = Path(__file__).resolve().parent
 NAMES = HERE / "names"
@@ -298,6 +307,8 @@ class Planter:
                 gold.append([gs, ge, LABEL[kind]])
                 meta_spans.append({"start": gs, "end": ge, "label": LABEL[kind], "kind": kind, "text": value,
                                    "speaker": t["speaker"], "turn_idx": i})
+                if LABEL[kind] in ("NAME_STUDENT", "NAME_RELATED"):
+                    meta_spans[-1].update(strata.surface_form(value, str(t["speaker"]), kind, plan["category"]))
             parts.append(line)
             offset += len(line) + 1  # "\n"
         doc_text = "\n".join(parts)
@@ -325,38 +336,77 @@ def write_jsonl(rows: List[dict], path: Path) -> None:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
 
+def plant_dataset(planter: Planter, dialogues: List[loaders.Dialogue]) -> Tuple[List[dict], List[dict], dict]:
+    """Planted documents, the per-dialogue plans, and the counts for the log."""
+    reg = register_stats(dialogues)
+    planted, plans = [], []
+    for d in dialogues:
+        doc, plan = planter.plant(d, reg)
+        planted.append(doc)
+        plans.append(plan)
+    kinds: Dict[str, int] = {}
+    for doc in planted:
+        for s in doc["meta"]["spans"]:
+            kinds[s["kind"]] = kinds.get(s["kind"], 0) + 1
+    cats: Dict[str, int] = {}
+    for p in plans:
+        cats[p["category"]] = cats.get(p["category"], 0) + 1
+    summary = {"dialogues": len(dialogues), "turns": sum(len(d) for d in dialogues),
+               "register": reg, "spans_by_kind": kinds, "dialogues_by_category": cats,
+               "persona_replaced": sum(p["persona_replaced"] for p in plans),
+               "median_doc_chars": statistics.median(len(d["text"]) for d in planted)}
+    return planted, plans, summary
+
+
+def gold_rows(planted: List[dict], seed: int) -> List[dict]:
+    """The gold file: one row per planted span, no dialogue text."""
+    return [{"seed": seed, "doc_id": doc["doc_id"], "dataset": doc["meta"]["dataset"], **s}
+            for doc in planted for s in doc["meta"]["spans"]]
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=20261014)
+    ap.add_argument("--seeds", type=int, nargs="+", help="v2: plant once per seed into <out>/planted/<seed>/")
+    ap.add_argument("--max-dialogues", type=int, default=600, help="v2: deterministic sample above this size")
     ap.add_argument("--out", default=str(HERE / "data"))
     args = ap.parse_args(argv)
     out = Path(args.out)
+    if args.seeds:
+        log = {"seeds": args.seeds, "max_dialogues": args.max_dialogues, "datasets": {}}
+        (out / "gold").mkdir(parents=True, exist_ok=True)
+        for seed in args.seeds:
+            (out / "gold" / f"{seed}.jsonl").write_text("", encoding="utf-8")
+        for name, dialogues in loaders.load_all().items():
+            if not dialogues:
+                log["datasets"][name] = {"dialogues": 0, "note": "no raw data present"}
+                continue
+            n_raw = len(dialogues)
+            dialogues = loaders.sample_dialogues(dialogues, args.max_dialogues)
+            write_jsonl([control_doc(d) for d in dialogues], out / "control" / f"{name}.jsonl")
+            log["datasets"][name] = {"dialogues_raw": n_raw, "by_seed": {}}
+            for seed in args.seeds:
+                planted, _, summary = plant_dataset(Planter(seed), dialogues)
+                write_jsonl(planted, out / "planted" / str(seed) / f"{name}.jsonl")
+                with (out / "gold" / f"{seed}.jsonl").open("a", encoding="utf-8") as f:
+                    for r in gold_rows(planted, seed):
+                        f.write(json.dumps(r, ensure_ascii=False) + "\n")
+                log["datasets"][name]["by_seed"][str(seed)] = summary
+                print(f"{name:10s} seed {seed}  dialogues {len(dialogues):4d}  "
+                      f"gold spans {sum(summary['spans_by_kind'].values()):5d}  {summary['spans_by_kind']}")
+        (out / "plant_log.json").write_text(json.dumps(log, indent=1), encoding="utf-8")
+        return 0
     planter = Planter(args.seed)
     log = {"seed": args.seed, "datasets": {}}
     for name, dialogues in loaders.load_all().items():
         if not dialogues:
             log["datasets"][name] = {"dialogues": 0, "note": "no raw data present"}
             continue
-        reg = register_stats(dialogues)
-        planted, plans = [], []
-        for d in dialogues:
-            doc, plan = planter.plant(d, reg)
-            planted.append(doc)
-            plans.append(plan)
+        planted, plans, summary = plant_dataset(planter, dialogues)
         write_jsonl(planted, out / "planted" / f"{name}.jsonl")
         write_jsonl([control_doc(d) for d in dialogues], out / "control" / f"{name}.jsonl")
-        kinds: Dict[str, int] = {}
-        for doc in planted:
-            for s in doc["meta"]["spans"]:
-                kinds[s["kind"]] = kinds.get(s["kind"], 0) + 1
-        cats: Dict[str, int] = {}
-        for p in plans:
-            cats[p["category"]] = cats.get(p["category"], 0) + 1
-        log["datasets"][name] = {"dialogues": len(dialogues), "turns": sum(len(d) for d in dialogues),
-                                 "register": reg, "spans_by_kind": kinds, "dialogues_by_category": cats,
-                                 "persona_replaced": sum(p["persona_replaced"] for p in plans),
-                                 "median_doc_chars": statistics.median(len(d["text"]) for d in planted),
-                                 "plans": plans}
+        log["datasets"][name] = {**summary, "plans": plans}
+        kinds = summary["spans_by_kind"]
         print(f"{name:10s} dialogues {len(dialogues):4d}  gold spans {sum(kinds.values()):5d}  {kinds}")
     (out / "plant_log.json").write_text(json.dumps(log, indent=1), encoding="utf-8")
     return 0

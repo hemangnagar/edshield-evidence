@@ -1,0 +1,17 @@
+# Versions the v2 run used (Python 3.13, Linux x86_64, CPU). `pip install -r requirements-v2.txt`
+# on top of the repo's own install (`pip install -e .[hf]`).
+edshield==0.2.0
+torch==2.15.0
+transformers==5.24.1
+tokenizers==0.23.3
+sentencepiece==0.2.3
+huggingface_hub==2.5.0
+spacy==3.8.18
+spacy-curated-transformers==0.3.1
+presidio-analyzer==2.2.366
+openai==3.60.0
+scipy==1.18.1
+numpy==2.4.6
+matplotlib==3.11.2
+en_core_web_lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
+en_core_web_trf @ https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.8.0/en_core_web_trf-3.8.0-py3-none-any.whl
