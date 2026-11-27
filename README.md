@@ -294,3 +294,14 @@ the installed `rules.py`).
 ## License
 
 Apache-2.0. The judge submodule and edshield carry their own licenses.
+
+## Experiments
+
+- `experiments/genre_shift/` — genre-shift experiment: the pinned 0.2.0 release on real
+  student–tutor dialogue (CoMTA, MathDial) with identifiers planted from name lists,
+  broken down by name category and mention form, plus over-redaction on an untouched
+  control. `make experiment`; results in `experiments/genre_shift/findings.md`.
+  v2 (`BRIEF_v2.md`): the same planted files under five detectors (edshield, Presidio,
+  spaCy trf, a public Hugging Face PII model, gpt-4o-mini) and five planting seeds, with
+  per-stratum recall floors and a floor-transfer test between genres. `make v2` (or
+  `make v2-nogpt`) in that directory; results in `experiments/genre_shift/findings_v2.md`.

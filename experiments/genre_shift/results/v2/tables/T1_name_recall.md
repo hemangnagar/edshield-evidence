@@ -1,0 +1,28 @@
+Name recall by detector and dataset. PIILO is one run of the 680 held-out essays; the dialogue sets pool 5 planting seeds. `gpt4o_mini_propagated` is secondary: the same GPT responses with every occurrence of a returned string flagged.
+
+| detector | dataset | n mentions | caught | recall (pooled) | mean over seeds | SD over seeds (pts) | pooled 95% Wilson CI | exact-match recall | any-label recall |
+|---|---|---|---|---|---|---|---|---|---|
+| edshield | piilo_holdout | 143 | 143 | 100.0% | n/a | n/a | 97.4% – 100.0% | 98.6% | 100.0% |
+| edshield | comta | 2492 | 2147 | 86.2% | 86.2% | 1.98 | 84.7% – 87.5% | 85.8% | 86.2% |
+| edshield | mathdial | 9554 | 8628 | 90.3% | 90.3% | 0.65 | 89.7% – 90.9% | 90.2% | 90.3% |
+| edshield | pooled_dialogue | 12046 | 10775 | 89.4% | 89.5% | 0.58 | 88.9% – 90.0% | 89.3% | 89.4% |
+| presidio | piilo_holdout | 143 | 121 | 84.6% | n/a | n/a | 77.8% – 89.6% | 58.0% | 90.2% |
+| presidio | comta | 2492 | 1762 | 70.7% | 70.7% | 2.01 | 68.9% – 72.5% | 69.8% | 78.3% |
+| presidio | mathdial | 9554 | 7192 | 75.3% | 75.3% | 1.34 | 74.4% – 76.1% | 74.7% | 82.3% |
+| presidio | pooled_dialogue | 12046 | 8954 | 74.3% | 74.3% | 0.77 | 73.5% – 75.1% | 73.7% | 81.5% |
+| spacy_trf | piilo_holdout | 143 | 129 | 90.2% | n/a | n/a | 84.2% – 94.1% | 86.0% | 90.9% |
+| spacy_trf | comta | 2492 | 2331 | 93.5% | 93.5% | 0.69 | 92.5% – 94.4% | 84.8% | 94.1% |
+| spacy_trf | mathdial | 9554 | 9178 | 96.1% | 96.1% | 0.46 | 95.7% – 96.4% | 91.9% | 96.4% |
+| spacy_trf | pooled_dialogue | 12046 | 11509 | 95.5% | 95.5% | 0.41 | 95.2% – 95.9% | 90.4% | 96.0% |
+| hf_pii | piilo_holdout | 143 | 76 | 53.1% | n/a | n/a | 45.0% – 61.1% | 22.4% | 53.1% |
+| hf_pii | comta | 2492 | 1107 | 44.4% | 44.4% | 1.97 | 42.5% – 46.4% | 41.5% | 67.9% |
+| hf_pii | mathdial | 9554 | 5437 | 56.9% | 56.9% | 0.70 | 55.9% – 57.9% | 54.7% | 63.8% |
+| hf_pii | pooled_dialogue | 12046 | 6544 | 54.3% | 54.3% | 0.68 | 53.4% – 55.2% | 52.0% | 64.6% |
+| gpt4o_mini | piilo_holdout | 143 | 103 | 72.0% | n/a | n/a | 64.2% – 78.7% | 71.3% | 72.0% |
+| gpt4o_mini | comta | 2492 | 1674 | 67.2% | 67.2% | 2.48 | 65.3% – 69.0% | 66.6% | 68.0% |
+| gpt4o_mini | mathdial | 9554 | 5814 | 60.9% | 60.9% | 0.31 | 59.9% – 61.8% | 60.6% | 61.5% |
+| gpt4o_mini | pooled_dialogue | 12046 | 7488 | 62.2% | 62.2% | 0.30 | 61.3% – 63.0% | 61.8% | 62.8% |
+| gpt4o_mini_propagated | piilo_holdout | 143 | 126 | 88.1% | n/a | n/a | 81.8% – 92.4% | 86.7% | 88.1% |
+| gpt4o_mini_propagated | comta | 2492 | 2003 | 80.4% | 80.4% | 3.12 | 78.8% – 81.9% | 79.8% | 81.3% |
+| gpt4o_mini_propagated | mathdial | 9554 | 7982 | 83.5% | 83.6% | 0.68 | 82.8% – 84.3% | 83.2% | 84.3% |
+| gpt4o_mini_propagated | pooled_dialogue | 12046 | 9985 | 82.9% | 82.9% | 0.73 | 82.2% – 83.6% | 82.5% | 83.7% |

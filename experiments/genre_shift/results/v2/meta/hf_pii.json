@@ -1,0 +1,73 @@
+{
+ "sets": {
+  "planted__20261014__comta": {
+   "docs": 188,
+   "seconds": 97.4
+  },
+  "planted__20261014__mathdial": {
+   "docs": 599,
+   "seconds": 319.3
+  },
+  "planted__20261015__comta": {
+   "docs": 188,
+   "seconds": 99.2
+  },
+  "planted__20261015__mathdial": {
+   "docs": 599,
+   "seconds": 327.5
+  },
+  "planted__20261016__comta": {
+   "docs": 188,
+   "seconds": 91.4
+  },
+  "planted__20261016__mathdial": {
+   "docs": 599,
+   "seconds": 317.3
+  },
+  "planted__20261017__comta": {
+   "docs": 188,
+   "seconds": 88.4
+  },
+  "planted__20261017__mathdial": {
+   "docs": 599,
+   "seconds": 301.7
+  },
+  "planted__20261018__comta": {
+   "docs": 188,
+   "seconds": 84.2
+  },
+  "planted__20261018__mathdial": {
+   "docs": 599,
+   "seconds": 311.0
+  },
+  "control__comta": {
+   "docs": 188,
+   "seconds": 81.2
+  },
+  "control__mathdial": {
+   "docs": 599,
+   "seconds": 283.3
+  },
+  "piilo__piilo_holdout": {
+   "docs": 680,
+   "seconds": 680.8
+  }
+ },
+ "model_id": "iiiorg/piiranha-v1-detect-personal-information",
+ "model_revision": "255acde67a2f34cf452eb42e365b24d2957352fc",
+ "aggregation_strategy": "simple",
+ "stride": 64,
+ "window": "256 tokens (model card)",
+ "device": "cpu",
+ "versions": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v880-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "cpu_count": 4,
+  "transformers": "5.24.1",
+  "torch": "2.15.0",
+  "gpu": "none"
+ },
+ "started": "2026-11-27T05:16:34",
+ "finished": "2026-11-27T06:07:57"
+}

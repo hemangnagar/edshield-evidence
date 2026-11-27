@@ -1,0 +1,1 @@
+{"model": "gpt-4o-mini-2024-07-18", "system_fingerprint": "fp_c4117ad984", "prompt_sha256": "52ffeeebd78af7488807247872e80ba26a9ed4270d4a1dcfe78662301aa4a897", "temperature": 0, "seed": 0, "attempts": 1, "finish_reason": "stop", "unparseable": false, "resolution": {"exact": 0, "relocated": 0, "offsets_only": 0, "dropped": 0}, "usd": 9.9e-05, "spans": []}

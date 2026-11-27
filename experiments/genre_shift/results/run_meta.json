@@ -1,0 +1,48 @@
+{
+ "policy": "coppa",
+ "policy_sha256": "5831cb4332152883c9b00ccb0a58ee0a90f5e70f4de8b78a595456a9d5db27ad",
+ "model": "piilo_deberta_small",
+ "model_id": "edshield/piilo-deberta-v3-small",
+ "device": "cuda",
+ "seed": 0,
+ "versions": {
+  "python": "3.11.4",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "edshield": "0.2.0",
+  "edshield-evidence": "0.1.0",
+  "torch": "2.14.1+cu126",
+  "transformers": "5.19.0",
+  "huggingface_hub": "2.2.0",
+  "numpy": "2.4.6",
+  "matplotlib": "3.11.2",
+  "cuda": "12.6",
+  "gpu": "NVIDIA GeForce GTX 1060 6GB"
+ },
+ "sets": {
+  "planted__comta": {
+   "docs": 188,
+   "seconds": 17.1
+  },
+  "planted__mathdial": {
+   "docs": 599,
+   "seconds": 31.2
+  },
+  "control__comta": {
+   "docs": 188,
+   "seconds": 9.3
+  },
+  "control__mathdial": {
+   "docs": 599,
+   "seconds": 29.4
+  },
+  "piilo__piilo_holdout": {
+   "docs": 680,
+   "seconds": 60.5,
+   "input_sha256": "bc5d0958b72eee52a7fd38b84ac4c775128eefae6f9e8acee5dbc710cea1ecf8"
+  }
+ },
+ "started": "2026-10-14T18:15:33",
+ "model_revision": "5effafd0299ac576b6c5b3a91b3f26800ce89e62",
+ "model_sha256": "71af3248048b619a346e73a0c27cada4fead138ea9becb4d7abad1d1102cb50a",
+ "finished": "2026-10-14T18:18:02"
+}
